@@ -1,0 +1,473 @@
+<template>
+  <section id="job-categories" class="job-categories-section section-padding">
+    <v-container>
+      <div class="section-header text-center mb-16">
+        <v-chip
+          color="primary"
+          variant="flat"
+          size="large"
+          class="mb-6"
+        >
+          <v-icon start>mdi-briefcase</v-icon>
+          Postes Disponibles
+        </v-chip>
+        <h2 class="section-title mb-6">
+          Nos engagements & valeurs<br>
+          <span class="gradient-text">fondamentales</span>
+        </h2>
+      </div>
+
+      <v-row>
+        <v-col
+          v-for="(category, index) in jobCategories"
+          :key="index"
+          cols="12"
+          md="6"
+          lg="4"
+          class="category-col"
+        >
+          <v-card
+            :elevation="8"
+            class="category-card h-100"
+            rounded="xl"
+          >
+            <v-card-item class="pa-6">
+              <div class="d-flex align-start mb-4">
+                <div class="category-icon-wrapper mr-4">
+                  <v-icon :color="category.color" size="48">{{ category.icon }}</v-icon>
+                </div>
+                <div class="flex-grow-1">
+                  <v-card-title class="text-h6 mb-4 pa-0 category-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+                    {{ category.title }}
+                  </v-card-title>
+                  <v-card-text class="pa-0 mb-4">
+                    <ul class="category-jobs-list">
+                      <li
+                        v-for="(job, jobIndex) in category.jobs"
+                        :key="jobIndex"
+                        class="category-job-item mb-2"
+                      >
+                        {{ job }}
+                      </li>
+                    </ul>
+                  </v-card-text>
+                  <v-btn
+                    :color="category.color"
+                    variant="elevated"
+                    rounded="xl"
+                    class="category-btn"
+                    block
+                    @click="openApplicationDialog(category)"
+                  >
+                    <v-icon start>mdi-send</v-icon>
+                    Postuler
+                  </v-btn>
+                </div>
+              </div>
+            </v-card-item>
+          </v-card>
+        </v-col>
+      </v-row>
+
+      <!-- Application Dialog -->
+      <v-dialog
+        v-model="applicationDialog"
+        max-width="800"
+        scrollable
+        persistent
+      >
+        <v-card rounded="xl" v-if="selectedCategory">
+          <v-card-title class="d-flex align-center justify-space-between pa-6 dialog-header">
+            <div class="d-flex align-center">
+              <div class="dialog-icon-wrapper mr-4">
+                <v-icon :color="selectedCategory.color" size="32">{{ selectedCategory.icon }}</v-icon>
+              </div>
+              <span class="text-h5 font-weight-bold">Candidature - {{ selectedCategory.title }}</span>
+            </div>
+            <v-btn
+              icon
+              variant="text"
+              size="small"
+              @click="applicationDialog = false"
+              class="close-btn"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-card-title>
+
+          <v-divider></v-divider>
+
+          <v-card-text class="pa-6">
+            <div class="mb-6">
+              <h3 class="text-h6 mb-4 font-weight-bold">Postes disponibles dans cette catégorie :</h3>
+              <ul class="dialog-jobs-list">
+                <li
+                  v-for="(job, index) in selectedCategory.jobs"
+                  :key="index"
+                  class="dialog-job-item mb-2"
+                >
+                  {{ job }}
+                </li>
+              </ul>
+            </div>
+
+            <v-form @submit.prevent="submitApplication" ref="applicationForm">
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="applicationForm.firstName"
+                    label="Prénom *"
+                    variant="outlined"
+                    rounded="lg"
+                    required
+                    :rules="[v => !!v || 'Le prénom est requis']"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="applicationForm.lastName"
+                    label="Nom *"
+                    variant="outlined"
+                    rounded="lg"
+                    required
+                    :rules="[v => !!v || 'Le nom est requis']"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="applicationForm.email"
+                    label="Email *"
+                    type="email"
+                    variant="outlined"
+                    rounded="lg"
+                    required
+                    :rules="[v => !!v || 'L\'email est requis', v => /.+@.+\..+/.test(v) || 'Email invalide']"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="applicationForm.phone"
+                    label="Téléphone *"
+                    variant="outlined"
+                    rounded="lg"
+                    required
+                    :rules="[v => !!v || 'Le téléphone est requis']"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-select
+                    v-model="applicationForm.position"
+                    :items="selectedCategory.jobs"
+                    label="Poste souhaité *"
+                    variant="outlined"
+                    rounded="lg"
+                    required
+                    :rules="[v => !!v || 'Veuillez sélectionner un poste']"
+                  ></v-select>
+                </v-col>
+                <v-col cols="12">
+                  <v-textarea
+                    v-model="applicationForm.message"
+                    label="Message (optionnel)"
+                    variant="outlined"
+                    rounded="lg"
+                    rows="4"
+                    placeholder="Parlez-nous de votre expérience et de vos motivations..."
+                  ></v-textarea>
+                </v-col>
+                <v-col cols="12">
+                  <v-file-input
+                    v-model="applicationForm.cv"
+                    label="CV (PDF, DOC, DOCX)"
+                    variant="outlined"
+                    rounded="lg"
+                    accept=".pdf,.doc,.docx"
+                    prepend-icon="mdi-file-document"
+                    show-size
+                  ></v-file-input>
+                </v-col>
+              </v-row>
+            </v-form>
+          </v-card-text>
+
+          <v-divider></v-divider>
+
+          <v-card-actions class="pa-6">
+            <v-spacer></v-spacer>
+            <v-btn
+              variant="outlined"
+              rounded="lg"
+              @click="applicationDialog = false"
+            >
+              Annuler
+            </v-btn>
+            <v-btn
+              :color="selectedCategory.color"
+              variant="elevated"
+              rounded="lg"
+              @click="submitApplication"
+              :loading="submitting"
+            >
+              <v-icon start>mdi-send</v-icon>
+              Envoyer ma candidature
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-container>
+  </section>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const applicationDialog = ref(false)
+const selectedCategory = ref(null)
+const submitting = ref(false)
+const applicationForm = ref({
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  position: '',
+  message: '',
+  cv: null
+})
+
+const jobCategories = [
+  {
+    title: 'Support client & gestion',
+    jobs: [
+      'Chargés de relation client',
+      'Agents back-office',
+      'Responsables qualité'
+    ],
+    color: 'primary',
+    icon: 'mdi-headset'
+  },
+  {
+    title: 'Design & création',
+    jobs: [
+      'Graphistes',
+      'Motion designers',
+      'Directeurs artistiques'
+    ],
+    color: 'secondary',
+    icon: 'mdi-palette'
+  },
+  {
+    title: 'Développement web & tech',
+    jobs: [
+      'Développeurs front-end',
+      'Développeurs back-end',
+      'Développeurs full stack',
+      'Chefs de projet IT'
+    ],
+    color: 'success',
+    icon: 'mdi-code-tags'
+  },
+  {
+    title: 'Business & achats',
+    jobs: [
+      'Commerciaux',
+      'Acheteurs',
+      'Assistants ADV'
+    ],
+    color: 'info',
+    icon: 'mdi-cart'
+  },
+  {
+    title: 'Marketing digital & communication',
+    jobs: [
+      'Community managers',
+      'Rédacteurs',
+      'Spécialistes SEO/SEA',
+      'Media buyers'
+    ],
+    color: 'warning',
+    icon: 'mdi-bullhorn'
+  }
+]
+
+const openApplicationDialog = (category) => {
+  selectedCategory.value = category
+  applicationForm.value = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    position: '',
+    message: '',
+    cv: null
+  }
+  applicationDialog.value = true
+}
+
+const submitApplication = async () => {
+  submitting.value = true
+  // TODO: Implémenter l'envoi du formulaire
+  setTimeout(() => {
+    submitting.value = false
+    alert('Votre candidature a été envoyée avec succès !')
+    applicationDialog.value = false
+  }, 1500)
+}
+</script>
+
+<style scoped>
+.job-categories-section {
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+}
+
+.section-header {
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #1a237e 0%, #3f51b5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.category-col {
+  margin-bottom: 32px;
+}
+
+.category-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.category-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+.category-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: rgba(26, 35, 126, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover .category-icon-wrapper {
+  transform: scale(1.1);
+  background: rgba(26, 35, 126, 0.15);
+}
+
+.category-title {
+  font-weight: 700;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  min-height: auto;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+.category-jobs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-job-item {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.7;
+  color: #424242;
+  padding-left: 8px;
+  position: relative;
+}
+
+.category-job-item::before {
+  content: '•';
+  color: var(--v-primary-base);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.category-btn {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 16px;
+}
+
+/* Dialog Styles */
+.dialog-header {
+  background: linear-gradient(135deg, rgba(26, 35, 126, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+}
+
+.dialog-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(26, 35, 126, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn {
+  transition: all 0.3s ease;
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.dialog-jobs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dialog-job-item {
+  display: flex;
+  align-items: center;
+  line-height: 1.7;
+  color: #424242;
+  padding-left: 24px;
+  position: relative;
+}
+
+.dialog-job-item::before {
+  content: '✓';
+  color: var(--v-primary-base);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 960px) {
+  .category-card {
+    margin-bottom: 24px;
+  }
+
+  .dialog-header {
+    padding: 20px !important;
+  }
+
+  .dialog-header .text-h5 {
+    font-size: 1.25rem;
+  }
+}
+</style>
