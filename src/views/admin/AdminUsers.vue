@@ -82,19 +82,31 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <DeleteDialog
+      v-model="deleteDialog"
+      :item-name="itemToDelete?.email"
+      :deleting="deleting"
+      @confirm="handleDelete"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../../services/api.js'
+import DeleteDialog from '../../components/admin/DeleteDialog.vue'
 
 const loading = ref(false)
 const saving = ref(false)
+const deleting = ref(false)
 const dialog = ref(false)
+const deleteDialog = ref(false)
 const valid = ref(false)
 const editing = ref(false)
 const users = ref([])
+const itemToDelete = ref(null)
 
 const formData = ref({
   email: '',
@@ -170,14 +182,23 @@ const saveUser = async () => {
   }
 }
 
-const confirmDelete = async item => {
-  if (confirm(`Supprimer l'utilisateur "${item.email}" ?`)) {
-    try {
-      await api.deleteUser(item.id)
-      loadUsers()
-    } catch (error) {
-      console.error('Error deleting user:', error)
-    }
+const confirmDelete = item => {
+  itemToDelete.value = item
+  deleteDialog.value = true
+}
+
+const handleDelete = async () => {
+  if (!itemToDelete.value) return
+  deleting.value = true
+  try {
+    await api.deleteUser(itemToDelete.value.id)
+    deleteDialog.value = false
+    itemToDelete.value = null
+    loadUsers()
+  } catch (error) {
+    console.error('Error deleting user:', error)
+  } finally {
+    deleting.value = false
   }
 }
 

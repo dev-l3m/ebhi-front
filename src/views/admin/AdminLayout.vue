@@ -20,8 +20,10 @@
           :to="item.to"
           :prepend-icon="item.icon"
           :title="item.title"
-          class="mb-2"
+          :active="isActive(item.to.name)"
+          class="mb-2 menu-item"
           rounded="lg"
+          variant="text"
         ></v-list-item>
       </v-list>
       <template v-slot:append>
@@ -103,6 +105,10 @@ const currentPageTitle = computed(() => {
   return pageTitles[route.name] || 'Backoffice'
 })
 
+const isActive = routeName => {
+  return route.name === routeName
+}
+
 const handleLogout = async () => {
   await api.logout()
   router.push({ name: 'AdminLogin' })
@@ -124,5 +130,23 @@ onMounted(async () => {
 
 .admin-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.menu-item {
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(26, 35, 126, 0.05);
+}
+
+.menu-item.v-list-item--active {
+  background-color: rgba(26, 35, 126, 0.1) !important;
+  color: #1a237e !important;
+  font-weight: 600;
+}
+
+.menu-item.v-list-item--active :deep(.v-icon) {
+  color: #1a237e !important;
 }
 </style>

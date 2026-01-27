@@ -174,15 +174,64 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <!-- Dialog de succès -->
+    <v-dialog v-model="successDialog" max-width="500" persistent>
+      <v-card rounded="xl">
+        <v-card-item class="pa-6">
+          <div class="d-flex align-center mb-4">
+            <v-icon color="success" size="48" class="mr-4">mdi-check-circle</v-icon>
+            <v-card-title class="pa-0">Message envoyé !</v-card-title>
+          </div>
+          <v-card-text class="pa-0 pb-4">
+            Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+          </v-card-text>
+          <v-card-actions class="pa-0">
+            <v-spacer></v-spacer>
+            <v-btn color="primary" variant="elevated" rounded="lg" @click="successDialog = false">
+              OK
+            </v-btn>
+          </v-card-actions>
+        </v-card-item>
+      </v-card>
+    </v-dialog>
+
+    <!-- Dialog d'erreur -->
+    <v-dialog v-model="errorDialog" max-width="500" persistent>
+      <v-card rounded="xl">
+        <v-card-item class="pa-6">
+          <div class="d-flex align-center mb-4">
+            <v-icon color="error" size="48" class="mr-4">mdi-alert-circle</v-icon>
+            <v-card-title class="pa-0">Erreur</v-card-title>
+          </div>
+          <v-card-text class="pa-0 pb-4">
+            {{
+              errorMessage ||
+              "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer."
+            }}
+          </v-card-text>
+          <v-card-actions class="pa-0">
+            <v-spacer></v-spacer>
+            <v-btn color="primary" variant="elevated" rounded="lg" @click="errorDialog = false">
+              OK
+            </v-btn>
+          </v-card-actions>
+        </v-card-item>
+      </v-card>
+    </v-dialog>
   </section>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import api from '../../services/api.js'
 
 const form = ref(null)
 const valid = ref(false)
 const loading = ref(false)
+const successDialog = ref(false)
+const errorDialog = ref(false)
+const errorMessage = ref('')
 
 const formData = ref({
   nom: '',
@@ -204,10 +253,8 @@ const submitForm = async () => {
   const { valid: isValid } = await form.value.validate()
   if (isValid) {
     loading.value = true
-    // Simuler l'envoi
-    setTimeout(() => {
-      loading.value = false
-      alert('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.')
+    try {
+      await api.createContact(formData.value)
       // Réinitialiser le formulaire
       formData.value = {
         nom: '',
@@ -217,7 +264,16 @@ const submitForm = async () => {
         message: ''
       }
       form.value.reset()
-    }, 2000)
+      // Afficher un message de succès
+      successDialog.value = true
+    } catch (error) {
+      console.error('Error submitting contact form:', error)
+      errorMessage.value =
+        error.message || "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer."
+      errorDialog.value = true
+    } finally {
+      loading.value = false
+    }
   }
 }
 </script>

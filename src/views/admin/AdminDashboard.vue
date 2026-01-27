@@ -3,7 +3,7 @@
     <div class="d-flex justify-space-between align-center mb-6">
       <h1 class="text-h4 font-weight-bold">Dashboard</h1>
       <v-chip color="primary" variant="flat" prepend-icon="mdi-calendar">
-        {{ new Date().toLocaleDateString('fr-FR') }}
+        {{ formatDate(new Date().toISOString()) }}
       </v-chip>
     </div>
 
@@ -166,13 +166,10 @@ const getActivityColor = type => {
 const formatDate = dateString => {
   if (!dateString) return ''
   const date = new Date(dateString)
-  return date.toLocaleDateString('fr-FR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  })
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}-${month}-${year}`
 }
 
 const getPercentage = (value, total) => {

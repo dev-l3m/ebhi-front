@@ -91,19 +91,31 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <DeleteDialog
+      v-model="deleteDialog"
+      :item-name="itemToDelete?.title"
+      :deleting="deleting"
+      @confirm="handleDelete"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import api from '../../services/api.js'
+import DeleteDialog from '../../components/admin/DeleteDialog.vue'
 
 const loading = ref(false)
 const saving = ref(false)
+const deleting = ref(false)
 const dialog = ref(false)
+const deleteDialog = ref(false)
 const valid = ref(false)
 const editing = ref(false)
 const categories = ref([])
+const itemToDelete = ref(null)
 
 const formData = ref({
   title: '',
@@ -177,14 +189,23 @@ const saveCategory = async () => {
   }
 }
 
-const confirmDelete = async item => {
-  if (confirm(`Supprimer la catégorie "${item.title}" ?`)) {
-    try {
-      await api.deleteJobCategory(item.id)
-      loadCategories()
-    } catch (error) {
-      console.error('Error deleting category:', error)
-    }
+const confirmDelete = item => {
+  itemToDelete.value = item
+  deleteDialog.value = true
+}
+
+const handleDelete = async () => {
+  if (!itemToDelete.value) return
+  deleting.value = true
+  try {
+    await api.deleteJobCategory(itemToDelete.value.id)
+    deleteDialog.value = false
+    itemToDelete.value = null
+    loadCategories()
+  } catch (error) {
+    console.error('Error deleting category:', error)
+  } finally {
+    deleting.value = false
   }
 }
 

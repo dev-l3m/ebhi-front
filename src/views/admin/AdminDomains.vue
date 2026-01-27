@@ -80,19 +80,31 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <DeleteDialog
+      v-model="deleteDialog"
+      :item-name="itemToDelete?.name"
+      :deleting="deleting"
+      @confirm="handleDelete"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../../services/api.js'
+import DeleteDialog from '../../components/admin/DeleteDialog.vue'
 
 const loading = ref(false)
 const saving = ref(false)
+const deleting = ref(false)
 const dialog = ref(false)
+const deleteDialog = ref(false)
 const valid = ref(false)
 const editing = ref(false)
 const domains = ref([])
+const itemToDelete = ref(null)
 
 const formData = ref({
   name: '',
@@ -158,14 +170,23 @@ const saveDomain = async () => {
   }
 }
 
-const confirmDelete = async item => {
-  if (confirm(`Supprimer le domaine "${item.name}" ?`)) {
-    try {
-      await api.deleteDomain(item.id)
-      loadDomains()
-    } catch (error) {
-      console.error('Error deleting domain:', error)
-    }
+const confirmDelete = item => {
+  itemToDelete.value = item
+  deleteDialog.value = true
+}
+
+const handleDelete = async () => {
+  if (!itemToDelete.value) return
+  deleting.value = true
+  try {
+    await api.deleteDomain(itemToDelete.value.id)
+    deleteDialog.value = false
+    itemToDelete.value = null
+    loadDomains()
+  } catch (error) {
+    console.error('Error deleting domain:', error)
+  } finally {
+    deleting.value = false
   }
 }
 

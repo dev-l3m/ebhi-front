@@ -54,6 +54,9 @@
             {{ getStatusLabel(item.status) }}
           </v-chip>
         </template>
+        <template v-slot:item.createdAt="{ item }">
+          {{ formatDate(item.createdAt) }}
+        </template>
         <template v-slot:item.actions="{ item }">
           <v-btn icon size="small" variant="text" @click="viewContact(item)">
             <v-icon>mdi-eye</v-icon>
@@ -137,17 +140,37 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <DeleteDialog
+      v-model="deleteDialog"
+      :item-name="itemToDelete?.name ? `le contact de ${itemToDelete.name}` : ''"
+      :deleting="deleting"
+      @confirm="handleDelete"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../../services/api.js'
+import DeleteDialog from '../../components/admin/DeleteDialog.vue'
 
 const loading = ref(false)
 const viewDialog = ref(false)
+const deleteDialog = ref(false)
+const deleting = ref(false)
 const contacts = ref([])
 const selectedContact = ref(null)
+const itemToDelete = ref(null)
+const formatDate = dateString => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}-${month}-${year}`
+}
 
 const filters = ref({
   search: '',
@@ -239,14 +262,23 @@ const updateStatus = async (id, status) => {
   }
 }
 
-const confirmDelete = async item => {
-  if (confirm(`Supprimer le contact de ${item.name} ?`)) {
-    try {
-      await api.deleteContact(item.id)
-      loadContacts()
-    } catch (error) {
-      console.error('Error deleting contact:', error)
-    }
+const confirmDelete = item => {
+  itemToDelete.value = item
+  deleteDialog.value = true
+}
+
+const handleDelete = async () => {
+  if (!itemToDelete.value) return
+  deleting.value = true
+  try {
+    await api.deleteContact(itemToDelete.value.id)
+    deleteDialog.value = false
+    itemToDelete.value = null
+    loadContacts()
+  } catch (error) {
+    console.error('Error deleting contact:', error)
+  } finally {
+    deleting.value = false
   }
 }
 

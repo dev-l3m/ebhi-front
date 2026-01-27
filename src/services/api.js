@@ -12,9 +12,10 @@ class ApiService {
   }
 
   // Helper method to get headers
-  getHeaders(includeAuth = true) {
-    const headers = {
-      'Content-Type': 'application/json'
+  getHeaders(includeAuth = true, isFormData = false) {
+    const headers = {}
+    if (!isFormData) {
+      headers['Content-Type'] = 'application/json'
     }
     if (includeAuth && this.token) {
       headers['Authorization'] = `Bearer ${this.token}`
@@ -25,20 +26,32 @@ class ApiService {
   // Helper method to handle requests
   async request(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`
+    const isFormData = options.body instanceof FormData
     const config = {
       ...options,
       headers: {
-        ...this.getHeaders(options.includeAuth !== false),
+        ...this.getHeaders(options.includeAuth !== false, isFormData),
         ...options.headers
       }
     }
 
     try {
       const response = await fetch(url, config)
-      const data = await response.json()
+
+      // Gérer les réponses vides
+      let data
+      const contentType = response.headers.get('content-type')
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json()
+      } else {
+        const text = await response.text()
+        data = text ? { message: text } : { message: 'Une erreur est survenue' }
+      }
 
       if (!response.ok) {
-        throw new Error(data.message || 'Une erreur est survenue')
+        const errorMessage =
+          data.message || data.error || `Erreur ${response.status}: ${response.statusText}`
+        throw new Error(errorMessage)
       }
 
       return data
@@ -210,6 +223,30 @@ class ApiService {
     return this.request(`/job-applications/${id}`)
   }
 
+  async createJobApplication(applicationData) {
+    const formData = new FormData()
+    formData.append('firstName', applicationData.firstName)
+    formData.append('lastName', applicationData.lastName)
+    formData.append('email', applicationData.email)
+    formData.append('phone', applicationData.phone)
+    formData.append('position', applicationData.position)
+    if (applicationData.categoryId) {
+      formData.append('categoryId', applicationData.categoryId)
+    }
+    if (applicationData.message) {
+      formData.append('coverLetter', applicationData.message)
+    }
+    if (applicationData.cv) {
+      formData.append('resume', applicationData.cv)
+    }
+
+    return this.request('/job-applications', {
+      method: 'POST',
+      body: formData,
+      includeAuth: false
+    })
+  }
+
   async updateJobApplicationStatus(id, status) {
     return this.request(`/job-applications/${id}/status`, {
       method: 'PATCH',
@@ -289,6 +326,19 @@ class ApiService {
 
   async getContact(id) {
     return this.request(`/contacts/${id}`)
+  }
+
+  async createContact(contactData) {
+    return this.request('/contacts', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: `${contactData.prenom} ${contactData.nom}`,
+        email: contactData.email,
+        phone: contactData.telephone || null,
+        message: contactData.message
+      }),
+      includeAuth: false
+    })
   }
 
   async updateContactStatus(id, status) {

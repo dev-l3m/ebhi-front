@@ -112,7 +112,7 @@
               <v-row>
                 <v-col cols="12" md="6">
                   <v-text-field
-                    v-model="applicationForm.firstName"
+                    v-model="applicationFormData.firstName"
                     label="Prénom *"
                     variant="outlined"
                     rounded="lg"
@@ -122,7 +122,7 @@
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
-                    v-model="applicationForm.lastName"
+                    v-model="applicationFormData.lastName"
                     label="Nom *"
                     variant="outlined"
                     rounded="lg"
@@ -132,7 +132,7 @@
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
-                    v-model="applicationForm.email"
+                    v-model="applicationFormData.email"
                     label="Email *"
                     type="email"
                     variant="outlined"
@@ -146,7 +146,7 @@
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
-                    v-model="applicationForm.phone"
+                    v-model="applicationFormData.phone"
                     label="Téléphone *"
                     variant="outlined"
                     rounded="lg"
@@ -156,7 +156,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-select
-                    v-model="applicationForm.position"
+                    v-model="applicationFormData.position"
                     :items="selectedCategory.jobs"
                     label="Poste souhaité *"
                     variant="outlined"
@@ -167,7 +167,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-textarea
-                    v-model="applicationForm.message"
+                    v-model="applicationFormData.message"
                     label="Message (optionnel)"
                     variant="outlined"
                     rounded="lg"
@@ -177,7 +177,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-file-input
-                    v-model="applicationForm.cv"
+                    v-model="applicationFormData.cv"
                     label="CV (PDF, DOC, DOCX)"
                     variant="outlined"
                     rounded="lg"
@@ -216,17 +216,67 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
+
+      <!-- Dialog de succès -->
+      <v-dialog v-model="successDialog" max-width="500" persistent>
+        <v-card rounded="xl">
+          <v-card-item class="pa-6">
+            <div class="d-flex align-center mb-4">
+              <v-icon color="success" size="48" class="mr-4">mdi-check-circle</v-icon>
+              <v-card-title class="pa-0">Candidature envoyée !</v-card-title>
+            </div>
+            <v-card-text class="pa-0 pb-4">
+              Votre candidature a été envoyée avec succès !
+            </v-card-text>
+            <v-card-actions class="pa-0">
+              <v-spacer></v-spacer>
+              <v-btn color="primary" variant="elevated" rounded="lg" @click="successDialog = false">
+                OK
+              </v-btn>
+            </v-card-actions>
+          </v-card-item>
+        </v-card>
+      </v-dialog>
+
+      <!-- Dialog d'erreur -->
+      <v-dialog v-model="errorDialog" max-width="500" persistent>
+        <v-card rounded="xl">
+          <v-card-item class="pa-6">
+            <div class="d-flex align-center mb-4">
+              <v-icon color="error" size="48" class="mr-4">mdi-alert-circle</v-icon>
+              <v-card-title class="pa-0">Erreur</v-card-title>
+            </div>
+            <v-card-text class="pa-0 pb-4">
+              {{
+                errorMessage ||
+                "Une erreur est survenue lors de l'envoi de votre candidature. Veuillez réessayer."
+              }}
+            </v-card-text>
+            <v-card-actions class="pa-0">
+              <v-spacer></v-spacer>
+              <v-btn color="primary" variant="elevated" rounded="lg" @click="errorDialog = false">
+                OK
+              </v-btn>
+            </v-card-actions>
+          </v-card-item>
+        </v-card>
+      </v-dialog>
     </v-container>
   </section>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import api from '../../../services/api.js'
 
 const applicationDialog = ref(false)
 const selectedCategory = ref(null)
 const submitting = ref(false)
-const applicationForm = ref({
+const applicationForm = ref(null)
+const successDialog = ref(false)
+const errorDialog = ref(false)
+const errorMessage = ref('')
+const applicationFormData = ref({
   firstName: '',
   lastName: '',
   email: '',
@@ -276,7 +326,7 @@ const jobCategories = [
 
 const openApplicationDialog = category => {
   selectedCategory.value = category
-  applicationForm.value = {
+  applicationFormData.value = {
     firstName: '',
     lastName: '',
     email: '',
@@ -285,17 +335,60 @@ const openApplicationDialog = category => {
     message: '',
     cv: null
   }
+  if (applicationForm.value) {
+    applicationForm.value.reset()
+  }
   applicationDialog.value = true
 }
 
 const submitApplication = async () => {
+  if (!applicationForm.value) return
+
+  const { valid: isValid } = await applicationForm.value.validate()
+  if (!isValid) return
+
   submitting.value = true
-  // TODO: Implémenter l'envoi du formulaire
-  setTimeout(() => {
-    submitting.value = false
-    alert('Votre candidature a été envoyée avec succès !')
+  try {
+    // Note: categoryId devrait être l'ID de la catégorie depuis l'API
+    // Pour l'instant, on utilise null ou on peut mapper le titre à un ID
+    // v-file-input retourne un tableau de fichiers
+    const cvFile = Array.isArray(applicationFormData.value.cv)
+      ? applicationFormData.value.cv[0]
+      : applicationFormData.value.cv
+
+    await api.createJobApplication({
+      firstName: applicationFormData.value.firstName,
+      lastName: applicationFormData.value.lastName,
+      email: applicationFormData.value.email,
+      phone: applicationFormData.value.phone,
+      position: applicationFormData.value.position,
+      categoryId: selectedCategory.value.id || null, // À adapter selon votre structure
+      message: applicationFormData.value.message || null,
+      cv: cvFile || null
+    })
+
+    // Réinitialiser le formulaire
+    applicationFormData.value = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      position: '',
+      message: '',
+      cv: null
+    }
+    applicationForm.value.reset()
     applicationDialog.value = false
-  }, 1500)
+    successDialog.value = true
+  } catch (error) {
+    console.error('Error submitting application:', error)
+    errorMessage.value =
+      error.message ||
+      "Une erreur est survenue lors de l'envoi de votre candidature. Veuillez réessayer."
+    errorDialog.value = true
+  } finally {
+    submitting.value = false
+  }
 }
 </script>
 

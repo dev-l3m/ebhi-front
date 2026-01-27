@@ -86,19 +86,31 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <DeleteDialog
+      v-model="deleteDialog"
+      :item-name="itemToDelete?.label"
+      :deleting="deleting"
+      @confirm="handleDelete"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../../services/api.js'
+import DeleteDialog from '../../components/admin/DeleteDialog.vue'
 
 const loading = ref(false)
 const saving = ref(false)
+const deleting = ref(false)
 const dialog = ref(false)
+const deleteDialog = ref(false)
 const valid = ref(false)
 const editing = ref(false)
 const stats = ref([])
+const itemToDelete = ref(null)
 
 const formData = ref({
   value: '',
@@ -165,14 +177,23 @@ const saveStat = async () => {
   }
 }
 
-const confirmDelete = async item => {
-  if (confirm(`Supprimer la statistique "${item.label}" ?`)) {
-    try {
-      await api.deleteStat(item.id)
-      loadStats()
-    } catch (error) {
-      console.error('Error deleting stat:', error)
-    }
+const confirmDelete = item => {
+  itemToDelete.value = item
+  deleteDialog.value = true
+}
+
+const handleDelete = async () => {
+  if (!itemToDelete.value) return
+  deleting.value = true
+  try {
+    await api.deleteStat(itemToDelete.value.id)
+    deleteDialog.value = false
+    itemToDelete.value = null
+    loadStats()
+  } catch (error) {
+    console.error('Error deleting stat:', error)
+  } finally {
+    deleting.value = false
   }
 }
 

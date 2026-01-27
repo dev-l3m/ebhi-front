@@ -102,19 +102,31 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <DeleteDialog
+      v-model="deleteDialog"
+      :item-name="itemToDelete ? `le témoignage de ${itemToDelete.name}` : ''"
+      :deleting="deleting"
+      @confirm="handleDelete"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../../services/api.js'
+import DeleteDialog from '../../components/admin/DeleteDialog.vue'
 
 const loading = ref(false)
 const saving = ref(false)
+const deleting = ref(false)
 const dialog = ref(false)
+const deleteDialog = ref(false)
 const valid = ref(false)
 const editing = ref(false)
 const testimonials = ref([])
+const itemToDelete = ref(null)
 
 const formData = ref({
   name: '',
@@ -181,14 +193,23 @@ const saveTestimonial = async () => {
   }
 }
 
-const confirmDelete = async item => {
-  if (confirm(`Supprimer le témoignage de ${item.name} ?`)) {
-    try {
-      await api.deleteTestimonial(item.id)
-      loadTestimonials()
-    } catch (error) {
-      console.error('Error deleting testimonial:', error)
-    }
+const confirmDelete = item => {
+  itemToDelete.value = item
+  deleteDialog.value = true
+}
+
+const handleDelete = async () => {
+  if (!itemToDelete.value) return
+  deleting.value = true
+  try {
+    await api.deleteTestimonial(itemToDelete.value.id)
+    deleteDialog.value = false
+    itemToDelete.value = null
+    loadTestimonials()
+  } catch (error) {
+    console.error('Error deleting testimonial:', error)
+  } finally {
+    deleting.value = false
   }
 }
 

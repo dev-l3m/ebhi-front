@@ -71,6 +71,9 @@
             {{ getStatusLabel(item.status) }}
           </v-chip>
         </template>
+        <template v-slot:item.createdAt="{ item }">
+          {{ formatDate(item.createdAt) }}
+        </template>
         <template v-slot:item.actions="{ item }">
           <v-btn icon size="small" variant="text" @click="viewApplication(item)">
             <v-icon>mdi-eye</v-icon>
@@ -144,11 +147,13 @@
               <div class="text-body-1 mb-4">{{ selectedApplication.coverLetter || 'Aucune' }}</div>
             </v-col>
             <v-col cols="12" v-if="selectedApplication.resume">
+              <!-- L'URL du resume est déjà complète depuis le backend (ex: http://localhost:4001/uploads/resumes/...) -->
               <v-btn
                 color="primary"
                 :href="selectedApplication.resume"
                 target="_blank"
                 prepend-icon="mdi-download"
+                @click="handleDownloadResume"
               >
                 Télécharger le CV
               </v-btn>
@@ -162,17 +167,54 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!-- Delete Confirmation Dialog -->
+    <DeleteDialog
+      v-model="deleteDialog"
+      :item-name="
+        itemToDelete ? `la candidature de ${itemToDelete.firstName} ${itemToDelete.lastName}` : ''
+      "
+      :deleting="deleting"
+      @confirm="handleDelete"
+    />
+
+    <!-- Error Dialog for CV Download -->
+    <v-dialog v-model="cvErrorDialog" max-width="500" persistent>
+      <v-card rounded="xl">
+        <v-card-item class="pa-6">
+          <div class="d-flex align-center mb-4">
+            <v-icon color="error" size="48" class="mr-4">mdi-alert-circle</v-icon>
+            <v-card-title class="pa-0">Erreur de téléchargement</v-card-title>
+          </div>
+          <v-card-text class="pa-0 pb-4">
+            {{ cvErrorMessage }}
+          </v-card-text>
+          <v-card-actions class="pa-0">
+            <v-spacer></v-spacer>
+            <v-btn color="primary" variant="elevated" rounded="lg" @click="cvErrorDialog = false">
+              OK
+            </v-btn>
+          </v-card-actions>
+        </v-card-item>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../../services/api.js'
+import DeleteDialog from '../../components/admin/DeleteDialog.vue'
 
 const loading = ref(false)
 const viewDialog = ref(false)
+const deleteDialog = ref(false)
+const deleting = ref(false)
+const cvErrorDialog = ref(false)
+const cvErrorMessage = ref('')
 const applications = ref([])
 const selectedApplication = ref(null)
+const itemToDelete = ref(null)
 const categories = ref([])
 
 const filters = ref({
@@ -217,6 +259,15 @@ const getStatusColor = status => {
 const getStatusLabel = status => {
   const option = statusOptions.find(s => s.value === status)
   return option?.title || status
+}
+
+const formatDate = dateString => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}-${month}-${year}`
 }
 
 const loadApplications = async () => {
@@ -276,14 +327,52 @@ const updateStatus = async (id, status) => {
   }
 }
 
-const confirmDelete = async item => {
-  if (confirm(`Supprimer la candidature de ${item.firstName} ${item.lastName} ?`)) {
-    try {
-      await api.deleteJobApplication(item.id)
-      loadApplications()
-    } catch (error) {
-      console.error('Error deleting application:', error)
+const confirmDelete = item => {
+  itemToDelete.value = item
+  deleteDialog.value = true
+}
+
+const handleDelete = async () => {
+  if (!itemToDelete.value) return
+  deleting.value = true
+  try {
+    await api.deleteJobApplication(itemToDelete.value.id)
+    deleteDialog.value = false
+    itemToDelete.value = null
+    loadApplications()
+  } catch (error) {
+    console.error('Error deleting application:', error)
+  } finally {
+    deleting.value = false
+  }
+}
+
+const handleDownloadResume = async event => {
+  // Vérifier si l'URL est valide avant de télécharger
+  const resumeUrl = selectedApplication.value?.resume
+  if (!resumeUrl) {
+    event.preventDefault()
+    cvErrorMessage.value = 'URL du CV non disponible'
+    cvErrorDialog.value = true
+    return
+  }
+
+  // Tenter de vérifier si le fichier existe
+  try {
+    const response = await fetch(resumeUrl, { method: 'HEAD' })
+    if (!response.ok) {
+      event.preventDefault()
+      if (response.status === 404) {
+        cvErrorMessage.value =
+          "Le fichier CV n'a pas été trouvé sur le serveur. Veuillez vérifier que le fichier existe dans le dossier uploads/resumes/ et que le serveur est configuré pour servir les fichiers statiques."
+      } else {
+        cvErrorMessage.value = `Le fichier CV n'est pas accessible (Erreur ${response.status}). Veuillez vérifier la configuration du serveur.`
+      }
+      cvErrorDialog.value = true
     }
+  } catch (error) {
+    // Si la vérification échoue, laisser le navigateur essayer quand même
+    console.warn("Impossible de vérifier l'accessibilité du CV:", error)
   }
 }
 
