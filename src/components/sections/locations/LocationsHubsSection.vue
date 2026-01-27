@@ -3,7 +3,7 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Nos hubs<br>
+          Nos hubs<br />
           <span class="gradient-text">opérationnels</span>
         </h2>
         <p class="section-subtitle mx-auto">
@@ -12,19 +12,8 @@
       </div>
 
       <v-row>
-        <v-col
-          v-for="(hub, index) in hubs"
-          :key="index"
-          cols="12"
-          md="6"
-          lg="4"
-          class="hub-col"
-        >
-          <v-card
-            :elevation="8"
-            class="hub-card h-100"
-            rounded="xl"
-          >
+        <v-col v-for="(hub, index) in hubs" :key="index" cols="12" md="6" lg="4" class="hub-col">
+          <v-card :elevation="8" class="hub-card h-100" rounded="xl">
             <v-card-item class="pa-6">
               <div class="d-flex align-center mb-4">
                 <div class="hub-flag-wrapper mr-4">
@@ -46,14 +35,7 @@
                 >
                   Bientôt
                 </v-chip>
-                <v-chip
-                  v-else
-                  color="success"
-                  variant="flat"
-                  size="small"
-                >
-                  Actif
-                </v-chip>
+                <v-chip v-else color="success" variant="flat" size="small"> Actif </v-chip>
               </div>
               <v-divider class="my-4"></v-divider>
               <v-card-text class="pa-0">
@@ -84,11 +66,7 @@ const hubs = [
     color: 'primary',
     icon: 'mdi-map-marker',
     status: 'active',
-    features: [
-      'Hub opérationnel principal',
-      'Équipes multilingues',
-      'Infrastructure complète'
-    ]
+    features: ['Hub opérationnel principal', 'Équipes multilingues', 'Infrastructure complète']
   },
   {
     city: 'Marrakech',
@@ -96,11 +74,7 @@ const hubs = [
     color: 'primary',
     icon: 'mdi-map-marker',
     status: 'active',
-    features: [
-      'Centre de services',
-      'Support client dédié',
-      'Bureau d\'études'
-    ]
+    features: ['Centre de services', 'Support client dédié', "Bureau d'études"]
   },
   {
     city: 'Dakar',
@@ -108,11 +82,7 @@ const hubs = [
     color: 'secondary',
     icon: 'mdi-map-marker',
     status: 'active',
-    features: [
-      'Hub Afrique de l\'Ouest',
-      'Talents francophones',
-      'Services administratifs'
-    ]
+    features: ["Hub Afrique de l'Ouest", 'Talents francophones', 'Services administratifs']
   },
   {
     city: 'Antananarivo',
@@ -120,11 +90,7 @@ const hubs = [
     color: 'success',
     icon: 'mdi-map-marker',
     status: 'active',
-    features: [
-      'Hub Océan Indien',
-      'Expertise technique',
-      'Support multilingue'
-    ]
+    features: ['Hub Océan Indien', 'Expertise technique', 'Support multilingue']
   },
   {
     city: 'Paris',
@@ -132,11 +98,7 @@ const hubs = [
     color: 'info',
     icon: 'mdi-map-marker',
     status: 'active',
-    features: [
-      'Siège opérationnel',
-      'Coordination stratégique',
-      'Interface clients'
-    ]
+    features: ['Siège opérationnel', 'Coordination stratégique', 'Interface clients']
   },
   {
     city: 'Cergy',
@@ -144,11 +106,7 @@ const hubs = [
     color: 'info',
     icon: 'mdi-map-marker',
     status: 'active',
-    features: [
-      'Hub Île-de-France',
-      'Proximité clients',
-      'Services de proximité'
-    ]
+    features: ['Hub Île-de-France', 'Proximité clients', 'Services de proximité']
   },
   {
     city: 'Alger',
@@ -156,23 +114,15 @@ const hubs = [
     color: 'warning',
     icon: 'mdi-map-marker',
     status: 'coming-soon',
-    features: [
-      'Ouverture prochaine',
-      'Hub Maghreb',
-      'Expertise en développement'
-    ]
+    features: ['Ouverture prochaine', 'Hub Maghreb', 'Expertise en développement']
   },
   {
     city: 'Abidjan',
-    country: 'Côte d\'Ivoire',
+    country: "Côte d'Ivoire",
     color: 'warning',
     icon: 'mdi-map-marker',
     status: 'coming-soon',
-    features: [
-      'Ouverture prochaine',
-      'Hub Afrique centrale',
-      'Services commerciaux'
-    ]
+    features: ['Ouverture prochaine', 'Hub Afrique centrale', 'Services commerciaux']
   },
   {
     city: 'Manille',
@@ -180,11 +130,7 @@ const hubs = [
     color: 'warning',
     icon: 'mdi-map-marker',
     status: 'coming-soon',
-    features: [
-      'Ouverture prochaine',
-      'Hub Asie-Pacifique',
-      'Support 24/7'
-    ]
+    features: ['Ouverture prochaine', 'Hub Asie-Pacifique', 'Support 24/7']
   }
 ]
 </script>

@@ -21,7 +21,7 @@ export function useStats() {
     }
   }
 
-  const createStat = async (statData) => {
+  const createStat = async statData => {
     saving.value = true
     try {
       const response = await api.createStat(statData)
@@ -49,7 +49,7 @@ export function useStats() {
     }
   }
 
-  const deleteStat = async (id) => {
+  const deleteStat = async id => {
     deleting.value = true
     try {
       const response = await api.deleteStat(id)

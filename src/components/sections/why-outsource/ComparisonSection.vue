@@ -3,7 +3,7 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Externalisation ou gestion interne ?<br>
+          Externalisation ou gestion interne ?<br />
           <span class="gradient-text">Faites le bon choix</span>
         </h2>
       </div>
@@ -15,7 +15,9 @@
               <tr>
                 <th class="text-left comparison-header">Critère</th>
                 <th class="text-center comparison-header">Gestion interne</th>
-                <th class="text-center comparison-header comparison-header-highlight">Externalisation</th>
+                <th class="text-center comparison-header comparison-header-highlight">
+                  Externalisation
+                </th>
               </tr>
             </thead>
             <tbody>

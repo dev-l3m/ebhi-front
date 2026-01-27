@@ -22,7 +22,7 @@
     <v-card-actions v-if="showPagination" class="pa-4">
       <v-spacer></v-spacer>
       <v-pagination
-        v-model="pagination.page"
+        :model-value="pagination.page"
         :length="pagination.totalPages"
         :total-visible="7"
         @update:model-value="handlePageChange"
@@ -32,9 +32,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     required: true
@@ -79,7 +77,7 @@ const props = defineProps({
 
 const emit = defineEmits(['page-change'])
 
-const handlePageChange = (page) => {
+const handlePageChange = page => {
   emit('page-change', page)
 }
 </script>

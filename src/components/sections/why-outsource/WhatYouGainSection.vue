@@ -2,42 +2,29 @@
   <section class="what-you-gain-section section-padding bg-grey-lighten-5">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-trophy</v-icon>
           Vos Gains
         </v-chip>
         <h2 class="section-title mb-6">
-          Ce que vous gagnez<br>
+          Ce que vous gagnez<br />
           <span class="gradient-text">avec EBHI</span>
         </h2>
       </div>
 
       <v-row>
-        <v-col
-          v-for="(gain, index) in gains"
-          :key="index"
-          cols="12"
-          md="6"
-          lg="3"
-          class="gain-col"
-        >
-          <v-card
-            :elevation="8"
-            class="gain-card h-100 text-center"
-            rounded="xl"
-          >
+        <v-col v-for="(gain, index) in gains" :key="index" cols="12" md="6" lg="3" class="gain-col">
+          <v-card :elevation="8" class="gain-card h-100 text-center" rounded="xl">
             <v-card-item class="pa-6">
               <div class="gain-icon-wrapper mb-4">
                 <div class="gain-icon-bg" :style="{ background: getGainGradient(gain.color) }">
                   <v-icon :color="gain.color" size="48">{{ gain.icon }}</v-icon>
                 </div>
               </div>
-              <v-card-title class="text-h6 mb-3 pa-0 gain-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+              <v-card-title
+                class="text-h6 mb-3 pa-0 gain-title"
+                style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+              >
                 {{ gain.title }}
               </v-card-title>
               <v-card-text class="text-body-2 text-grey-darken-1 pa-0 gain-description">
@@ -67,7 +54,7 @@ const gains = [
   },
   {
     title: 'Des solutions conçues pour durer',
-    description: 's\'adapter et évoluer',
+    description: "s'adapter et évoluer",
     color: 'success',
     icon: 'mdi-sync'
   },
@@ -79,7 +66,7 @@ const gains = [
   }
 ]
 
-const getGainGradient = (color) => {
+const getGainGradient = color => {
   const gradients = {
     primary: 'linear-gradient(135deg, rgba(26, 35, 126, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
     secondary: 'linear-gradient(135deg, rgba(40, 53, 147, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',

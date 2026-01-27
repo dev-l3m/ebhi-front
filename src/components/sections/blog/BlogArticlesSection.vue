@@ -43,7 +43,10 @@
                 <v-icon color="grey-darken-1" size="16" class="mr-2">mdi-comment-outline</v-icon>
                 <span class="text-body-2 text-grey-darken-1">{{ article.comments }}</span>
               </div>
-              <v-card-title class="text-h5 mb-3 pa-0 article-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+              <v-card-title
+                class="text-h5 mb-3 pa-0 article-title"
+                style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+              >
                 {{ article.title }}
               </v-card-title>
               <v-card-text class="text-body-1 text-grey-darken-1 pa-0 mb-4 article-excerpt">
@@ -77,12 +80,7 @@
       </v-row>
 
       <!-- Article Details Dialog -->
-      <v-dialog
-        v-model="articleDialog"
-        max-width="1200"
-        scrollable
-        persistent
-      >
+      <v-dialog v-model="articleDialog" max-width="1200" scrollable persistent>
         <v-card rounded="xl" v-if="selectedArticle">
           <v-card-title class="dialog-header">
             <div class="dialog-header-content">
@@ -121,17 +119,25 @@
             >
               <div class="dialog-image-overlay"></div>
             </v-img>
-            
+
             <div class="pa-8 dialog-content">
               <h1 class="text-h3 font-weight-bold mb-6 dialog-title">
                 {{ selectedArticle.title }}
               </h1>
-              
+
               <div class="dialog-meta-info d-flex align-center mb-6">
-                <v-icon color="grey-darken-1" size="20" class="dialog-meta-icon mr-2">mdi-calendar</v-icon>
-                <span class="dialog-meta-text text-grey-darken-1 mr-4">{{ selectedArticle.date }}</span>
-                <v-icon color="grey-darken-1" size="20" class="dialog-meta-icon mr-2">mdi-comment-outline</v-icon>
-                <span class="dialog-meta-text text-grey-darken-1">{{ selectedArticle.comments }}</span>
+                <v-icon color="grey-darken-1" size="20" class="dialog-meta-icon mr-2"
+                  >mdi-calendar</v-icon
+                >
+                <span class="dialog-meta-text text-grey-darken-1 mr-4">{{
+                  selectedArticle.date
+                }}</span>
+                <v-icon color="grey-darken-1" size="20" class="dialog-meta-icon mr-2"
+                  >mdi-comment-outline</v-icon
+                >
+                <span class="dialog-meta-text text-grey-darken-1">{{
+                  selectedArticle.comments
+                }}</span>
               </div>
 
               <div class="article-full-content">
@@ -173,9 +179,12 @@ const selectedArticle = ref(null)
 const articles = ref([
   {
     id: 1,
-    title: 'L\'externalisation : un levier d\'agilité et d\'efficacité accessible à toutes les entreprises françaises',
-    excerpt: 'Rester performantes en toute circonstance ! C\'est le défi des entreprises françaises dans un environnement économique en pleine mutation. La situation actuelle impose en effet...',
-    fullContent: 'Rester performantes en toute circonstance ! C\'est le défi des entreprises françaises dans un environnement économique en pleine mutation. La situation actuelle impose en effet aux entreprises de s\'adapter rapidement, d\'optimiser leurs coûts tout en maintenant leur compétitivité. L\'externalisation représente aujourd\'hui une solution stratégique pour répondre à ces enjeux. Chez EBHI, nous accompagnons les entreprises dans leur transformation en leur offrant des solutions d\'externalisation sur mesure. Que ce soit pour la gestion de vos ressources humaines, le développement de vos projets techniques, ou encore l\'optimisation de vos processus opérationnels, notre expertise internationale vous permet d\'accéder à des talents qualifiés tout en maîtrisant vos coûts. L\'externalisation n\'est plus réservée aux grandes entreprises. Les PME et les start-ups peuvent également bénéficier de ces avantages pour accélérer leur croissance et renforcer leur position sur le marché.',
+    title:
+      "L'externalisation : un levier d'agilité et d'efficacité accessible à toutes les entreprises françaises",
+    excerpt:
+      "Rester performantes en toute circonstance ! C'est le défi des entreprises françaises dans un environnement économique en pleine mutation. La situation actuelle impose en effet...",
+    fullContent:
+      "Rester performantes en toute circonstance ! C'est le défi des entreprises françaises dans un environnement économique en pleine mutation. La situation actuelle impose en effet aux entreprises de s'adapter rapidement, d'optimiser leurs coûts tout en maintenant leur compétitivité. L'externalisation représente aujourd'hui une solution stratégique pour répondre à ces enjeux. Chez EBHI, nous accompagnons les entreprises dans leur transformation en leur offrant des solutions d'externalisation sur mesure. Que ce soit pour la gestion de vos ressources humaines, le développement de vos projets techniques, ou encore l'optimisation de vos processus opérationnels, notre expertise internationale vous permet d'accéder à des talents qualifiés tout en maîtrisant vos coûts. L'externalisation n'est plus réservée aux grandes entreprises. Les PME et les start-ups peuvent également bénéficier de ces avantages pour accélérer leur croissance et renforcer leur position sur le marché.",
     date: '16 janvier 2026',
     comments: 'Aucun commentaire',
     category: 'Externalisation',
@@ -186,8 +195,10 @@ const articles = ref([
   {
     id: 2,
     title: 'Recrutement international : les enjeux que les entreprises sous-estiment',
-    excerpt: 'En 2026, la France fait face à une réalité implacable. 375 000 postes restent en effet vacants, paralysant des pans entiers de l\'économie. Selon le...',
-    fullContent: 'En 2026, la France fait face à une réalité implacable. 375 000 postes restent en effet vacants, paralysant des pans entiers de l\'économie. Selon les dernières statistiques, cette pénurie de talents affecte particulièrement les secteurs de la technologie, de l\'ingénierie et des services. Face à ce défi, de nombreuses entreprises se tournent vers le recrutement international. Cependant, cette démarche comporte des enjeux que beaucoup sous-estiment. Le recrutement international ne se limite pas à trouver des candidats qualifiés. Il implique une compréhension approfondie des différences culturelles, des réglementations locales, et des processus administratifs complexes. Chez EBHI, nous avons développé une expertise unique dans ce domaine. Notre réseau international nous permet d\'identifier et de recruter les meilleurs talents, tout en gérant l\'ensemble des aspects administratifs et juridiques. Nous accompagnons nos clients à chaque étape, de la définition du besoin à l\'intégration des nouveaux collaborateurs, en garantissant une transition fluide et conforme aux réglementations en vigueur.',
+    excerpt:
+      "En 2026, la France fait face à une réalité implacable. 375 000 postes restent en effet vacants, paralysant des pans entiers de l'économie. Selon le...",
+    fullContent:
+      "En 2026, la France fait face à une réalité implacable. 375 000 postes restent en effet vacants, paralysant des pans entiers de l'économie. Selon les dernières statistiques, cette pénurie de talents affecte particulièrement les secteurs de la technologie, de l'ingénierie et des services. Face à ce défi, de nombreuses entreprises se tournent vers le recrutement international. Cependant, cette démarche comporte des enjeux que beaucoup sous-estiment. Le recrutement international ne se limite pas à trouver des candidats qualifiés. Il implique une compréhension approfondie des différences culturelles, des réglementations locales, et des processus administratifs complexes. Chez EBHI, nous avons développé une expertise unique dans ce domaine. Notre réseau international nous permet d'identifier et de recruter les meilleurs talents, tout en gérant l'ensemble des aspects administratifs et juridiques. Nous accompagnons nos clients à chaque étape, de la définition du besoin à l'intégration des nouveaux collaborateurs, en garantissant une transition fluide et conforme aux réglementations en vigueur.",
     date: '14 janvier 2026',
     comments: 'Aucun commentaire',
     category: 'Recrutement',
@@ -201,11 +212,11 @@ const totalPages = computed(() => {
   return Math.ceil(articles.value.length / articlesPerPage)
 })
 
-const openArticle = (article) => {
+const openArticle = article => {
   openArticleDialog(article)
 }
 
-const openArticleDialog = (article) => {
+const openArticleDialog = article => {
   selectedArticle.value = article
   articleDialog.value = true
 }
@@ -405,19 +416,19 @@ const openArticleDialog = (article) => {
   .article-col {
     margin-bottom: 24px;
   }
-  
+
   .article-card {
     margin-bottom: 24px;
   }
-  
+
   .article-card .v-card-item {
     padding: 20px !important;
   }
-  
+
   .article-image {
     height: 200px !important;
   }
-  
+
   .article-title {
     min-height: auto !important;
     font-size: 1.125rem !important;
@@ -426,17 +437,17 @@ const openArticleDialog = (article) => {
     -webkit-line-clamp: 4;
     line-clamp: 4;
   }
-  
+
   .article-excerpt {
     font-size: 0.9375rem !important;
     min-height: auto !important;
     margin-bottom: 16px !important;
   }
-  
+
   .article-read-more {
     font-size: 0.9375rem !important;
   }
-  
+
   .article-read-more .v-icon {
     font-size: 18px !important;
   }
@@ -452,41 +463,41 @@ const openArticleDialog = (article) => {
   .dialog-title {
     font-size: 1.75rem !important;
   }
-  
+
   .dialog-header {
     padding: 20px !important;
   }
-  
+
   .dialog-header-content {
     gap: 10px;
   }
-  
+
   .dialog-header-main {
     gap: 10px;
   }
-  
+
   .dialog-date {
     font-size: 1.125rem !important;
   }
-  
+
   .close-btn {
     min-width: 36px;
     min-height: 36px;
   }
-  
+
   .dialog-meta-text {
     font-size: 0.9375rem !important;
   }
-  
+
   .dialog-meta-icon {
     font-size: 18px !important;
   }
-  
+
   .article-content-text {
     font-size: 1.125rem !important;
     line-height: 1.7;
   }
-  
+
   .dialog-image {
     height: 300px !important;
   }
@@ -496,29 +507,29 @@ const openArticleDialog = (article) => {
   .article-col {
     margin-bottom: 16px;
   }
-  
+
   .article-card {
     margin-bottom: 16px;
   }
-  
+
   .article-card .v-card-item {
     padding: 16px !important;
   }
-  
+
   .article-image {
     height: 180px !important;
   }
-  
+
   .article-category {
     top: 12px !important;
     right: 12px !important;
   }
-  
+
   .article-category .v-chip {
     font-size: 0.75rem !important;
     padding: 4px 8px !important;
   }
-  
+
   .article-title {
     font-size: 1rem !important;
     line-height: 1.4;
@@ -530,7 +541,7 @@ const openArticleDialog = (article) => {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .article-excerpt {
     font-size: 0.875rem !important;
     line-height: 1.6;
@@ -539,47 +550,47 @@ const openArticleDialog = (article) => {
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
-  
+
   .article-read-more {
     font-size: 0.875rem !important;
     padding: 8px 12px !important;
     min-height: 40px !important;
   }
-  
+
   .article-read-more .v-icon {
     font-size: 16px !important;
   }
-  
+
   .v-pagination {
     margin-top: 24px !important;
   }
-  
+
   .v-pagination :deep(.v-btn) {
     min-width: 36px !important;
     height: 36px !important;
     font-size: 0.875rem !important;
   }
-  
+
   .v-dialog {
     margin: 8px !important;
   }
-  
+
   .v-dialog > .v-card {
     max-width: calc(100vw - 16px) !important;
     margin: 0 !important;
   }
-  
+
   .dialog-header {
     padding: 16px 48px 16px 16px !important;
     position: relative;
   }
-  
+
   .dialog-header-content {
     flex-direction: row;
     align-items: center;
     gap: 8px;
   }
-  
+
   .dialog-header-main {
     flex-direction: column;
     align-items: flex-start;
@@ -587,20 +598,20 @@ const openArticleDialog = (article) => {
     flex: 1;
     min-width: 0;
   }
-  
+
   .dialog-chip {
     font-size: 0.75rem !important;
     padding: 4px 8px !important;
     height: auto !important;
   }
-  
+
   .dialog-date {
     font-size: 0.875rem !important;
     white-space: normal;
     word-wrap: break-word;
     line-height: 1.3;
   }
-  
+
   .close-btn {
     position: absolute !important;
     top: 12px !important;
@@ -609,19 +620,19 @@ const openArticleDialog = (article) => {
     min-height: 36px !important;
     z-index: 10;
   }
-  
+
   .close-btn .v-icon {
     font-size: 20px !important;
   }
-  
+
   .dialog-image {
     height: 200px !important;
   }
-  
+
   .dialog-content {
     padding: 16px !important;
   }
-  
+
   .dialog-title {
     font-size: 1.125rem !important;
     margin-bottom: 12px !important;
@@ -629,41 +640,41 @@ const openArticleDialog = (article) => {
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
-  
+
   .dialog-meta-info {
     margin-bottom: 16px !important;
     flex-wrap: wrap;
     gap: 6px;
   }
-  
+
   .dialog-meta-icon {
     font-size: 16px !important;
     margin-right: 4px !important;
   }
-  
+
   .dialog-meta-text {
     font-size: 0.8125rem !important;
     margin-right: 12px !important;
     white-space: normal;
   }
-  
+
   .article-content-text {
     font-size: 0.9375rem !important;
     line-height: 1.6;
     margin-bottom: 16px !important;
   }
-  
+
   .v-card-actions {
     padding: 14px 16px !important;
   }
-  
+
   .v-card-actions .v-btn {
     font-size: 0.875rem !important;
     min-height: 44px;
     padding: 12px 20px !important;
     width: 100%;
   }
-  
+
   .v-spacer {
     display: none;
   }

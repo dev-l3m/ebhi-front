@@ -6,15 +6,18 @@
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-rocket-launch</v-icon>
           <h2 class="services-cta-title mb-6">
-            Faites partie de notre<br>
+            Faites partie de notre<br />
             <span class="gradient-text-white">écosystème</span>
           </h2>
           <p class="services-cta-subtitle mb-8">
-            Choisir EBHI, c'est rejoindre un écosystème structuré, exigeant et en pleine expansion.<br>
-            Nous nous adressons aux entreprises qui souhaitent croître autrement, avec méthode, exigence et intelligence opérationnelle.
+            Choisir EBHI, c'est rejoindre un écosystème structuré, exigeant et en pleine
+            expansion.<br />
+            Nous nous adressons aux entreprises qui souhaitent croître autrement, avec méthode,
+            exigence et intelligence opérationnelle.
           </p>
           <p class="text-h6 font-weight-bold mb-8">
-            Prenez contact avec notre équipe pour définir ensemble la solution qui fera progresser votre organisation, en toute confiance.
+            Prenez contact avec notre équipe pour définir ensemble la solution qui fera progresser
+            votre organisation, en toute confiance.
           </p>
           <v-btn
             color="white"
@@ -156,20 +159,20 @@ const scrollToContact = () => {
     width: 100%;
     max-width: 100%;
   }
-  
+
   .cta-btn-icon {
     font-size: 20px !important;
     margin-right: 8px !important;
   }
-  
+
   .cta-btn-text {
     font-size: 0.9375rem !important;
   }
-  
+
   .services-cta-title {
     font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
   }
-  
+
   .services-cta-subtitle {
     font-size: clamp(0.9375rem, 2vw, 1.125rem) !important;
   }
@@ -182,30 +185,30 @@ const scrollToContact = () => {
     min-height: 48px !important;
     border-radius: 12px !important;
   }
-  
+
   .cta-btn-icon {
     font-size: 18px !important;
     margin-right: 6px !important;
   }
-  
+
   .cta-btn-text {
     font-size: 0.875rem !important;
     line-height: 1.2;
   }
-  
+
   .services-cta-section {
     min-height: 400px;
   }
-  
+
   .services-cta-title {
     margin-bottom: 16px !important;
   }
-  
+
   .services-cta-subtitle {
     margin-bottom: 16px !important;
     line-height: 1.6;
   }
-  
+
   .text-h6 {
     font-size: 1rem !important;
     margin-bottom: 16px !important;

@@ -2,25 +2,20 @@
   <section class="about-mission-section section-padding bg-grey-lighten-5">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-target</v-icon>
           Notre Mission
         </v-chip>
         <h2 class="section-title mb-6">
-          Une mission<br>
+          Une mission<br />
           <span class="gradient-text">claire</span>
         </h2>
         <div class="mission-statement">
           <p class="text-h4 font-weight-bold text-primary mb-8">
             Ouvrir le monde aux entreprises ambitieuses.
           </p>
-          <p class="text-h6 text-grey-darken-1 mx-auto" style="max-width: 800px; line-height: 1.8;">
-            Nous pensons qu'il est temps de libérer les entreprises des freins géographiques, 
+          <p class="text-h6 text-grey-darken-1 mx-auto" style="max-width: 800px; line-height: 1.8">
+            Nous pensons qu'il est temps de libérer les entreprises des freins géographiques,
             opérationnels ou administratifs.
           </p>
         </div>
@@ -35,20 +30,15 @@
           lg="3"
           class="solution-col"
         >
-          <v-card
-            :elevation="8"
-            class="solution-card h-100 text-center"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="solution-card h-100 text-center" rounded="xl">
             <v-card-item class="pa-6">
-              <v-icon
-                :color="solution.color"
-                size="56"
-                class="mb-4"
-              >
+              <v-icon :color="solution.color" size="56" class="mb-4">
                 {{ solution.icon }}
               </v-icon>
-              <v-card-title class="text-h6 mb-3 pa-0 solution-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+              <v-card-title
+                class="text-h6 mb-3 pa-0 solution-title"
+                style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+              >
                 {{ solution.title }}
               </v-card-title>
               <v-card-text class="text-body-2 text-grey-darken-1 pa-0 solution-description">
@@ -66,11 +56,9 @@
               <div class="locations-icon-wrapper mb-4">
                 <v-icon color="primary" size="64">mdi-earth</v-icon>
               </div>
-              <h3 class="text-h5 font-weight-bold mb-3 text-primary">
-                Présence Internationale
-              </h3>
-              <p class="text-body-1 text-grey-darken-1 mb-6" style="line-height: 1.8;">
-                Nous pilotons vos projets à l'échelle locale<br>
+              <h3 class="text-h5 font-weight-bold mb-3 text-primary">Présence Internationale</h3>
+              <p class="text-body-1 text-grey-darken-1 mb-6" style="line-height: 1.8">
+                Nous pilotons vos projets à l'échelle locale<br />
                 avec une <strong>vision stratégique globale</strong>
               </p>
             </div>
@@ -88,19 +76,19 @@
                   class="country-badge"
                   :class="{ 'coming-soon': country.status === 'coming-soon' }"
                 >
-                <div class="country-badge-content">
-                  <span :class="`fi fi-${country.flagCode} country-flag mr-2`"></span>
-                  <span class="text-body-2 font-weight-bold">{{ country.name }}</span>
-                  <v-chip
-                    v-if="country.status === 'coming-soon'"
-                    color="warning"
-                    variant="flat"
-                    size="x-small"
-                    class="ml-2"
-                  >
-                    Bientôt
-                  </v-chip>
-                </div>
+                  <div class="country-badge-content">
+                    <span :class="`fi fi-${country.flagCode} country-flag mr-2`"></span>
+                    <span class="text-body-2 font-weight-bold">{{ country.name }}</span>
+                    <v-chip
+                      v-if="country.status === 'coming-soon'"
+                      color="warning"
+                      variant="flat"
+                      size="x-small"
+                      class="ml-2"
+                    >
+                      Bientôt
+                    </v-chip>
+                  </div>
                 </div>
               </div>
             </div>

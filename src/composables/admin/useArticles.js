@@ -37,7 +37,7 @@ export function useArticles() {
     }
   }
 
-  const createArticle = async (articleData) => {
+  const createArticle = async articleData => {
     saving.value = true
     try {
       const response = await api.createArticle(articleData)
@@ -65,7 +65,7 @@ export function useArticles() {
     }
   }
 
-  const deleteArticle = async (id) => {
+  const deleteArticle = async id => {
     deleting.value = true
     try {
       const response = await api.deleteArticle(id)
@@ -79,7 +79,7 @@ export function useArticles() {
     }
   }
 
-  const getArticle = async (id) => {
+  const getArticle = async id => {
     try {
       return await api.getArticle(id)
     } catch (error) {
@@ -88,7 +88,7 @@ export function useArticles() {
     }
   }
 
-  const setPage = (page) => {
+  const setPage = page => {
     pagination.value.page = page
   }
 

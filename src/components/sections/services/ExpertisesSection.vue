@@ -3,7 +3,7 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Nos expertises<br>
+          Nos expertises<br />
           <span class="gradient-text">opérationnelles</span>
         </h2>
         <p class="section-subtitle mx-auto">
@@ -32,11 +32,7 @@
               </div>
             </div>
             <v-card-item class="pa-6 text-center">
-              <v-icon
-                :color="expertise.color"
-                size="56"
-                class="mb-4 expertise-icon"
-              >
+              <v-icon :color="expertise.color" size="56" class="mb-4 expertise-icon">
                 {{ expertise.icon }}
               </v-icon>
               <v-card-title class="text-h6 mb-3 expertise-title">
@@ -57,25 +53,29 @@
 const expertises = [
   {
     title: 'Analyse et cadrage des besoins',
-    description: 'Chaque collaboration commence par une étude approfondie de vos objectifs, vos processus internes et vos enjeux spécifiques. Cette phase nous permet de bâtir une réponse ultra personnalisée, conforme à votre réalité terrain.',
+    description:
+      'Chaque collaboration commence par une étude approfondie de vos objectifs, vos processus internes et vos enjeux spécifiques. Cette phase nous permet de bâtir une réponse ultra personnalisée, conforme à votre réalité terrain.',
     color: 'primary',
     icon: 'mdi-magnify'
   },
   {
     title: 'Recrutement de talents qualifiés',
-    description: 'Nous sélectionnons des profils adaptés à vos critères métiers et à votre culture d\'entreprise, grâce à un sourcing rigoureux, localisé et validé. Nos talents sont rapidement opérationnels et intégrés dans une logique de performance durable.',
+    description:
+      "Nous sélectionnons des profils adaptés à vos critères métiers et à votre culture d'entreprise, grâce à un sourcing rigoureux, localisé et validé. Nos talents sont rapidement opérationnels et intégrés dans une logique de performance durable.",
     color: 'secondary',
     icon: 'mdi-account-search'
   },
   {
     title: 'Mise en place des ressources',
-    description: 'Une fois les profils validés, nous assurons une intégration rapide et structurée au sein de votre organisation. Qu\'il s\'agisse d\'une équipe dédiée ou d\'un besoin ponctuel, notre suivi garantit continuité, performance et fluidité.',
+    description:
+      "Une fois les profils validés, nous assurons une intégration rapide et structurée au sein de votre organisation. Qu'il s'agisse d'une équipe dédiée ou d'un besoin ponctuel, notre suivi garantit continuité, performance et fluidité.",
     color: 'success',
     icon: 'mdi-office-building'
   },
   {
     title: 'Gestion administrative et conformité',
-    description: 'Contrats, salaires, conformité légale, encadrement RH… EBHI prend en charge l\'ensemble des démarches administratives. Vous bénéficiez d\'un cadre réglementaire maîtrisé, d\'une exécution fluide et d\'un haut niveau de fiabilité.',
+    description:
+      "Contrats, salaires, conformité légale, encadrement RH… EBHI prend en charge l'ensemble des démarches administratives. Vous bénéficiez d'un cadre réglementaire maîtrisé, d'une exécution fluide et d'un haut niveau de fiabilité.",
     color: 'info',
     icon: 'mdi-file-document-check'
   }
@@ -143,7 +143,7 @@ const expertises = [
 }
 
 .expertise-card-info:hover {
-  border-color: #2196F3;
+  border-color: #2196f3;
 }
 
 .expertise-number-wrapper {
@@ -185,7 +185,7 @@ const expertises = [
 }
 
 .expertise-number-info {
-  background: linear-gradient(135deg, #2196F3 0%, #42a5f5 100%);
+  background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%);
 }
 
 .expertise-card:hover .expertise-number {
@@ -233,11 +233,11 @@ const expertises = [
   .expertise-card {
     margin-bottom: 48px;
   }
-  
+
   .expertise-number-wrapper {
     margin-top: -32px;
   }
-  
+
   .expertise-number {
     width: 64px;
     height: 64px;

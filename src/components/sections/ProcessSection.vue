@@ -2,21 +2,17 @@
   <section class="process-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-cog</v-icon>
           Notre Processus
         </v-chip>
         <h2 class="section-title mb-6">
-          Comment ça<br>
+          Comment ça<br />
           <span class="gradient-text">fonctionne ?</span>
         </h2>
         <p class="section-subtitle mx-auto">
-          Un processus en 4 étapes simples et efficaces pour transformer vos besoins en solutions concrètes
+          Un processus en 4 étapes simples et efficaces pour transformer vos besoins en solutions
+          concrètes
         </p>
       </div>
 
@@ -36,15 +32,13 @@
             @click="openDialog(process)"
           >
             <div class="process-number-wrapper">
-              <div class="process-number" :class="`process-number-${process.color}`">{{ index + 1 }}</div>
+              <div class="process-number" :class="`process-number-${process.color}`">
+                {{ index + 1 }}
+              </div>
               <div class="process-number-bg" :class="`process-number-bg-${process.color}`"></div>
             </div>
             <v-card-item class="pa-6 text-center">
-              <v-icon
-                :color="process.color"
-                size="56"
-                class="mb-4 process-icon"
-              >
+              <v-icon :color="process.color" size="56" class="mb-4 process-icon">
                 {{ process.icon }}
               </v-icon>
               <v-card-title class="text-h6 mb-3 process-title process-card-title">
@@ -55,11 +49,7 @@
               </v-card-text>
             </v-card-item>
             <v-card-actions class="pa-6 pt-0 justify-center">
-              <v-btn
-                :color="process.color"
-                variant="text"
-                class="process-btn"
-              >
+              <v-btn :color="process.color" variant="text" class="process-btn">
                 Voir détails
                 <v-icon end>mdi-arrow-right</v-icon>
               </v-btn>
@@ -69,32 +59,27 @@
       </v-row>
 
       <!-- Dialog amélioré -->
-      <v-dialog
-        v-model="dialog"
-        max-width="900"
-        scrollable
-      >
+      <v-dialog v-model="dialog" max-width="900" scrollable>
         <v-card v-if="selectedProcess" class="process-dialog">
-          <v-card-title class="text-h4 pa-6 d-flex align-center justify-space-between process-dialog-header">
+          <v-card-title
+            class="text-h4 pa-6 d-flex align-center justify-space-between process-dialog-header"
+          >
             <div class="d-flex align-center process-dialog-title-wrapper">
               <v-icon :color="selectedProcess.color" size="32" class="mr-3 process-dialog-icon">
                 {{ selectedProcess.icon }}
               </v-icon>
               <span class="process-dialog-title-text">{{ selectedProcess.title }}</span>
             </div>
-            <v-btn
-              icon
-              variant="text"
-              @click="dialog = false"
-              class="close-btn"
-            >
+            <v-btn icon variant="text" @click="dialog = false" class="close-btn">
               <v-icon size="24">mdi-close</v-icon>
             </v-btn>
           </v-card-title>
           <v-divider></v-divider>
           <v-card-text class="pa-6 process-dialog-content">
-            <div class="text-h6 mb-4 text-primary process-dialog-description">{{ selectedProcess.description }}</div>
-            <p class="text-body-1 process-dialog-details" style="line-height: 1.8; color: #424242;">
+            <div class="text-h6 mb-4 text-primary process-dialog-description">
+              {{ selectedProcess.description }}
+            </div>
+            <p class="text-body-1 process-dialog-details" style="line-height: 1.8; color: #424242">
               {{ selectedProcess.details }}
             </p>
           </v-card-text>
@@ -125,9 +110,10 @@ const selectedProcess = ref(null)
 const processes = [
   {
     title: 'Analyse des besoins',
-    shortDescription: 'Compréhension de vos objectifs et élaboration d\'une stratégie adaptée',
+    shortDescription: "Compréhension de vos objectifs et élaboration d'une stratégie adaptée",
     description: 'Construire une stratégie qui vous ressemble',
-    details: 'Chaque projet démarre par une phase d\'écoute attentive. Nous prenons le temps de comprendre vos objectifs, vos défis et vos priorités. Cette étape fondamentale nous permet d\'identifier les leviers clés pour bâtir une stratégie personnalisée et efficace. Grâce à cette analyse approfondie, nous concevons un plan d\'action clair, réaliste et en parfaite adéquation avec votre vision.',
+    details:
+      "Chaque projet démarre par une phase d'écoute attentive. Nous prenons le temps de comprendre vos objectifs, vos défis et vos priorités. Cette étape fondamentale nous permet d'identifier les leviers clés pour bâtir une stratégie personnalisée et efficace. Grâce à cette analyse approfondie, nous concevons un plan d'action clair, réaliste et en parfaite adéquation avec votre vision.",
     color: 'primary',
     icon: 'mdi-magnify'
   },
@@ -135,7 +121,8 @@ const processes = [
     title: 'Recrutement',
     shortDescription: 'Sélection rigoureuse des talents répondant à vos critères.',
     description: 'Sélection rigoureuse des talents répondant à vos critères.',
-    details: 'Nous mettons en place un processus de sélection exigeant et méthodique, visant à identifier les profils les plus pertinents. Notre objectif est de vous proposer des candidats qui non seulement répondent à vos critères techniques, mais qui s\'intègrent également parfaitement à votre environnement et contribuent activement à la réussite de vos projets.',
+    details:
+      "Nous mettons en place un processus de sélection exigeant et méthodique, visant à identifier les profils les plus pertinents. Notre objectif est de vous proposer des candidats qui non seulement répondent à vos critères techniques, mais qui s'intègrent également parfaitement à votre environnement et contribuent activement à la réussite de vos projets.",
     color: 'secondary',
     icon: 'mdi-account-search'
   },
@@ -143,7 +130,8 @@ const processes = [
     title: 'Mise en place des ressources',
     shortDescription: 'Fourniture de tout le matériel et les locaux nécessaires.',
     description: 'Fourniture de tout le matériel et les locaux nécessaires.',
-    details: 'Nous assurons la mise à disposition de l\'ensemble du matériel et des infrastructures indispensables. Cette prise en charge complète vous permet de vous concentrer pleinement sur vos objectifs sans vous soucier des aspects logistiques et techniques.',
+    details:
+      "Nous assurons la mise à disposition de l'ensemble du matériel et des infrastructures indispensables. Cette prise en charge complète vous permet de vous concentrer pleinement sur vos objectifs sans vous soucier des aspects logistiques et techniques.",
     color: 'success',
     icon: 'mdi-office-building'
   },
@@ -151,13 +139,14 @@ const processes = [
     title: 'Gestion administrative',
     shortDescription: 'Prise en charge complète des démarches administratives et disciplinaires.',
     description: 'Prise en charge complète des démarches administratives et disciplinaires.',
-    details: 'Nous assurons une gestion intégrale de l\'ensemble des démarches administratives et disciplinaires. Notre approche rigoureuse garantit la conformité avec le cadre juridique en vigueur et vous libère de ces contraintes pour vous concentrer sur votre cœur de métier.',
+    details:
+      "Nous assurons une gestion intégrale de l'ensemble des démarches administratives et disciplinaires. Notre approche rigoureuse garantit la conformité avec le cadre juridique en vigueur et vous libère de ces contraintes pour vous concentrer sur votre cœur de métier.",
     color: 'info',
     icon: 'mdi-file-document-edit'
   }
 ]
 
-const openDialog = (process) => {
+const openDialog = process => {
   selectedProcess.value = process
   dialog.value = true
 }
@@ -230,7 +219,7 @@ const openDialog = (process) => {
 }
 
 .process-card-info:hover {
-  border-color: #2196F3;
+  border-color: #2196f3;
 }
 
 .process-number-wrapper {
@@ -272,7 +261,7 @@ const openDialog = (process) => {
 }
 
 .process-number-info {
-  background: linear-gradient(135deg, #2196F3 0%, #42a5f5 100%);
+  background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%);
 }
 
 .process-card:hover .process-number {
@@ -305,12 +294,13 @@ const openDialog = (process) => {
 }
 
 .process-number-bg-info {
-  background: #2196F3;
+  background: #2196f3;
   opacity: 0.15;
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.1;
   }
@@ -372,11 +362,11 @@ const openDialog = (process) => {
   .process-card {
     margin-bottom: 48px;
   }
-  
+
   .process-number-wrapper {
     margin-top: -32px;
   }
-  
+
   .process-number {
     width: 64px;
     height: 64px;
@@ -390,32 +380,32 @@ const openDialog = (process) => {
     line-height: 1.3 !important;
     min-height: auto !important;
   }
-  
+
   .process-description {
     font-size: 0.8125rem !important;
   }
-  
+
   .process-icon {
     font-size: 40px !important;
   }
-  
+
   .process-number {
     width: 56px;
     height: 56px;
     font-size: 1.25rem;
   }
-  
+
   .process-dialog-header {
     padding: 16px !important;
     flex-wrap: wrap;
   }
-  
+
   .process-dialog-title-wrapper {
     flex-wrap: wrap;
     flex: 1;
     min-width: 0;
   }
-  
+
   .process-dialog-title-text {
     font-size: 1.125rem !important;
     line-height: 1.3 !important;
@@ -423,32 +413,32 @@ const openDialog = (process) => {
     flex: 1;
     min-width: 0;
   }
-  
+
   .process-dialog-icon {
     font-size: 24px !important;
     margin-right: 8px !important;
     flex-shrink: 0;
   }
-  
+
   .process-dialog-content {
     padding: 16px !important;
   }
-  
+
   .process-dialog-description {
     font-size: 1rem !important;
     line-height: 1.5 !important;
     margin-bottom: 12px !important;
   }
-  
+
   .process-dialog-details {
     font-size: 0.875rem !important;
     line-height: 1.6 !important;
   }
-  
+
   .v-card-actions {
     padding: 16px !important;
   }
-  
+
   .v-card-actions .v-btn {
     font-size: 0.875rem !important;
     min-width: auto !important;

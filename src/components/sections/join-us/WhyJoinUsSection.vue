@@ -3,7 +3,7 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Pourquoi nous<br>
+          Pourquoi nous<br />
           <span class="gradient-text">rejoindre ?</span>
         </h2>
       </div>
@@ -17,25 +17,23 @@
           lg="4"
           class="benefit-col"
         >
-          <v-card
-            :elevation="8"
-            class="benefit-card h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="benefit-card h-100" rounded="xl">
             <v-card-item class="pa-6">
               <div class="d-flex align-start">
-                <v-icon
-                  :color="benefit.color"
-                  size="40"
-                  class="mr-4"
-                >
+                <v-icon :color="benefit.color" size="40" class="mr-4">
                   {{ benefit.icon }}
                 </v-icon>
                 <div class="flex-grow-1">
-                  <v-card-title class="text-h6 mb-2 pa-0 benefit-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+                  <v-card-title
+                    class="text-h6 mb-2 pa-0 benefit-title"
+                    style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+                  >
                     {{ benefit.title }}
                   </v-card-title>
-                  <v-card-text class="text-body-2 text-grey-darken-1 pa-0 benefit-description" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+                  <v-card-text
+                    class="text-body-2 text-grey-darken-1 pa-0 benefit-description"
+                    style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+                  >
                     {{ benefit.description }}
                   </v-card-text>
                 </div>
@@ -50,7 +48,8 @@
           <v-card-item class="pa-8">
             <v-icon color="primary" size="64" class="mb-4">mdi-account-star</v-icon>
             <p class="text-h5 font-weight-bold mb-4">
-              Nous cherchons des talents autonomes, rigoureux, curieux, créatifs et orientés solution.
+              Nous cherchons des talents autonomes, rigoureux, curieux, créatifs et orientés
+              solution.
             </p>
             <p class="text-h6 text-primary font-weight-bold">
               Vous vous reconnaissez ? Nous voulons vous connaître.
@@ -83,7 +82,7 @@ const benefits = [
     icon: 'mdi-account-heart'
   },
   {
-    title: 'Des perspectives concrètes d\'évolution',
+    title: "Des perspectives concrètes d'évolution",
     description: 'et une montée en compétences continue',
     color: 'info',
     icon: 'mdi-trending-up'

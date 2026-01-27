@@ -2,21 +2,17 @@
   <section class="locations-services-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-cog</v-icon>
           Services Disponibles
         </v-chip>
         <h2 class="section-title mb-6">
-          Ce que nous pouvons<br>
+          Ce que nous pouvons<br />
           <span class="gradient-text">structurer pour vous</span>
         </h2>
         <p class="section-subtitle mx-auto">
-          Nous savons où, comment, et avec quels profils le faire. Sans délai, sans surcoût, sans compromis.
+          Nous savons où, comment, et avec quels profils le faire. Sans délai, sans surcoût, sans
+          compromis.
         </p>
       </div>
 
@@ -29,14 +25,13 @@
           lg="4"
           class="service-col"
         >
-          <v-card
-            :elevation="8"
-            class="service-card h-100 text-center"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="service-card h-100 text-center" rounded="xl">
             <v-card-item class="pa-6">
               <div class="service-icon-wrapper mb-4">
-                <div class="service-icon-bg" :style="{ background: getServiceGradient(service.color) }">
+                <div
+                  class="service-icon-bg"
+                  :style="{ background: getServiceGradient(service.color) }"
+                >
                   <v-icon :color="service.color" size="48">{{ service.icon }}</v-icon>
                 </div>
               </div>
@@ -63,8 +58,8 @@ const services = [
     icon: 'mdi-headset'
   },
   {
-    title: 'Bureau d\'études',
-    description: 'Équipes techniques spécialisées pour vos projets d\'ingénierie',
+    title: "Bureau d'études",
+    description: "Équipes techniques spécialisées pour vos projets d'ingénierie",
     color: 'secondary',
     icon: 'mdi-drawing'
   },
@@ -82,7 +77,7 @@ const services = [
   }
 ]
 
-const getServiceGradient = (color) => {
+const getServiceGradient = color => {
   const gradients = {
     primary: 'linear-gradient(135deg, rgba(26, 35, 126, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
     secondary: 'linear-gradient(135deg, rgba(40, 53, 147, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',

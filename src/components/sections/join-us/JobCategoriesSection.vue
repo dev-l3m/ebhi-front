@@ -2,17 +2,12 @@
   <section id="job-categories" class="job-categories-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-briefcase</v-icon>
           Postes Disponibles
         </v-chip>
         <h2 class="section-title mb-6">
-          Nos engagements & valeurs<br>
+          Nos engagements & valeurs<br />
           <span class="gradient-text">fondamentales</span>
         </h2>
       </div>
@@ -26,18 +21,17 @@
           lg="4"
           class="category-col"
         >
-          <v-card
-            :elevation="8"
-            class="category-card h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="category-card h-100" rounded="xl">
             <v-card-item class="pa-6">
               <div class="d-flex align-start mb-4">
                 <div class="category-icon-wrapper mr-4">
                   <v-icon :color="category.color" size="48">{{ category.icon }}</v-icon>
                 </div>
                 <div class="flex-grow-1">
-                  <v-card-title class="text-h6 mb-4 pa-0 category-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+                  <v-card-title
+                    class="text-h6 mb-4 pa-0 category-title"
+                    style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+                  >
                     {{ category.title }}
                   </v-card-title>
                   <v-card-text class="pa-0 mb-4">
@@ -70,20 +64,19 @@
       </v-row>
 
       <!-- Application Dialog -->
-      <v-dialog
-        v-model="applicationDialog"
-        max-width="800"
-        scrollable
-        persistent
-      >
+      <v-dialog v-model="applicationDialog" max-width="800" scrollable persistent>
         <v-card rounded="xl" v-if="selectedCategory">
           <v-card-title class="dialog-header">
             <div class="dialog-header-content">
               <div class="dialog-header-main">
                 <div class="dialog-icon-wrapper">
-                  <v-icon :color="selectedCategory.color" size="32" class="dialog-icon">{{ selectedCategory.icon }}</v-icon>
+                  <v-icon :color="selectedCategory.color" size="32" class="dialog-icon">{{
+                    selectedCategory.icon
+                  }}</v-icon>
                 </div>
-                <span class="dialog-title-text font-weight-bold">Candidature - {{ selectedCategory.title }}</span>
+                <span class="dialog-title-text font-weight-bold"
+                  >Candidature - {{ selectedCategory.title }}</span
+                >
               </div>
               <v-btn
                 icon
@@ -101,7 +94,9 @@
 
           <v-card-text class="pa-6">
             <div class="dialog-jobs-section mb-6">
-              <h3 class="dialog-jobs-title mb-4 font-weight-bold">Postes disponibles dans cette catégorie :</h3>
+              <h3 class="dialog-jobs-title mb-4 font-weight-bold">
+                Postes disponibles dans cette catégorie :
+              </h3>
               <ul class="dialog-jobs-list">
                 <li
                   v-for="(job, index) in selectedCategory.jobs"
@@ -143,7 +138,10 @@
                     variant="outlined"
                     rounded="lg"
                     required
-                    :rules="[v => !!v || 'L\'email est requis', v => /.+@.+\..+/.test(v) || 'Email invalide']"
+                    :rules="[
+                      v => !!v || 'L\'email est requis',
+                      v => /.+@.+\..+/.test(v) || 'Email invalide'
+                    ]"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
@@ -241,21 +239,13 @@ const applicationForm = ref({
 const jobCategories = [
   {
     title: 'Support client & gestion',
-    jobs: [
-      'Chargés de relation client',
-      'Agents back-office',
-      'Responsables qualité'
-    ],
+    jobs: ['Chargés de relation client', 'Agents back-office', 'Responsables qualité'],
     color: 'primary',
     icon: 'mdi-headset'
   },
   {
     title: 'Design & création',
-    jobs: [
-      'Graphistes',
-      'Motion designers',
-      'Directeurs artistiques'
-    ],
+    jobs: ['Graphistes', 'Motion designers', 'Directeurs artistiques'],
     color: 'secondary',
     icon: 'mdi-palette'
   },
@@ -272,28 +262,19 @@ const jobCategories = [
   },
   {
     title: 'Business & achats',
-    jobs: [
-      'Commerciaux',
-      'Acheteurs',
-      'Assistants ADV'
-    ],
+    jobs: ['Commerciaux', 'Acheteurs', 'Assistants ADV'],
     color: 'info',
     icon: 'mdi-cart'
   },
   {
     title: 'Marketing digital & communication',
-    jobs: [
-      'Community managers',
-      'Rédacteurs',
-      'Spécialistes SEO/SEA',
-      'Media buyers'
-    ],
+    jobs: ['Community managers', 'Rédacteurs', 'Spécialistes SEO/SEA', 'Media buyers'],
     color: 'warning',
     icon: 'mdi-bullhorn'
   }
 ]
 
-const openApplicationDialog = (category) => {
+const openApplicationDialog = category => {
   selectedCategory.value = category
   applicationForm.value = {
     firstName: '',
@@ -545,42 +526,42 @@ const submitApplication = async () => {
   .section-header {
     margin-bottom: 48px;
   }
-  
+
   .category-card {
     margin-bottom: 24px;
   }
-  
+
   .category-card .v-card-item {
     padding: 20px !important;
   }
-  
+
   .category-icon-wrapper {
     width: 64px;
     height: 64px;
     margin-right: 12px !important;
   }
-  
+
   .category-icon-wrapper .v-icon {
     font-size: 40px !important;
   }
-  
+
   .category-title {
     font-size: 1.125rem !important;
     margin-bottom: 16px !important;
   }
-  
+
   .category-job-item {
     font-size: 0.9375rem !important;
     line-height: 1.6;
     margin-bottom: 8px !important;
   }
-  
+
   .category-btn {
     font-size: 0.9375rem !important;
     min-height: 44px;
     margin-top: 12px !important;
   }
-  
+
   .category-btn-icon {
     font-size: 20px !important;
   }
@@ -588,87 +569,87 @@ const submitApplication = async () => {
   .dialog-header {
     padding: 20px !important;
   }
-  
+
   .dialog-header-content {
     gap: 10px;
   }
-  
+
   .dialog-header-main {
     gap: 12px;
   }
-  
+
   .dialog-icon-wrapper {
     width: 48px;
     height: 48px;
   }
-  
+
   .dialog-icon {
     font-size: 28px !important;
   }
-  
+
   .dialog-title-text {
     font-size: 1.125rem !important;
     line-height: 1.3;
   }
-  
+
   .close-btn {
     min-width: 36px;
     min-height: 36px;
   }
-  
+
   .close-btn .v-icon {
     font-size: 20px !important;
   }
-  
+
   .v-card-text {
     padding: 20px !important;
   }
-  
+
   .dialog-jobs-title {
     font-size: 1rem !important;
     margin-bottom: 14px !important;
   }
-  
+
   .dialog-job-item {
     font-size: 0.875rem !important;
     padding-left: 20px;
     margin-bottom: 6px !important;
     line-height: 1.5;
   }
-  
+
   .dialog-job-item::before {
     font-size: 1rem;
   }
-  
+
   .v-text-field :deep(.v-label),
   .v-select :deep(.v-label),
   .v-textarea :deep(.v-label),
   .v-file-input :deep(.v-label) {
     font-size: 0.875rem !important;
   }
-  
+
   .v-text-field :deep(.v-field),
   .v-select :deep(.v-field),
   .v-textarea :deep(.v-field),
   .v-file-input :deep(.v-field) {
     font-size: 0.9375rem !important;
   }
-  
+
   .dialog-actions {
     padding: 18px 20px !important;
     flex-wrap: wrap;
   }
-  
+
   .dialog-cancel-btn,
   .dialog-submit-btn {
     font-size: 0.875rem !important;
     min-height: 44px;
   }
-  
+
   .btn-icon {
     font-size: 18px !important;
   }
-  
+
   .btn-text {
     font-size: 0.875rem !important;
   }
@@ -678,48 +659,48 @@ const submitApplication = async () => {
   .section-header {
     margin-bottom: 32px;
   }
-  
+
   .section-title {
     font-size: clamp(1.5rem, 6vw, 2rem) !important;
     margin-bottom: 24px;
   }
-  
+
   .category-col {
     margin-bottom: 16px;
   }
-  
+
   .category-card {
     margin-bottom: 16px;
   }
-  
+
   .category-card .v-card-item {
     padding: 16px !important;
   }
-  
+
   .category-icon-wrapper {
     width: 56px;
     height: 56px;
     border-radius: 16px;
     margin-right: 10px !important;
   }
-  
+
   .category-icon-wrapper .v-icon {
     font-size: 36px !important;
   }
-  
+
   .category-title {
     font-size: 1rem !important;
     line-height: 1.4;
     margin-bottom: 12px !important;
     min-height: auto !important;
   }
-  
+
   .category-job-item {
     font-size: 0.875rem !important;
     line-height: 1.5;
     margin-bottom: 6px !important;
   }
-  
+
   .category-btn {
     font-size: 0.875rem !important;
     min-height: 44px;
@@ -727,55 +708,55 @@ const submitApplication = async () => {
     margin-top: 12px !important;
     border-radius: 12px !important;
   }
-  
+
   .category-btn-icon {
     font-size: 18px !important;
     margin-right: 6px !important;
   }
-  
+
   .category-btn-text {
     font-size: 0.875rem !important;
   }
-  
+
   .v-dialog {
     margin: 8px !important;
   }
-  
+
   .v-dialog > .v-card {
     max-width: calc(100vw - 16px) !important;
     margin: 0 !important;
   }
-  
+
   .dialog-header {
     padding: 16px !important;
   }
-  
+
   .dialog-header-content {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
-  
+
   .dialog-header-main {
     width: 100%;
     gap: 10px;
   }
-  
+
   .dialog-icon-wrapper {
     width: 40px;
     height: 40px;
     border-radius: 12px;
   }
-  
+
   .dialog-icon {
     font-size: 24px !important;
   }
-  
+
   .dialog-title-text {
     font-size: 1rem !important;
     line-height: 1.2;
   }
-  
+
   .close-btn {
     position: absolute;
     top: 12px;
@@ -783,82 +764,82 @@ const submitApplication = async () => {
     min-width: 36px;
     min-height: 36px;
   }
-  
+
   .close-btn .v-icon {
     font-size: 20px !important;
   }
-  
+
   .v-card-text {
     padding: 16px !important;
   }
-  
+
   .dialog-jobs-section {
     margin-bottom: 16px !important;
   }
-  
+
   .dialog-jobs-title {
     font-size: 0.9375rem !important;
     margin-bottom: 10px !important;
     line-height: 1.4;
   }
-  
+
   .dialog-job-item {
     font-size: 0.8125rem !important;
     padding-left: 16px;
     line-height: 1.4;
     margin-bottom: 4px !important;
   }
-  
+
   .dialog-job-item::before {
     font-size: 0.875rem;
   }
-  
+
   .v-text-field,
   .v-select,
   .v-textarea,
   .v-file-input {
     margin-bottom: 10px !important;
   }
-  
+
   .v-text-field :deep(.v-field),
   .v-select :deep(.v-field),
   .v-textarea :deep(.v-field),
   .v-file-input :deep(.v-field) {
     font-size: 0.875rem !important;
   }
-  
+
   .v-text-field :deep(.v-label),
   .v-select :deep(.v-label),
   .v-textarea :deep(.v-label),
   .v-file-input :deep(.v-label) {
     font-size: 0.8125rem !important;
   }
-  
+
   .v-text-field :deep(.v-input__details),
   .v-select :deep(.v-input__details),
   .v-textarea :deep(.v-input__details),
   .v-file-input :deep(.v-input__details) {
     font-size: 0.75rem !important;
   }
-  
+
   .v-textarea {
     min-height: 90px;
   }
-  
+
   .v-textarea :deep(textarea) {
     font-size: 0.875rem !important;
   }
-  
+
   .dialog-actions {
     padding: 14px 16px !important;
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .v-spacer {
     display: none;
   }
-  
+
   .dialog-cancel-btn,
   .dialog-submit-btn {
     width: 100% !important;
@@ -866,12 +847,12 @@ const submitApplication = async () => {
     min-height: 42px;
     padding: 10px 14px !important;
   }
-  
+
   .btn-icon {
     font-size: 16px !important;
     margin-right: 6px !important;
   }
-  
+
   .btn-text {
     font-size: 0.8125rem !important;
     line-height: 1.2;

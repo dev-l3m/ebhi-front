@@ -3,7 +3,7 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Pourquoi choisir<br>
+          Pourquoi choisir<br />
           <span class="gradient-text">EBHI ?</span>
         </h2>
       </div>
@@ -18,18 +18,17 @@
           lg="4"
           class="reason-col"
         >
-          <v-card
-            :elevation="8"
-            class="reason-card h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="reason-card h-100" rounded="xl">
             <v-card-item class="pa-6">
               <div class="d-flex align-start mb-4">
                 <div class="reason-icon-wrapper mr-4">
                   <v-icon :color="reason.color" size="40">{{ reason.icon }}</v-icon>
                 </div>
                 <div class="flex-grow-1">
-                  <v-card-title class="text-h6 mb-3 pa-0 reason-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+                  <v-card-title
+                    class="text-h6 mb-3 pa-0 reason-title"
+                    style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+                  >
                     {{ reason.title }}
                   </v-card-title>
                   <v-card-text class="text-body-2 text-grey-darken-1 pa-0 reason-description">
@@ -51,16 +50,9 @@
           height="auto"
           class="mobile-reasons-carousel"
         >
-          <v-carousel-item
-            v-for="(reason, index) in reasons"
-            :key="index"
-          >
+          <v-carousel-item v-for="(reason, index) in reasons" :key="index">
             <div class="carousel-item-content">
-              <v-card
-                :elevation="8"
-                class="reason-card-mobile"
-                rounded="xl"
-              >
+              <v-card :elevation="8" class="reason-card-mobile" rounded="xl">
                 <v-card-item class="pa-6">
                   <div class="mobile-reason-content">
                     <div class="mobile-reason-icon-wrapper mb-4">
@@ -69,7 +61,9 @@
                     <v-card-title class="text-h6 mb-4 pa-0 mobile-reason-title">
                       {{ reason.title }}
                     </v-card-title>
-                    <v-card-text class="text-body-2 text-grey-darken-1 pa-0 mobile-reason-description">
+                    <v-card-text
+                      class="text-body-2 text-grey-darken-1 pa-0 mobile-reason-description"
+                    >
                       {{ reason.description }}
                     </v-card-text>
                   </div>
@@ -78,7 +72,7 @@
             </div>
           </v-carousel-item>
         </v-carousel>
-        
+
         <!-- Custom Navigation Dots -->
         <div class="carousel-dots">
           <button
@@ -102,31 +96,36 @@ const carouselModel = ref(0)
 const reasons = [
   {
     title: 'Un pilotage sur mesure',
-    description: 'Pas une sous-traitance impersonnelle, mais un accompagnement personnalisé adapté à vos besoins spécifiques.',
+    description:
+      'Pas une sous-traitance impersonnelle, mais un accompagnement personnalisé adapté à vos besoins spécifiques.',
     color: 'primary',
     icon: 'mdi-target'
   },
   {
     title: 'Une qualité de recrutement supérieure',
-    description: 'Sélection rigoureuse de profils qualifiés qui s\'intègrent parfaitement à votre culture d\'entreprise.',
+    description:
+      "Sélection rigoureuse de profils qualifiés qui s'intègrent parfaitement à votre culture d'entreprise.",
     color: 'secondary',
     icon: 'mdi-account-star'
   },
   {
     title: 'Un onboarding structuré et maîtrisé',
-    description: 'Intégration rapide et efficace de vos équipes avec un suivi continu pour garantir la performance.',
+    description:
+      'Intégration rapide et efficace de vos équipes avec un suivi continu pour garantir la performance.',
     color: 'success',
     icon: 'mdi-account-group'
   },
   {
     title: 'Un accompagnement exigeant et fiable',
-    description: 'Suivi régulier et transparent de vos projets avec une communication constante et des rapports détaillés.',
+    description:
+      'Suivi régulier et transparent de vos projets avec une communication constante et des rapports détaillés.',
     color: 'info',
     icon: 'mdi-handshake'
   },
   {
     title: 'Un rapport qualité-prix optimal',
-    description: 'Solutions performantes sur des marchés à fort potentiel, maximisant votre ROI tout en réduisant vos coûts.',
+    description:
+      'Solutions performantes sur des marchés à fort potentiel, maximisant votre ROI tout en réduisant vos coûts.',
     color: 'warning',
     icon: 'mdi-chart-line'
   }
@@ -316,45 +315,45 @@ const reasons = [
   .mobile-carousel-wrapper {
     padding: 0 4px;
   }
-  
+
   .carousel-item-content {
     padding: 4px;
   }
-  
+
   .reason-card-mobile .v-card-item {
     padding: 20px 16px !important;
   }
-  
+
   .mobile-reason-icon-wrapper {
     width: 64px;
     height: 64px;
     margin-bottom: 16px !important;
   }
-  
+
   .mobile-reason-icon-wrapper .v-icon {
     font-size: 36px !important;
   }
-  
+
   .mobile-reason-title {
     font-size: 1rem !important;
     margin-bottom: 12px !important;
   }
-  
+
   .mobile-reason-description {
     font-size: 0.875rem !important;
     line-height: 1.5;
   }
-  
+
   .carousel-dots {
     margin-top: 16px;
     gap: 6px;
   }
-  
+
   .carousel-dot {
     width: 8px;
     height: 8px;
   }
-  
+
   .carousel-dot.active {
     width: 24px;
   }

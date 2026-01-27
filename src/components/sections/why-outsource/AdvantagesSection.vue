@@ -2,17 +2,12 @@
   <section class="advantages-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-star-circle</v-icon>
           Avantages
         </v-chip>
         <h2 class="section-title mb-6">
-          Les avantages stratégiques<br>
+          Les avantages stratégiques<br />
           <span class="gradient-text">de l'externalisation EBHI</span>
         </h2>
       </div>
@@ -26,25 +21,20 @@
           lg="4"
           class="advantage-col"
         >
-          <v-card
-            :elevation="8"
-            class="advantage-card h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="advantage-card h-100" rounded="xl">
             <v-card-item class="pa-6">
               <div class="d-flex align-start mb-4">
                 <div class="advantage-number-wrapper mr-4">
                   <div class="advantage-number">{{ index + 1 }}</div>
                 </div>
                 <div class="flex-grow-1">
-                  <v-icon
-                    :color="advantage.color"
-                    size="40"
-                    class="mb-3"
-                  >
+                  <v-icon :color="advantage.color" size="40" class="mb-3">
                     {{ advantage.icon }}
                   </v-icon>
-                  <v-card-title class="text-h6 mb-3 pa-0 advantage-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+                  <v-card-title
+                    class="text-h6 mb-3 pa-0 advantage-title"
+                    style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+                  >
                     {{ advantage.title }}
                   </v-card-title>
                   <v-card-text class="text-body-2 text-grey-darken-1 pa-0 advantage-description">
@@ -64,37 +54,43 @@
 const advantages = [
   {
     title: 'Réduction des coûts, sans compromis sur la qualité',
-    description: 'Salaires, charges sociales, locaux, matériel, supervision : les coûts fixes explosent. L\'externalisation vous permet de transformer ces dépenses en charges variables, parfaitement maîtrisées, tout en maintenant des standards élevés de performance.',
+    description:
+      "Salaires, charges sociales, locaux, matériel, supervision : les coûts fixes explosent. L'externalisation vous permet de transformer ces dépenses en charges variables, parfaitement maîtrisées, tout en maintenant des standards élevés de performance.",
     color: 'primary',
     icon: 'mdi-cash-multiple'
   },
   {
     title: 'Accès rapide à une expertise qualifiée',
-    description: 'Nous mobilisons des talents compétents, immédiatement opérationnels, sélectionnés selon vos critères métiers et culturels. Plus besoin d\'investir dans un long processus de recrutement : vous disposez, dès le départ, de profils adaptés et performants.',
+    description:
+      "Nous mobilisons des talents compétents, immédiatement opérationnels, sélectionnés selon vos critères métiers et culturels. Plus besoin d'investir dans un long processus de recrutement : vous disposez, dès le départ, de profils adaptés et performants.",
     color: 'secondary',
     icon: 'mdi-account-star'
   },
   {
     title: 'Gain de temps opérationnel',
-    description: 'Nous prenons en charge les démarches administratives, juridiques et RH. Vous bénéficiez d\'un accompagnement complet, qui libère vos équipes internes et vous permet de vous recentrer sur des missions à forte valeur ajoutée.',
+    description:
+      "Nous prenons en charge les démarches administratives, juridiques et RH. Vous bénéficiez d'un accompagnement complet, qui libère vos équipes internes et vous permet de vous recentrer sur des missions à forte valeur ajoutée.",
     color: 'success',
     icon: 'mdi-clock-fast'
   },
   {
     title: 'Agilité et adaptabilité instantanée',
-    description: 'Créez, redimensionnez ou ajustez une équipe en fonction de votre activité. Nos solutions sont conçues pour évoluer avec vos besoins, vous permettant de répondre rapidement aux pics d\'activité, aux urgences projets ou aux changements stratégiques.',
+    description:
+      "Créez, redimensionnez ou ajustez une équipe en fonction de votre activité. Nos solutions sont conçues pour évoluer avec vos besoins, vous permettant de répondre rapidement aux pics d'activité, aux urgences projets ou aux changements stratégiques.",
     color: 'info',
     icon: 'mdi-sync'
   },
   {
     title: 'Garantie de qualité et de continuité',
-    description: 'Nous assurons un suivi rigoureux de chaque projet. Grâce à nos process internes et à une culture du résultat, vous bénéficiez de prestations stables, performantes et suivies, avec un interlocuteur unique.',
+    description:
+      'Nous assurons un suivi rigoureux de chaque projet. Grâce à nos process internes et à une culture du résultat, vous bénéficiez de prestations stables, performantes et suivies, avec un interlocuteur unique.',
     color: 'warning',
     icon: 'mdi-shield-check'
   },
   {
     title: 'Réduction des risques opérationnels',
-    description: 'Externaliser avec EBHI, c\'est bénéficier d\'un cadre juridique, contractuel et réglementaire sécurisé. Nous opérons en totale conformité avec les lois locales et internationales. Vous gagnez en sérénité, tout en gardant le contrôle.',
+    description:
+      "Externaliser avec EBHI, c'est bénéficier d'un cadre juridique, contractuel et réglementaire sécurisé. Nous opérons en totale conformité avec les lois locales et internationales. Vous gagnez en sérénité, tout en gardant le contrôle.",
     color: 'error',
     icon: 'mdi-shield-lock'
   }

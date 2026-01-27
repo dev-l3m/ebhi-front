@@ -6,12 +6,12 @@
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-email-newsletter</v-icon>
           <h2 class="blog-cta-title mb-6">
-            Restez informé de nos<br>
+            Restez informé de nos<br />
             <span class="gradient-text-white">dernières actualités</span>
           </h2>
           <p class="blog-cta-subtitle mb-8">
-            Abonnez-vous à notre newsletter pour recevoir nos articles sur l'externalisation, 
-            le recrutement international et les stratégies de croissance.
+            Abonnez-vous à notre newsletter pour recevoir nos articles sur l'externalisation, le
+            recrutement international et les stratégies de croissance.
           </p>
           <v-form @submit.prevent="subscribe" class="newsletter-form">
             <v-row class="ma-0">
@@ -80,7 +80,7 @@ const loading = ref(false)
 
 const subscribe = async () => {
   if (!email.value) return
-  
+
   loading.value = true
   // TODO: Implement newsletter subscription
   setTimeout(() => {
@@ -228,7 +228,7 @@ const scrollToContact = () => {
   .newsletter-form .v-row {
     flex-direction: column;
   }
-  
+
   .newsletter-form .v-col {
     padding: 0 !important;
     margin-bottom: 16px;

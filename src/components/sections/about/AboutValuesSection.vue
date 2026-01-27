@@ -2,17 +2,12 @@
   <section class="about-values-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-heart</v-icon>
           Nos Valeurs
         </v-chip>
         <h2 class="section-title mb-6">
-          Nos engagements & valeurs<br>
+          Nos engagements & valeurs<br />
           <span class="gradient-text">fondamentales</span>
         </h2>
       </div>
@@ -26,11 +21,7 @@
           lg="4"
           class="value-col"
         >
-          <v-card
-            :elevation="8"
-            class="value-card h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="value-card h-100" rounded="xl">
             <v-card-item class="pa-6">
               <div class="d-flex align-start">
                 <div class="value-icon-wrapper mr-4">
@@ -186,30 +177,30 @@ const values = [
   .section-header {
     margin-bottom: 48px;
   }
-  
+
   .value-card {
     margin-bottom: 24px;
   }
-  
+
   .value-card .v-card-item {
     padding: 20px !important;
   }
-  
+
   .value-icon-wrapper {
     width: 56px;
     height: 56px;
   }
-  
+
   .value-icon-wrapper .v-icon {
     font-size: 36px !important;
   }
-  
+
   .value-title {
     font-size: 1.125rem !important;
     line-height: 1.3;
     margin-bottom: 8px !important;
   }
-  
+
   .value-description {
     font-size: 0.9375rem !important;
     line-height: 1.5;
@@ -220,42 +211,42 @@ const values = [
   .section-header {
     margin-bottom: 32px;
   }
-  
+
   .section-title {
     font-size: clamp(1.5rem, 6vw, 2rem) !important;
     margin-bottom: 24px;
   }
-  
+
   .value-col {
     margin-bottom: 16px;
   }
-  
+
   .value-card {
     margin-bottom: 16px;
   }
-  
+
   .value-card .v-card-item {
     padding: 16px !important;
   }
-  
+
   .value-icon-wrapper {
     width: 48px;
     height: 48px;
     border-radius: 12px;
     margin-right: 12px !important;
   }
-  
+
   .value-icon-wrapper .v-icon {
     font-size: 32px !important;
   }
-  
+
   .value-title {
     font-size: 1rem !important;
     line-height: 1.3;
     margin-bottom: 6px !important;
     min-height: auto !important;
   }
-  
+
   .value-description {
     font-size: 0.875rem !important;
     line-height: 1.5;

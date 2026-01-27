@@ -1,10 +1,5 @@
 <template>
-  <v-dialog
-    v-model="dialogModel"
-    :max-width="maxWidth"
-    scrollable
-    persistent
-  >
+  <v-dialog v-model="dialogModel" :max-width="maxWidth" scrollable persistent>
     <v-card rounded="xl">
       <v-card-title class="pa-6">
         <v-icon color="primary" class="mr-2">{{ editing ? 'mdi-pencil' : 'mdi-plus' }}</v-icon>
@@ -19,13 +14,7 @@
       <v-divider></v-divider>
       <v-card-actions class="pa-6">
         <v-spacer></v-spacer>
-        <v-btn
-          variant="text"
-          @click="handleCancel"
-          rounded="lg"
-        >
-          Annuler
-        </v-btn>
+        <v-btn variant="text" @click="handleCancel" rounded="lg"> Annuler </v-btn>
         <v-btn
           color="primary"
           @click="handleSave"
@@ -58,7 +47,7 @@ const props = defineProps({
   },
   editTitle: {
     type: String,
-    default: 'Modifier l\'élément'
+    default: "Modifier l'élément"
   },
   maxWidth: {
     type: [String, Number],
@@ -78,24 +67,31 @@ const emit = defineEmits(['update:modelValue', 'save', 'cancel'])
 
 const dialogModel = computed({
   get: () => props.modelValue,
-  set: (value) => emit('update:modelValue', value)
+  set: value => emit('update:modelValue', value)
 })
 
 const form = ref(null)
 const valid = ref(false)
 const formData = ref({ ...props.initialData })
 
-watch(() => props.initialData, (newData) => {
-  formData.value = { ...newData }
-}, { deep: true })
+watch(
+  () => props.initialData,
+  newData => {
+    formData.value = { ...newData }
+  },
+  { deep: true }
+)
 
-watch(() => props.modelValue, (isOpen) => {
-  if (isOpen) {
-    formData.value = { ...props.initialData }
-  } else {
-    form.value?.resetValidation()
+watch(
+  () => props.modelValue,
+  isOpen => {
+    if (isOpen) {
+      formData.value = { ...props.initialData }
+    } else {
+      form.value?.resetValidation()
+    }
   }
-})
+)
 
 const handleSave = () => {
   if (valid.value) {

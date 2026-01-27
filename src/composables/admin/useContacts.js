@@ -35,7 +35,7 @@ export function useContacts() {
     }
   }
 
-  const getContact = async (id) => {
+  const getContact = async id => {
     try {
       return await api.getContact(id)
     } catch (error) {
@@ -55,7 +55,7 @@ export function useContacts() {
     }
   }
 
-  const deleteContact = async (id) => {
+  const deleteContact = async id => {
     try {
       const response = await api.deleteContact(id)
       await loadContacts()
@@ -66,7 +66,7 @@ export function useContacts() {
     }
   }
 
-  const setPage = (page) => {
+  const setPage = page => {
     pagination.value.page = page
   }
 

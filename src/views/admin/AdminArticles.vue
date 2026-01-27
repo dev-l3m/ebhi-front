@@ -2,12 +2,7 @@
   <div>
     <div class="d-flex justify-space-between align-center mb-6">
       <h1 class="text-h4 font-weight-bold">Gestion des Articles</h1>
-      <v-btn
-        color="primary"
-        prepend-icon="mdi-plus"
-        @click="openCreateDialog"
-        rounded="lg"
-      >
+      <v-btn color="primary" prepend-icon="mdi-plus" @click="openCreateDialog" rounded="lg">
         Nouvel article
       </v-btn>
     </div>
@@ -74,30 +69,15 @@
         <div class="text-body-2">{{ formatDate(item.date) }}</div>
       </template>
       <template v-slot:item.published="{ item }">
-        <v-chip
-          :color="item.published ? 'success' : 'warning'"
-          variant="flat"
-          size="small"
-        >
+        <v-chip :color="item.published ? 'success' : 'warning'" variant="flat" size="small">
           {{ item.published ? 'Publié' : 'Brouillon' }}
         </v-chip>
       </template>
       <template v-slot:item.actions="{ item }">
-        <v-btn
-          icon
-          size="small"
-          variant="text"
-          @click="openEditDialog(item)"
-        >
+        <v-btn icon size="small" variant="text" @click="openEditDialog(item)">
           <v-icon>mdi-pencil</v-icon>
         </v-btn>
-        <v-btn
-          icon
-          size="small"
-          variant="text"
-          color="error"
-          @click="confirmDelete(item)"
-        >
+        <v-btn icon size="small" variant="text" color="error" @click="confirmDelete(item)">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </template>
@@ -183,12 +163,7 @@
           variant="outlined"
           class="mb-4"
         ></v-text-field>
-        <v-switch
-          v-model="fd.published"
-          label="Publié"
-          color="success"
-          class="mb-4"
-        ></v-switch>
+        <v-switch v-model="fd.published" label="Publié" color="success" class="mb-4"></v-switch>
       </template>
     </FormDialog>
 
@@ -203,7 +178,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useArticles } from '../../composables/admin/useArticles.js'
 import DataTable from '../../components/admin/DataTable.vue'
 import FilterBar from '../../components/admin/FilterBar.vue'
@@ -270,7 +245,7 @@ const statusOptions = [
   { title: 'Brouillon', value: false }
 ]
 
-const formatDate = (dateString) => {
+const formatDate = dateString => {
   if (!dateString) return ''
   const date = new Date(dateString)
   const day = String(date.getDate()).padStart(2, '0')
@@ -283,7 +258,7 @@ const handleFilterChange = () => {
   loadArticles(filters.value)
 }
 
-const handlePageChange = (page) => {
+const handlePageChange = page => {
   setPage(page)
   loadArticles(filters.value)
 }
@@ -304,7 +279,7 @@ const openCreateDialog = () => {
   dialog.value = true
 }
 
-const openEditDialog = (item) => {
+const openEditDialog = item => {
   editing.value = true
   formData.value = {
     ...item,
@@ -313,7 +288,7 @@ const openEditDialog = (item) => {
   dialog.value = true
 }
 
-const handleSave = async (data) => {
+const handleSave = async data => {
   try {
     if (editing.value) {
       await updateArticle(formData.value.id, data)
@@ -330,7 +305,7 @@ const handleCancel = () => {
   dialog.value = false
 }
 
-const confirmDelete = (item) => {
+const confirmDelete = item => {
   itemToDelete.value = item
   deleteDialog.value = true
 }

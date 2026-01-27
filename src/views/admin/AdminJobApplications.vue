@@ -62,9 +62,7 @@
         @update:page="handlePageChange"
         class="elevation-0"
       >
-        <template v-slot:item.name="{ item }">
-          {{ item.firstName }} {{ item.lastName }}
-        </template>
+        <template v-slot:item.name="{ item }"> {{ item.firstName }} {{ item.lastName }} </template>
         <template v-slot:item.category="{ item }">
           {{ item.category?.title || 'N/A' }}
         </template>
@@ -133,7 +131,11 @@
             </v-col>
             <v-col cols="12" md="6">
               <div class="text-body-2 text-grey-darken-1 mb-1">Statut</div>
-              <v-chip :color="getStatusColor(selectedApplication.status)" variant="flat" size="small">
+              <v-chip
+                :color="getStatusColor(selectedApplication.status)"
+                variant="flat"
+                size="small"
+              >
                 {{ getStatusLabel(selectedApplication.status) }}
               </v-chip>
             </v-col>
@@ -142,7 +144,12 @@
               <div class="text-body-1 mb-4">{{ selectedApplication.coverLetter || 'Aucune' }}</div>
             </v-col>
             <v-col cols="12" v-if="selectedApplication.resume">
-              <v-btn color="primary" :href="selectedApplication.resume" target="_blank" prepend-icon="mdi-download">
+              <v-btn
+                color="primary"
+                :href="selectedApplication.resume"
+                target="_blank"
+                prepend-icon="mdi-download"
+              >
                 Télécharger le CV
               </v-btn>
             </v-col>
@@ -197,7 +204,7 @@ const statusOptions = [
   { title: 'Rejeté', value: 'rejected' }
 ]
 
-const getStatusColor = (status) => {
+const getStatusColor = status => {
   const colors = {
     pending: 'warning',
     reviewed: 'info',
@@ -207,7 +214,7 @@ const getStatusColor = (status) => {
   return colors[status] || 'grey'
 }
 
-const getStatusLabel = (status) => {
+const getStatusLabel = status => {
   const option = statusOptions.find(s => s.value === status)
   return option?.title || status
 }
@@ -246,12 +253,12 @@ const loadCategories = async () => {
   }
 }
 
-const handlePageChange = (page) => {
+const handlePageChange = page => {
   pagination.value.page = page
   loadApplications()
 }
 
-const viewApplication = async (item) => {
+const viewApplication = async item => {
   try {
     selectedApplication.value = await api.getJobApplication(item.id)
     viewDialog.value = true
@@ -269,7 +276,7 @@ const updateStatus = async (id, status) => {
   }
 }
 
-const confirmDelete = async (item) => {
+const confirmDelete = async item => {
   if (confirm(`Supprimer la candidature de ${item.firstName} ${item.lastName} ?`)) {
     try {
       await api.deleteJobApplication(item.id)

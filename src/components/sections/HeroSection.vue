@@ -2,11 +2,11 @@
   <v-container
     fluid
     class="hero-section pa-0"
-    style="min-height: 100vh; position: relative; overflow: hidden;"
+    style="min-height: 100vh; position: relative; overflow: hidden"
   >
     <!-- Background avec gradient animé -->
     <div class="hero-background"></div>
-    
+
     <!-- Éléments décoratifs -->
     <div class="hero-decoration">
       <div class="decoration-circle circle-1"></div>
@@ -18,7 +18,7 @@
       align="center"
       justify="center"
       class="ma-0 hero-content"
-      style="min-height: 100vh; position: relative; z-index: 2;"
+      style="min-height: 100vh; position: relative; z-index: 2"
     >
       <v-col cols="12" md="10" lg="8" class="text-center text-white px-8">
         <!-- Badge -->
@@ -36,13 +36,13 @@
 
         <!-- Titre principal -->
         <h1 class="hero-title mb-6 fade-in-delay-2">
-          <span class="gradient-text-white">Externalisez</span>, Réduisez vos coûts,<br>
+          <span class="gradient-text-white">Externalisez</span>, Réduisez vos coûts,<br />
           <span class="gradient-text-white">Boostez</span> votre croissance
         </h1>
 
         <!-- Sous-titre -->
         <p class="hero-subtitle mb-10 fade-in-delay-3">
-          Vous avez un besoin, EBHI optimise vos opérations avec des solutions sur mesure. 
+          Vous avez un besoin, EBHI optimise vos opérations avec des solutions sur mesure.
           Libérez-vous des tâches administratives et concentrez-vous sur votre cœur de métier.
         </p>
 
@@ -104,7 +104,7 @@
 </template>
 
 <script setup>
-const scrollToSection = (id) => {
+const scrollToSection = id => {
   const element = document.getElementById(id)
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
@@ -185,7 +185,8 @@ const scrollToSection = (id) => {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   33% {
@@ -341,7 +342,11 @@ const scrollToSection = (id) => {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
   40% {
@@ -357,11 +362,11 @@ const scrollToSection = (id) => {
   .hero-section {
     padding-top: 80px;
   }
-  
+
   .hero-title {
     font-size: clamp(1.75rem, 6vw, 2.5rem);
   }
-  
+
   .hero-btn-primary,
   .hero-btn-secondary {
     width: 100%;
@@ -375,30 +380,30 @@ const scrollToSection = (id) => {
     padding: 8px 12px !important;
     max-width: 100%;
   }
-  
+
   .hero-chip-icon {
     font-size: 16px !important;
     margin-right: 4px !important;
   }
-  
+
   .hero-chip-text {
     white-space: normal;
     line-height: 1.3;
     text-align: center;
   }
-  
+
   .hero-btn-primary,
   .hero-btn-secondary {
     font-size: 0.875rem !important;
     padding: 16px 24px !important;
     min-height: 48px !important;
   }
-  
+
   .hero-btn-icon {
     font-size: 20px !important;
     margin-right: 8px !important;
   }
-  
+
   .hero-btn-text {
     white-space: normal;
     line-height: 1.2;

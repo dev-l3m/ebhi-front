@@ -1,8 +1,5 @@
 <template>
-  <v-footer
-    color="grey-darken-4"
-    class="text-white"
-  >
+  <v-footer color="grey-darken-4" class="text-white">
     <v-container>
       <v-row>
         <v-col cols="12" md="3">
@@ -11,13 +8,13 @@
               src="/assets/logo.png"
               alt="EBHI Logo"
               class="logo-footer"
-              style="height: 60px; max-width: 180px; object-fit: contain;"
+              style="height: 60px; max-width: 180px; object-fit: contain"
             />
           </div>
           <p class="text-body-2 mb-4">
-            Entrepreneur Business Hub International accompagne les entrepreneurs et entreprises 
-            dans leur développement grâce à des services d'externalisation, des solutions digitales 
-            sur mesure et un réseau d'experts à l'international.
+            Entrepreneur Business Hub International accompagne les entrepreneurs et entreprises dans
+            leur développement grâce à des services d'externalisation, des solutions digitales sur
+            mesure et un réseau d'experts à l'international.
           </p>
           <div class="d-flex gap-2">
             <v-btn
@@ -74,7 +71,7 @@
           <div class="text-h6 mb-4">Contactez-nous</div>
           <div class="text-body-2 mb-2">
             <v-icon size="small" class="mr-2">mdi-map-marker</v-icon>
-            Bureau 7, CENTRE D'AFFAIRE JIHANE<br>
+            Bureau 7, CENTRE D'AFFAIRE JIHANE<br />
             AVENUE DU 11 JANVIER MARRAKECH
           </div>
           <div class="text-body-2 mb-2">
@@ -91,7 +88,8 @@
       <v-divider class="my-4"></v-divider>
 
       <div class="text-center text-body-2">
-        © EBHI {{ new Date().getFullYear() }}, Tous droits réservés. Présentation professionnelle et solutions adaptées à vos besoins.
+        © EBHI {{ new Date().getFullYear() }}, Tous droits réservés. Présentation professionnelle et
+        solutions adaptées à vos besoins.
       </div>
     </v-container>
   </v-footer>
@@ -107,12 +105,7 @@ const quickLinks = [
   { title: 'Mentions légales', to: '/legal-notice' }
 ]
 
-const services = [
-  'Efficacité',
-  'Business structuré',
-  'Hub de talents',
-  'Innovation'
-]
+const services = ['Efficacité', 'Business structuré', 'Hub de talents', 'Innovation']
 </script>
 
 <style scoped>

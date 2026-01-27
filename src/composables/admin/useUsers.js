@@ -21,7 +21,7 @@ export function useUsers() {
     }
   }
 
-  const createUser = async (userData) => {
+  const createUser = async userData => {
     saving.value = true
     try {
       const response = await api.createUser(userData)
@@ -49,7 +49,7 @@ export function useUsers() {
     }
   }
 
-  const deleteUser = async (id) => {
+  const deleteUser = async id => {
     deleting.value = true
     try {
       const response = await api.deleteUser(id)

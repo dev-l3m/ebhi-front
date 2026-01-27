@@ -21,7 +21,7 @@ export function useServices() {
     }
   }
 
-  const createService = async (serviceData) => {
+  const createService = async serviceData => {
     saving.value = true
     try {
       const response = await api.createService(serviceData)
@@ -49,7 +49,7 @@ export function useServices() {
     }
   }
 
-  const deleteService = async (id) => {
+  const deleteService = async id => {
     deleting.value = true
     try {
       const response = await api.deleteService(id)
@@ -63,7 +63,7 @@ export function useServices() {
     }
   }
 
-  const getService = async (id) => {
+  const getService = async id => {
     try {
       return await api.getService(id)
     } catch (error) {

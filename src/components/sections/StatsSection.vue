@@ -4,22 +4,16 @@
     <v-container class="stats-container">
       <div class="section-header text-center mb-12">
         <h2 class="section-title mb-4 text-white">
-          Prêt à prendre un bond<br>
+          Prêt à prendre un bond<br />
           <span class="gradient-text-white">dans votre business</span>
         </h2>
-        <p class="section-subtitle text-white mx-auto" style="opacity: 0.95;">
+        <p class="section-subtitle text-white mx-auto" style="opacity: 0.95">
           Accélérez votre croissance avec des solutions sur mesure
         </p>
       </div>
 
       <v-row class="stats-grid">
-        <v-col
-          v-for="(stat, index) in stats"
-          :key="index"
-          cols="6"
-          md="3"
-          class="stat-col"
-        >
+        <v-col v-for="(stat, index) in stats" :key="index" cols="6" md="3" class="stat-col">
           <div class="stat-card">
             <div class="stat-icon-wrapper">
               <v-icon :color="stat.iconColor" size="48" class="stat-icon">
@@ -39,27 +33,27 @@
 
 <script setup>
 const stats = [
-  { 
-    value: '+250', 
-    label: 'Projets complétés', 
+  {
+    value: '+250',
+    label: 'Projets complétés',
     icon: 'mdi-check-circle',
     iconColor: 'success'
   },
-  { 
-    value: '+12', 
-    label: 'Pôles d\'expertise', 
+  {
+    value: '+12',
+    label: "Pôles d'expertise",
     icon: 'mdi-domain',
     iconColor: 'info'
   },
-  { 
-    value: '+20', 
-    label: 'Partenariats', 
+  {
+    value: '+20',
+    label: 'Partenariats',
     icon: 'mdi-handshake',
     iconColor: 'warning'
   },
-  { 
-    value: '+100', 
-    label: 'Collaborateurs', 
+  {
+    value: '+100',
+    label: 'Collaborateurs',
     icon: 'mdi-account-group',
     iconColor: 'error'
   }
@@ -231,16 +225,16 @@ const stats = [
   .stat-card {
     padding: 24px 12px;
   }
-  
+
   .stat-icon {
     font-size: 40px !important;
   }
-  
+
   .stat-value {
     font-size: clamp(2rem, 6vw, 3rem) !important;
     margin-bottom: 10px;
   }
-  
+
   .stat-label {
     font-size: clamp(0.75rem, 2vw, 0.9375rem) !important;
     letter-spacing: 1px;
@@ -251,44 +245,44 @@ const stats = [
   .stats-grid {
     margin-top: 40px;
   }
-  
+
   .stat-col {
     margin-bottom: 16px;
   }
-  
+
   .stat-card {
     padding: 20px 12px;
     border-radius: 16px;
   }
-  
+
   .stat-icon-wrapper {
     margin-bottom: 12px;
   }
-  
+
   .stat-icon {
     font-size: 36px !important;
   }
-  
+
   .stat-value {
     font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
     margin-bottom: 8px;
   }
-  
+
   .stat-label {
     font-size: 0.6875rem !important;
     letter-spacing: 0.5px;
     line-height: 1.3;
   }
-  
+
   .section-header {
     margin-bottom: 32px;
   }
-  
+
   .section-title {
     font-size: clamp(1.5rem, 6vw, 2rem) !important;
     margin-bottom: 12px;
   }
-  
+
   .section-subtitle {
     font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
   }

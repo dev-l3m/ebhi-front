@@ -37,11 +37,7 @@
       </template>
     </v-navigation-drawer>
 
-    <v-app-bar
-      color="white"
-      elevation="2"
-      class="admin-header"
-    >
+    <v-app-bar color="white" elevation="2" class="admin-header">
       <v-app-bar-nav-icon
         v-if="$vuetify.display.mobile"
         @click="drawer = !drawer"
@@ -50,11 +46,7 @@
         {{ currentPageTitle }}
       </v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-chip
-        color="primary"
-        variant="flat"
-        prepend-icon="mdi-account"
-      >
+      <v-chip color="primary" variant="flat" prepend-icon="mdi-account">
         {{ currentUser?.name || 'Admin' }}
       </v-chip>
     </v-app-bar>
@@ -82,7 +74,11 @@ const menuItems = [
   { title: 'Articles', icon: 'mdi-newspaper', to: { name: 'AdminArticles' } },
   { title: 'Services', icon: 'mdi-briefcase', to: { name: 'AdminServices' } },
   { title: 'Domaines', icon: 'mdi-domain', to: { name: 'AdminDomains' } },
-  { title: 'Catégories de postes', icon: 'mdi-briefcase-variant', to: { name: 'AdminJobCategories' } },
+  {
+    title: 'Catégories de postes',
+    icon: 'mdi-briefcase-variant',
+    to: { name: 'AdminJobCategories' }
+  },
   { title: 'Candidatures', icon: 'mdi-file-document', to: { name: 'AdminJobApplications' } },
   { title: 'Témoignages', icon: 'mdi-format-quote-open', to: { name: 'AdminTestimonials' } },
   { title: 'Statistiques', icon: 'mdi-chart-line', to: { name: 'AdminStats' } },

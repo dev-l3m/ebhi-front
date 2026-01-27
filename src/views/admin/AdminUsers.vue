@@ -28,7 +28,9 @@
     <!-- Create/Edit Dialog -->
     <v-dialog v-model="dialog" max-width="600" persistent>
       <v-card rounded="xl">
-        <v-card-title class="pa-6">{{ editing ? 'Modifier l\'utilisateur' : 'Nouvel utilisateur' }}</v-card-title>
+        <v-card-title class="pa-6">{{
+          editing ? "Modifier l'utilisateur" : 'Nouvel utilisateur'
+        }}</v-card-title>
         <v-divider></v-divider>
         <v-card-text class="pa-6">
           <v-form ref="form" v-model="valid">
@@ -68,7 +70,13 @@
         <v-card-actions class="pa-6">
           <v-spacer></v-spacer>
           <v-btn variant="text" @click="dialog = false" rounded="lg">Annuler</v-btn>
-          <v-btn color="primary" @click="saveUser" :loading="saving" :disabled="!valid" rounded="lg">
+          <v-btn
+            color="primary"
+            @click="saveUser"
+            :loading="saving"
+            :disabled="!valid"
+            rounded="lg"
+          >
             {{ editing ? 'Modifier' : 'Créer' }}
           </v-btn>
         </v-card-actions>
@@ -108,8 +116,8 @@ const roleOptions = [
 ]
 
 const emailRules = [
-  v => !!v || 'L\'email est requis',
-  v => /.+@.+\..+/.test(v) || 'L\'email doit être valide'
+  v => !!v || "L'email est requis",
+  v => /.+@.+\..+/.test(v) || "L'email doit être valide"
 ]
 
 const passwordRules = [
@@ -135,7 +143,7 @@ const openCreateDialog = () => {
   dialog.value = true
 }
 
-const openEditDialog = (item) => {
+const openEditDialog = item => {
   editing.value = true
   formData.value = { ...item, password: '' }
   dialog.value = true
@@ -162,7 +170,7 @@ const saveUser = async () => {
   }
 }
 
-const confirmDelete = async (item) => {
+const confirmDelete = async item => {
   if (confirm(`Supprimer l'utilisateur "${item.email}" ?`)) {
     try {
       await api.deleteUser(item.id)

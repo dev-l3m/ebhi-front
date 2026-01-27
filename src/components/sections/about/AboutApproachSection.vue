@@ -3,7 +3,7 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Notre<br>
+          Notre<br />
           <span class="gradient-text">approche</span>
         </h2>
       </div>
@@ -11,12 +11,11 @@
       <v-row align="center">
         <v-col cols="12" md="6" class="mb-8 mb-md-0">
           <p class="approach-intro-text mb-6">
-            Chez EBHI, chaque projet est une collaboration étroite et stratégique. Nous ne livrons pas 
-            des prestations génériques, mais des <strong>solutions intelligemment conçues</strong>, prêtes à être activées.
+            Chez EBHI, chaque projet est une collaboration étroite et stratégique. Nous ne livrons
+            pas des prestations génériques, mais des
+            <strong>solutions intelligemment conçues</strong>, prêtes à être activées.
           </p>
-          <p class="approach-combine-text mb-4">
-            Nous combinons :
-          </p>
+          <p class="approach-combine-text mb-4">Nous combinons :</p>
           <v-list class="bg-transparent approach-list">
             <v-list-item
               v-for="(item, index) in approachItems"
@@ -24,7 +23,9 @@
               class="px-0 approach-list-item"
             >
               <template v-slot:prepend>
-                <v-icon :color="item.color" size="32" class="approach-list-icon">mdi-check-circle</v-icon>
+                <v-icon :color="item.color" size="32" class="approach-list-icon"
+                  >mdi-check-circle</v-icon
+                >
               </template>
               <v-list-item-title class="approach-list-title">
                 <strong>{{ item.title }}</strong>
@@ -35,8 +36,11 @@
             Et <strong>un encadrement localisé dans nos hubs internationaux.</strong>
           </p>
           <p class="approach-text mt-4">
-            Nous opérons sur des zones à fort potentiel économique tout en respectant 
-            <strong>les exigences de qualité, de sécurité et de confidentialité des standards européens.</strong>
+            Nous opérons sur des zones à fort potentiel économique tout en respectant
+            <strong
+              >les exigences de qualité, de sécurité et de confidentialité des standards
+              européens.</strong
+            >
           </p>
         </v-col>
         <v-col cols="12" md="6">
@@ -50,11 +54,13 @@
                   Approche Internationale
                 </div>
                 <p class="approach-card-subtitle text-grey-darken-1 mb-6">
-                  <span class="subtitle-line">Des hubs stratégiques pour une présence mondiale</span>
+                  <span class="subtitle-line"
+                    >Des hubs stratégiques pour une présence mondiale</span
+                  >
                   <span class="subtitle-line">avec des standards européens</span>
                 </p>
               </div>
-              
+
               <v-divider class="my-6"></v-divider>
 
               <div class="approach-features">
@@ -65,11 +71,15 @@
                 >
                   <div class="feature-content">
                     <div class="feature-icon-wrapper">
-                      <v-icon :color="feature.color" size="24" class="feature-icon">{{ feature.icon }}</v-icon>
+                      <v-icon :color="feature.color" size="24" class="feature-icon">{{
+                        feature.icon
+                      }}</v-icon>
                     </div>
                     <div class="feature-text">
                       <div class="feature-title font-weight-bold mb-1">{{ feature.title }}</div>
-                      <div class="feature-description text-grey-darken-1">{{ feature.description }}</div>
+                      <div class="feature-description text-grey-darken-1">
+                        {{ feature.description }}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -343,66 +353,66 @@ const internationalFeatures = [
   .section-header {
     margin-bottom: 48px;
   }
-  
+
   .approach-visual-card {
     min-height: auto;
     margin-top: 32px;
   }
-  
+
   .approach-visual-card {
     width: 100%;
     max-width: 100%;
     overflow: hidden;
   }
-  
+
   .approach-visual-card .v-card-item {
     padding: 24px !important;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
   }
-  
+
   .approach-intro-text {
     font-size: 1.125rem !important;
     margin-bottom: 24px !important;
   }
-  
+
   .approach-combine-text,
   .approach-text {
     font-size: 0.9375rem !important;
   }
-  
+
   .approach-list-item :deep(.v-list-item__prepend) {
     padding-right: 12px;
   }
-  
+
   .approach-list-icon {
     font-size: 28px !important;
     margin-right: 0 !important;
   }
-  
+
   .approach-list-title {
     font-size: 1.125rem !important;
     white-space: normal !important;
     overflow: visible !important;
     text-overflow: unset !important;
   }
-  
+
   .approach-icon-wrapper {
     width: 100px;
     height: 100px;
   }
-  
+
   .approach-main-icon {
     font-size: 56px !important;
   }
-  
+
   .approach-card-header {
     padding: 0 4px;
     width: 100%;
     max-width: 100%;
   }
-  
+
   .approach-card-title {
     font-size: 1.375rem !important;
     padding: 0 4px !important;
@@ -411,7 +421,7 @@ const internationalFeatures = [
     width: 100% !important;
     max-width: 100% !important;
   }
-  
+
   .approach-card-subtitle {
     font-size: 0.9375rem !important;
     padding: 0 4px !important;
@@ -422,47 +432,47 @@ const internationalFeatures = [
     flex-direction: column;
     align-items: center;
   }
-  
+
   .subtitle-line {
     display: block;
     width: 100%;
     text-align: center;
   }
-  
+
   .subtitle-line:first-child {
     margin-bottom: 4px;
   }
-  
+
   .approach-features {
     width: 100%;
     max-width: 100%;
     overflow: hidden;
   }
-  
+
   .feature-item {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
   }
-  
+
   .feature-content {
     width: 100%;
     max-width: 100%;
   }
-  
+
   .feature-icon-wrapper {
     width: 44px;
     height: 44px;
   }
-  
+
   .feature-icon {
     font-size: 22px !important;
   }
-  
+
   .feature-title {
     font-size: 0.9375rem !important;
   }
-  
+
   .feature-description {
     font-size: 0.875rem !important;
   }
@@ -472,44 +482,44 @@ const internationalFeatures = [
   .section-header {
     margin-bottom: 32px;
   }
-  
+
   .section-title {
     font-size: clamp(1.5rem, 6vw, 2rem) !important;
     margin-bottom: 24px;
   }
-  
+
   .approach-intro-text {
     font-size: 1rem !important;
     line-height: 1.6;
     margin-bottom: 20px !important;
   }
-  
+
   .approach-combine-text {
     font-size: 0.9375rem !important;
     margin-bottom: 16px !important;
   }
-  
+
   .approach-text {
     font-size: 0.875rem !important;
     line-height: 1.6;
     margin-top: 20px !important;
   }
-  
+
   .approach-list-item {
     margin-bottom: 10px;
     align-items: flex-start !important;
   }
-  
+
   .approach-list-item :deep(.v-list-item__prepend) {
     padding-right: 10px;
     padding-top: 2px;
   }
-  
+
   .approach-list-icon {
     font-size: 24px !important;
     margin-right: 0 !important;
   }
-  
+
   .approach-list-title {
     font-size: 1rem !important;
     line-height: 1.4;
@@ -521,25 +531,25 @@ const internationalFeatures = [
     display: block !important;
     padding: 0 !important;
   }
-  
+
   .approach-list-title strong {
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
     display: inline;
   }
-  
+
   .approach-visual-card {
     margin-top: 24px;
   }
-  
+
   .approach-visual-card {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
     overflow: hidden;
   }
-  
+
   .approach-visual-card .v-card-item {
     padding: 20px 16px !important;
     width: 100% !important;
@@ -547,7 +557,7 @@ const internationalFeatures = [
     box-sizing: border-box !important;
     overflow: hidden;
   }
-  
+
   .approach-icon-wrapper {
     width: 80px;
     height: 80px;
@@ -555,11 +565,11 @@ const internationalFeatures = [
     margin-bottom: 16px !important;
     flex-shrink: 0;
   }
-  
+
   .approach-main-icon {
     font-size: 48px !important;
   }
-  
+
   .approach-card-header {
     margin-bottom: 20px !important;
     padding: 0 !important;
@@ -569,7 +579,7 @@ const internationalFeatures = [
     flex-direction: column;
     align-items: center;
   }
-  
+
   .approach-card-title {
     font-size: 1.125rem !important;
     margin-bottom: 8px !important;
@@ -584,7 +594,7 @@ const internationalFeatures = [
     text-align: center !important;
     box-sizing: border-box;
   }
-  
+
   .approach-card-subtitle {
     font-size: 0.875rem !important;
     line-height: 1.5 !important;
@@ -601,7 +611,7 @@ const internationalFeatures = [
     text-align: center;
     box-sizing: border-box;
   }
-  
+
   .subtitle-line {
     display: block;
     width: 100%;
@@ -609,38 +619,38 @@ const internationalFeatures = [
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
-  
+
   .subtitle-line:first-child {
     margin-bottom: 2px;
   }
-  
+
   .approach-features {
     width: 100% !important;
     max-width: 100% !important;
     overflow: hidden;
     box-sizing: border-box;
   }
-  
+
   .feature-item {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
     overflow: hidden;
   }
-  
+
   .feature-content {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
   }
-  
+
   .feature-text {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
     overflow: hidden;
   }
-  
+
   .feature-title,
   .feature-description {
     width: 100% !important;
@@ -649,35 +659,35 @@ const internationalFeatures = [
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
-  
+
   .v-divider {
     margin: 20px 0 !important;
   }
-  
+
   .feature-item {
     padding: 10px;
     margin-bottom: 12px !important;
   }
-  
+
   .feature-content {
     gap: 12px;
   }
-  
+
   .feature-icon-wrapper {
     width: 40px;
     height: 40px;
     border-radius: 10px;
   }
-  
+
   .feature-icon {
     font-size: 20px !important;
   }
-  
+
   .feature-title {
     font-size: 0.875rem !important;
     margin-bottom: 4px !important;
   }
-  
+
   .feature-description {
     font-size: 0.8125rem !important;
     line-height: 1.4;

@@ -6,34 +6,35 @@
       <v-row class="mb-12">
         <v-col cols="12" class="network-content-col">
           <div class="fade-in-up">
-            <v-chip
-              color="primary"
-              variant="flat"
-              size="large"
-              class="mb-6 network-chip"
-            >
+            <v-chip color="primary" variant="flat" size="large" class="mb-6 network-chip">
               <v-icon start>mdi-map-marker-multiple</v-icon>
               Notre Réseau
             </v-chip>
             <h2 class="section-title mb-8">
-              Un réseau international<br>
+              Un réseau international<br />
               <span class="gradient-text">en expansion</span>
             </h2>
             <div class="network-text-content">
-              <p class="text-h6 mb-6 network-intro" style="line-height: 1.8;">
-                Notre réseau couvre le <strong class="highlight-text">Maroc, le Sénégal, Madagascar et la France</strong>,<br>
-                et s'étend bientôt à l'<strong class="highlight-text">Algérie, la Côte d'Ivoire et les Philippines</strong>.
+              <p class="text-h6 mb-6 network-intro" style="line-height: 1.8">
+                Notre réseau couvre le
+                <strong class="highlight-text">Maroc, le Sénégal, Madagascar et la France</strong
+                >,<br />
+                et s'étend bientôt à l'<strong class="highlight-text"
+                  >Algérie, la Côte d'Ivoire et les Philippines</strong
+                >.
               </p>
-              <p class="text-body-1 mb-4" style="line-height: 1.8;">
-                Chacun de nos hubs est pensé comme un<br>
-                <strong class="highlight-text">écosystème de talents, d'infrastructures et de services</strong>,<br>
+              <p class="text-body-1 mb-4" style="line-height: 1.8">
+                Chacun de nos hubs est pensé comme un<br />
+                <strong class="highlight-text"
+                  >écosystème de talents, d'infrastructures et de services</strong
+                >,<br />
                 capable d'opérer vos projets en toute fluidité.
               </p>
-              <p class="text-body-1" style="line-height: 1.8;">
-                Vous avez besoin de structurer un SAV multilingue,<br>
-                un bureau d'études, une équipe marketing<br>
-                ou un support administratif ?<br>
-                Nous savons où, comment, et avec quels profils le faire.<br>
+              <p class="text-body-1" style="line-height: 1.8">
+                Vous avez besoin de structurer un SAV multilingue,<br />
+                un bureau d'études, une équipe marketing<br />
+                ou un support administratif ?<br />
+                Nous savons où, comment, et avec quels profils le faire.<br />
                 <strong class="highlight-text">Sans délai, sans surcoût, sans compromis.</strong>
               </p>
             </div>
@@ -43,14 +44,7 @@
 
       <!-- Stats Cards -->
       <v-row class="mb-12 stats-row">
-        <v-col
-          v-for="(stat, index) in stats"
-          :key="index"
-          cols="12"
-          sm="6"
-          md="3"
-          class="stat-col"
-        >
+        <v-col v-for="(stat, index) in stats" :key="index" cols="12" sm="6" md="3" class="stat-col">
           <v-card
             :elevation="8"
             class="stat-card fade-in-up"
@@ -77,11 +71,9 @@
             <div class="map-header">
               <div class="map-header-content">
                 <v-icon color="white" size="32" class="mb-2">mdi-earth</v-icon>
-                <div class="text-h5 font-weight-bold mb-1 text-white">
-                  Présence Mondiale
-                </div>
-                <p class="text-body-2 text-white" style="opacity: 0.95;">
-                  Des hubs stratégiques répartis sur plusieurs continents<br>
+                <div class="text-h5 font-weight-bold mb-1 text-white">Présence Mondiale</div>
+                <p class="text-body-2 text-white" style="opacity: 0.95">
+                  Des hubs stratégiques répartis sur plusieurs continents<br />
                   pour une couverture optimale
                 </p>
               </div>
@@ -144,12 +136,7 @@
       </v-row> -->
 
       <!-- Continents Dialog -->
-      <v-dialog
-        v-model="continentsDialog"
-        max-width="900"
-        scrollable
-        persistent
-      >
+      <v-dialog v-model="continentsDialog" max-width="900" scrollable persistent>
         <v-card rounded="xl">
           <v-card-title class="d-flex align-center justify-space-between pa-6 dialog-header">
             <div class="d-flex align-center">
@@ -170,12 +157,7 @@
           <v-divider></v-divider>
 
           <v-card-text class="pa-0">
-            <v-tabs
-              v-model="activeTab"
-              color="primary"
-              align-tabs="start"
-              class="continents-tabs"
-            >
+            <v-tabs v-model="activeTab" color="primary" align-tabs="start" class="continents-tabs">
               <v-tab
                 v-for="(continent, index) in continentsData"
                 :key="index"
@@ -207,11 +189,7 @@
                       md="6"
                       class="location-col"
                     >
-                      <v-card
-                        :elevation="4"
-                        class="location-card"
-                        rounded="lg"
-                      >
+                      <v-card :elevation="4" class="location-card" rounded="lg">
                         <v-card-item class="pa-5">
                           <div class="d-flex align-start mb-3">
                             <div class="location-icon-wrapper mr-4">
@@ -230,7 +208,9 @@
                                 size="small"
                                 class="mb-3"
                               >
-                                {{ location.status === 'active' ? 'Hub actif' : 'Bientôt disponible' }}
+                                {{
+                                  location.status === 'active' ? 'Hub actif' : 'Bientôt disponible'
+                                }}
                               </v-chip>
                             </div>
                           </div>
@@ -266,6 +246,7 @@
 </template>
 
 <script setup>
+/* global L */
 import { ref, onMounted, onUnmounted } from 'vue'
 
 let map = null
@@ -273,17 +254,30 @@ const continentsDialog = ref(false)
 const activeTab = ref(0)
 
 const stats = [
-  { value: '9', label: 'Hubs stratégiques', icon: 'mdi-map-marker', color: 'primary', clickable: false },
+  {
+    value: '9',
+    label: 'Hubs stratégiques',
+    icon: 'mdi-map-marker',
+    color: 'primary',
+    clickable: false
+  },
   { value: '6', label: 'Pays couverts', icon: 'mdi-earth', color: 'secondary', clickable: false },
   { value: '4', label: 'Continents', icon: 'mdi-globe-model', color: 'success', clickable: true },
-  { value: '24/7', label: 'Support disponible', icon: 'mdi-clock-outline', color: 'info', clickable: false }
+  {
+    value: '24/7',
+    label: 'Support disponible',
+    icon: 'mdi-clock-outline',
+    color: 'info',
+    clickable: false
+  }
 ]
 
 const continentsData = [
   {
     name: 'Afrique',
     icon: 'mdi-earth',
-    description: 'Notre présence en Afrique vous ouvre les portes d\'un marché en pleine croissance avec des hubs stratégiques au Maroc, au Sénégal et à Madagascar.',
+    description:
+      "Notre présence en Afrique vous ouvre les portes d'un marché en pleine croissance avec des hubs stratégiques au Maroc, au Sénégal et à Madagascar.",
     locations: [
       {
         name: 'Casablanca & Marrakech',
@@ -291,7 +285,8 @@ const continentsData = [
         status: 'active',
         color: 'primary',
         icon: 'mdi-map-marker',
-        description: 'Porte d\'entrée vers l\'Afrique, le Maroc est un pays clé pour les entreprises souhaitant croître dans un environnement stable, moderne et connecté. Casablanca, capitale économique du pays, offre un écosystème dynamique, une fiscalité avantageuse et une connexion internationale optimale. Marrakech, ville à la fois touristique et en plein essor économique, représente une plateforme idéale pour les projets orientés services, événementiel ou innovation. Grâce à nos implantations locales, EBHI accompagne les porteurs de projets dans toutes leurs démarches : domiciliation, création d\'entreprise, conseil fiscal et développement commercial.'
+        description:
+          "Porte d'entrée vers l'Afrique, le Maroc est un pays clé pour les entreprises souhaitant croître dans un environnement stable, moderne et connecté. Casablanca, capitale économique du pays, offre un écosystème dynamique, une fiscalité avantageuse et une connexion internationale optimale. Marrakech, ville à la fois touristique et en plein essor économique, représente une plateforme idéale pour les projets orientés services, événementiel ou innovation. Grâce à nos implantations locales, EBHI accompagne les porteurs de projets dans toutes leurs démarches : domiciliation, création d'entreprise, conseil fiscal et développement commercial."
       },
       {
         name: 'Dakar',
@@ -299,7 +294,8 @@ const continentsData = [
         status: 'active',
         color: 'secondary',
         icon: 'mdi-map-marker',
-        description: 'Capitale de l\'Afrique de l\'Ouest francophone, Dakar est un carrefour régional pour les affaires. Notre hub sénégalais permet aux entrepreneurs d\'accéder à la zone UEMOA/CEDEAO, avec un accompagnement adapté aux réalités du terrain : juridique, administratif, fiscal et stratégique.'
+        description:
+          "Capitale de l'Afrique de l'Ouest francophone, Dakar est un carrefour régional pour les affaires. Notre hub sénégalais permet aux entrepreneurs d'accéder à la zone UEMOA/CEDEAO, avec un accompagnement adapté aux réalités du terrain : juridique, administratif, fiscal et stratégique."
       },
       {
         name: 'Antananarivo',
@@ -307,7 +303,8 @@ const continentsData = [
         status: 'active',
         color: 'success',
         icon: 'mdi-map-marker',
-        description: 'Antananarivo, capitale de Madagascar, est un pôle d\'innovation et de croissance où s\'installent de plus en plus d\'entreprises à la recherche de talents qualifiés, de coûts maîtrisés et d\'un environnement d\'affaires en développement. EBHI vous aide à vous y implanter efficacement, en toute conformité.'
+        description:
+          "Antananarivo, capitale de Madagascar, est un pôle d'innovation et de croissance où s'installent de plus en plus d'entreprises à la recherche de talents qualifiés, de coûts maîtrisés et d'un environnement d'affaires en développement. EBHI vous aide à vous y implanter efficacement, en toute conformité."
       },
       {
         name: 'Alger',
@@ -315,22 +312,25 @@ const continentsData = [
         status: 'coming-soon',
         color: 'warning',
         icon: 'mdi-map-marker',
-        description: 'Notre prochaine implantation en Algérie vous permettra d\'accéder au marché maghrébin avec un hub dédié au développement et à l\'innovation.'
+        description:
+          "Notre prochaine implantation en Algérie vous permettra d'accéder au marché maghrébin avec un hub dédié au développement et à l'innovation."
       },
       {
         name: 'Abidjan',
-        country: 'Côte d\'Ivoire',
+        country: "Côte d'Ivoire",
         status: 'coming-soon',
         color: 'warning',
         icon: 'mdi-map-marker',
-        description: 'Bientôt disponible, notre hub à Abidjan vous ouvrira les portes de l\'Afrique centrale avec des services commerciaux et de développement adaptés.'
+        description:
+          "Bientôt disponible, notre hub à Abidjan vous ouvrira les portes de l'Afrique centrale avec des services commerciaux et de développement adaptés."
       }
     ]
   },
   {
     name: 'Europe',
     icon: 'mdi-earth',
-    description: 'Notre présence en France vous ouvre les portes du marché européen avec des bureaux stratégiques à Paris et Cergy.',
+    description:
+      'Notre présence en France vous ouvre les portes du marché européen avec des bureaux stratégiques à Paris et Cergy.',
     locations: [
       {
         name: 'Paris, Cergy et rayonnement national',
@@ -338,14 +338,16 @@ const continentsData = [
         status: 'active',
         color: 'info',
         icon: 'mdi-map-marker',
-        description: 'Notre présence en France vous ouvre les portes du marché européen. Grâce à nos bureaux implantés à Paris et Cergy, nous accompagnons nos clients dans leur stratégie d\'implantation sur l\'ensemble du territoire français, que ce soit pour de la domiciliation, de la représentation commerciale ou des démarches administratives. Nos services en France sont pensés pour les entrepreneurs internationaux, freelances, start-ups et PME désireux de s\'installer ou de se développer dans l\'un des marchés les plus structurés au monde.'
+        description:
+          "Notre présence en France vous ouvre les portes du marché européen. Grâce à nos bureaux implantés à Paris et Cergy, nous accompagnons nos clients dans leur stratégie d'implantation sur l'ensemble du territoire français, que ce soit pour de la domiciliation, de la représentation commerciale ou des démarches administratives. Nos services en France sont pensés pour les entrepreneurs internationaux, freelances, start-ups et PME désireux de s'installer ou de se développer dans l'un des marchés les plus structurés au monde."
       }
     ]
   },
   {
     name: 'Asie',
     icon: 'mdi-earth',
-    description: 'Notre expansion en Asie vous permettra d\'accéder à un marché dynamique avec notre futur hub aux Philippines.',
+    description:
+      "Notre expansion en Asie vous permettra d'accéder à un marché dynamique avec notre futur hub aux Philippines.",
     locations: [
       {
         name: 'Manille',
@@ -353,7 +355,8 @@ const continentsData = [
         status: 'coming-soon',
         color: 'warning',
         icon: 'mdi-map-marker',
-        description: 'Notre prochaine implantation à Manille, capitale des Philippines, vous offrira un hub Asie-Pacifique avec un support 24/7 et un accès privilégié aux talents locaux pour vos projets de développement et d\'externalisation.'
+        description:
+          "Notre prochaine implantation à Manille, capitale des Philippines, vous offrira un hub Asie-Pacifique avec un support 24/7 et un accès privilégié aux talents locaux pour vos projets de développement et d'externalisation."
       }
     ]
   }
@@ -363,16 +366,6 @@ const openContinentsDialog = () => {
   continentsDialog.value = true
   activeTab.value = 0
 }
-
-const countries = [
-  { name: 'Maroc', cities: 'Casablanca, Marrakech', status: 'active', color: 'primary', icon: 'mdi-flag' },
-  { name: 'Sénégal', cities: 'Dakar', status: 'active', color: 'secondary', icon: 'mdi-flag' },
-  { name: 'Madagascar', cities: 'Antananarivo', status: 'active', color: 'success', icon: 'mdi-flag' },
-  { name: 'France', cities: 'Paris, Cergy', status: 'active', color: 'info', icon: 'mdi-flag' },
-  { name: 'Algérie', cities: 'Alger', status: 'coming-soon', color: 'warning', icon: 'mdi-flag' },
-  { name: 'Côte d\'Ivoire', cities: 'Abidjan', status: 'coming-soon', color: 'warning', icon: 'mdi-flag' },
-  { name: 'Philippines', cities: 'Manille', status: 'coming-soon', color: 'warning', icon: 'mdi-flag' }
-]
 
 onMounted(() => {
   if (typeof L !== 'undefined') {
@@ -397,16 +390,40 @@ onMounted(() => {
       { name: 'Casablanca, Maroc', lat: 33.5731, lng: -7.5898, status: 'active', color: '#1a237e' },
       { name: 'Marrakech, Maroc', lat: 31.6295, lng: -7.9811, status: 'active', color: '#1a237e' },
       { name: 'Dakar, Sénégal', lat: 14.7167, lng: -17.4677, status: 'active', color: '#283593' },
-      { name: 'Antananarivo, Madagascar', lat: -18.8792, lng: 47.5079, status: 'active', color: '#4caf50' },
+      {
+        name: 'Antananarivo, Madagascar',
+        lat: -18.8792,
+        lng: 47.5079,
+        status: 'active',
+        color: '#4caf50'
+      },
       { name: 'Paris, France', lat: 48.8566, lng: 2.3522, status: 'active', color: '#2196f3' },
       { name: 'Cergy, France', lat: 49.0364, lng: 2.0769, status: 'active', color: '#2196f3' },
-      { name: 'Alger, Algérie', lat: 36.7538, lng: 3.0588, status: 'coming-soon', color: '#ffc107' },
-      { name: 'Abidjan, Côte d\'Ivoire', lat: 5.3600, lng: -4.0083, status: 'coming-soon', color: '#ffc107' },
-      { name: 'Manille, Philippines', lat: 14.5995, lng: 120.9842, status: 'coming-soon', color: '#ffc107' }
+      {
+        name: 'Alger, Algérie',
+        lat: 36.7538,
+        lng: 3.0588,
+        status: 'coming-soon',
+        color: '#ffc107'
+      },
+      {
+        name: "Abidjan, Côte d'Ivoire",
+        lat: 5.36,
+        lng: -4.0083,
+        status: 'coming-soon',
+        color: '#ffc107'
+      },
+      {
+        name: 'Manille, Philippines',
+        lat: 14.5995,
+        lng: 120.9842,
+        status: 'coming-soon',
+        color: '#ffc107'
+      }
     ]
 
     // Add enhanced markers for each hub
-    hubs.forEach((hub, index) => {
+    hubs.forEach(hub => {
       const pulseAnimation = hub.status === 'active' ? 'pulse' : 'pulse-slow'
       const iconHtml = `
         <div class="custom-marker-wrapper ${pulseAnimation}" style="
@@ -429,7 +446,7 @@ onMounted(() => {
           "></div>
         </div>
       `
-      
+
       const customIcon = L.divIcon({
         html: iconHtml,
         className: 'custom-marker',
@@ -439,10 +456,11 @@ onMounted(() => {
       })
 
       const marker = L.marker([hub.lat, hub.lng], { icon: customIcon }).addTo(map)
-      
+
       const statusText = hub.status === 'active' ? '✓ Hub actif' : '⏳ Bientôt disponible'
       const statusColor = hub.status === 'active' ? '#4caf50' : '#ffc107'
-      marker.bindPopup(`
+      marker.bindPopup(
+        `
         <div style="text-align: center; padding: 12px; min-width: 180px;">
           <div style="
             width: 48px;
@@ -468,9 +486,11 @@ onMounted(() => {
             display: inline-block;
           ">${statusText}</span>
         </div>
-      `, {
-        className: 'custom-popup'
-      })
+      `,
+        {
+          className: 'custom-popup'
+        }
+      )
     })
   }
 })
@@ -496,7 +516,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
+  background:
     radial-gradient(circle at 20% 30%, rgba(26, 35, 126, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(63, 81, 181, 0.05) 0%, transparent 50%);
   pointer-events: none;
@@ -694,7 +714,8 @@ onUnmounted(() => {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
@@ -705,7 +726,8 @@ onUnmounted(() => {
 }
 
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.8;
   }
@@ -792,20 +814,20 @@ onUnmounted(() => {
     padding: 0;
     margin-bottom: 32px;
   }
-  
+
   .network-map {
     height: 450px;
     margin-top: 100px;
   }
-  
+
   .map-header {
     padding: 16px 20px;
   }
-  
+
   .map-header-content {
     text-align: center;
   }
-  
+
   .map-legend {
     position: relative;
     bottom: auto;
@@ -814,15 +836,15 @@ onUnmounted(() => {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  
+
   .network-text-content p {
     text-align: left;
   }
-  
+
   .stats-row {
     margin-bottom: 48px;
   }
-  
+
   .countries-row {
     margin-top: 48px;
   }
@@ -833,11 +855,11 @@ onUnmounted(() => {
     height: 400px;
     margin-top: 80px;
   }
-  
+
   .map-header {
     padding: 12px 16px;
   }
-  
+
   .map-header-content .text-h5 {
     font-size: 1.25rem;
   }

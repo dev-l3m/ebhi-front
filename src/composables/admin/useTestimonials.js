@@ -21,7 +21,7 @@ export function useTestimonials() {
     }
   }
 
-  const createTestimonial = async (testimonialData) => {
+  const createTestimonial = async testimonialData => {
     saving.value = true
     try {
       const response = await api.createTestimonial(testimonialData)
@@ -49,7 +49,7 @@ export function useTestimonials() {
     }
   }
 
-  const deleteTestimonial = async (id) => {
+  const deleteTestimonial = async id => {
     deleting.value = true
     try {
       const response = await api.deleteTestimonial(id)

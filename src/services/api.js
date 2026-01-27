@@ -14,7 +14,7 @@ class ApiService {
   // Helper method to get headers
   getHeaders(includeAuth = true) {
     const headers = {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }
     if (includeAuth && this.token) {
       headers['Authorization'] = `Bearer ${this.token}`
@@ -29,8 +29,8 @@ class ApiService {
       ...options,
       headers: {
         ...this.getHeaders(options.includeAuth !== false),
-        ...options.headers,
-      },
+        ...options.headers
+      }
     }
 
     try {
@@ -53,7 +53,7 @@ class ApiService {
     const data = await this.request('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
-      includeAuth: false,
+      includeAuth: false
     })
     if (data.token) {
       this.token = data.token
@@ -84,20 +84,20 @@ class ApiService {
   async createArticle(article) {
     return this.request('/articles', {
       method: 'POST',
-      body: JSON.stringify(article),
+      body: JSON.stringify(article)
     })
   }
 
   async updateArticle(id, article) {
     return this.request(`/articles/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify(article),
+      body: JSON.stringify(article)
     })
   }
 
   async deleteArticle(id) {
     return this.request(`/articles/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -107,9 +107,9 @@ class ApiService {
     return this.request(`/articles/${id}/image`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${this.token}`,
+        Authorization: `Bearer ${this.token}`
       },
-      body: formData,
+      body: formData
     })
   }
 
@@ -125,20 +125,20 @@ class ApiService {
   async createService(service) {
     return this.request('/services', {
       method: 'POST',
-      body: JSON.stringify(service),
+      body: JSON.stringify(service)
     })
   }
 
   async updateService(id, service) {
     return this.request(`/services/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify(service),
+      body: JSON.stringify(service)
     })
   }
 
   async deleteService(id) {
     return this.request(`/services/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -154,20 +154,20 @@ class ApiService {
   async createDomain(domain) {
     return this.request('/domains', {
       method: 'POST',
-      body: JSON.stringify(domain),
+      body: JSON.stringify(domain)
     })
   }
 
   async updateDomain(id, domain) {
     return this.request(`/domains/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify(domain),
+      body: JSON.stringify(domain)
     })
   }
 
   async deleteDomain(id) {
     return this.request(`/domains/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -183,20 +183,20 @@ class ApiService {
   async createJobCategory(category) {
     return this.request('/job-categories', {
       method: 'POST',
-      body: JSON.stringify(category),
+      body: JSON.stringify(category)
     })
   }
 
   async updateJobCategory(id, category) {
     return this.request(`/job-categories/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify(category),
+      body: JSON.stringify(category)
     })
   }
 
   async deleteJobCategory(id) {
     return this.request(`/job-categories/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -213,13 +213,13 @@ class ApiService {
   async updateJobApplicationStatus(id, status) {
     return this.request(`/job-applications/${id}/status`, {
       method: 'PATCH',
-      body: JSON.stringify({ status }),
+      body: JSON.stringify({ status })
     })
   }
 
   async deleteJobApplication(id) {
     return this.request(`/job-applications/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -235,20 +235,20 @@ class ApiService {
   async createTestimonial(testimonial) {
     return this.request('/testimonials', {
       method: 'POST',
-      body: JSON.stringify(testimonial),
+      body: JSON.stringify(testimonial)
     })
   }
 
   async updateTestimonial(id, testimonial) {
     return this.request(`/testimonials/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify(testimonial),
+      body: JSON.stringify(testimonial)
     })
   }
 
   async deleteTestimonial(id) {
     return this.request(`/testimonials/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -264,20 +264,20 @@ class ApiService {
   async createStat(stat) {
     return this.request('/stats', {
       method: 'POST',
-      body: JSON.stringify(stat),
+      body: JSON.stringify(stat)
     })
   }
 
   async updateStat(id, stat) {
     return this.request(`/stats/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify(stat),
+      body: JSON.stringify(stat)
     })
   }
 
   async deleteStat(id) {
     return this.request(`/stats/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -294,13 +294,13 @@ class ApiService {
   async updateContactStatus(id, status) {
     return this.request(`/contacts/${id}/status`, {
       method: 'PATCH',
-      body: JSON.stringify({ status }),
+      body: JSON.stringify({ status })
     })
   }
 
   async deleteContact(id) {
     return this.request(`/contacts/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 
@@ -316,20 +316,20 @@ class ApiService {
   async createUser(user) {
     return this.request('/users', {
       method: 'POST',
-      body: JSON.stringify(user),
+      body: JSON.stringify(user)
     })
   }
 
   async updateUser(id, user) {
     return this.request(`/users/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify(user),
+      body: JSON.stringify(user)
     })
   }
 
   async deleteUser(id) {
     return this.request(`/users/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     })
   }
 

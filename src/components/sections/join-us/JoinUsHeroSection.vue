@@ -14,18 +14,18 @@
             Carrières
           </v-chip>
           <h1 class="join-us-hero-title mb-6">
-            Rejoindre<br>
+            Rejoindre<br />
             <span class="gradient-text-white">EBHI</span>
           </h1>
           <p class="join-us-hero-subtitle mb-8">
             <strong>Vous avez du talent ? Nous avons des opportunités.</strong>
           </p>
           <div class="join-us-hero-description">
-            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8;">
-              EBHI est un hub international qui accompagne la croissance des entreprises ambitieuses 
-              grâce à des équipes locales qualifiées, engagées et passionnées. Pour répondre à une 
-              forte demande de nos clients en France et à l'international, nous recrutons régulièrement 
-              des profils dans les domaines suivants :
+            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8">
+              EBHI est un hub international qui accompagne la croissance des entreprises ambitieuses
+              grâce à des équipes locales qualifiées, engagées et passionnées. Pour répondre à une
+              forte demande de nos clients en France et à l'international, nous recrutons
+              régulièrement des profils dans les domaines suivants :
             </p>
           </div>
         </v-col>
@@ -34,8 +34,7 @@
   </section>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .join-us-hero {

@@ -1,0 +1,49 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running Code Review & Quality Checks before push..."
+
+# Run linting
+echo "📝 Checking code style with ESLint..."
+yarn lint:check || {
+  echo "❌ ESLint failed. Please fix the errors before pushing."
+  echo "💡 Run 'yarn lint' to auto-fix some issues."
+  exit 1
+}
+
+# Check code formatting
+echo "🎨 Checking code formatting with Prettier..."
+yarn format:check || {
+  echo "❌ Code formatting check failed. Please format your code before pushing."
+  echo "💡 Run 'yarn format' to auto-format your code."
+  exit 1
+}
+
+# Run build to check for errors
+echo "🏗️  Building project to check for errors..."
+yarn build || {
+  echo "❌ Build failed. Please fix the errors before pushing."
+  exit 1
+}
+
+# Check for console.log in production code (non-blocking warning)
+echo "🔍 Checking for console.log statements..."
+if command -v grep > /dev/null 2>&1; then
+  if grep -r "console\.log" src/ --exclude-dir=node_modules > /dev/null 2>&1; then
+    echo "⚠️  Warning: console.log found in code. Consider removing them in production."
+    echo "💡 Files with console.log:"
+    grep -r "console\.log" src/ --exclude-dir=node_modules -l || true
+  fi
+fi
+
+# Check for debugger statements (blocking)
+echo "🔍 Checking for debugger statements..."
+if command -v grep > /dev/null 2>&1; then
+  if grep -r "debugger" src/ --exclude-dir=node_modules > /dev/null 2>&1; then
+    echo "❌ Error: debugger statements found in code. Please remove them before pushing."
+    grep -r "debugger" src/ --exclude-dir=node_modules -l || true
+    exit 1
+  fi
+fi
+
+echo "✅ All Code Review & Quality Checks passed! Pushing to remote..."

@@ -9,7 +9,9 @@
                 <div class="w-100">
                   <v-icon color="primary" size="64" class="mb-4">mdi-shield-lock</v-icon>
                   <h1 class="text-h4 font-weight-bold mb-2">Backoffice EBHI</h1>
-                  <p class="text-body-1 text-grey-darken-1">Connectez-vous pour accéder au panneau d'administration</p>
+                  <p class="text-body-1 text-grey-darken-1">
+                    Connectez-vous pour accéder au panneau d'administration
+                  </p>
                 </div>
               </v-card-title>
               <v-divider></v-divider>
@@ -80,8 +82,8 @@ const loading = ref(false)
 const error = ref('')
 
 const emailRules = [
-  v => !!v || 'L\'email est requis',
-  v => /.+@.+\..+/.test(v) || 'L\'email doit être valide'
+  v => !!v || "L'email est requis",
+  v => /.+@.+\..+/.test(v) || "L'email doit être valide"
 ]
 
 const passwordRules = [

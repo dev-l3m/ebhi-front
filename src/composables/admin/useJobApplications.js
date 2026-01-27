@@ -35,7 +35,7 @@ export function useJobApplications() {
     }
   }
 
-  const getApplication = async (id) => {
+  const getApplication = async id => {
     try {
       return await api.getJobApplication(id)
     } catch (error) {
@@ -55,7 +55,7 @@ export function useJobApplications() {
     }
   }
 
-  const deleteApplication = async (id) => {
+  const deleteApplication = async id => {
     try {
       const response = await api.deleteJobApplication(id)
       await loadApplications()
@@ -66,7 +66,7 @@ export function useJobApplications() {
     }
   }
 
-  const setPage = (page) => {
+  const setPage = page => {
     pagination.value.page = page
   }
 

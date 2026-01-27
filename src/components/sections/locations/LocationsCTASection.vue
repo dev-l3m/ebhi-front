@@ -6,12 +6,12 @@
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-earth</v-icon>
           <h2 class="locations-cta-title mb-6">
-            Prêt à étendre votre<br>
+            Prêt à étendre votre<br />
             <span class="gradient-text-white">présence internationale ?</span>
           </h2>
           <p class="locations-cta-subtitle mb-8">
-            Découvrez comment nos hubs stratégiques peuvent booster votre croissance 
-            et optimiser vos opérations à l'international.
+            Découvrez comment nos hubs stratégiques peuvent booster votre croissance et optimiser
+            vos opérations à l'international.
           </p>
           <div class="d-flex flex-column flex-md-row gap-4 justify-center">
             <v-btn

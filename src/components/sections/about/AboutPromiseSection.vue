@@ -3,34 +3,29 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Notre<br>
+          Notre<br />
           <span class="gradient-text">promesse</span>
         </h2>
-        <p class="text-h5 font-weight-bold text-primary mb-12" style="max-width: 800px; margin: 0 auto;">
-          EBHI est votre partenaire stratégique, pas un simple prestataire. Nous centralisons la complexité 
-          pour vous permettre de vous concentrer sur l'essentiel : votre croissance.
+        <p
+          class="text-h5 font-weight-bold text-primary mb-12"
+          style="max-width: 800px; margin: 0 auto"
+        >
+          EBHI est votre partenaire stratégique, pas un simple prestataire. Nous centralisons la
+          complexité pour vous permettre de vous concentrer sur l'essentiel : votre croissance.
         </p>
       </div>
 
       <v-row>
-        <v-col
-          v-for="(step, index) in steps"
-          :key="index"
-          cols="12"
-          md="6"
-          lg="3"
-          class="step-col"
-        >
-          <v-card
-            :elevation="8"
-            class="step-card h-100 text-center"
-            rounded="xl"
-          >
+        <v-col v-for="(step, index) in steps" :key="index" cols="12" md="6" lg="3" class="step-col">
+          <v-card :elevation="8" class="step-card h-100 text-center" rounded="xl">
             <v-card-item class="pa-6">
               <div class="step-number-wrapper mb-4">
                 <div class="step-number">{{ String(index + 1).padStart(2, '0') }}</div>
               </div>
-              <v-card-title class="text-h6 mb-3 pa-0 step-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+              <v-card-title
+                class="text-h6 mb-3 pa-0 step-title"
+                style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+              >
                 {{ step.title }}
               </v-card-title>
             </v-card-item>
@@ -44,9 +39,9 @@
 <script setup>
 const steps = [
   { title: 'Vous définissez les priorités.' },
-  { title: 'Nous structurons l\'ensemble.' },
+  { title: "Nous structurons l'ensemble." },
   { title: 'Vous gardez le contrôle stratégique.' },
-  { title: 'Nous assurons l\'exécution avec rigueur, confidentialité et performance.' }
+  { title: "Nous assurons l'exécution avec rigueur, confidentialité et performance." }
 ]
 </script>
 
@@ -126,7 +121,7 @@ const steps = [
   .step-card {
     margin-bottom: 24px;
   }
-  
+
   .step-number {
     width: 64px;
     height: 64px;

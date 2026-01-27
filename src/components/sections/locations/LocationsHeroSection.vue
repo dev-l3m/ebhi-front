@@ -14,20 +14,21 @@
             Implantations
           </v-chip>
           <h1 class="locations-hero-title mb-8">
-            Nos implantations<br>
+            Nos implantations<br />
             <span class="gradient-text-white">stratégiques</span>
           </h1>
           <div class="locations-hero-description text-left">
-            <p class="text-h6 mb-4" style="opacity: 0.95; line-height: 1.8;">
+            <p class="text-h6 mb-4" style="opacity: 0.95; line-height: 1.8">
               Des bases opérationnelles sur-mesure. Partout où vos projets l'exigent.
             </p>
-            <p class="text-body-1 mb-4" style="opacity: 0.95; line-height: 1.8;">
-              Chez <strong>Entrepreneur Business Hub International (EBHI)</strong>, nous ne vous proposons pas 
-              simplement des pays d'implantation.
+            <p class="text-body-1 mb-4" style="opacity: 0.95; line-height: 1.8">
+              Chez <strong>Entrepreneur Business Hub International (EBHI)</strong>, nous ne vous
+              proposons pas simplement des pays d'implantation.
             </p>
-            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8;">
-              Nous vous offrons des <strong>leviers concrets de croissance</strong>, activables immédiatement, 
-              conçus pour externaliser avec efficacité, coordonner à l'international, et booster votre performance globale.
+            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8">
+              Nous vous offrons des <strong>leviers concrets de croissance</strong>, activables
+              immédiatement, conçus pour externaliser avec efficacité, coordonner à l'international,
+              et booster votre performance globale.
             </p>
           </div>
         </v-col>
@@ -36,8 +37,7 @@
   </section>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .locations-hero {

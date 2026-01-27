@@ -2,24 +2,20 @@
   <section class="methodology-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-chart-timeline-variant</v-icon>
           Notre Méthodologie
         </v-chip>
         <h2 class="section-title mb-6">
-          Une méthodologie<br>
+          Une méthodologie<br />
           <span class="gradient-text">éprouvée</span>
         </h2>
         <p class="section-subtitle mx-auto mb-8">
           Notre approche s'appuie sur un processus structurant en quatre phases
         </p>
         <p class="text-h6 font-weight-bold text-primary">
-          Chaque étape est conçue pour minimiser vos risques, optimiser vos coûts et maximiser vos résultats
+          Chaque étape est conçue pour minimiser vos risques, optimiser vos coûts et maximiser vos
+          résultats
         </p>
       </div>
 
@@ -32,11 +28,7 @@
           lg="3"
           class="phase-col"
         >
-          <v-card
-            :elevation="8"
-            class="phase-card h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="phase-card h-100" rounded="xl">
             <v-card-item class="pa-6 text-center">
               <div class="phase-icon-wrapper mb-4">
                 <div class="phase-icon-bg" :style="{ background: getPhaseGradient(phase.color) }">
@@ -61,31 +53,35 @@
 const phases = [
   {
     title: 'Analyse et optimisation',
-    description: 'Évaluation approfondie de vos processus et identification des axes d\'amélioration pour maximiser votre efficacité.',
+    description:
+      "Évaluation approfondie de vos processus et identification des axes d'amélioration pour maximiser votre efficacité.",
     color: 'primary',
     icon: 'mdi-chart-line'
   },
   {
     title: 'Mobilisation des ressources',
-    description: 'Déploiement stratégique des compétences et outils nécessaires à la réussite de votre projet.',
+    description:
+      'Déploiement stratégique des compétences et outils nécessaires à la réussite de votre projet.',
     color: 'secondary',
     icon: 'mdi-account-multiple'
   },
   {
     title: 'Intégration et suivi continu',
-    description: 'Mise en œuvre suivie d\'un processus d\'optimisation permanente pour des résultats durables.',
+    description:
+      "Mise en œuvre suivie d'un processus d'optimisation permanente pour des résultats durables.",
     color: 'success',
     icon: 'mdi-sync'
   },
   {
     title: 'Structuration du projet',
-    description: 'Organisation méthodique des ressources et planification détaillée du déploiement pour garantir le succès.',
+    description:
+      'Organisation méthodique des ressources et planification détaillée du déploiement pour garantir le succès.',
     color: 'info',
     icon: 'mdi-file-tree'
   }
 ]
 
-const getPhaseGradient = (color) => {
+const getPhaseGradient = color => {
   const gradients = {
     primary: 'linear-gradient(135deg, rgba(26, 35, 126, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
     secondary: 'linear-gradient(135deg, rgba(40, 53, 147, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',

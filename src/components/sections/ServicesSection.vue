@@ -2,21 +2,16 @@
   <section id="services" class="services-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-star-circle</v-icon>
           Nos Services
         </v-chip>
         <h2 class="section-title mb-6">
-          Externalisation de fonctions<br>
+          Externalisation de fonctions<br />
           <span class="gradient-text">support et opérationnelles</span>
         </h2>
         <p class="section-subtitle mx-auto">
-          Notre approche personnalisée garantit que chaque membre de notre équipe s'intègre 
+          Notre approche personnalisée garantit que chaque membre de notre équipe s'intègre
           parfaitement à votre structure et contribue activement à vos objectifs.
         </p>
       </div>
@@ -67,19 +62,19 @@
       </v-row>
 
       <!-- Service Details Dialog -->
-      <v-dialog
-        v-model="serviceDialog"
-        max-width="900"
-        scrollable
-        persistent
-      >
+      <v-dialog v-model="serviceDialog" max-width="900" scrollable persistent>
         <v-card rounded="xl" v-if="selectedService">
-          <v-card-title class="d-flex align-center justify-space-between pa-6 dialog-header" :style="{ background: getColorGradient(selectedService.color) }">
+          <v-card-title
+            class="d-flex align-center justify-space-between pa-6 dialog-header"
+            :style="{ background: getColorGradient(selectedService.color) }"
+          >
             <div class="d-flex align-center">
               <div class="dialog-icon-wrapper mr-4">
                 <v-icon :color="selectedService.color" size="40">{{ selectedService.icon }}</v-icon>
               </div>
-              <span class="text-h5 font-weight-bold dialog-title-text">{{ selectedService.title }}</span>
+              <span class="text-h5 font-weight-bold dialog-title-text">{{
+                selectedService.title
+              }}</span>
             </div>
             <v-btn
               icon
@@ -111,7 +106,9 @@
                     class="feature-col"
                   >
                     <div class="feature-item d-flex align-start mb-3">
-                      <v-icon :color="selectedService.color" size="24" class="mr-3 mt-1">mdi-check-circle</v-icon>
+                      <v-icon :color="selectedService.color" size="24" class="mr-3 mt-1"
+                        >mdi-check-circle</v-icon
+                      >
                       <span class="text-body-1">{{ feature }}</span>
                     </div>
                   </v-col>
@@ -131,17 +128,17 @@
                     md="4"
                     class="benefit-col"
                   >
-                    <v-card
-                      :elevation="2"
-                      class="benefit-card"
-                      rounded="lg"
-                    >
+                    <v-card :elevation="2" class="benefit-card" rounded="lg">
                       <v-card-item class="pa-4">
                         <div class="d-flex align-center">
-                          <v-icon :color="selectedService.color" size="28" class="mr-3">{{ benefit.icon }}</v-icon>
+                          <v-icon :color="selectedService.color" size="28" class="mr-3">{{
+                            benefit.icon
+                          }}</v-icon>
                           <div>
                             <div class="text-body-2 font-weight-bold mb-1">{{ benefit.title }}</div>
-                            <div class="text-caption text-grey-darken-1">{{ benefit.description }}</div>
+                            <div class="text-caption text-grey-darken-1">
+                              {{ benefit.description }}
+                            </div>
                           </div>
                         </div>
                       </v-card-item>
@@ -192,8 +189,10 @@ const selectedService = ref(null)
 const services = [
   {
     title: 'Ressources Humaines',
-    description: 'Gestion complète de vos ressources humaines avec des experts dédiés. Recrutement, formation, gestion des carrières et bien plus.',
-    detailedDescription: 'EBHI vous accompagne dans la gestion complète de vos ressources humaines avec une expertise dédiée. Nous mettons à votre disposition des professionnels qualifiés pour optimiser votre gestion RH et développer vos talents.',
+    description:
+      'Gestion complète de vos ressources humaines avec des experts dédiés. Recrutement, formation, gestion des carrières et bien plus.',
+    detailedDescription:
+      'EBHI vous accompagne dans la gestion complète de vos ressources humaines avec une expertise dédiée. Nous mettons à votre disposition des professionnels qualifiés pour optimiser votre gestion RH et développer vos talents.',
     icon: 'mdi-account-group',
     color: 'primary',
     features: [
@@ -205,15 +204,29 @@ const services = [
       'Conseil en stratégie RH'
     ],
     benefits: [
-      { icon: 'mdi-account-multiple', title: 'Équipes qualifiées', description: 'Profils sélectionnés selon vos critères' },
-      { icon: 'mdi-chart-line', title: 'Performance optimisée', description: 'Amélioration continue de vos processus' },
-      { icon: 'mdi-shield-check', title: 'Conformité garantie', description: 'Respect des réglementations en vigueur' }
+      {
+        icon: 'mdi-account-multiple',
+        title: 'Équipes qualifiées',
+        description: 'Profils sélectionnés selon vos critères'
+      },
+      {
+        icon: 'mdi-chart-line',
+        title: 'Performance optimisée',
+        description: 'Amélioration continue de vos processus'
+      },
+      {
+        icon: 'mdi-shield-check',
+        title: 'Conformité garantie',
+        description: 'Respect des réglementations en vigueur'
+      }
     ]
   },
   {
     title: 'Ingénierie en Conception',
-    description: 'Solutions d\'ingénierie et de conception produits sur mesure. De la conception à la production, nous accompagnons vos projets.',
-    detailedDescription: 'Notre expertise en ingénierie et conception vous permet de développer des produits innovants et performants. De la phase de conception à la production, nos équipes d\'ingénieurs vous accompagnent dans tous vos projets techniques.',
+    description:
+      "Solutions d'ingénierie et de conception produits sur mesure. De la conception à la production, nous accompagnons vos projets.",
+    detailedDescription:
+      "Notre expertise en ingénierie et conception vous permet de développer des produits innovants et performants. De la phase de conception à la production, nos équipes d'ingénieurs vous accompagnent dans tous vos projets techniques.",
     icon: 'mdi-cog',
     color: 'secondary',
     features: [
@@ -225,15 +238,25 @@ const services = [
       'Support technique et maintenance'
     ],
     benefits: [
-      { icon: 'mdi-lightbulb-on', title: 'Innovation', description: 'Solutions techniques avancées' },
-      { icon: 'mdi-speedometer', title: 'Rapidité', description: 'Délais de développement optimisés' },
+      {
+        icon: 'mdi-lightbulb-on',
+        title: 'Innovation',
+        description: 'Solutions techniques avancées'
+      },
+      {
+        icon: 'mdi-speedometer',
+        title: 'Rapidité',
+        description: 'Délais de développement optimisés'
+      },
       { icon: 'mdi-cog', title: 'Expertise', description: 'Ingénieurs expérimentés' }
     ]
   },
   {
     title: 'Produits Chimie et Conception',
-    description: 'Expertise en chimie et conception de produits innovants. Développement de solutions chimiques adaptées à vos besoins.',
-    detailedDescription: 'Notre expertise en chimie et conception de produits vous permet de développer des solutions innovantes et performantes. Nos équipes de chimistes et concepteurs travaillent sur des projets variés, de la recherche à la production.',
+    description:
+      'Expertise en chimie et conception de produits innovants. Développement de solutions chimiques adaptées à vos besoins.',
+    detailedDescription:
+      'Notre expertise en chimie et conception de produits vous permet de développer des solutions innovantes et performantes. Nos équipes de chimistes et concepteurs travaillent sur des projets variés, de la recherche à la production.',
     icon: 'mdi-flask',
     color: 'success',
     features: [
@@ -245,15 +268,25 @@ const services = [
       'Conformité réglementaire'
     ],
     benefits: [
-      { icon: 'mdi-flask-outline', title: 'Expertise scientifique', description: 'Chimistes et chercheurs qualifiés' },
-      { icon: 'mdi-shield-check', title: 'Sécurité', description: 'Respect des normes de sécurité' },
+      {
+        icon: 'mdi-flask-outline',
+        title: 'Expertise scientifique',
+        description: 'Chimistes et chercheurs qualifiés'
+      },
+      {
+        icon: 'mdi-shield-check',
+        title: 'Sécurité',
+        description: 'Respect des normes de sécurité'
+      },
       { icon: 'mdi-chart-bar', title: 'Qualité', description: 'Contrôles qualité rigoureux' }
     ]
   },
   {
     title: 'Marketing et Communication',
-    description: 'Stratégies marketing et communication pour développer votre présence. Création de contenu, gestion des réseaux sociaux et campagnes publicitaires.',
-    detailedDescription: 'Développez votre présence et votre notoriété avec nos solutions marketing et communication. Nos équipes créatives et stratégiques vous accompagnent dans tous vos projets de communication, du digital au print.',
+    description:
+      'Stratégies marketing et communication pour développer votre présence. Création de contenu, gestion des réseaux sociaux et campagnes publicitaires.',
+    detailedDescription:
+      'Développez votre présence et votre notoriété avec nos solutions marketing et communication. Nos équipes créatives et stratégiques vous accompagnent dans tous vos projets de communication, du digital au print.',
     icon: 'mdi-bullhorn',
     color: 'info',
     features: [
@@ -265,15 +298,21 @@ const services = [
       'Analyse et reporting de performance'
     ],
     benefits: [
-      { icon: 'mdi-trending-up', title: 'Croissance', description: 'Augmentation de votre visibilité' },
+      {
+        icon: 'mdi-trending-up',
+        title: 'Croissance',
+        description: 'Augmentation de votre visibilité'
+      },
       { icon: 'mdi-palette', title: 'Créativité', description: 'Contenus créatifs et engageants' },
       { icon: 'mdi-chart-line', title: 'ROI mesurable', description: 'Suivi des performances' }
     ]
   },
   {
     title: 'Support Techniques',
-    description: 'Support technique réactif et professionnel pour vos opérations. Assistance 24/7 et résolution rapide des problèmes.',
-    detailedDescription: 'Bénéficiez d\'un support technique réactif et professionnel pour toutes vos opérations. Nos équipes techniques sont disponibles 24/7 pour vous assister et résoudre rapidement tous vos problèmes techniques.',
+    description:
+      'Support technique réactif et professionnel pour vos opérations. Assistance 24/7 et résolution rapide des problèmes.',
+    detailedDescription:
+      "Bénéficiez d'un support technique réactif et professionnel pour toutes vos opérations. Nos équipes techniques sont disponibles 24/7 pour vous assister et résoudre rapidement tous vos problèmes techniques.",
     icon: 'mdi-headset',
     color: 'warning',
     features: [
@@ -292,8 +331,10 @@ const services = [
   },
   {
     title: 'Service après vente',
-    description: 'Services après-vente complets pour satisfaire vos clients. Gestion des réclamations, suivi client et amélioration continue.',
-    detailedDescription: 'Offrez à vos clients une expérience exceptionnelle avec nos services après-vente complets. Nous gérons toutes les interactions post-vente pour garantir la satisfaction et la fidélisation de vos clients.',
+    description:
+      'Services après-vente complets pour satisfaire vos clients. Gestion des réclamations, suivi client et amélioration continue.',
+    detailedDescription:
+      'Offrez à vos clients une expérience exceptionnelle avec nos services après-vente complets. Nous gérons toutes les interactions post-vente pour garantir la satisfaction et la fidélisation de vos clients.',
     icon: 'mdi-handshake',
     color: 'error',
     features: [
@@ -312,7 +353,7 @@ const services = [
   }
 ]
 
-const getColorGradient = (color) => {
+const getColorGradient = color => {
   const gradients = {
     primary: 'linear-gradient(135deg, rgba(26, 35, 126, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
     secondary: 'linear-gradient(135deg, rgba(40, 53, 147, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
@@ -324,7 +365,7 @@ const getColorGradient = (color) => {
   return gradients[color] || gradients.primary
 }
 
-const openServiceDialog = (service) => {
+const openServiceDialog = service => {
   selectedService.value = service
   serviceDialog.value = true
 }
@@ -544,7 +585,7 @@ const scrollToContact = () => {
   .section-header {
     margin-bottom: 48px;
   }
-  
+
   .service-card {
     margin-bottom: 24px;
   }
@@ -572,56 +613,56 @@ const scrollToContact = () => {
     font-size: 1.125rem !important;
     line-height: 1.3 !important;
   }
-  
+
   .service-description {
     font-size: 0.875rem !important;
   }
-  
+
   .dialog-header {
     padding: 16px !important;
     flex-wrap: wrap;
   }
-  
+
   .dialog-title-text {
     font-size: 1.125rem !important;
     line-height: 1.3 !important;
     word-wrap: break-word;
   }
-  
+
   .dialog-icon-wrapper {
     width: 40px !important;
     height: 40px !important;
     margin-right: 12px !important;
   }
-  
+
   .dialog-icon-wrapper .v-icon {
     font-size: 20px !important;
   }
-  
+
   .dialog-intro-text {
     font-size: 0.9375rem !important;
     line-height: 1.6 !important;
   }
-  
+
   .dialog-section-title {
     font-size: 1rem !important;
     margin-bottom: 16px !important;
   }
-  
+
   .service-details-content {
     padding: 0 !important;
   }
-  
+
   .v-card-text {
     padding: 16px !important;
   }
-  
+
   .v-card-actions {
     padding: 16px !important;
     flex-wrap: wrap;
     gap: 8px;
   }
-  
+
   .v-card-actions .v-btn {
     font-size: 0.875rem !important;
     min-width: auto !important;

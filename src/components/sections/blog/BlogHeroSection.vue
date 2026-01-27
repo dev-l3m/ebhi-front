@@ -14,12 +14,12 @@
             Blog
           </v-chip>
           <h1 class="blog-hero-title mb-8">
-            Actualités &<br>
+            Actualités &<br />
             <span class="gradient-text-white">Insights</span>
           </h1>
-          <p class="blog-hero-description text-h6" style="opacity: 0.95; line-height: 1.8;">
-            Découvrez nos articles sur l'externalisation, le recrutement international, 
-            et les stratégies de croissance pour votre entreprise.
+          <p class="blog-hero-description text-h6" style="opacity: 0.95; line-height: 1.8">
+            Découvrez nos articles sur l'externalisation, le recrutement international, et les
+            stratégies de croissance pour votre entreprise.
           </p>
         </v-col>
       </v-row>
@@ -27,8 +27,7 @@
   </section>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .blog-hero {

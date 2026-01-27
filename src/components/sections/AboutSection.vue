@@ -3,36 +3,31 @@
     <v-container>
       <v-row align="center" class="about-row">
         <v-col cols="12" md="6" class="about-content-col">
-          <v-chip
-            color="primary"
-            variant="flat"
-            size="large"
-            class="mb-6"
-          >
+          <v-chip color="primary" variant="flat" size="large" class="mb-6">
             <v-icon start>mdi-information</v-icon>
             À propos
           </v-chip>
-          <h2 class="about-title mb-4">
-            Qui sommes-nous ?
-          </h2>
+          <h2 class="about-title mb-4">Qui sommes-nous ?</h2>
           <div class="about-subtitle text-primary mb-6">
             Votre entreprise d'externalisation off shore
           </div>
           <div class="about-text">
-            <p class="text-body-1 mb-4" style="line-height: 1.8;">
-              Chez <strong>Entrepreneur Business Hub International (EBHI)</strong>, nous sommes plus qu'un simple 
-              prestataire de services d'externalisation. Nous sommes votre <strong>partenaire stratégique</strong>, 
-              dédié à transformer vos défis opérationnels en opportunités de croissance.
+            <p class="text-body-1 mb-4" style="line-height: 1.8">
+              Chez <strong>Entrepreneur Business Hub International (EBHI)</strong>, nous sommes plus
+              qu'un simple prestataire de services d'externalisation. Nous sommes votre
+              <strong>partenaire stratégique</strong>, dédié à transformer vos défis opérationnels
+              en opportunités de croissance.
             </p>
-            <p class="text-body-1 mb-4" style="line-height: 1.8;">
-              Fondée sur des valeurs d'<strong>excellence</strong>, de <strong>transparence</strong>, et de 
-              <strong>collaboration</strong>, notre entreprise se distingue par une approche personnalisée qui 
-              s'adapte aux besoins spécifiques de chaque client.
+            <p class="text-body-1 mb-4" style="line-height: 1.8">
+              Fondée sur des valeurs d'<strong>excellence</strong>, de
+              <strong>transparence</strong>, et de <strong>collaboration</strong>, notre entreprise
+              se distingue par une approche personnalisée qui s'adapte aux besoins spécifiques de
+              chaque client.
             </p>
-            <p class="text-body-1 mb-8" style="line-height: 1.8;">
-              Notre mission est de <strong>simplifier vos opérations</strong>, <strong>réduire vos coûts</strong> et 
-              <strong>accélérer votre croissance</strong> en mettant à votre disposition des talents spécialisés et 
-              des solutions innovantes.
+            <p class="text-body-1 mb-8" style="line-height: 1.8">
+              Notre mission est de <strong>simplifier vos opérations</strong>,
+              <strong>réduire vos coûts</strong> et <strong>accélérer votre croissance</strong> en
+              mettant à votre disposition des talents spécialisés et des solutions innovantes.
             </p>
             <v-btn
               color="primary"
@@ -51,36 +46,33 @@
           <v-card :elevation="12" class="sectors-card" rounded="xl">
             <v-card-item class="pa-8">
               <div class="sectors-header text-center mb-8">
-                <v-icon color="primary" size="48" class="sectors-header-icon mb-4">mdi-domain</v-icon>
+                <v-icon color="primary" size="48" class="sectors-header-icon mb-4"
+                  >mdi-domain</v-icon
+                >
                 <div class="sectors-title font-weight-bold mb-2">Nos secteurs d'interventions</div>
-                <p class="sectors-subtitle text-grey-darken-1">
-                  Expertise dans tous les domaines
-                </p>
+                <p class="sectors-subtitle text-grey-darken-1">Expertise dans tous les domaines</p>
               </div>
               <v-row class="sectors-grid">
-                <v-col
-                  v-for="(sector, index) in sectors"
-                  :key="index"
-                  cols="6"
-                  class="sector-item"
-                >
+                <v-col v-for="(sector, index) in sectors" :key="index" cols="6" class="sector-item">
                   <div class="sector-card">
-                    <div class="sector-icon-wrapper" :style="{ background: getSectorGradient(sector.color) }">
-                      <v-icon
-                        :color="sector.color"
-                        size="32"
-                      >
+                    <div
+                      class="sector-icon-wrapper"
+                      :style="{ background: getSectorGradient(sector.color) }"
+                    >
+                      <v-icon :color="sector.color" size="32">
                         {{ sector.icon }}
                       </v-icon>
                     </div>
-                    <div class="sector-name font-weight-medium mt-3 text-center">{{ sector.name }}</div>
+                    <div class="sector-name font-weight-medium mt-3 text-center">
+                      {{ sector.name }}
+                    </div>
                   </div>
                 </v-col>
               </v-row>
               <v-divider class="my-6"></v-divider>
               <p class="sectors-footer text-center text-grey-darken-1">
-                Que vous soyez dans la technologie, le design, le commerce, l'ingénierie ou la chimie, 
-                EBHI a les compétences pour répondre à vos besoins.
+                Que vous soyez dans la technologie, le design, le commerce, l'ingénierie ou la
+                chimie, EBHI a les compétences pour répondre à vos besoins.
               </p>
             </v-card-item>
           </v-card>
@@ -100,7 +92,7 @@ const sectors = [
   { name: 'Marketing', icon: 'mdi-bullhorn', color: 'error' }
 ]
 
-const getSectorGradient = (color) => {
+const getSectorGradient = color => {
   const gradients = {
     primary: 'linear-gradient(135deg, rgba(26, 35, 126, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
     secondary: 'linear-gradient(135deg, rgba(40, 53, 147, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
@@ -251,74 +243,74 @@ const scrollToContact = () => {
     padding: 0;
     margin-bottom: 48px;
   }
-  
+
   .about-row {
     min-height: auto;
   }
-  
+
   .about-title {
     font-size: clamp(1.75rem, 5vw, 2.5rem);
     margin-bottom: 16px;
   }
-  
+
   .about-subtitle {
     font-size: clamp(1.125rem, 2.5vw, 1.5rem);
     margin-bottom: 24px;
   }
-  
+
   .about-text .text-body-1 {
     font-size: 0.9375rem !important;
     line-height: 1.7;
     margin-bottom: 16px !important;
   }
-  
+
   .about-cta-btn {
     font-size: 0.9375rem !important;
     min-height: 52px !important;
     padding: 14px 24px !important;
     width: 100%;
   }
-  
+
   .cta-btn-icon {
     font-size: 20px !important;
   }
-  
+
   .sectors-card .v-card-item {
     padding: 24px !important;
   }
-  
+
   .sectors-header {
     margin-bottom: 24px;
   }
-  
+
   .sectors-header-icon {
     font-size: 40px !important;
     margin-bottom: 16px !important;
   }
-  
+
   .sectors-title {
     font-size: 1.5rem !important;
     margin-bottom: 8px !important;
   }
-  
+
   .sectors-subtitle {
     font-size: 0.9375rem !important;
   }
-  
+
   .sector-icon-wrapper {
     width: 56px;
     height: 56px;
   }
-  
+
   .sector-icon-wrapper .v-icon {
     font-size: 28px !important;
   }
-  
+
   .sector-name {
     font-size: 0.9375rem !important;
     margin-top: 12px !important;
   }
-  
+
   .sectors-footer {
     font-size: 0.875rem !important;
     line-height: 1.5;
@@ -330,88 +322,88 @@ const scrollToContact = () => {
   .about-sectors-col {
     margin-bottom: 32px;
   }
-  
+
   .about-title {
     font-size: clamp(1.5rem, 6vw, 2rem);
     margin-bottom: 12px;
   }
-  
+
   .about-subtitle {
     font-size: clamp(1rem, 3vw, 1.25rem);
     margin-bottom: 20px;
   }
-  
+
   .about-text .text-body-1 {
     font-size: 0.875rem !important;
     line-height: 1.6;
     margin-bottom: 12px !important;
   }
-  
+
   .about-cta-btn {
     font-size: 0.875rem !important;
     min-height: 48px !important;
     padding: 12px 20px !important;
     border-radius: 12px !important;
   }
-  
+
   .cta-btn-icon {
     font-size: 18px !important;
     margin-right: 6px !important;
   }
-  
+
   .sectors-card .v-card-item {
     padding: 20px 16px !important;
   }
-  
+
   .sectors-header {
     margin-bottom: 20px;
   }
-  
+
   .sectors-header-icon {
     font-size: 36px !important;
     margin-bottom: 12px !important;
   }
-  
+
   .sectors-title {
     font-size: 1.25rem !important;
     margin-bottom: 6px !important;
   }
-  
+
   .sectors-subtitle {
     font-size: 0.875rem !important;
   }
-  
+
   .sectors-grid {
     margin-top: 16px !important;
   }
-  
+
   .sector-item {
     margin-bottom: 16px !important;
   }
-  
+
   .sector-card {
     padding: 6px;
   }
-  
+
   .sector-icon-wrapper {
     width: 48px;
     height: 48px;
     border-radius: 12px;
   }
-  
+
   .sector-icon-wrapper .v-icon {
     font-size: 24px !important;
   }
-  
+
   .sector-name {
     font-size: 0.875rem !important;
     margin-top: 10px !important;
   }
-  
+
   .v-divider {
     margin: 20px 0 !important;
   }
-  
+
   .sectors-footer {
     font-size: 0.8125rem !important;
     line-height: 1.5;

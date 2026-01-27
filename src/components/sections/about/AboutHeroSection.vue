@@ -14,18 +14,18 @@
             À propos
           </v-chip>
           <h1 class="about-hero-title mb-8">
-            À PROPOS<br>
+            À PROPOS<br />
             <span class="gradient-text-white">D'EBHI</span>
           </h1>
           <div class="about-hero-description text-left">
-            <p class="text-h6 mb-4" style="opacity: 0.95; line-height: 1.8;">
-              <strong>ENTREPRENEUR BUSINESS HUB INTERNATIONAL</strong> est un hub opérationnel international 
-              au service des entreprises ambitieuses.
+            <p class="text-h6 mb-4" style="opacity: 0.95; line-height: 1.8">
+              <strong>ENTREPRENEUR BUSINESS HUB INTERNATIONAL</strong> est un hub opérationnel
+              international au service des entreprises ambitieuses.
             </p>
-            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8;">
-              Nous ne vendons pas des prestations génériques. Nous mettons en place — pour vous, 
-              avec vous — les ressources humaines, techniques et digitales dont vous avez besoin 
-              pour concrétiser vos projets de développement, en divisant vos coûts et en augmentant 
+            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8">
+              Nous ne vendons pas des prestations génériques. Nous mettons en place — pour vous,
+              avec vous — les ressources humaines, techniques et digitales dont vous avez besoin
+              pour concrétiser vos projets de développement, en divisant vos coûts et en augmentant
               vos capacités d'action.
             </p>
           </div>
@@ -35,8 +35,7 @@
   </section>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .about-hero {

@@ -2,21 +2,17 @@
   <section class="approach-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-lightbulb-on</v-icon>
           Notre Méthodologie
         </v-chip>
         <h2 class="section-title mb-6">
-          Découvrez l'approche<br>
+          Découvrez l'approche<br />
           <span class="gradient-text">d'excellence d'EBHI</span>
         </h2>
         <p class="section-subtitle mx-auto">
-          Notre méthodologie repose sur quatre piliers fondamentaux qui guident chacune de nos actions.
+          Notre méthodologie repose sur quatre piliers fondamentaux qui guident chacune de nos
+          actions.
         </p>
       </div>
 
@@ -37,7 +33,9 @@
             >
               <v-card-item class="pa-6">
                 <div class="timeline-card-header">
-                  <v-icon :color="step.color" size="32" class="timeline-card-icon">{{ step.icon }}</v-icon>
+                  <v-icon :color="step.color" size="32" class="timeline-card-icon">{{
+                    step.icon
+                  }}</v-icon>
                   <v-card-title class="pa-0 approach-step-title">{{ step.title }}</v-card-title>
                 </div>
                 <v-card-text class="pa-0 text-body-1">
@@ -53,25 +51,17 @@
       <div class="pillars-section">
         <div class="text-center mb-12">
           <h3 class="text-h4 font-weight-bold mb-4">Les 4 piliers d'EBHI</h3>
-          <p class="text-body-1 text-grey-darken-1">Chaque lettre représente un aspect clé de notre philosophie</p>
+          <p class="text-body-1 text-grey-darken-1">
+            Chaque lettre représente un aspect clé de notre philosophie
+          </p>
         </div>
         <v-row>
-          <v-col
-            v-for="(pillar, index) in pillars"
-            :key="index"
-            cols="12"
-            md="6"
-            lg="3"
-          >
-            <v-card
-              :elevation="8"
-              class="pillar-card h-100"
-              :class="`pillar-${pillar.color}`"
-            >
+          <v-col v-for="(pillar, index) in pillars" :key="index" cols="12" md="6" lg="3">
+            <v-card :elevation="8" class="pillar-card h-100" :class="`pillar-${pillar.color}`">
               <v-card-item class="pa-6 text-center">
                 <div class="pillar-letter mb-4">{{ pillar.letter }}</div>
                 <v-card-title class="text-h6 mb-3 pillar-title">{{ pillar.title }}</v-card-title>
-                <v-card-text class="text-body-2 pillar-description" style="line-height: 1.6;">
+                <v-card-text class="text-body-2 pillar-description" style="line-height: 1.6">
                   {{ pillar.description }}
                 </v-card-text>
               </v-card-item>
@@ -87,25 +77,29 @@
 const steps = [
   {
     title: 'Analyse & Optimisation',
-    description: 'Évaluation approfondie des processus existants et identification des axes d\'amélioration pour maximiser votre efficacité.',
+    description:
+      "Évaluation approfondie des processus existants et identification des axes d'amélioration pour maximiser votre efficacité.",
     color: 'primary',
     icon: 'mdi-chart-line'
   },
   {
     title: 'Structuration du Projet',
-    description: 'Organisation méthodique des ressources et planification détaillée du déploiement pour garantir le succès.',
+    description:
+      'Organisation méthodique des ressources et planification détaillée du déploiement pour garantir le succès.',
     color: 'secondary',
     icon: 'mdi-file-tree'
   },
   {
     title: 'Mobilisation des Ressources',
-    description: 'Déploiement stratégique des compétences et outils nécessaires à la réussite de votre projet.',
+    description:
+      'Déploiement stratégique des compétences et outils nécessaires à la réussite de votre projet.',
     color: 'success',
     icon: 'mdi-account-multiple'
   },
   {
     title: 'Intégration & Amélioration continue',
-    description: 'Mise en œuvre suivie d\'un processus d\'optimisation permanente pour des résultats durables.',
+    description:
+      "Mise en œuvre suivie d'un processus d'optimisation permanente pour des résultats durables.",
     color: 'info',
     icon: 'mdi-sync'
   }
@@ -115,25 +109,29 @@ const pillars = [
   {
     letter: 'E',
     title: 'Efficacité',
-    description: 'Grâce à notre modèle d\'externalisation, nous aidons nos clients à améliorer leur productivité et à réduire leurs coûts.',
+    description:
+      "Grâce à notre modèle d'externalisation, nous aidons nos clients à améliorer leur productivité et à réduire leurs coûts.",
     color: 'primary'
   },
   {
     letter: 'B',
     title: 'Business structuré',
-    description: 'Nous mettons en place une organisation claire et des processus définis pour assurer une externalisation fluide.',
+    description:
+      'Nous mettons en place une organisation claire et des processus définis pour assurer une externalisation fluide.',
     color: 'secondary'
   },
   {
     letter: 'H',
     title: 'Hub de talents',
-    description: 'Nous réunissons des professionnels hautement qualifiés et spécialisés pour répondre aux besoins variés de nos clients.',
+    description:
+      'Nous réunissons des professionnels hautement qualifiés et spécialisés pour répondre aux besoins variés de nos clients.',
     color: 'success'
   },
   {
     letter: 'I',
     title: 'Innovation',
-    description: 'Nous intégrons des solutions technologiques de pointe pour optimiser les processus et offrir des services toujours plus performants.',
+    description:
+      'Nous intégrons des solutions technologiques de pointe pour optimiser les processus et offrir des services toujours plus performants.',
     color: 'info'
   }
 ]
@@ -183,10 +181,18 @@ const pillars = [
   animation: fadeInUp 0.6s ease-out both;
 }
 
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) { animation-delay: 0.2s; }
-.timeline-item:nth-child(3) { animation-delay: 0.3s; }
-.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.timeline-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.timeline-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.timeline-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
 
 .timeline-content {
   flex: 1;
@@ -265,7 +271,7 @@ const pillars = [
 }
 
 .pillar-info {
-  background: linear-gradient(135deg, #2196F3 0%, #42a5f5 100%) !important;
+  background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%) !important;
 }
 
 .pillar-card:hover {
@@ -306,11 +312,11 @@ const pillars = [
   .timeline-content {
     padding-left: 60px;
   }
-  
+
   .timeline-item-reverse .timeline-content {
     padding-right: 60px;
   }
-  
+
   .timeline-number {
     width: 48px;
     height: 48px;
@@ -346,15 +352,15 @@ const pillars = [
   .timeline-card-header {
     gap: 10px;
   }
-  
+
   .timeline-card-icon {
     font-size: 28px !important;
   }
-  
+
   .approach-step-title {
     font-size: 1.25rem !important;
   }
-  
+
   .timeline-card .v-card-item {
     padding: 20px !important;
   }
@@ -364,52 +370,52 @@ const pillars = [
   .timeline-content {
     padding-left: 50px;
   }
-  
+
   .timeline-item-reverse .timeline-content {
     padding-right: 50px;
   }
-  
+
   .timeline-number {
     width: 40px;
     height: 40px;
     font-size: 1.125rem;
   }
-  
+
   .timeline-card .v-card-item {
     padding: 16px !important;
   }
-  
+
   .timeline-card-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
     margin-bottom: 12px;
   }
-  
+
   .timeline-card-icon {
     font-size: 24px !important;
     margin-top: 0;
   }
-  
+
   .approach-step-title {
     font-size: 1.125rem !important;
     line-height: 1.3 !important;
     width: 100%;
   }
-  
+
   .timeline-card .v-card-text {
     font-size: 0.875rem !important;
     line-height: 1.5 !important;
   }
-  
+
   .pillar-title {
     font-size: 1rem !important;
   }
-  
+
   .pillar-description {
     font-size: 0.8125rem !important;
   }
-  
+
   .pillar-letter {
     font-size: 3rem !important;
   }

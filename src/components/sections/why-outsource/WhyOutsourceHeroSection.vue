@@ -14,24 +14,28 @@
             Externalisation
           </v-chip>
           <h1 class="why-outsource-hero-title mb-6">
-            Pourquoi externaliser<br>
+            Pourquoi externaliser<br />
             <span class="gradient-text-white">avec EBHI ?</span>
           </h1>
           <p class="why-outsource-hero-subtitle mb-8">
             Libérez votre potentiel, recentrez-vous sur votre croissance
           </p>
           <div class="why-outsource-hero-description">
-            <p class="text-body-1 mb-4" style="opacity: 0.95; line-height: 1.8;">
-              Dans un contexte économique exigeant, la capacité à se concentrer sur son cœur de métier 
-              tout en maîtrisant ses charges et en accélérant son développement est devenue essentielle. 
-              L'externalisation ne consiste plus à simplement déléguer une tâche, mais à 
-              <strong>faire le choix stratégique de la performance, de la flexibilité et de l'optimisation des ressources</strong>.
+            <p class="text-body-1 mb-4" style="opacity: 0.95; line-height: 1.8">
+              Dans un contexte économique exigeant, la capacité à se concentrer sur son cœur de
+              métier tout en maîtrisant ses charges et en accélérant son développement est devenue
+              essentielle. L'externalisation ne consiste plus à simplement déléguer une tâche, mais
+              à
+              <strong
+                >faire le choix stratégique de la performance, de la flexibilité et de
+                l'optimisation des ressources</strong
+              >.
             </p>
-            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8;">
-              Chez <strong>EBHI</strong>, nous avons redéfini l'externalisation comme un 
-              <strong>levier structurant de croissance</strong>. Grâce à notre approche sur mesure, 
-              nous vous permettons d'accéder à des compétences de haut niveau, à un pilotage rigoureux 
-              et à des résultats tangibles, tout en réduisant les risques et les coûts.
+            <p class="text-body-1" style="opacity: 0.95; line-height: 1.8">
+              Chez <strong>EBHI</strong>, nous avons redéfini l'externalisation comme un
+              <strong>levier structurant de croissance</strong>. Grâce à notre approche sur mesure,
+              nous vous permettons d'accéder à des compétences de haut niveau, à un pilotage
+              rigoureux et à des résultats tangibles, tout en réduisant les risques et les coûts.
             </p>
           </div>
         </v-col>
@@ -40,8 +44,7 @@
   </section>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .why-outsource-hero {

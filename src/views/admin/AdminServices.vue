@@ -2,12 +2,7 @@
   <div>
     <div class="d-flex justify-space-between align-center mb-6">
       <h1 class="text-h4 font-weight-bold">Gestion des Services</h1>
-      <v-btn
-        color="primary"
-        prepend-icon="mdi-plus"
-        @click="openCreateDialog"
-        rounded="lg"
-      >
+      <v-btn color="primary" prepend-icon="mdi-plus" @click="openCreateDialog" rounded="lg">
         Nouveau service
       </v-btn>
     </div>
@@ -174,13 +169,13 @@ const openCreateDialog = () => {
   dialog.value = true
 }
 
-const openEditDialog = (item) => {
+const openEditDialog = item => {
   editing.value = true
   formData.value = { ...item }
   dialog.value = true
 }
 
-const handleSave = async (data) => {
+const handleSave = async data => {
   try {
     if (editing.value) {
       await updateService(formData.value.id, data)
@@ -197,7 +192,7 @@ const handleCancel = () => {
   dialog.value = false
 }
 
-const confirmDelete = (item) => {
+const confirmDelete = item => {
   itemToDelete.value = item
   deleteDialog.value = true
 }

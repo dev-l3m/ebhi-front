@@ -48,7 +48,9 @@
               <div class="d-flex align-center">
                 <v-icon color="warning" size="48" class="mr-4">mdi-file-document</v-icon>
                 <div>
-                  <div class="text-h4 font-weight-bold">{{ stats.jobApplications?.pending || 0 }}</div>
+                  <div class="text-h4 font-weight-bold">
+                    {{ stats.jobApplications?.pending || 0 }}
+                  </div>
                   <div class="text-body-2 text-grey-darken-1">Candidatures en attente</div>
                 </div>
               </div>
@@ -61,7 +63,9 @@
               <div class="d-flex align-center">
                 <v-icon color="info" size="48" class="mr-4">mdi-account-group</v-icon>
                 <div>
-                  <div class="text-h4 font-weight-bold">{{ stats.jobApplications?.total || 0 }}</div>
+                  <div class="text-h4 font-weight-bold">
+                    {{ stats.jobApplications?.total || 0 }}
+                  </div>
                   <div class="text-body-2 text-grey-darken-1">Total candidatures</div>
                 </div>
               </div>
@@ -93,9 +97,7 @@
                   </div>
                 </v-timeline-item>
               </v-timeline>
-              <div v-else class="text-center text-grey-darken-1 py-8">
-                Aucune activité récente
-              </div>
+              <div v-else class="text-center text-grey-darken-1 py-8">Aucune activité récente</div>
             </v-card-text>
           </v-card>
         </v-col>
@@ -151,7 +153,7 @@ const stats = ref({
   recentActivity: []
 })
 
-const getActivityColor = (type) => {
+const getActivityColor = type => {
   const colors = {
     contact: 'primary',
     article: 'success',
@@ -161,7 +163,7 @@ const getActivityColor = (type) => {
   return colors[type] || 'grey'
 }
 
-const formatDate = (dateString) => {
+const formatDate = dateString => {
   if (!dateString) return ''
   const date = new Date(dateString)
   return date.toLocaleDateString('fr-FR', {

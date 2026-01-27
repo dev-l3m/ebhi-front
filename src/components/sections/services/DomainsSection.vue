@@ -3,11 +3,11 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Domaines<br>
+          Domaines<br />
           <span class="gradient-text">d'intervention</span>
         </h2>
         <p class="section-subtitle mx-auto">
-          EBHI met à votre disposition des ressources spécialisées et immédiatement opérationnelles, 
+          EBHI met à votre disposition des ressources spécialisées et immédiatement opérationnelles,
           selon les besoins spécifiques de votre secteur d'activité.
         </p>
       </div>
@@ -21,14 +21,13 @@
           lg="3"
           class="domain-col"
         >
-          <v-card
-            :elevation="4"
-            class="domain-card text-center"
-            rounded="xl"
-          >
+          <v-card :elevation="4" class="domain-card text-center" rounded="xl">
             <v-card-item class="pa-6">
               <div class="domain-icon-wrapper mb-4">
-                <div class="domain-icon-bg" :style="{ background: getDomainGradient(domain.color) }">
+                <div
+                  class="domain-icon-bg"
+                  :style="{ background: getDomainGradient(domain.color) }"
+                >
                   <v-icon :color="domain.color" size="40">{{ domain.icon }}</v-icon>
                 </div>
               </div>
@@ -56,7 +55,7 @@ const domains = [
   { name: 'Industrie', icon: 'mdi-factory', color: 'success' }
 ]
 
-const getDomainGradient = (color) => {
+const getDomainGradient = color => {
   const gradients = {
     primary: 'linear-gradient(135deg, rgba(26, 35, 126, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
     secondary: 'linear-gradient(135deg, rgba(40, 53, 147, 0.1) 0%, rgba(63, 81, 181, 0.1) 100%)',
@@ -155,23 +154,23 @@ const getDomainGradient = (color) => {
   .domain-card {
     margin-bottom: 16px;
   }
-  
+
   .domain-title {
     font-size: 0.9375rem !important;
     line-height: 1.3 !important;
     min-height: auto !important;
     padding: 0 !important;
   }
-  
+
   .domain-icon-bg {
     width: 64px;
     height: 64px;
   }
-  
+
   .domain-icon-bg .v-icon {
     font-size: 32px !important;
   }
-  
+
   .domain-card .v-card-item {
     padding: 16px 12px !important;
   }
@@ -182,21 +181,21 @@ const getDomainGradient = (color) => {
     font-size: 0.875rem !important;
     line-height: 1.2 !important;
   }
-  
+
   .domain-icon-bg {
     width: 56px;
     height: 56px;
     border-radius: 16px;
   }
-  
+
   .domain-icon-bg .v-icon {
     font-size: 28px !important;
   }
-  
+
   .domain-card .v-card-item {
     padding: 14px 8px !important;
   }
-  
+
   .domain-icon-wrapper {
     margin-bottom: 12px !important;
   }

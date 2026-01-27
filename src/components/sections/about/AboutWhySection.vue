@@ -6,16 +6,17 @@
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-lightbulb-on</v-icon>
           <h2 class="about-why-title mb-6">
-            Pourquoi<br>
+            Pourquoi<br />
             <span class="gradient-text-white">EBHI ?</span>
           </h2>
           <div class="about-why-description text-left">
-            <p class="text-h6 mb-4" style="opacity: 0.95; line-height: 1.8;">
-              Parce que vous ne cherchez pas un sous-traitant, mais <strong>un partenaire de confiance</strong>. 
-              Parce que vous avez besoin de <strong>ressources fiables, disponibles, encadrées et évolutives</strong>. 
-              Parce que vous voulez aller plus vite, plus loin, sans perdre en maîtrise ni en qualité.
+            <p class="text-h6 mb-4" style="opacity: 0.95; line-height: 1.8">
+              Parce que vous ne cherchez pas un sous-traitant, mais
+              <strong>un partenaire de confiance</strong>. Parce que vous avez besoin de
+              <strong>ressources fiables, disponibles, encadrées et évolutives</strong>. Parce que
+              vous voulez aller plus vite, plus loin, sans perdre en maîtrise ni en qualité.
             </p>
-            <p class="text-h5 font-weight-bold" style="opacity: 0.95;">
+            <p class="text-h5 font-weight-bold" style="opacity: 0.95">
               Vous avez un projet ? Nous avons la structure pour le concrétiser.
             </p>
           </div>

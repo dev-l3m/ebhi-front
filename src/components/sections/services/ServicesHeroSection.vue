@@ -14,19 +14,22 @@
             Nos Services
           </v-chip>
           <h1 class="services-hero-title mb-6">
-            L'externalisation autrement :<br>
+            L'externalisation autrement :<br />
             <span class="gradient-text-white">rigueur, performance et maîtrise</span>
           </h1>
           <p class="services-hero-subtitle mb-8">
-            Chez EBHI, nous ne proposons pas une externalisation standardisée. Nous construisons avec vous 
-            une organisation sur mesure, optimisée et pilotée à distance, pour alléger votre charge opérationnelle, 
-            améliorer vos performances et vous faire gagner du temps sans compromis sur la qualité.
+            Chez EBHI, nous ne proposons pas une externalisation standardisée. Nous construisons
+            avec vous une organisation sur mesure, optimisée et pilotée à distance, pour alléger
+            votre charge opérationnelle, améliorer vos performances et vous faire gagner du temps
+            sans compromis sur la qualité.
           </p>
           <div class="services-hero-highlight">
             <v-icon color="white" size="32" class="highlight-icon">mdi-star-circle</v-icon>
             <div class="highlight-content">
               <span class="highlight-label">Notre force</span>
-              <span class="highlight-text"> : un accompagnement structuré, humain et stratégique, de A à Z.</span>
+              <span class="highlight-text">
+                : un accompagnement structuré, humain et stratégique, de A à Z.</span
+              >
             </div>
           </div>
         </v-col>
@@ -35,8 +38,7 @@
   </section>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .services-hero {
@@ -162,25 +164,25 @@
     width: 100%;
     max-width: 100%;
   }
-  
+
   .highlight-icon {
     margin-right: 0;
     margin-bottom: 12px;
     font-size: 28px !important;
   }
-  
+
   .highlight-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 100%;
   }
-  
+
   .highlight-label {
     font-size: 1.125rem !important;
     margin-bottom: 4px;
   }
-  
+
   .highlight-text {
     font-size: 1rem !important;
     line-height: 1.6;
@@ -192,16 +194,16 @@
     padding: 14px 16px;
     border-radius: 12px;
   }
-  
+
   .highlight-icon {
     font-size: 24px !important;
     margin-bottom: 10px;
   }
-  
+
   .highlight-label {
     font-size: 1rem !important;
   }
-  
+
   .highlight-text {
     font-size: 0.9375rem !important;
     line-height: 1.5;

@@ -21,7 +21,7 @@ export function useDomains() {
     }
   }
 
-  const createDomain = async (domainData) => {
+  const createDomain = async domainData => {
     saving.value = true
     try {
       const response = await api.createDomain(domainData)
@@ -49,7 +49,7 @@ export function useDomains() {
     }
   }
 
-  const deleteDomain = async (id) => {
+  const deleteDomain = async id => {
     deleting.value = true
     try {
       const response = await api.deleteDomain(id)

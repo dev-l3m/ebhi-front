@@ -21,7 +21,7 @@ export function useJobCategories() {
     }
   }
 
-  const createCategory = async (categoryData) => {
+  const createCategory = async categoryData => {
     saving.value = true
     try {
       const response = await api.createJobCategory(categoryData)
@@ -49,7 +49,7 @@ export function useJobCategories() {
     }
   }
 
-  const deleteCategory = async (id) => {
+  const deleteCategory = async id => {
     deleting.value = true
     try {
       const response = await api.deleteJobCategory(id)

@@ -6,12 +6,12 @@
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-briefcase-search</v-icon>
           <h2 class="join-us-cta-title mb-6">
-            Prêt à nous<br>
+            Prêt à nous<br />
             <span class="gradient-text-white">rejoindre ?</span>
           </h2>
           <p class="join-us-cta-subtitle mb-8">
-            Découvrez nos offres d'emploi et postulez pour rejoindre une équipe dynamique 
-            qui accompagne la croissance des entreprises ambitieuses.
+            Découvrez nos offres d'emploi et postulez pour rejoindre une équipe dynamique qui
+            accompagne la croissance des entreprises ambitieuses.
           </p>
           <v-btn
             color="white"
@@ -32,8 +32,7 @@
   </section>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped>
 .join-us-cta-section {

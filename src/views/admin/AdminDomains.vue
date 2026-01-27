@@ -31,21 +31,50 @@
     <!-- Create/Edit Dialog -->
     <v-dialog v-model="dialog" max-width="600" persistent>
       <v-card rounded="xl">
-        <v-card-title class="pa-6">{{ editing ? 'Modifier le domaine' : 'Nouveau domaine' }}</v-card-title>
+        <v-card-title class="pa-6">{{
+          editing ? 'Modifier le domaine' : 'Nouveau domaine'
+        }}</v-card-title>
         <v-divider></v-divider>
         <v-card-text class="pa-6">
           <v-form ref="form" v-model="valid">
-            <v-text-field v-model="formData.name" label="Nom *" variant="outlined" class="mb-4"></v-text-field>
-            <v-text-field v-model="formData.icon" label="Icône (MDI) *" variant="outlined" class="mb-4"></v-text-field>
-            <v-select v-model="formData.color" label="Couleur *" :items="colorOptions" variant="outlined" class="mb-4"></v-select>
-            <v-text-field v-model.number="formData.order" label="Ordre" type="number" variant="outlined"></v-text-field>
+            <v-text-field
+              v-model="formData.name"
+              label="Nom *"
+              variant="outlined"
+              class="mb-4"
+            ></v-text-field>
+            <v-text-field
+              v-model="formData.icon"
+              label="Icône (MDI) *"
+              variant="outlined"
+              class="mb-4"
+            ></v-text-field>
+            <v-select
+              v-model="formData.color"
+              label="Couleur *"
+              :items="colorOptions"
+              variant="outlined"
+              class="mb-4"
+            ></v-select>
+            <v-text-field
+              v-model.number="formData.order"
+              label="Ordre"
+              type="number"
+              variant="outlined"
+            ></v-text-field>
           </v-form>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions class="pa-6">
           <v-spacer></v-spacer>
           <v-btn variant="text" @click="dialog = false" rounded="lg">Annuler</v-btn>
-          <v-btn color="primary" @click="saveDomain" :loading="saving" :disabled="!valid" rounded="lg">
+          <v-btn
+            color="primary"
+            @click="saveDomain"
+            :loading="saving"
+            :disabled="!valid"
+            rounded="lg"
+          >
             {{ editing ? 'Modifier' : 'Créer' }}
           </v-btn>
         </v-card-actions>
@@ -106,7 +135,7 @@ const openCreateDialog = () => {
   dialog.value = true
 }
 
-const openEditDialog = (item) => {
+const openEditDialog = item => {
   editing.value = true
   formData.value = { ...item }
   dialog.value = true
@@ -129,7 +158,7 @@ const saveDomain = async () => {
   }
 }
 
-const confirmDelete = async (item) => {
+const confirmDelete = async item => {
   if (confirm(`Supprimer le domaine "${item.name}" ?`)) {
     try {
       await api.deleteDomain(item.id)

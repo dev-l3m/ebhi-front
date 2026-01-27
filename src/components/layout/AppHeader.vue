@@ -14,14 +14,14 @@
             src="/assets/logo.png"
             alt="EBHI Logo"
             class="logo-header logo-desktop d-none d-md-block"
-            style="height: 50px; max-width: 150px; object-fit: contain;"
+            style="height: 50px; max-width: 150px; object-fit: contain"
           />
           <!-- Logo Mobile -->
           <img
             src="/assets/logo-mobile.png"
             alt="EBHI Logo"
             class="logo-header logo-mobile d-block d-md-none"
-            style="height: 40px; max-width: 40px; object-fit: contain;"
+            style="height: 40px; max-width: 40px; object-fit: contain"
           />
         </router-link>
       </v-app-bar-title>
@@ -41,17 +41,9 @@
       </v-btn>
 
       <!-- Menu déroulant Ressources - Desktop uniquement -->
-      <v-menu
-        location="bottom"
-        class="d-none d-md-block"
-      >
+      <v-menu location="bottom" class="d-none d-md-block">
         <template v-slot:activator="{ props }">
-          <v-btn
-            text
-            class="mx-2 d-none d-md-flex"
-            color="primary"
-            v-bind="props"
-          >
+          <v-btn text class="mx-2 d-none d-md-flex" color="primary" v-bind="props">
             Ressources
             <v-icon end>mdi-chevron-down</v-icon>
           </v-btn>
@@ -97,13 +89,7 @@
     class="mobile-drawer"
   >
     <div class="drawer-header">
-      <v-btn
-        icon
-        variant="text"
-        size="small"
-        class="drawer-close-btn"
-        @click="drawer = false"
-      >
+      <v-btn icon variant="text" size="small" class="drawer-close-btn" @click="drawer = false">
         <v-icon>mdi-close</v-icon>
       </v-btn>
     </div>
@@ -123,14 +109,11 @@
         </template>
         <v-list-item-title class="menu-item-title">{{ item.title }}</v-list-item-title>
       </v-list-item>
-      
+
       <!-- Ressources avec sous-menu dans le drawer -->
       <v-list-group v-model="resourcesExpanded" class="drawer-menu-group">
         <template v-slot:activator="{ props }">
-          <v-list-item 
-            v-bind="props" 
-            class="drawer-menu-item"
-          >
+          <v-list-item v-bind="props" class="drawer-menu-item">
             <template v-slot:prepend>
               <v-icon class="menu-item-icon">mdi-folder-multiple</v-icon>
             </template>
@@ -183,13 +166,13 @@ const simpleMenuItems = [
 
 const resourcesItems = [
   { title: 'POURQUOI EXTERNALISER ?', to: '/pourquoi-externaliser' },
-  { title: 'À PROPOS D\'EBHI', to: '/a-propos' },
+  { title: "À PROPOS D'EBHI", to: '/a-propos' },
   { title: 'NOUS REJOINDRE', to: '/nous-rejoindre' },
   { title: 'NOS IMPLANTATIONS STRATÉGIQUES', to: '/nos-implantations-strategiques' },
   { title: 'BLOG', to: '/blog' }
 ]
 
-const handleResourceClick = (resource) => {
+const handleResourceClick = resource => {
   if (resource.to.startsWith('#')) {
     scrollToSection(resource.to.substring(1))
   }
@@ -201,7 +184,7 @@ const handleScroll = () => {
   scrolled.value = window.scrollY > 50
 }
 
-const scrollToSection = (id) => {
+const scrollToSection = id => {
   const element = document.getElementById(id)
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
@@ -213,23 +196,23 @@ const scrollToContact = () => {
   scrollToSection('contact')
 }
 
-const toggleDrawer = (event) => {
+const toggleDrawer = event => {
   if (event) {
     event.stopPropagation()
     event.preventDefault()
   }
-  
+
   // Éviter les doubles appels
   if (isToggling) {
     return
   }
-  
+
   isToggling = true
   const newValue = !drawer.value
   drawer.value = newValue
-  
+
   console.log('Toggle drawer - new value:', newValue)
-  
+
   // Réinitialiser le flag après un court délai
   setTimeout(() => {
     isToggling = false
@@ -449,47 +432,47 @@ onUnmounted(() => {
     justify-content: center !important;
     flex-shrink: 0 !important;
   }
-  
+
   .burger-menu-btn .v-icon {
     font-size: 24px !important;
     pointer-events: none !important;
   }
-  
+
   /* S'assurer que le v-btn n'est pas désactivé */
   .burger-menu-btn.v-btn {
     pointer-events: auto !important;
   }
-  
+
   .burger-menu-btn.v-btn--disabled {
     pointer-events: none !important;
   }
-  
+
   /* S'assurer que le menu Ressources est complètement caché sur mobile */
   .v-menu {
     display: none !important;
   }
-  
+
   /* Cacher tous les éléments du menu desktop sur mobile */
   .v-app-bar .v-btn.d-none.d-md-flex,
   .v-app-bar .v-menu {
     display: none !important;
   }
-  
+
   /* S'assurer qu'aucun élément ne bloque le burger menu */
   .v-app-bar .v-container {
     position: relative;
     overflow: visible !important;
   }
-  
+
   .v-app-bar .v-spacer {
     pointer-events: none !important;
   }
-  
+
   /* S'assurer que l'app-bar-title ne bloque pas */
   .v-app-bar-title {
     pointer-events: auto !important;
   }
-  
+
   .drawer-submenu-item {
     margin-left: 24px !important;
     margin-right: 12px !important;
@@ -497,7 +480,7 @@ onUnmounted(() => {
     padding-right: 12px !important;
     min-height: auto !important;
   }
-  
+
   .submenu-item-title {
     font-size: 0.875rem !important;
     line-height: 1.4;
@@ -514,7 +497,7 @@ onUnmounted(() => {
     margin-top: 4px !important;
     margin-bottom: 4px !important;
   }
-  
+
   .submenu-item-title {
     font-size: 0.8125rem !important;
     line-height: 1.4;
@@ -522,39 +505,39 @@ onUnmounted(() => {
     word-break: break-word;
     hyphens: auto;
   }
-  
+
   .drawer-menu-item {
     min-height: 48px !important;
     margin: 4px 12px !important;
     padding-left: 12px !important;
     padding-right: 12px !important;
   }
-  
+
   .menu-item-title {
     font-size: 0.9375rem !important;
   }
-  
+
   .menu-item-icon {
     margin-right: 12px !important;
     font-size: 20px !important;
   }
-  
+
   .drawer-menu-group {
     margin: 4px 12px !important;
   }
-  
+
   .drawer-menu-group .v-list-item {
     padding-left: 12px !important;
     padding-right: 12px !important;
     min-height: 48px !important;
   }
-  
+
   .drawer-cta-btn {
     font-size: 0.875rem !important;
     padding: 14px 20px !important;
     min-height: 44px !important;
   }
-  
+
   .drawer-cta-btn .v-icon {
     font-size: 20px !important;
   }

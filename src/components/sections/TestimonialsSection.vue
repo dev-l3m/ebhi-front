@@ -2,17 +2,12 @@
   <section class="testimonials-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-format-quote-open</v-icon>
           Témoignages
         </v-chip>
         <h2 class="section-title mb-6">
-          Ils nous font confiance,<br>
+          Ils nous font confiance,<br />
           <span class="gradient-text">et ils en parlent !</span>
         </h2>
         <p class="section-subtitle mx-auto">
@@ -28,37 +23,28 @@
           md="4"
           class="testimonial-col"
         >
-          <v-card
-            :elevation="8"
-            class="testimonial-card h-100"
-          >
+          <v-card :elevation="8" class="testimonial-card h-100">
             <div class="testimonial-quote-icon">
               <v-icon color="primary" size="48" opacity="0.1">mdi-format-quote-open</v-icon>
             </div>
             <v-card-item class="pa-6">
               <div class="testimonial-rating mb-4">
-                <v-icon
-                  v-for="i in 5"
-                  :key="i"
-                  color="warning"
-                  size="20"
-                >
-                  mdi-star
-                </v-icon>
+                <v-icon v-for="i in 5" :key="i" color="warning" size="20"> mdi-star </v-icon>
               </div>
               <v-card-text class="pa-0 mb-6">
-                <p class="text-body-1 testimonial-text" style="line-height: 1.8; font-style: italic;">
+                <p
+                  class="text-body-1 testimonial-text"
+                  style="line-height: 1.8; font-style: italic"
+                >
                   "{{ testimonial.text }}"
                 </p>
               </v-card-text>
               <v-divider class="mb-4"></v-divider>
               <div class="d-flex align-center">
-                <v-avatar
-                  :color="testimonial.color"
-                  size="56"
-                  class="mr-4"
-                >
-                  <span class="text-h6 text-white font-weight-bold">{{ testimonial.initials }}</span>
+                <v-avatar :color="testimonial.color" size="56" class="mr-4">
+                  <span class="text-h6 text-white font-weight-bold">{{
+                    testimonial.initials
+                  }}</span>
                 </v-avatar>
                 <div>
                   <div class="text-h6 font-weight-bold mb-1">{{ testimonial.name }}</div>
@@ -78,14 +64,14 @@ const testimonials = [
   {
     name: 'Sabrina B.',
     role: 'CEO, RSE Conseil',
-    text: 'Grâce à EBHI, nous bénéficions aujourd\'hui d\'un support web fiable et réactif. Leur équipe a parfaitement compris nos besoins et mis en place des solutions efficaces qui facilitent notre travail au quotidien.',
+    text: "Grâce à EBHI, nous bénéficions aujourd'hui d'un support web fiable et réactif. Leur équipe a parfaitement compris nos besoins et mis en place des solutions efficaces qui facilitent notre travail au quotidien.",
     initials: 'SB',
     color: 'primary'
   },
   {
     name: 'Ronan L.',
     role: 'CEO, La Bonne Allure',
-    text: 'Le processus de recrutement et de mise en place des ressources a été très fluide grâce à EBHI. Nous sommes extrêmement satisfaits de leurs services, tant sur la qualité que la rapidité d\'exécution.',
+    text: "Le processus de recrutement et de mise en place des ressources a été très fluide grâce à EBHI. Nous sommes extrêmement satisfaits de leurs services, tant sur la qualité que la rapidité d'exécution.",
     initials: 'RL',
     color: 'secondary'
   },

@@ -94,9 +94,7 @@
     <!-- View Dialog -->
     <v-dialog v-model="viewDialog" max-width="700" scrollable>
       <v-card rounded="xl" v-if="selectedContact">
-        <v-card-title class="pa-6">
-          Contact de {{ selectedContact.name }}
-        </v-card-title>
+        <v-card-title class="pa-6"> Contact de {{ selectedContact.name }} </v-card-title>
         <v-divider></v-divider>
         <v-card-text class="pa-6">
           <v-row>
@@ -179,7 +177,7 @@ const statusOptions = [
   { title: 'Archivé', value: 'archived' }
 ]
 
-const getStatusColor = (status) => {
+const getStatusColor = status => {
   const colors = {
     new: 'primary',
     read: 'info',
@@ -189,7 +187,7 @@ const getStatusColor = (status) => {
   return colors[status] || 'grey'
 }
 
-const getStatusLabel = (status) => {
+const getStatusLabel = status => {
   const option = statusOptions.find(s => s.value === status)
   return option?.title || status
 }
@@ -218,12 +216,12 @@ const loadContacts = async () => {
   }
 }
 
-const handlePageChange = (page) => {
+const handlePageChange = page => {
   pagination.value.page = page
   loadContacts()
 }
 
-const viewContact = async (item) => {
+const viewContact = async item => {
   try {
     selectedContact.value = await api.getContact(item.id)
     viewDialog.value = true
@@ -241,7 +239,7 @@ const updateStatus = async (id, status) => {
   }
 }
 
-const confirmDelete = async (item) => {
+const confirmDelete = async item => {
   if (confirm(`Supprimer le contact de ${item.name} ?`)) {
     try {
       await api.deleteContact(item.id)

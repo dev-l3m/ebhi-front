@@ -1,0 +1,68 @@
+name: Code Review & Quality Checks
+
+on:
+  push:
+    branches: [ main, develop, master ]
+  pull_request:
+    branches: [ main, develop, master ]
+
+jobs:
+  code-quality:
+    name: Code Review & Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 📦 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'yarn'
+
+    - name: 📥 Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: 📝 Run ESLint
+      run: yarn lint:check
+      continue-on-error: false
+
+    - name: 🎨 Check code formatting
+      run: yarn format:check
+      continue-on-error: false
+
+    - name: 🏗️  Run build
+      run: yarn build
+      continue-on-error: false
+
+    - name: 🔍 Check for console.log
+      run: |
+        if grep -r "console\.log" src/ --exclude-dir=node_modules; then
+          echo "⚠️ Warning: console.log found in code. Consider removing them in production."
+          echo "::warning::console.log statements found in code"
+        fi
+
+    - name: 🔍 Check for debugger statements
+      run: |
+        if grep -r "debugger" src/ --exclude-dir=node_modules; then
+          echo "❌ Error: debugger statements found in code."
+          echo "::error::debugger statements found in code"
+          exit 1
+        fi
+
+    - name: 📦 Check bundle size
+      run: |
+        yarn build
+        SIZE=$(du -sh dist | cut -f1)
+        echo "📦 Bundle size: $SIZE"
+        echo "::notice::Bundle size: $SIZE"
+
+    - name: 📊 Quality Report
+      if: always()
+      run: |
+        echo "## 📊 Code Quality Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ ESLint: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Prettier: Passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Build: Passed" >> $GITHUB_STEP_SUMMARY

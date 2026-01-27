@@ -3,18 +3,14 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Quelle solution<br>
+          Quelle solution<br />
           <span class="gradient-text">privilégier ?</span>
         </h2>
       </div>
 
       <v-row>
         <v-col cols="12" md="6" class="solution-col">
-          <v-card
-            :elevation="8"
-            class="solution-card solution-card-internal h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="solution-card solution-card-internal h-100" rounded="xl">
             <v-card-item class="pa-8 text-center">
               <v-icon color="grey-darken-1" size="64" class="mb-4">mdi-office-building</v-icon>
               <v-card-title class="text-h4 mb-6 pa-0">Gestion interne</v-card-title>
@@ -39,11 +35,7 @@
         </v-col>
 
         <v-col cols="12" md="6" class="solution-col">
-          <v-card
-            :elevation="12"
-            class="solution-card solution-card-external h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="12" class="solution-card solution-card-external h-100" rounded="xl">
             <v-card-item class="pa-8 text-center">
               <div class="solution-badge mb-4">
                 <v-chip color="success" variant="flat" size="large">
@@ -88,7 +80,7 @@ const internalFeatures = [
 
 const externalFeatures = [
   { label: 'Coût', value: 'Réduit et maîtrisé' },
-  { label: 'Délais de mise en œuvre', value: 'Rapide et prêt à l\'emploi' },
+  { label: 'Délais de mise en œuvre', value: "Rapide et prêt à l'emploi" },
   { label: 'Compétences disponibles', value: 'Spécialisées et expérimentées' },
   { label: 'Charge de gestion', value: 'Allégée grâce à notre accompagnement' },
   { label: 'Évolutivité', value: 'Flexibilité totale des ressources' }

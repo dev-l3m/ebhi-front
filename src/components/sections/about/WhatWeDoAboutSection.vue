@@ -3,7 +3,7 @@
     <v-container>
       <div class="section-header text-center mb-16">
         <h2 class="section-title mb-6">
-          Ce que nous<br>
+          Ce que nous<br />
           <span class="gradient-text">faisons</span>
         </h2>
       </div>
@@ -17,21 +17,16 @@
           lg="4"
           class="service-col"
         >
-          <v-card
-            :elevation="8"
-            class="service-card h-100"
-            rounded="xl"
-          >
+          <v-card :elevation="8" class="service-card h-100" rounded="xl">
             <v-card-item class="pa-6">
               <div class="d-flex align-start mb-4">
-                <v-icon
-                  :color="service.color"
-                  size="48"
-                  class="mr-4 flex-shrink-0"
-                >
+                <v-icon :color="service.color" size="48" class="mr-4 flex-shrink-0">
                   {{ service.icon }}
                 </v-icon>
-                <v-card-title class="text-h5 pa-0 service-title" style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+                <v-card-title
+                  class="text-h5 pa-0 service-title"
+                  style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word"
+                >
                   {{ service.title }}
                 </v-card-title>
               </div>
@@ -61,7 +56,7 @@ const services = [
     title: 'Recrutement & mise en place de talents exclusifs',
     items: [
       'Sélection de profils multilingues, qualifiés, formés et immédiatement disponibles.',
-      'Encadrement d\'équipes dédiées en SAV, relation client, back-office, commerce, achats, qualité et production.'
+      "Encadrement d'équipes dédiées en SAV, relation client, back-office, commerce, achats, qualité et production."
     ],
     color: 'primary',
     icon: 'mdi-account-group'
@@ -79,9 +74,9 @@ const services = [
   {
     title: 'Solutions techniques externalisées',
     items: [
-      'Création de bureaux d\'études externalisés.',
-      'Mise à disposition d\'équipes techniques spécialisées',
-      'Possibilité d\'interventions sur site en France.'
+      "Création de bureaux d'études externalisés.",
+      "Mise à disposition d'équipes techniques spécialisées",
+      "Possibilité d'interventions sur site en France."
     ],
     color: 'success',
     icon: 'mdi-cog'
@@ -90,7 +85,7 @@ const services = [
     title: 'Organisation & infrastructure',
     items: [
       'Accès à des espaces de travail équipés dans nos hubs.',
-      'Services de conciergerie d\'entreprise, logistique et coordination technique.',
+      "Services de conciergerie d'entreprise, logistique et coordination technique.",
       'Suivi de projet multi-zone avec interface dédiée.'
     ],
     color: 'info',

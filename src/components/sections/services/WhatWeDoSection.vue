@@ -2,26 +2,17 @@
   <section class="what-we-do-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <v-chip
-          color="primary"
-          variant="flat"
-          size="large"
-          class="mb-6"
-        >
+        <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-handshake</v-icon>
           Ce que nous faisons
         </v-chip>
         <h2 class="section-title mb-6">
-          Ce que nous faisons<br>
+          Ce que nous faisons<br />
           <span class="gradient-text">pour vous</span>
         </h2>
       </div>
 
-      <v-card
-        :elevation="12"
-        class="project-card"
-        rounded="xl"
-      >
+      <v-card :elevation="12" class="project-card" rounded="xl">
         <v-row no-gutters>
           <v-col cols="12" md="5" class="project-card-image">
             <div class="project-card-bg">
@@ -31,13 +22,28 @@
           <v-col cols="12" md="7" class="project-content-col">
             <v-card-item class="pa-6 pa-md-8 project-card-content">
               <div class="d-flex align-start mb-4 flex-wrap project-header-wrapper">
-                <v-icon color="primary" size="48" class="mr-4 mb-2 project-icon" style="flex-shrink: 0;">mdi-folder-star</v-icon>
-                <v-card-title class="project-title pa-0 flex-grow-1">Gestion de projet clé en main</v-card-title>
+                <v-icon
+                  color="primary"
+                  size="48"
+                  class="mr-4 mb-2 project-icon"
+                  style="flex-shrink: 0"
+                  >mdi-folder-star</v-icon
+                >
+                <v-card-title class="project-title pa-0 flex-grow-1"
+                  >Gestion de projet clé en main</v-card-title
+                >
               </div>
               <v-card-text class="pa-0 text-body-1 project-description">
-                De la définition du besoin à l'exécution, EBHI prend en charge l'ensemble du projet.<span class="mobile-break"><br></span>
-                Nous coordonnons les aspects humains, techniques, administratifs et juridiques pour vous<span class="mobile-break"><br></span>
-                livrer une solution <strong>100 % opérationnelle</strong>, sans friction.<span class="mobile-break"><br></span>
+                De la définition du besoin à l'exécution, EBHI prend en charge l'ensemble du
+                projet.<span class="mobile-break"><br /></span> Nous coordonnons les aspects
+                humains, techniques, administratifs et juridiques pour vous<span
+                  class="mobile-break"
+                  ><br
+                /></span>
+                livrer une solution <strong>100 % opérationnelle</strong>, sans friction.<span
+                  class="mobile-break"
+                  ><br
+                /></span>
                 <strong>Vous gagnez du temps, nous prenons le relais.</strong>
               </v-card-text>
               <v-card-actions class="pa-0 mt-6">
@@ -170,27 +176,27 @@ const scrollToContact = () => {
   .project-card-image {
     min-height: 200px;
   }
-  
+
   .project-title {
     font-size: 1.25rem !important;
     line-height: 1.4 !important;
   }
-  
+
   .project-header-wrapper {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .project-icon {
     margin-right: 0 !important;
     margin-bottom: 12px !important;
   }
-  
+
   .project-description {
     font-size: 0.9375rem !important;
     line-height: 1.6 !important;
   }
-  
+
   .v-card-item,
   .project-card-content {
     padding: 20px 16px !important;
@@ -199,11 +205,11 @@ const scrollToContact = () => {
     box-sizing: border-box !important;
     overflow: hidden !important;
   }
-  
+
   .project-content-col {
     overflow: hidden !important;
   }
-  
+
   .project-btn {
     width: 100%;
     font-size: 0.8125rem !important;
@@ -211,7 +217,7 @@ const scrollToContact = () => {
     padding: 14px 20px !important;
     min-height: 44px !important;
   }
-  
+
   .project-btn .v-icon {
     font-size: 18px !important;
   }
@@ -221,26 +227,26 @@ const scrollToContact = () => {
   .project-title {
     font-size: 1.125rem !important;
   }
-  
+
   .project-description {
     font-size: 0.875rem !important;
     line-height: 1.7 !important;
   }
-  
+
   .project-icon {
     font-size: 40px !important;
   }
-  
+
   .project-btn {
     font-size: 0.75rem !important;
     padding: 12px 16px !important;
     min-height: 40px !important;
   }
-  
+
   .project-btn .v-icon {
     font-size: 16px !important;
   }
-  
+
   .mobile-break {
     display: inline;
   }
