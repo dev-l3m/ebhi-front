@@ -6,12 +6,12 @@
           Un ancrage local,<br>
           <span class="gradient-text">une vision globale</span>
         </h2>
-        <p class="text-h6 text-grey-darken-1 mx-auto" style="max-width: 800px; line-height: 1.8;">
+        <p class="section-description text-grey-darken-1 mx-auto">
           Nos implantations à Casablanca, Marrakech, Dakar, Antananarivo, Paris et Cergy sont pensées 
           comme des <strong>hubs opérationnels</strong>, permettant de répondre aux enjeux de proximité, 
           de disponibilité et d'agilité.
         </p>
-        <p class="text-h6 font-weight-bold text-primary mt-6" style="max-width: 800px; margin: 0 auto;">
+        <p class="section-highlight font-weight-bold text-primary mt-6">
           Nous ne vous apportons pas seulement une main d'œuvre externalisée, mais 
           <strong>un véritable prolongement structuré de votre organisation.</strong>
         </p>
@@ -42,7 +42,7 @@
               <v-card-title class="text-body-1 font-weight-bold pa-0 location-title">
                 {{ location.name }}
               </v-card-title>
-              <v-card-text class="text-caption text-grey-darken-1 pa-0 mt-2">
+              <v-card-text class="location-country text-grey-darken-1 pa-0 mt-2">
                 {{ location.country }}
               </v-card-text>
             </v-card-item>
@@ -108,9 +108,117 @@ const locations = [
   line-height: 1.4;
 }
 
+.section-description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  max-width: 800px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.section-highlight {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6;
+}
+
+.location-country {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 @media (max-width: 960px) {
+  .section-header {
+    margin-bottom: 48px;
+  }
+  
+  .section-description {
+    font-size: 1.125rem !important;
+    line-height: 1.7;
+  }
+  
+  .section-highlight {
+    font-size: 1.125rem !important;
+    line-height: 1.6;
+    margin-top: 24px !important;
+  }
+  
   .location-card {
     margin-bottom: 16px;
+  }
+  
+  .location-card .v-card-item {
+    padding: 20px !important;
+  }
+  
+  .location-card .v-icon {
+    font-size: 40px !important;
+  }
+  
+  .location-title {
+    font-size: 0.9375rem !important;
+    line-height: 1.3;
+  }
+  
+  .location-country {
+    font-size: 0.6875rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-header {
+    margin-bottom: 32px;
+  }
+  
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 20px;
+  }
+  
+  .section-description {
+    font-size: 0.9375rem !important;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  
+  .section-highlight {
+    font-size: 0.9375rem !important;
+    line-height: 1.5;
+    margin-top: 20px !important;
+  }
+  
+  .location-col {
+    margin-bottom: 12px;
+  }
+  
+  .location-card {
+    margin-bottom: 12px;
+  }
+  
+  .location-card .v-card-item {
+    padding: 16px 12px !important;
+  }
+  
+  .location-card .v-icon {
+    font-size: 36px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .location-title {
+    font-size: 0.875rem !important;
+    line-height: 1.3;
+    min-height: auto !important;
+  }
+  
+  .location-country {
+    font-size: 0.625rem !important;
+    line-height: 1.3;
+    margin-top: 4px !important;
   }
 }
 </style>

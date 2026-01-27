@@ -32,7 +32,7 @@
                   <v-icon :color="domain.color" size="40">{{ domain.icon }}</v-icon>
                 </div>
               </div>
-              <v-card-title class="text-body-1 font-weight-bold pa-0">
+              <v-card-title class="domain-title text-body-1 font-weight-bold pa-0">
                 {{ domain.name }}
               </v-card-title>
             </v-card-item>
@@ -134,9 +134,71 @@ const getDomainGradient = (color) => {
   transform: scale(1.1) rotate(5deg);
 }
 
+.domain-title {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.4;
+  hyphens: auto;
+}
+
+.domain-card {
+  overflow: hidden;
+}
+
+.domain-card .v-card-item {
+  overflow: hidden;
+}
+
 @media (max-width: 960px) {
   .domain-card {
     margin-bottom: 16px;
+  }
+  
+  .domain-title {
+    font-size: 0.9375rem !important;
+    line-height: 1.3 !important;
+    min-height: auto !important;
+    padding: 0 !important;
+  }
+  
+  .domain-icon-bg {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .domain-icon-bg .v-icon {
+    font-size: 32px !important;
+  }
+  
+  .domain-card .v-card-item {
+    padding: 16px 12px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .domain-title {
+    font-size: 0.875rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .domain-icon-bg {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+  }
+  
+  .domain-icon-bg .v-icon {
+    font-size: 28px !important;
+  }
+  
+  .domain-card .v-card-item {
+    padding: 14px 8px !important;
+  }
+  
+  .domain-icon-wrapper {
+    margin-bottom: 12px !important;
   }
 }
 </style>

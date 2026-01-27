@@ -5,22 +5,24 @@
     class="cookie-consent"
     rounded="xl"
   >
-    <v-card-item class="pa-6">
-      <div class="d-flex align-start mb-4">
-        <div class="cookie-icon-wrapper mr-4">
-          <v-icon color="primary" size="32">mdi-cookie</v-icon>
-        </div>
-        <div class="flex-grow-1">
-          <v-card-title class="text-h6 mb-2 pa-0">
-            Gérer le consentement
-          </v-card-title>
-          <v-card-text class="text-body-2 text-grey-darken-1 pa-0" style="line-height: 1.6;">
-            Pour offrir les meilleures expériences, nous utilisons des technologies telles que les cookies 
-            pour stocker et/ou accéder aux informations des appareils. Le fait de consentir à ces technologies 
-            nous permettra de traiter des données telles que le comportement de navigation ou les ID uniques 
-            sur ce site. Le fait de ne pas consentir ou de retirer son consentement peut avoir un effet 
-            négatif sur certaines caractéristiques et fonctions.
-          </v-card-text>
+    <v-card-item class="cookie-consent-content">
+      <div class="cookie-header">
+        <div class="cookie-header-main">
+          <div class="cookie-icon-wrapper">
+            <v-icon color="primary" size="32" class="cookie-icon">mdi-cookie</v-icon>
+          </div>
+          <div class="cookie-text-content">
+            <v-card-title class="cookie-title mb-2 pa-0">
+              Gérer le consentement
+            </v-card-title>
+            <v-card-text class="cookie-description text-grey-darken-1 pa-0">
+              Pour offrir les meilleures expériences, nous utilisons des technologies telles que les cookies 
+              pour stocker et/ou accéder aux informations des appareils. Le fait de consentir à ces technologies 
+              nous permettra de traiter des données telles que le comportement de navigation ou les ID uniques 
+              sur ce site. Le fait de ne pas consentir ou de retirer son consentement peut avoir un effet 
+              négatif sur certaines caractéristiques et fonctions.
+            </v-card-text>
+          </div>
         </div>
         <v-btn
           icon
@@ -43,12 +45,12 @@
               :key="index"
               class="cookie-category mb-4"
             >
-              <div class="d-flex align-center justify-space-between mb-2">
-                <div class="d-flex align-center">
-                  <v-icon :color="category.color" size="24" class="mr-3">{{ category.icon }}</v-icon>
-                  <div>
-                    <div class="text-body-1 font-weight-bold">{{ category.name }}</div>
-                    <div class="text-caption text-grey-darken-1">{{ category.status }}</div>
+              <div class="cookie-category-header">
+                <div class="cookie-category-info">
+                  <v-icon :color="category.color" size="24" class="category-icon">{{ category.icon }}</v-icon>
+                  <div class="category-text">
+                    <div class="category-name">{{ category.name }}</div>
+                    <div class="category-status">{{ category.status }}</div>
                   </div>
                 </div>
                 <v-switch
@@ -57,9 +59,10 @@
                   density="compact"
                   hide-details
                   :disabled="category.required"
+                  class="category-switch"
                 ></v-switch>
               </div>
-              <p class="text-caption text-grey-darken-1 ml-9" style="line-height: 1.5;">
+              <p class="category-description text-grey-darken-1">
                 {{ category.description }}
               </p>
             </div>
@@ -79,36 +82,36 @@
         </div>
       </v-expand-transition>
 
-      <div class="d-flex flex-column flex-sm-row gap-2 mt-4">
+      <div class="cookie-actions">
         <v-btn
           color="primary"
           variant="elevated"
           rounded="lg"
           size="small"
-          class="cookie-btn"
+          class="cookie-btn cookie-btn-primary"
           @click="acceptAll"
         >
-          <v-icon start size="18">mdi-check-circle</v-icon>
-          Accepter
+          <v-icon start size="18" class="btn-icon">mdi-check-circle</v-icon>
+          <span class="btn-text">Accepter</span>
         </v-btn>
         <v-btn
           variant="outlined"
           rounded="lg"
           size="small"
-          class="cookie-btn"
+          class="cookie-btn cookie-btn-secondary"
           @click="showDetails = !showDetails"
         >
-          <v-icon start size="18">mdi-cog</v-icon>
-          Voir les préférences
+          <v-icon start size="18" class="btn-icon">mdi-cog</v-icon>
+          <span class="btn-text">Voir les préférences</span>
         </v-btn>
         <v-btn
           variant="text"
           rounded="lg"
           size="small"
-          class="cookie-btn"
+          class="cookie-btn cookie-btn-text"
           @click="rejectAll"
         >
-          Refuser
+          <span class="btn-text">Refuser</span>
         </v-btn>
       </div>
     </v-card-item>
@@ -269,6 +272,155 @@ const saveConsent = () => {
   height: auto !important;
 }
 
+/* Header Styles */
+.cookie-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.cookie-header-main {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  gap: 16px;
+  min-width: 0;
+}
+
+.cookie-text-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.cookie-title {
+  font-weight: 700;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.cookie-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Category Styles */
+.cookie-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+.cookie-category-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 12px;
+}
+
+.category-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.category-status {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 2px;
+}
+
+.category-description {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin-left: 36px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.category-switch {
+  flex-shrink: 0;
+}
+
+/* Actions Styles */
+.cookie-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.cookie-btn {
+  width: 100%;
+  min-height: 44px !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.btn-icon {
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.btn-text {
+  white-space: normal;
+  line-height: 1.3;
+}
+
+@media (min-width: 600px) {
+  .cookie-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .cookie-btn {
+    width: auto;
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .cookie-btn-text {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 960px) {
+  .cookie-consent-content {
+    padding: 20px !important;
+  }
+  
+  .cookie-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .cookie-icon {
+    font-size: 28px !important;
+  }
+  
+  .cookie-title {
+    font-size: 1.125rem !important;
+  }
+  
+  .cookie-description {
+    font-size: 0.8125rem !important;
+  }
+}
+
 @media (max-width: 600px) {
   .cookie-consent {
     bottom: 0;
@@ -276,10 +428,98 @@ const saveConsent = () => {
     left: 0;
     max-width: 100%;
     border-radius: 24px 24px 0 0 !important;
+    margin: 0;
   }
 
+  .cookie-consent-content {
+    padding: 16px !important;
+  }
+  
+  .cookie-header {
+    margin-bottom: 12px;
+    gap: 8px;
+  }
+  
+  .cookie-header-main {
+    gap: 12px;
+  }
+  
+  .cookie-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+  
+  .cookie-icon {
+    font-size: 24px !important;
+  }
+  
+  .cookie-title {
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .cookie-description {
+    font-size: 0.75rem !important;
+    line-height: 1.5;
+  }
+  
+  .close-btn {
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+  
   .cookie-details {
     max-height: 300px;
+    margin-top: 12px !important;
+  }
+  
+  .cookie-category {
+    padding: 10px;
+    margin-bottom: 12px !important;
+  }
+  
+  .cookie-category-header {
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  
+  .cookie-category-info {
+    gap: 8px;
+  }
+  
+  .category-icon {
+    font-size: 20px !important;
+  }
+  
+  .category-name {
+    font-size: 0.875rem !important;
+  }
+  
+  .category-status {
+    font-size: 0.6875rem !important;
+  }
+  
+  .category-description {
+    font-size: 0.6875rem !important;
+    margin-left: 28px;
+    line-height: 1.4;
+  }
+  
+  .cookie-actions {
+    margin-top: 12px;
+    gap: 8px;
+  }
+  
+  .cookie-btn {
+    min-height: 44px !important;
+    font-size: 0.8125rem !important;
+    padding: 12px 16px !important;
+  }
+  
+  .btn-icon {
+    font-size: 16px !important;
+    margin-right: 6px !important;
   }
 }
 </style>

@@ -84,27 +84,29 @@
         persistent
       >
         <v-card rounded="xl" v-if="selectedArticle">
-          <v-card-title class="d-flex align-center justify-space-between pa-6 dialog-header">
-            <div class="d-flex align-center">
-              <v-chip
-                :color="selectedArticle.categoryColor"
-                variant="flat"
+          <v-card-title class="dialog-header">
+            <div class="dialog-header-content">
+              <div class="dialog-header-main">
+                <v-chip
+                  :color="selectedArticle.categoryColor"
+                  variant="flat"
+                  size="small"
+                  class="dialog-chip"
+                >
+                  {{ selectedArticle.category }}
+                </v-chip>
+                <span class="dialog-date">{{ selectedArticle.date }}</span>
+              </div>
+              <v-btn
+                icon
+                variant="text"
                 size="small"
-                class="mr-3"
+                @click="articleDialog = false"
+                class="close-btn"
               >
-                {{ selectedArticle.category }}
-              </v-chip>
-              <span class="text-h6">{{ selectedArticle.date }}</span>
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
             </div>
-            <v-btn
-              icon
-              variant="text"
-              size="small"
-              @click="articleDialog = false"
-              class="close-btn"
-            >
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
           </v-card-title>
 
           <v-divider></v-divider>
@@ -125,15 +127,15 @@
                 {{ selectedArticle.title }}
               </h1>
               
-              <div class="d-flex align-center mb-6">
-                <v-icon color="grey-darken-1" size="20" class="mr-2">mdi-calendar</v-icon>
-                <span class="text-body-1 text-grey-darken-1 mr-4">{{ selectedArticle.date }}</span>
-                <v-icon color="grey-darken-1" size="20" class="mr-2">mdi-comment-outline</v-icon>
-                <span class="text-body-1 text-grey-darken-1">{{ selectedArticle.comments }}</span>
+              <div class="dialog-meta-info d-flex align-center mb-6">
+                <v-icon color="grey-darken-1" size="20" class="dialog-meta-icon mr-2">mdi-calendar</v-icon>
+                <span class="dialog-meta-text text-grey-darken-1 mr-4">{{ selectedArticle.date }}</span>
+                <v-icon color="grey-darken-1" size="20" class="dialog-meta-icon mr-2">mdi-comment-outline</v-icon>
+                <span class="dialog-meta-text text-grey-darken-1">{{ selectedArticle.comments }}</span>
               </div>
 
               <div class="article-full-content">
-                <p class="text-h6 mb-6" style="line-height: 1.8; color: #424242;">
+                <p class="article-content-text mb-6">
                   {{ selectedArticle.fullContent }}
                 </p>
               </div>
@@ -270,10 +272,13 @@ const openArticleDialog = (article) => {
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
   font-size: clamp(1.125rem, 1.75vw, 1.5rem);
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box;
 }
 
 .article-excerpt {
@@ -299,16 +304,70 @@ const openArticleDialog = (article) => {
 /* Dialog Styles */
 .dialog-header {
   background: linear-gradient(135deg, rgba(26, 35, 126, 0.05) 0%, rgba(63, 81, 181, 0.05) 100%);
+  padding: 24px;
+  position: relative;
+}
+
+.dialog-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.dialog-header-main {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 12px;
+}
+
+.dialog-chip {
+  flex-shrink: 0;
+}
+
+.dialog-date {
+  font-size: 1.25rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .close-btn {
   transition: all 0.3s ease;
   color: rgba(0, 0, 0, 0.7) !important;
+  flex-shrink: 0;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .close-btn:hover {
   transform: rotate(90deg);
   background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.dialog-meta-info {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dialog-meta-icon {
+  flex-shrink: 0;
+}
+
+.dialog-meta-text {
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.article-content-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #424242;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .dialog-image {
@@ -343,12 +402,43 @@ const openArticleDialog = (article) => {
 }
 
 @media (max-width: 960px) {
+  .article-col {
+    margin-bottom: 24px;
+  }
+  
   .article-card {
     margin-bottom: 24px;
   }
   
+  .article-card .v-card-item {
+    padding: 20px !important;
+  }
+  
+  .article-image {
+    height: 200px !important;
+  }
+  
   .article-title {
-    min-height: auto;
+    min-height: auto !important;
+    font-size: 1.125rem !important;
+    line-height: 1.4;
+    margin-bottom: 12px !important;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+  
+  .article-excerpt {
+    font-size: 0.9375rem !important;
+    min-height: auto !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .article-read-more {
+    font-size: 0.9375rem !important;
+  }
+  
+  .article-read-more .v-icon {
+    font-size: 18px !important;
   }
 
   .blog-container {
@@ -360,7 +450,222 @@ const openArticleDialog = (article) => {
   }
 
   .dialog-title {
-    font-size: 1.75rem;
+    font-size: 1.75rem !important;
+  }
+  
+  .dialog-header {
+    padding: 20px !important;
+  }
+  
+  .dialog-header-content {
+    gap: 10px;
+  }
+  
+  .dialog-header-main {
+    gap: 10px;
+  }
+  
+  .dialog-date {
+    font-size: 1.125rem !important;
+  }
+  
+  .close-btn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+  
+  .dialog-meta-text {
+    font-size: 0.9375rem !important;
+  }
+  
+  .dialog-meta-icon {
+    font-size: 18px !important;
+  }
+  
+  .article-content-text {
+    font-size: 1.125rem !important;
+    line-height: 1.7;
+  }
+  
+  .dialog-image {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-col {
+    margin-bottom: 16px;
+  }
+  
+  .article-card {
+    margin-bottom: 16px;
+  }
+  
+  .article-card .v-card-item {
+    padding: 16px !important;
+  }
+  
+  .article-image {
+    height: 180px !important;
+  }
+  
+  .article-category {
+    top: 12px !important;
+    right: 12px !important;
+  }
+  
+  .article-category .v-chip {
+    font-size: 0.75rem !important;
+    padding: 4px 8px !important;
+  }
+  
+  .article-title {
+    font-size: 1rem !important;
+    line-height: 1.4;
+    margin-bottom: 10px !important;
+    min-height: auto !important;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .article-excerpt {
+    font-size: 0.875rem !important;
+    line-height: 1.6;
+    min-height: auto !important;
+    margin-bottom: 12px !important;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  
+  .article-read-more {
+    font-size: 0.875rem !important;
+    padding: 8px 12px !important;
+    min-height: 40px !important;
+  }
+  
+  .article-read-more .v-icon {
+    font-size: 16px !important;
+  }
+  
+  .v-pagination {
+    margin-top: 24px !important;
+  }
+  
+  .v-pagination :deep(.v-btn) {
+    min-width: 36px !important;
+    height: 36px !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .v-dialog {
+    margin: 8px !important;
+  }
+  
+  .v-dialog > .v-card {
+    max-width: calc(100vw - 16px) !important;
+    margin: 0 !important;
+  }
+  
+  .dialog-header {
+    padding: 16px 48px 16px 16px !important;
+    position: relative;
+  }
+  
+  .dialog-header-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .dialog-header-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .dialog-chip {
+    font-size: 0.75rem !important;
+    padding: 4px 8px !important;
+    height: auto !important;
+  }
+  
+  .dialog-date {
+    font-size: 0.875rem !important;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.3;
+  }
+  
+  .close-btn {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    z-index: 10;
+  }
+  
+  .close-btn .v-icon {
+    font-size: 20px !important;
+  }
+  
+  .dialog-image {
+    height: 200px !important;
+  }
+  
+  .dialog-content {
+    padding: 16px !important;
+  }
+  
+  .dialog-title {
+    font-size: 1.125rem !important;
+    margin-bottom: 12px !important;
+    line-height: 1.3;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  .dialog-meta-info {
+    margin-bottom: 16px !important;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .dialog-meta-icon {
+    font-size: 16px !important;
+    margin-right: 4px !important;
+  }
+  
+  .dialog-meta-text {
+    font-size: 0.8125rem !important;
+    margin-right: 12px !important;
+    white-space: normal;
+  }
+  
+  .article-content-text {
+    font-size: 0.9375rem !important;
+    line-height: 1.6;
+    margin-bottom: 16px !important;
+  }
+  
+  .v-card-actions {
+    padding: 14px 16px !important;
+  }
+  
+  .v-card-actions .v-btn {
+    font-size: 0.875rem !important;
+    min-height: 44px;
+    padding: 12px 20px !important;
+    width: 100%;
+  }
+  
+  .v-spacer {
+    display: none;
   }
 }
 </style>

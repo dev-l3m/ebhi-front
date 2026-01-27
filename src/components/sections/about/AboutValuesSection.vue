@@ -169,15 +169,96 @@ const values = [
 
 .value-title {
   font-weight: 700;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  line-height: 1.4;
 }
 
 .value-description {
   line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 @media (max-width: 960px) {
+  .section-header {
+    margin-bottom: 48px;
+  }
+  
   .value-card {
     margin-bottom: 24px;
+  }
+  
+  .value-card .v-card-item {
+    padding: 20px !important;
+  }
+  
+  .value-icon-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .value-icon-wrapper .v-icon {
+    font-size: 36px !important;
+  }
+  
+  .value-title {
+    font-size: 1.125rem !important;
+    line-height: 1.3;
+    margin-bottom: 8px !important;
+  }
+  
+  .value-description {
+    font-size: 0.9375rem !important;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-header {
+    margin-bottom: 32px;
+  }
+  
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 24px;
+  }
+  
+  .value-col {
+    margin-bottom: 16px;
+  }
+  
+  .value-card {
+    margin-bottom: 16px;
+  }
+  
+  .value-card .v-card-item {
+    padding: 16px !important;
+  }
+  
+  .value-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-right: 12px !important;
+  }
+  
+  .value-icon-wrapper .v-icon {
+    font-size: 32px !important;
+  }
+  
+  .value-title {
+    font-size: 1rem !important;
+    line-height: 1.3;
+    margin-bottom: 6px !important;
+    min-height: auto !important;
+  }
+  
+  .value-description {
+    font-size: 0.875rem !important;
+    line-height: 1.5;
   }
 }
 </style>

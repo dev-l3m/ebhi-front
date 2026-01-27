@@ -36,9 +36,9 @@
               :style="{ borderLeft: `4px solid var(--v-${step.color}-base)` }"
             >
               <v-card-item class="pa-6">
-                <div class="d-flex align-center mb-3">
-                  <v-icon :color="step.color" size="32" class="mr-3">{{ step.icon }}</v-icon>
-                  <v-card-title class="text-h5 pa-0">{{ step.title }}</v-card-title>
+                <div class="timeline-card-header">
+                  <v-icon :color="step.color" size="32" class="timeline-card-icon">{{ step.icon }}</v-icon>
+                  <v-card-title class="pa-0 approach-step-title">{{ step.title }}</v-card-title>
                 </div>
                 <v-card-text class="pa-0 text-body-1">
                   {{ step.description }}
@@ -315,6 +315,103 @@ const pillars = [
     width: 48px;
     height: 48px;
     font-size: 1.25rem;
+  }
+}
+
+/* Timeline Card Header */
+.timeline-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.timeline-card-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.approach-step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 960px) {
+  .timeline-card-header {
+    gap: 10px;
+  }
+  
+  .timeline-card-icon {
+    font-size: 28px !important;
+  }
+  
+  .approach-step-title {
+    font-size: 1.25rem !important;
+  }
+  
+  .timeline-card .v-card-item {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline-content {
+    padding-left: 50px;
+  }
+  
+  .timeline-item-reverse .timeline-content {
+    padding-right: 50px;
+  }
+  
+  .timeline-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.125rem;
+  }
+  
+  .timeline-card .v-card-item {
+    padding: 16px !important;
+  }
+  
+  .timeline-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .timeline-card-icon {
+    font-size: 24px !important;
+    margin-top: 0;
+  }
+  
+  .approach-step-title {
+    font-size: 1.125rem !important;
+    line-height: 1.3 !important;
+    width: 100%;
+  }
+  
+  .timeline-card .v-card-text {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .pillar-title {
+    font-size: 1rem !important;
+  }
+  
+  .pillar-description {
+    font-size: 0.8125rem !important;
+  }
+  
+  .pillar-letter {
+    font-size: 3rem !important;
   }
 }
 </style>

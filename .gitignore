@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+API_ENDPOINTS.md
+BACKOFFICE_README.md
+ARCHITECTURE.md

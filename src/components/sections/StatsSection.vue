@@ -27,7 +27,9 @@
               </v-icon>
             </div>
             <div class="stat-value">{{ stat.value }}</div>
-            <div class="stat-label">{{ stat.label }}</div>
+            <div class="stat-label">
+              <span class="stat-label-text">{{ stat.label }}</span>
+            </div>
           </div>
         </v-col>
       </v-row>
@@ -213,11 +215,82 @@ const stats = [
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 600;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+.stat-label-text {
+  display: inline-block;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
 }
 
 @media (max-width: 960px) {
   .stat-card {
     padding: 24px 12px;
+  }
+  
+  .stat-icon {
+    font-size: 40px !important;
+  }
+  
+  .stat-value {
+    font-size: clamp(2rem, 6vw, 3rem) !important;
+    margin-bottom: 10px;
+  }
+  
+  .stat-label {
+    font-size: clamp(0.75rem, 2vw, 0.9375rem) !important;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    margin-top: 40px;
+  }
+  
+  .stat-col {
+    margin-bottom: 16px;
+  }
+  
+  .stat-card {
+    padding: 20px 12px;
+    border-radius: 16px;
+  }
+  
+  .stat-icon-wrapper {
+    margin-bottom: 12px;
+  }
+  
+  .stat-icon {
+    font-size: 36px !important;
+  }
+  
+  .stat-value {
+    font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+    margin-bottom: 8px;
+  }
+  
+  .stat-label {
+    font-size: 0.6875rem !important;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+  
+  .section-header {
+    margin-bottom: 32px;
+  }
+  
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: 12px;
+  }
+  
+  .section-subtitle {
+    font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
   }
 }
 </style>

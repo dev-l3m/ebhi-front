@@ -42,18 +42,18 @@
               class="about-cta-btn"
               @click="scrollToContact"
             >
-              <v-icon start>mdi-calendar-clock</v-icon>
-              Prenez rendez-vous
+              <v-icon start class="cta-btn-icon">mdi-calendar-clock</v-icon>
+              <span class="cta-btn-text">Prenez rendez-vous</span>
             </v-btn>
           </div>
         </v-col>
         <v-col cols="12" md="6" class="about-sectors-col">
           <v-card :elevation="12" class="sectors-card" rounded="xl">
             <v-card-item class="pa-8">
-              <div class="text-center mb-8">
-                <v-icon color="primary" size="48" class="mb-4">mdi-domain</v-icon>
-                <div class="text-h4 font-weight-bold mb-2">Nos secteurs d'interventions</div>
-                <p class="text-body-2 text-grey-darken-1">
+              <div class="sectors-header text-center mb-8">
+                <v-icon color="primary" size="48" class="sectors-header-icon mb-4">mdi-domain</v-icon>
+                <div class="sectors-title font-weight-bold mb-2">Nos secteurs d'interventions</div>
+                <p class="sectors-subtitle text-grey-darken-1">
                   Expertise dans tous les domaines
                 </p>
               </div>
@@ -73,12 +73,12 @@
                         {{ sector.icon }}
                       </v-icon>
                     </div>
-                    <div class="text-body-1 font-weight-medium mt-3 text-center">{{ sector.name }}</div>
+                    <div class="sector-name font-weight-medium mt-3 text-center">{{ sector.name }}</div>
                   </div>
                 </v-col>
               </v-row>
               <v-divider class="my-6"></v-divider>
-              <p class="text-body-2 text-center text-grey-darken-1" style="line-height: 1.6;">
+              <p class="sectors-footer text-center text-grey-darken-1">
                 Que vous soyez dans la technologie, le design, le commerce, l'ingénierie ou la chimie, 
                 EBHI a les compétences pour répondre à vos besoins.
               </p>
@@ -204,6 +204,47 @@ const scrollToContact = () => {
   transform: scale(1.1) rotate(5deg);
 }
 
+/* CTA Button Styles */
+.cta-btn-icon {
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.cta-btn-text {
+  white-space: normal;
+  line-height: 1.3;
+}
+
+/* Sectors Card Styles */
+.sectors-header-icon {
+  transition: all 0.3s ease;
+}
+
+.sectors-title {
+  font-size: 1.75rem;
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.sectors-subtitle {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.sector-name {
+  font-size: 1rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.sectors-footer {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 @media (max-width: 960px) {
   .about-content-col,
   .about-sectors-col {
@@ -213,6 +254,167 @@ const scrollToContact = () => {
   
   .about-row {
     min-height: auto;
+  }
+  
+  .about-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: 16px;
+  }
+  
+  .about-subtitle {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    margin-bottom: 24px;
+  }
+  
+  .about-text .text-body-1 {
+    font-size: 0.9375rem !important;
+    line-height: 1.7;
+    margin-bottom: 16px !important;
+  }
+  
+  .about-cta-btn {
+    font-size: 0.9375rem !important;
+    min-height: 52px !important;
+    padding: 14px 24px !important;
+    width: 100%;
+  }
+  
+  .cta-btn-icon {
+    font-size: 20px !important;
+  }
+  
+  .sectors-card .v-card-item {
+    padding: 24px !important;
+  }
+  
+  .sectors-header {
+    margin-bottom: 24px;
+  }
+  
+  .sectors-header-icon {
+    font-size: 40px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .sectors-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .sectors-subtitle {
+    font-size: 0.9375rem !important;
+  }
+  
+  .sector-icon-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .sector-icon-wrapper .v-icon {
+    font-size: 28px !important;
+  }
+  
+  .sector-name {
+    font-size: 0.9375rem !important;
+    margin-top: 12px !important;
+  }
+  
+  .sectors-footer {
+    font-size: 0.875rem !important;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-content-col,
+  .about-sectors-col {
+    margin-bottom: 32px;
+  }
+  
+  .about-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: 12px;
+  }
+  
+  .about-subtitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    margin-bottom: 20px;
+  }
+  
+  .about-text .text-body-1 {
+    font-size: 0.875rem !important;
+    line-height: 1.6;
+    margin-bottom: 12px !important;
+  }
+  
+  .about-cta-btn {
+    font-size: 0.875rem !important;
+    min-height: 48px !important;
+    padding: 12px 20px !important;
+    border-radius: 12px !important;
+  }
+  
+  .cta-btn-icon {
+    font-size: 18px !important;
+    margin-right: 6px !important;
+  }
+  
+  .sectors-card .v-card-item {
+    padding: 20px 16px !important;
+  }
+  
+  .sectors-header {
+    margin-bottom: 20px;
+  }
+  
+  .sectors-header-icon {
+    font-size: 36px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .sectors-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .sectors-subtitle {
+    font-size: 0.875rem !important;
+  }
+  
+  .sectors-grid {
+    margin-top: 16px !important;
+  }
+  
+  .sector-item {
+    margin-bottom: 16px !important;
+  }
+  
+  .sector-card {
+    padding: 6px;
+  }
+  
+  .sector-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+  
+  .sector-icon-wrapper .v-icon {
+    font-size: 24px !important;
+  }
+  
+  .sector-name {
+    font-size: 0.875rem !important;
+    margin-top: 10px !important;
+  }
+  
+  .v-divider {
+    margin: 20px 0 !important;
+  }
+  
+  .sectors-footer {
+    font-size: 0.8125rem !important;
+    line-height: 1.5;
   }
 }
 </style>

@@ -27,10 +27,10 @@
             color="white"
             variant="flat"
             size="large"
-            class="text-primary font-weight-bold"
+            class="text-primary font-weight-bold hero-chip"
           >
-            <v-icon start>mdi-rocket-launch</v-icon>
-            Votre partenaire d'externalisation
+            <v-icon start class="hero-chip-icon">mdi-rocket-launch</v-icon>
+            <span class="hero-chip-text">Votre partenaire d'externalisation</span>
           </v-chip>
         </div>
 
@@ -56,8 +56,8 @@
             rounded="xl"
             @click="scrollToSection('services')"
           >
-            <v-icon start>mdi-arrow-right-circle</v-icon>
-            Découvrez nos services
+            <v-icon start class="hero-btn-icon">mdi-arrow-right-circle</v-icon>
+            <span class="hero-btn-text">Découvrez nos services</span>
           </v-btn>
           <v-btn
             size="x-large"
@@ -67,8 +67,8 @@
             rounded="xl"
             @click="scrollToSection('contact')"
           >
-            <v-icon start>mdi-phone</v-icon>
-            Contactez-nous
+            <v-icon start class="hero-btn-icon">mdi-phone</v-icon>
+            <span class="hero-btn-text">Contactez-nous</span>
           </v-btn>
         </div>
 
@@ -354,6 +354,10 @@ const scrollToSection = (id) => {
 
 /* Responsive */
 @media (max-width: 960px) {
+  .hero-section {
+    padding-top: 80px;
+  }
+  
   .hero-title {
     font-size: clamp(1.75rem, 6vw, 2.5rem);
   }
@@ -362,6 +366,42 @@ const scrollToSection = (id) => {
   .hero-btn-secondary {
     width: 100%;
     max-width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-chip {
+    font-size: 0.75rem !important;
+    padding: 8px 12px !important;
+    max-width: 100%;
+  }
+  
+  .hero-chip-icon {
+    font-size: 16px !important;
+    margin-right: 4px !important;
+  }
+  
+  .hero-chip-text {
+    white-space: normal;
+    line-height: 1.3;
+    text-align: center;
+  }
+  
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    font-size: 0.875rem !important;
+    padding: 16px 24px !important;
+    min-height: 48px !important;
+  }
+  
+  .hero-btn-icon {
+    font-size: 20px !important;
+    margin-right: 8px !important;
+  }
+  
+  .hero-btn-text {
+    white-space: normal;
+    line-height: 1.2;
   }
 }
 </style>

@@ -42,7 +42,7 @@
               </div>
             </div>
             <v-card-item class="pa-6 pt-0">
-              <v-card-title class="text-h5 mb-3 service-title">
+              <v-card-title class="text-h5 mb-3 service-title service-card-title">
                 {{ service.title }}
               </v-card-title>
               <v-card-text class="pa-0">
@@ -79,7 +79,7 @@
               <div class="dialog-icon-wrapper mr-4">
                 <v-icon :color="selectedService.color" size="40">{{ selectedService.icon }}</v-icon>
               </div>
-              <span class="text-h5 font-weight-bold">{{ selectedService.title }}</span>
+              <span class="text-h5 font-weight-bold dialog-title-text">{{ selectedService.title }}</span>
             </div>
             <v-btn
               icon
@@ -96,12 +96,12 @@
 
           <v-card-text class="pa-6">
             <div class="service-details-content">
-              <p class="text-h6 mb-6 service-intro">
+              <p class="text-h6 mb-6 service-intro dialog-intro-text">
                 {{ selectedService.detailedDescription }}
               </p>
 
               <div class="service-features mb-6">
-                <h3 class="text-h6 mb-4 font-weight-bold">Nos prestations</h3>
+                <h3 class="text-h6 mb-4 font-weight-bold dialog-section-title">Nos prestations</h3>
                 <v-row>
                   <v-col
                     v-for="(feature, index) in selectedService.features"
@@ -121,7 +121,7 @@
               <v-divider class="my-6"></v-divider>
 
               <div class="service-benefits">
-                <h3 class="text-h6 mb-4 font-weight-bold">Avantages</h3>
+                <h3 class="text-h6 mb-4 font-weight-bold dialog-section-title">Avantages</h3>
                 <v-row>
                   <v-col
                     v-for="(benefit, index) in selectedService.benefits"
@@ -564,6 +564,68 @@ const scrollToContact = () => {
 
   .dialog-icon-wrapper .v-icon {
     font-size: 24px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-card-title {
+    font-size: 1.125rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .service-description {
+    font-size: 0.875rem !important;
+  }
+  
+  .dialog-header {
+    padding: 16px !important;
+    flex-wrap: wrap;
+  }
+  
+  .dialog-title-text {
+    font-size: 1.125rem !important;
+    line-height: 1.3 !important;
+    word-wrap: break-word;
+  }
+  
+  .dialog-icon-wrapper {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 12px !important;
+  }
+  
+  .dialog-icon-wrapper .v-icon {
+    font-size: 20px !important;
+  }
+  
+  .dialog-intro-text {
+    font-size: 0.9375rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  .dialog-section-title {
+    font-size: 1rem !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .service-details-content {
+    padding: 0 !important;
+  }
+  
+  .v-card-text {
+    padding: 16px !important;
+  }
+  
+  .v-card-actions {
+    padding: 16px !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .v-card-actions .v-btn {
+    font-size: 0.875rem !important;
+    min-width: auto !important;
+    flex: 1 1 auto;
   }
 }
 </style>

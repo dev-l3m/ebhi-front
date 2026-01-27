@@ -8,7 +8,8 @@
         </h2>
       </div>
 
-      <v-row>
+      <!-- Desktop Grid View -->
+      <v-row class="d-none d-md-flex">
         <v-col
           v-for="(reason, index) in reasons"
           :key="index"
@@ -40,11 +41,64 @@
           </v-card>
         </v-col>
       </v-row>
+
+      <!-- Mobile Carousel View -->
+      <div class="d-block d-md-none mobile-carousel-wrapper">
+        <v-carousel
+          v-model="carouselModel"
+          :show-arrows="false"
+          hide-delimiters
+          height="auto"
+          class="mobile-reasons-carousel"
+        >
+          <v-carousel-item
+            v-for="(reason, index) in reasons"
+            :key="index"
+          >
+            <div class="carousel-item-content">
+              <v-card
+                :elevation="8"
+                class="reason-card-mobile"
+                rounded="xl"
+              >
+                <v-card-item class="pa-6">
+                  <div class="mobile-reason-content">
+                    <div class="mobile-reason-icon-wrapper mb-4">
+                      <v-icon :color="reason.color" size="48">{{ reason.icon }}</v-icon>
+                    </div>
+                    <v-card-title class="text-h6 mb-4 pa-0 mobile-reason-title">
+                      {{ reason.title }}
+                    </v-card-title>
+                    <v-card-text class="text-body-2 text-grey-darken-1 pa-0 mobile-reason-description">
+                      {{ reason.description }}
+                    </v-card-text>
+                  </div>
+                </v-card-item>
+              </v-card>
+            </div>
+          </v-carousel-item>
+        </v-carousel>
+        
+        <!-- Custom Navigation Dots -->
+        <div class="carousel-dots">
+          <button
+            v-for="(reason, index) in reasons"
+            :key="index"
+            :class="['carousel-dot', { active: carouselModel === index }]"
+            @click="carouselModel = index"
+            :aria-label="`Aller à ${reason.title}`"
+          ></button>
+        </div>
+      </div>
     </v-container>
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+const carouselModel = ref(0)
+
 const reasons = [
   {
     title: 'Un pilotage sur mesure',
@@ -157,6 +211,152 @@ const reasons = [
 @media (max-width: 960px) {
   .reason-card {
     margin-bottom: 24px;
+  }
+}
+
+/* Mobile Carousel Styles */
+.mobile-carousel-wrapper {
+  position: relative;
+  padding: 0 8px;
+}
+
+.mobile-reasons-carousel {
+  margin-bottom: 24px;
+}
+
+.mobile-reasons-carousel :deep(.v-carousel__item) {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-item-content {
+  padding: 8px;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.reason-card-mobile {
+  width: 100%;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.mobile-reason-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-reason-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: rgba(26, 35, 126, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.mobile-reason-title {
+  font-weight: 700;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+  font-size: 1.125rem !important;
+  min-height: auto;
+}
+
+.mobile-reason-description {
+  line-height: 1.6;
+  text-align: center;
+  font-size: 0.9375rem !important;
+}
+
+/* Custom Navigation Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 0 16px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.carousel-dot:hover {
+  background: rgba(26, 35, 126, 0.4);
+  transform: scale(1.2);
+}
+
+.carousel-dot.active {
+  background: #1a237e;
+  width: 32px;
+  border-radius: 5px;
+  transform: scale(1);
+}
+
+@media (max-width: 600px) {
+  .mobile-carousel-wrapper {
+    padding: 0 4px;
+  }
+  
+  .carousel-item-content {
+    padding: 4px;
+  }
+  
+  .reason-card-mobile .v-card-item {
+    padding: 20px 16px !important;
+  }
+  
+  .mobile-reason-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px !important;
+  }
+  
+  .mobile-reason-icon-wrapper .v-icon {
+    font-size: 36px !important;
+  }
+  
+  .mobile-reason-title {
+    font-size: 1rem !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .mobile-reason-description {
+    font-size: 0.875rem !important;
+    line-height: 1.5;
+  }
+  
+  .carousel-dots {
+    margin-top: 16px;
+    gap: 6px;
+  }
+  
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .carousel-dot.active {
+    width: 24px;
   }
 }
 </style>

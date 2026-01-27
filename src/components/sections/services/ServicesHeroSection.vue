@@ -23,8 +23,11 @@
             améliorer vos performances et vous faire gagner du temps sans compromis sur la qualité.
           </p>
           <div class="services-hero-highlight">
-            <v-icon color="white" size="32" class="mr-3">mdi-star-circle</v-icon>
-            <span class="text-h6 font-weight-bold">Notre force</span> : un accompagnement structuré, humain et stratégique, de A à Z.
+            <v-icon color="white" size="32" class="highlight-icon">mdi-star-circle</v-icon>
+            <div class="highlight-content">
+              <span class="highlight-label">Notre force</span>
+              <span class="highlight-text"> : un accompagnement structuré, humain et stratégique, de A à Z.</span>
+            </div>
           </div>
         </v-col>
       </v-row>
@@ -124,5 +127,84 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 32px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.highlight-icon {
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+.highlight-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.highlight-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.highlight-text {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .services-hero-highlight {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 20px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .highlight-icon {
+    margin-right: 0;
+    margin-bottom: 12px;
+    font-size: 28px !important;
+  }
+  
+  .highlight-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .highlight-label {
+    font-size: 1.125rem !important;
+    margin-bottom: 4px;
+  }
+  
+  .highlight-text {
+    font-size: 1rem !important;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-hero-highlight {
+    padding: 14px 16px;
+    border-radius: 12px;
+  }
+  
+  .highlight-icon {
+    font-size: 24px !important;
+    margin-bottom: 10px;
+  }
+  
+  .highlight-label {
+    font-size: 1rem !important;
+  }
+  
+  .highlight-text {
+    font-size: 0.9375rem !important;
+    line-height: 1.5;
+  }
 }
 </style>

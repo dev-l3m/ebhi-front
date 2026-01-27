@@ -47,7 +47,7 @@
               >
                 {{ process.icon }}
               </v-icon>
-              <v-card-title class="text-h6 mb-3 process-title">
+              <v-card-title class="text-h6 mb-3 process-title process-card-title">
                 {{ process.title }}
               </v-card-title>
               <v-card-text class="text-body-2 text-grey-darken-1 pa-0 process-description">
@@ -76,11 +76,11 @@
       >
         <v-card v-if="selectedProcess" class="process-dialog">
           <v-card-title class="text-h4 pa-6 d-flex align-center justify-space-between process-dialog-header">
-            <div class="d-flex align-center">
-              <v-icon :color="selectedProcess.color" size="32" class="mr-3">
+            <div class="d-flex align-center process-dialog-title-wrapper">
+              <v-icon :color="selectedProcess.color" size="32" class="mr-3 process-dialog-icon">
                 {{ selectedProcess.icon }}
               </v-icon>
-              <span>{{ selectedProcess.title }}</span>
+              <span class="process-dialog-title-text">{{ selectedProcess.title }}</span>
             </div>
             <v-btn
               icon
@@ -92,9 +92,9 @@
             </v-btn>
           </v-card-title>
           <v-divider></v-divider>
-          <v-card-text class="pa-6">
-            <div class="text-h6 mb-4 text-primary">{{ selectedProcess.description }}</div>
-            <p class="text-body-1" style="line-height: 1.8; color: #424242;">
+          <v-card-text class="pa-6 process-dialog-content">
+            <div class="text-h6 mb-4 text-primary process-dialog-description">{{ selectedProcess.description }}</div>
+            <p class="text-body-1 process-dialog-details" style="line-height: 1.8; color: #424242;">
               {{ selectedProcess.details }}
             </p>
           </v-card-text>
@@ -381,6 +381,77 @@ const openDialog = (process) => {
     width: 64px;
     height: 64px;
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-card-title {
+    font-size: 1rem !important;
+    line-height: 1.3 !important;
+    min-height: auto !important;
+  }
+  
+  .process-description {
+    font-size: 0.8125rem !important;
+  }
+  
+  .process-icon {
+    font-size: 40px !important;
+  }
+  
+  .process-number {
+    width: 56px;
+    height: 56px;
+    font-size: 1.25rem;
+  }
+  
+  .process-dialog-header {
+    padding: 16px !important;
+    flex-wrap: wrap;
+  }
+  
+  .process-dialog-title-wrapper {
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .process-dialog-title-text {
+    font-size: 1.125rem !important;
+    line-height: 1.3 !important;
+    word-wrap: break-word;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .process-dialog-icon {
+    font-size: 24px !important;
+    margin-right: 8px !important;
+    flex-shrink: 0;
+  }
+  
+  .process-dialog-content {
+    padding: 16px !important;
+  }
+  
+  .process-dialog-description {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .process-dialog-details {
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  .v-card-actions {
+    padding: 16px !important;
+  }
+  
+  .v-card-actions .v-btn {
+    font-size: 0.875rem !important;
+    min-width: auto !important;
   }
 }
 </style>

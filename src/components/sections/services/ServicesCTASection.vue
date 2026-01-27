@@ -24,8 +24,8 @@
             class="services-cta-btn"
             @click="scrollToContact"
           >
-            <v-icon start>mdi-calendar-clock</v-icon>
-            Commencez dès aujourd'hui
+            <v-icon start class="cta-btn-icon">mdi-calendar-clock</v-icon>
+            <span class="cta-btn-text">Commencez dès aujourd'hui</span>
           </v-btn>
         </v-col>
       </v-row>
@@ -130,10 +130,85 @@ const scrollToContact = () => {
   padding: 20px 40px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
   transition: all 0.3s ease;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.cta-btn-text {
+  white-space: normal;
+  line-height: 1.3;
+}
+
+.cta-btn-icon {
+  flex-shrink: 0;
 }
 
 .services-cta-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+@media (max-width: 960px) {
+  .services-cta-btn {
+    font-size: 0.9375rem !important;
+    padding: 16px 28px !important;
+    min-height: 52px !important;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .cta-btn-icon {
+    font-size: 20px !important;
+    margin-right: 8px !important;
+  }
+  
+  .cta-btn-text {
+    font-size: 0.9375rem !important;
+  }
+  
+  .services-cta-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+  }
+  
+  .services-cta-subtitle {
+    font-size: clamp(0.9375rem, 2vw, 1.125rem) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-cta-btn {
+    font-size: 0.875rem !important;
+    padding: 14px 20px !important;
+    min-height: 48px !important;
+    border-radius: 12px !important;
+  }
+  
+  .cta-btn-icon {
+    font-size: 18px !important;
+    margin-right: 6px !important;
+  }
+  
+  .cta-btn-text {
+    font-size: 0.875rem !important;
+    line-height: 1.2;
+  }
+  
+  .services-cta-section {
+    min-height: 400px;
+  }
+  
+  .services-cta-title {
+    margin-bottom: 16px !important;
+  }
+  
+  .services-cta-subtitle {
+    margin-bottom: 16px !important;
+    line-height: 1.6;
+  }
+  
+  .text-h6 {
+    font-size: 1rem !important;
+    margin-bottom: 16px !important;
+  }
 }
 </style>
