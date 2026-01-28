@@ -30,20 +30,16 @@
             class="text-primary font-weight-bold hero-chip"
           >
             <v-icon start class="hero-chip-icon">mdi-rocket-launch</v-icon>
-            <span class="hero-chip-text">Votre partenaire d'externalisation</span>
+            <span class="hero-chip-text">{{ $t('hero.badge') }}</span>
           </v-chip>
         </div>
 
         <!-- Titre principal -->
-        <h1 class="hero-title mb-6 fade-in-delay-2">
-          <span class="gradient-text-white">Externalisez</span>, Réduisez vos coûts,<br />
-          <span class="gradient-text-white">Boostez</span> votre croissance
-        </h1>
+        <h1 class="hero-title mb-6 fade-in-delay-2" v-html="formatHeroTitle($t('hero.title'))"></h1>
 
         <!-- Sous-titre -->
         <p class="hero-subtitle mb-10 fade-in-delay-3">
-          Vous avez un besoin, EBHI optimise vos opérations avec des solutions sur mesure.
-          Libérez-vous des tâches administratives et concentrez-vous sur votre cœur de métier.
+          {{ $t('hero.subtitle') }}
         </p>
 
         <!-- Boutons d'action -->
@@ -57,7 +53,7 @@
             @click="scrollToSection('services')"
           >
             <v-icon start class="hero-btn-icon">mdi-arrow-right-circle</v-icon>
-            <span class="hero-btn-text">Découvrez nos services</span>
+            <span class="hero-btn-text">{{ $t('hero.ctaDiscover') }}</span>
           </v-btn>
           <v-btn
             size="x-large"
@@ -68,7 +64,7 @@
             @click="scrollToSection('contact')"
           >
             <v-icon start class="hero-btn-icon">mdi-phone</v-icon>
-            <span class="hero-btn-text">Contactez-nous</span>
+            <span class="hero-btn-text">{{ $t('hero.ctaContact') }}</span>
           </v-btn>
         </div>
 
@@ -77,19 +73,19 @@
           <v-row class="text-center">
             <v-col cols="6" md="3">
               <div class="stat-number">+250</div>
-              <div class="stat-label">Projets</div>
+              <div class="stat-label">{{ $t('hero.stats.projects') }}</div>
             </v-col>
             <v-col cols="6" md="3">
               <div class="stat-number">+100</div>
-              <div class="stat-label">Collaborateurs</div>
+              <div class="stat-label">{{ $t('hero.stats.collaborators') }}</div>
             </v-col>
             <v-col cols="6" md="3">
               <div class="stat-number">+12</div>
-              <div class="stat-label">Expertises</div>
+              <div class="stat-label">{{ $t('hero.stats.expertises') }}</div>
             </v-col>
             <v-col cols="6" md="3">
               <div class="stat-number">+20</div>
-              <div class="stat-label">Partenaires</div>
+              <div class="stat-label">{{ $t('hero.stats.partners') }}</div>
             </v-col>
           </v-row>
         </div>
@@ -104,6 +100,14 @@
 </template>
 
 <script setup>
+const formatHeroTitle = title => {
+  return title
+    .replace(/Externalisez/g, '<span class="gradient-text-white">Externalisez</span>')
+    .replace(/Boostez/g, '<span class="gradient-text-white">Boostez</span>')
+    .replace(/Outsource/g, '<span class="gradient-text-white">Outsource</span>')
+    .replace(/Boost/g, '<span class="gradient-text-white">Boost</span>')
+}
+
 const scrollToSection = id => {
   const element = document.getElementById(id)
   if (element) {

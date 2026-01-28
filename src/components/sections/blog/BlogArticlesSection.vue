@@ -58,7 +58,7 @@
                 class="article-read-more"
                 @click.stop="openArticleDialog(article)"
               >
-                Lire la suite
+                {{ $t('blog.articles.readMore') }}
                 <v-icon end>mdi-arrow-right</v-icon>
               </v-btn>
             </v-card-item>
@@ -159,7 +159,7 @@
               size="large"
               @click="articleDialog = false"
             >
-              Fermer
+              {{ $t('blog.articles.close') }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -170,6 +170,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const currentPage = ref(1)
 const articlesPerPage = 6
@@ -186,8 +189,8 @@ const articles = ref([
     fullContent:
       "Rester performantes en toute circonstance ! C'est le défi des entreprises françaises dans un environnement économique en pleine mutation. La situation actuelle impose en effet aux entreprises de s'adapter rapidement, d'optimiser leurs coûts tout en maintenant leur compétitivité. L'externalisation représente aujourd'hui une solution stratégique pour répondre à ces enjeux. Chez EBHI, nous accompagnons les entreprises dans leur transformation en leur offrant des solutions d'externalisation sur mesure. Que ce soit pour la gestion de vos ressources humaines, le développement de vos projets techniques, ou encore l'optimisation de vos processus opérationnels, notre expertise internationale vous permet d'accéder à des talents qualifiés tout en maîtrisant vos coûts. L'externalisation n'est plus réservée aux grandes entreprises. Les PME et les start-ups peuvent également bénéficier de ces avantages pour accélérer leur croissance et renforcer leur position sur le marché.",
     date: '16 janvier 2026',
-    comments: 'Aucun commentaire',
-    category: 'Externalisation',
+    comments: t('blog.articles.noComments'),
+    category: t('blog.articles.categories.outsourcing'),
     categoryColor: 'primary',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
     slug: 'externalisation-levier-agilite-efficacite'
@@ -200,8 +203,8 @@ const articles = ref([
     fullContent:
       "En 2026, la France fait face à une réalité implacable. 375 000 postes restent en effet vacants, paralysant des pans entiers de l'économie. Selon les dernières statistiques, cette pénurie de talents affecte particulièrement les secteurs de la technologie, de l'ingénierie et des services. Face à ce défi, de nombreuses entreprises se tournent vers le recrutement international. Cependant, cette démarche comporte des enjeux que beaucoup sous-estiment. Le recrutement international ne se limite pas à trouver des candidats qualifiés. Il implique une compréhension approfondie des différences culturelles, des réglementations locales, et des processus administratifs complexes. Chez EBHI, nous avons développé une expertise unique dans ce domaine. Notre réseau international nous permet d'identifier et de recruter les meilleurs talents, tout en gérant l'ensemble des aspects administratifs et juridiques. Nous accompagnons nos clients à chaque étape, de la définition du besoin à l'intégration des nouveaux collaborateurs, en garantissant une transition fluide et conforme aux réglementations en vigueur.",
     date: '14 janvier 2026',
-    comments: 'Aucun commentaire',
-    category: 'Recrutement',
+    comments: t('blog.articles.noComments'),
+    category: t('blog.articles.categories.recruitment'),
     categoryColor: 'secondary',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
     slug: 'recrutement-international-enjeux-entreprises'

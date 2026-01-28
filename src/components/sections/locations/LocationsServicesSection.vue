@@ -4,15 +4,11 @@
       <div class="section-header text-center mb-16">
         <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-cog</v-icon>
-          Services Disponibles
+          {{ $t('locationsPage.services.chip') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Ce que nous pouvons<br />
-          <span class="gradient-text">structurer pour vous</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('locationsPage.services.title')"></h2>
         <p class="section-subtitle mx-auto">
-          Nous savons où, comment, et avec quels profils le faire. Sans délai, sans surcoût, sans
-          compromis.
+          {{ $t('locationsPage.services.subtitle') }}
         </p>
       </div>
 
@@ -50,32 +46,22 @@
 </template>
 
 <script setup>
-const services = [
-  {
-    title: 'SAV multilingue',
-    description: 'Support client disponible dans plusieurs langues, 24/7',
-    color: 'primary',
-    icon: 'mdi-headset'
-  },
-  {
-    title: "Bureau d'études",
-    description: "Équipes techniques spécialisées pour vos projets d'ingénierie",
-    color: 'secondary',
-    icon: 'mdi-drawing'
-  },
-  {
-    title: 'Équipe marketing',
-    description: 'Stratégies marketing et communication pour développer votre présence',
-    color: 'success',
-    icon: 'mdi-bullhorn'
-  },
-  {
-    title: 'Support administratif',
-    description: 'Gestion complète des démarches administratives et RH',
-    color: 'info',
-    icon: 'mdi-file-document'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const services = computed(() => {
+  const servicesData = tm('locationsPage.services.services') || []
+  const icons = ['mdi-headset', 'mdi-drawing', 'mdi-bullhorn', 'mdi-file-document']
+  const colors = ['primary', 'secondary', 'success', 'info']
+  return servicesData.map((service, index) => ({
+    title: service.title,
+    description: service.description,
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
 
 const getServiceGradient = color => {
   const gradients = {

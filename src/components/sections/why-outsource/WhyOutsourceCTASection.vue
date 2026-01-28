@@ -5,19 +5,14 @@
       <v-row align="center" justify="center" class="ma-0">
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-rocket-launch</v-icon>
-          <h2 class="why-outsource-cta-title mb-6">
-            EBHI : L'externalisation<br />
-            <span class="gradient-text-white">réinventée</span>
-          </h2>
-          <p class="why-outsource-cta-subtitle mb-8">
-            Nous ne proposons pas de services standardisés. Nous construisons pour vous un cadre sur
-            mesure, agile, discret, et redoutablement efficace. Nos clients choisissent EBHI pour
-            notre exigence, notre réactivité, et notre capacité à livrer
-            <strong>plus que des résultats : une vraie tranquillité d'esprit</strong>.
-          </p>
-          <p class="text-h6 font-weight-bold mb-8">Envie d'en savoir plus ?</p>
+          <h2 class="why-outsource-cta-title mb-6" v-html="$t('whyOutsourcePage.cta.title')"></h2>
+          <p
+            class="why-outsource-cta-subtitle mb-8"
+            v-html="$t('whyOutsourcePage.cta.subtitle')"
+          ></p>
+          <p class="text-h6 font-weight-bold mb-8">{{ $t('whyOutsourcePage.cta.question') }}</p>
           <p class="text-body-1 mb-8" style="opacity: 0.95">
-            Parlez-nous de vos besoins, nous vous aiderons à concevoir la solution la plus adaptée.
+            {{ $t('whyOutsourcePage.cta.description') }}
           </p>
           <div class="d-flex flex-column flex-md-row gap-4 justify-center">
             <v-btn
@@ -29,7 +24,7 @@
               to="/nos-services"
             >
               <v-icon start>mdi-arrow-right-circle</v-icon>
-              Découvrez nos services
+              {{ $t('whyOutsourcePage.cta.buttons.discoverServices') }}
             </v-btn>
             <v-btn
               color="white"
@@ -40,7 +35,7 @@
               @click="scrollToContact"
             >
               <v-icon start>mdi-email</v-icon>
-              Contactez-nous
+              {{ $t('whyOutsourcePage.cta.buttons.contactUs') }}
             </v-btn>
           </div>
         </v-col>

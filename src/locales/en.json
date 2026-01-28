@@ -1,0 +1,1300 @@
+{
+  "common": {
+    "title": "Outsource, Reduce your costs, Boost your growth",
+    "welcome": "Welcome",
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "blog": "Blog",
+    "joinUs": "Join Us",
+    "locations": "Locations",
+    "whyOutsource": "Why Outsource",
+    "resources": "Resources",
+    "language": "Language",
+    "french": "French",
+    "english": "English",
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "actions": "Actions",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "ok": "OK",
+    "yes": "Yes",
+    "no": "No",
+    "allRightsReserved": "All rights reserved",
+    "professionalPresentation": "Professional presentation and solutions adapted to your needs"
+  },
+  "hero": {
+    "badge": "Your outsourcing partner",
+    "title": "Outsource, Reduce your costs,<br />Boost your growth",
+    "subtitle": "You have a need, EBHI optimizes your operations with tailor-made solutions. Free yourself from administrative tasks and focus on your core business.",
+    "ctaDiscover": "Discover our services",
+    "ctaContact": "Contact us",
+    "stats": {
+      "projects": "Projects",
+      "collaborators": "Collaborators",
+      "expertises": "Expertises",
+      "partners": "Partners"
+    }
+  },
+  "about": {
+    "title": "About",
+    "whoAreWe": "Who are we?",
+    "subtitle": "Your off-shore outsourcing company",
+    "description1": "At <strong>Entrepreneur Business Hub International (EBHI)</strong>, we are more than just an outsourcing service provider. We are your <strong>strategic partner</strong>, dedicated to transforming your operational challenges into growth opportunities.",
+    "description2": "Founded on values of <strong>excellence</strong>, <strong>transparency</strong>, and <strong>collaboration</strong>, our company stands out through a personalized approach that adapts to the specific needs of each client.",
+    "description3": "Our mission is to <strong>simplify your operations</strong>, <strong>reduce your costs</strong> and <strong>accelerate your growth</strong> by providing you with specialized talents and innovative solutions.",
+    "cta": "Book an appointment",
+    "sectors": {
+      "title": "Our areas of intervention",
+      "subtitle": "Expertise in all fields",
+      "footer": "Whether you're in technology, design, commerce, engineering or chemistry, EBHI has the skills to meet your needs.",
+      "technology": "Technology",
+      "design": "Design",
+      "commerce": "Commerce",
+      "engineering": "Engineering",
+      "chemistry": "Chemistry",
+      "marketing": "Marketing"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "A question? A project? Don't hesitate to contact us, we'll be happy to help you",
+    "name": "Name",
+    "firstName": "First Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "sendMessage": "Send message",
+    "success": "Message sent successfully! We will get back to you shortly.",
+    "error": "An error occurred while sending the message. Please try again.",
+    "information": "Information",
+    "ourAddress": "Our address",
+    "followUs": "Follow us",
+    "required": "This field is required",
+    "invalidEmail": "Invalid email"
+  },
+  "footer": {
+    "description": "Entrepreneur Business Hub International supports entrepreneurs and businesses in their development through outsourcing services, tailor-made digital solutions and a network of international experts.",
+    "followUs": "Follow Us",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contactUs": "Contact Us",
+    "address": "Office 7, CENTRE D'AFFAIRE JIHANE AVENUE DU 11 JANVIER MARRAKECH",
+    "copyright": "© EBHI {year}, All rights reserved. Professional presentation and solutions adapted to your needs.",
+    "links": {
+      "aboutUs": "About Us",
+      "blog": "Blog",
+      "cookiePolicy": "Cookie Policy",
+      "terms": "Terms",
+      "privacyPolicy": "Privacy Policy",
+      "legalNotice": "Legal Notice"
+    },
+    "footerServices": {
+      "efficiency": "Efficiency",
+      "structuredBusiness": "Structured Business",
+      "talentHub": "Talent Hub",
+      "innovation": "Innovation"
+    }
+  },
+  "header": {
+    "menu": {
+      "home": "Home",
+      "ourServices": "Our Services"
+    },
+    "resources": {
+      "whyOutsource": "WHY OUTSOURCE?",
+      "aboutEBHI": "ABOUT EBHI",
+      "joinUs": "JOIN US",
+      "strategicLocations": "OUR STRATEGIC LOCATIONS",
+      "blog": "BLOG"
+    },
+    "cta": "GET STARTED"
+  },
+  "stats": {
+    "projects": "Projects",
+    "collaborators": "Collaborators",
+    "expertises": "Expertises",
+    "partners": "Partners",
+    "sectionTitle": "Ready to take a leap<br /><span class='gradient-text-white'>in your business</span>",
+    "subtitle": "Accelerate your growth with tailor-made solutions",
+    "completedProjects": "Completed Projects",
+    "expertisePoles": "Expertise Poles",
+    "partnerships": "Partnerships"
+  },
+  "approach": {
+    "title": "Our Methodology",
+    "sectionTitle": "Discover the<br /><span class='gradient-text'>excellence approach of EBHI</span>",
+    "subtitle": "Our methodology is based on four fundamental pillars that guide each of our actions.",
+    "steps": {
+      "step1": {
+        "title": "Analysis & Optimization",
+        "description": "In-depth evaluation of existing processes and identification of improvement areas to maximize your efficiency."
+      },
+      "step2": {
+        "title": "Project Structuring",
+        "description": "Methodical organization of resources and detailed planning of deployment to ensure success."
+      },
+      "step3": {
+        "title": "Resource Mobilization",
+        "description": "Strategic deployment of skills and tools necessary for the success of your project."
+      },
+      "step4": {
+        "title": "Integration & Continuous Improvement",
+        "description": "Implementation followed by a permanent optimization process for sustainable results."
+      }
+    },
+    "pillars": {
+      "title": "The 4 pillars of EBHI",
+      "subtitle": "Each letter represents a key aspect of our philosophy",
+      "e": {
+        "title": "Efficiency",
+        "description": "Thanks to our outsourcing model, we help our clients improve their productivity and reduce their costs."
+      },
+      "b": {
+        "title": "Structured Business",
+        "description": "We establish a clear organization and defined processes to ensure smooth outsourcing."
+      },
+      "h": {
+        "title": "Talent Hub",
+        "description": "We bring together highly qualified and specialized professionals to meet the varied needs of our clients."
+      },
+      "i": {
+        "title": "Innovation",
+        "description": "We integrate cutting-edge technological solutions to optimize processes and offer increasingly high-performing services."
+      }
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "sectionTitle": "How does it<br /><span class='gradient-text'>work?</span>",
+    "subtitle": "A 4-step process that is simple and effective to transform your needs into concrete solutions",
+    "viewDetails": "View details",
+    "understood": "Understood",
+    "steps": {
+      "step1": {
+        "title": "Needs Analysis",
+        "shortDescription": "Understanding your objectives and developing an adapted strategy",
+        "description": "Build a strategy that reflects you",
+        "details": "Every project starts with a phase of attentive listening. We take the time to understand your objectives, your challenges and your priorities. This fundamental step allows us to identify the key levers to build a personalized and effective strategy. Thanks to this in-depth analysis, we design a clear, realistic action plan that perfectly matches your vision."
+      },
+      "step2": {
+        "title": "Recruitment",
+        "shortDescription": "Rigorous selection of talents meeting your criteria.",
+        "description": "Rigorous selection of talents meeting your criteria.",
+        "details": "We implement a demanding and methodical selection process, aimed at identifying the most relevant profiles. Our goal is to offer you candidates who not only meet your technical criteria, but also integrate perfectly into your environment and actively contribute to the success of your projects."
+      },
+      "step3": {
+        "title": "Resource Setup",
+        "shortDescription": "Provision of all necessary equipment and premises.",
+        "description": "Provision of all necessary equipment and premises.",
+        "details": "We ensure the provision of all necessary equipment and infrastructure. This complete support allows you to focus fully on your objectives without worrying about logistical and technical aspects."
+      },
+      "step4": {
+        "title": "Administrative Management",
+        "shortDescription": "Complete handling of administrative and disciplinary procedures.",
+        "description": "Complete handling of administrative and disciplinary procedures.",
+        "details": "We ensure comprehensive management of all administrative and disciplinary procedures. Our rigorous approach guarantees compliance with current legal framework and frees you from these constraints so you can focus on your core business."
+      }
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "sectionTitle": "Outsourcing of<br /><span class='gradient-text'>support and operational functions</span>",
+    "subtitle": "Our personalized approach ensures that each member of our team integrates perfectly into your structure and actively contributes to your objectives.",
+    "learnMore": "Learn more",
+    "contactUs": "Contact us",
+    "close": "Close",
+    "ourServices": "Our services",
+    "advantages": "Advantages",
+    "serviceList": {
+      "hr": {
+        "title": "Human Resources",
+        "description": "Complete management of your human resources with dedicated experts. Recruitment, training, career management and more.",
+        "detailedDescription": "EBHI supports you in the complete management of your human resources with dedicated expertise. We provide you with qualified professionals to optimize your HR management and develop your talents.",
+        "features": [
+          "Recruitment and profile selection",
+          "Administrative personnel management",
+          "Training and skills development",
+          "Career and mobility management",
+          "Payroll and contract management",
+          "HR strategy consulting"
+        ],
+        "benefits": {
+          "qualifiedTeams": {
+            "title": "Qualified teams",
+            "description": "Profiles selected according to your criteria"
+          },
+          "optimizedPerformance": {
+            "title": "Optimized performance",
+            "description": "Continuous improvement of your processes"
+          },
+          "guaranteedCompliance": {
+            "title": "Guaranteed compliance",
+            "description": "Compliance with current regulations"
+          }
+        }
+      },
+      "engineering": {
+        "title": "Engineering & Design",
+        "description": "Custom engineering and product design solutions. From design to production, we support your projects.",
+        "detailedDescription": "Our engineering and design expertise allows you to develop innovative and high-performing products. From the design phase to production, our engineering teams support you in all your technical projects.",
+        "features": [
+          "Product design and development",
+          "Mechanical and electrical engineering",
+          "CAD/CAE and 3D modeling",
+          "Prototyping and testing",
+          "Production process optimization",
+          "Technical support and maintenance"
+        ],
+        "benefits": {
+          "innovation": {
+            "title": "Innovation",
+            "description": "Advanced technical solutions"
+          },
+          "speed": {
+            "title": "Speed",
+            "description": "Optimized development timelines"
+          },
+          "expertise": {
+            "title": "Expertise",
+            "description": "Experienced engineers"
+          }
+        }
+      },
+      "chemistry": {
+        "title": "Chemistry Products & Design",
+        "description": "Expertise in chemistry and innovative product design. Development of chemical solutions adapted to your needs.",
+        "detailedDescription": "Our expertise in chemistry and product design allows you to develop innovative and high-performing solutions. Our teams of chemists and designers work on various projects, from research to production.",
+        "features": [
+          "Formulation development",
+          "Quality analysis and control",
+          "Chemical product design",
+          "Research and development",
+          "Process optimization",
+          "Regulatory compliance"
+        ],
+        "benefits": {
+          "scientificExpertise": {
+            "title": "Scientific expertise",
+            "description": "Qualified chemists and researchers"
+          },
+          "safety": {
+            "title": "Safety",
+            "description": "Compliance with safety standards"
+          },
+          "quality": {
+            "title": "Quality",
+            "description": "Rigorous quality controls"
+          }
+        }
+      },
+      "marketing": {
+        "title": "Marketing & Communication",
+        "description": "Marketing and communication strategies to develop your presence. Content creation, social media management and advertising campaigns.",
+        "detailedDescription": "Develop your presence and reputation with our marketing and communication solutions. Our creative and strategic teams support you in all your communication projects, from digital to print.",
+        "features": [
+          "Marketing and communication strategy",
+          "Content creation and writing",
+          "Social media management",
+          "Digital advertising campaigns",
+          "Graphic design and branding",
+          "Performance analysis and reporting"
+        ],
+        "benefits": {
+          "growth": {
+            "title": "Growth",
+            "description": "Increased visibility"
+          },
+          "creativity": {
+            "title": "Creativity",
+            "description": "Creative and engaging content"
+          },
+          "measurableROI": {
+            "title": "Measurable ROI",
+            "description": "Performance tracking"
+          }
+        }
+      },
+      "technicalSupport": {
+        "title": "Technical Support",
+        "description": "Reactive and professional technical support for your operations. 24/7 assistance and rapid problem resolution.",
+        "detailedDescription": "Benefit from reactive and professional technical support for all your operations. Our technical teams are available 24/7 to assist you and quickly resolve all your technical problems.",
+        "features": [
+          "Multilingual technical support",
+          "24/7 assistance",
+          "Problem resolution",
+          "Preventive maintenance",
+          "User training",
+          "Technical documentation"
+        ],
+        "benefits": {
+          "availability": {
+            "title": "Availability",
+            "description": "24/7 support"
+          },
+          "reactivity": {
+            "title": "Reactivity",
+            "description": "Rapid resolution"
+          },
+          "expertise": {
+            "title": "Expertise",
+            "description": "Qualified teams"
+          }
+        }
+      },
+      "aftersales": {
+        "title": "After-sales Service",
+        "description": "Complete after-sales services to satisfy your customers. Complaint management, customer follow-up and continuous improvement.",
+        "detailedDescription": "Offer your customers an exceptional experience with our complete after-sales services. We manage all post-sale interactions to guarantee customer satisfaction and loyalty.",
+        "features": [
+          "Complaint management",
+          "Customer follow-up and relationship",
+          "Post-sales support",
+          "Returns and exchanges management",
+          "Satisfaction surveys",
+          "Continuous improvement"
+        ],
+        "benefits": {
+          "satisfaction": {
+            "title": "Satisfaction",
+            "description": "Satisfied and loyal customers"
+          },
+          "performance": {
+            "title": "Performance",
+            "description": "Continuous improvement"
+          },
+          "relationship": {
+            "title": "Relationship",
+            "description": "Optimized customer relationship"
+          }
+        }
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "sectionTitle": "They trust us,<br /><span class='gradient-text'>and they talk about it!</span>",
+    "subtitle": "Discover what our clients say about their experience with EBHI",
+    "testimonial1": {
+      "name": "Sabrina B.",
+      "role": "CEO, RSE Conseil",
+      "text": "Thanks to EBHI, we now benefit from reliable and responsive web support. Their team perfectly understood our needs and implemented effective solutions that facilitate our daily work."
+    },
+    "testimonial2": {
+      "name": "Ronan L.",
+      "role": "CEO, La Bonne Allure",
+      "text": "The recruitment and resource setup process was very smooth thanks to EBHI. We are extremely satisfied with their services, both in terms of quality and speed of execution."
+    },
+    "testimonial3": {
+      "name": "Isabelle D.",
+      "role": "BASF",
+      "text": "EBHI has greatly facilitated the management of our customer support. Their team is available, responsive and professional, which allows us to focus fully on our core business."
+    }
+  },
+  "cgu": {
+    "title": "Terms and Conditions of Use",
+    "subtitle": "The rules and conditions for using our website",
+    "section1": {
+      "title": "1. Presentation",
+      "content": "The ebhi.fr website is published by <strong>Entrepreneur Business Hub International (EBHI)</strong>, whose registered office is located at:<br />Office 7, Centre d'Affaires Jihane, Avenue du 11 Janvier, Marrakech."
+    },
+    "section2": {
+      "title": "2. Purpose",
+      "content": "These terms govern the use of the website. By browsing ebhi.fr, you accept these terms without reservation."
+    },
+    "section3": {
+      "title": "3. Site access",
+      "content": "The site is accessible free of charge, 24/7, except in cases of force majeure, maintenance or technical problems."
+    },
+    "section4": {
+      "title": "4. Intellectual property",
+      "content": "All content (texts, images, logos, videos...) is the exclusive property of EBHI, unless otherwise stated. Any reproduction is prohibited without prior authorization."
+    },
+    "section5": {
+      "title": "5. Liability",
+      "content": "EBHI cannot be held responsible for errors, inaccuracies or interruptions on the site. The user is solely responsible for the use they make of the information available."
+    },
+    "section6": {
+      "title": "6. Modification of conditions",
+      "content": "EBHI reserves the right to modify these conditions at any time. Users will be informed of major changes."
+    }
+  },
+  "cookiePolicy": {
+    "title": "Cookie Policy",
+    "subtitle": "Understanding how we use cookies to improve your experience",
+    "section1": {
+      "title": "1. What is a cookie?",
+      "content": "A cookie is a small text file saved on your device when visiting a website. It allows user data to be stored to facilitate navigation and improve the online experience."
+    },
+    "section2": {
+      "title": "2. Why do we use cookies?",
+      "intro": "EBHI uses cookies to:",
+      "items": [
+        "Ensure the proper functioning of the site",
+        "Measure audience and analyze visitor behavior",
+        "Personalize your navigation",
+        "Facilitate access to certain services"
+      ]
+    },
+    "section3": {
+      "title": "3. Types of cookies used",
+      "items": [
+        "<strong>Strictly necessary cookies</strong>: essential for navigation.",
+        "<strong>Performance cookies</strong>: collect anonymous data on site usage.",
+        "<strong>Functional cookies</strong>: allow your preferences to be remembered.",
+        "<strong>Marketing cookies</strong>: used to display relevant advertisements."
+      ]
+    },
+    "section4": {
+      "title": "4. Cookie management",
+      "content": "On your first visit, a banner offers you to accept or refuse cookies. You can also modify your preferences at any time via your browser settings."
+    },
+    "section5": {
+      "title": "5. Retention period",
+      "content": "Cookies are kept for a maximum period of 13 months."
+    }
+  },
+  "legalNotice": {
+    "title": "Legal Notice",
+    "subtitle": "Legal and regulatory information regarding the ebhi.fr website",
+    "section1": {
+      "title": "Site publisher",
+      "company": "<strong>Entrepreneur Business Hub International (EBHI)</strong><br />Office 7, Centre d'Affaires Jihane, Avenue du 11 Janvier, Marrakech",
+      "email": "<strong>Email:</strong> contact@ebhi.fr",
+      "phone": "<strong>Phone:</strong> +33 1 84 60 38 50"
+    },
+    "section2": {
+      "title": "Site host",
+      "content": "EBHI – Office 7, CENTRE D'AFFAIRE JIHANE AVENUE DU 11 JANVIER MARRAKECH – +33 1 84 60 38 50"
+    },
+    "section3": {
+      "title": "Intellectual property",
+      "content": "The site and all its content are protected by intellectual property rights. Any total or partial reproduction without authorization is strictly prohibited."
+    },
+    "section4": {
+      "title": "Credits",
+      "content": "Design, development and content created by EBHI."
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "subtitle": "How we collect, use and protect your personal data",
+    "section1": {
+      "title": "1. Data collected",
+      "intro": "EBHI collects personal data via:",
+      "items": ["Contact forms", "Quote requests", "Cookies"],
+      "content": "The data collected may include: name, first name, email, phone, company, IP address."
+    },
+    "section2": {
+      "title": "2. Purpose of processing",
+      "intro": "The data is used to:",
+      "items": [
+        "Respond to your requests",
+        "Improve our services",
+        "Send you commercial information (with your consent)",
+        "Secure the site"
+      ]
+    },
+    "section3": {
+      "title": "3. Retention period",
+      "content": "The data is kept for the duration necessary for the purpose of processing or according to legal obligations."
+    },
+    "section4": {
+      "title": "4. Data sharing",
+      "content": "Your data is not sold or transferred to third parties. It may only be shared with technical service providers linked to EBHI."
+    },
+    "section5": {
+      "title": "5. Your rights",
+      "content": "In accordance with GDPR, you have the right to access, rectify, delete, object and portability of your data.<br />You can exercise these rights by email at <strong>contact@ebhi.fr</strong>."
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "chip": "About",
+      "title": "ABOUT<br /><span class='gradient-text-white'>EBHI</span>",
+      "description1": "<strong>ENTREPRENEUR BUSINESS HUB INTERNATIONAL</strong> is an international operational hub serving ambitious companies.",
+      "description2": "We don't sell generic services. We set up — for you, with you — the human, technical and digital resources you need to realize your development projects, dividing your costs and increasing your capacity for action."
+    },
+    "approach": {
+      "title": "Our<br /><span class='gradient-text'>approach</span>",
+      "intro": "At EBHI, every project is a close and strategic collaboration. We don't deliver generic services, but <strong>intelligently designed solutions</strong>, ready to be activated.",
+      "combine": "We combine:",
+      "items": [
+        "Qualified and dedicated human resources",
+        "High-performance technical tools",
+        "An agile digital structure"
+      ],
+      "text1": "And <strong>localized supervision in our international hubs.</strong>",
+      "text2": "We operate in areas with high economic potential while respecting <strong>the quality, security and confidentiality requirements of European standards.</strong>",
+      "cardTitle": "International Approach",
+      "cardSubtitle1": "Strategic hubs for global presence",
+      "cardSubtitle2": "with European standards",
+      "features": [
+        {
+          "title": "Strategic hubs",
+          "description": "Global presence with locations on several continents"
+        },
+        {
+          "title": "European standards",
+          "description": "Quality, security and confidentiality compliant with European requirements"
+        },
+        {
+          "title": "Economic potential",
+          "description": "High-potential areas to optimize your costs and growth"
+        }
+      ]
+    },
+    "locations": {
+      "title": "Local anchoring,<br /><span class='gradient-text'>global vision</span>",
+      "description": "Our locations in Casablanca, Marrakech, Dakar, Antananarivo, Paris and Cergy are designed as <strong>operational hubs</strong>, enabling us to meet proximity, availability and agility challenges.",
+      "highlight": "We don't just bring you outsourced labor, but <strong>a true structured extension of your organization.</strong>",
+      "locations": [
+        { "name": "Casablanca", "country": "Morocco" },
+        { "name": "Marrakech", "country": "Morocco" },
+        { "name": "Dakar", "country": "Senegal" },
+        { "name": "Antananarivo", "country": "Madagascar" },
+        { "name": "Paris", "country": "France" },
+        { "name": "Cergy", "country": "France" }
+      ]
+    },
+    "mission": {
+      "chip": "Our Mission",
+      "title": "A clear<br /><span class='gradient-text'>mission</span>",
+      "statement": "Open the world to ambitious companies.",
+      "description": "We believe it's time to free companies from geographical, operational or administrative constraints.",
+      "solutions": [
+        {
+          "title": "Reduce your costs",
+          "description": "without losing quality"
+        },
+        {
+          "title": "Accelerate implementation",
+          "description": "of your projects"
+        },
+        {
+          "title": "Offer direct access",
+          "description": "to specific skills"
+        },
+        {
+          "title": "Strengthen your capabilities",
+          "description": "without weighing down your structure"
+        }
+      ],
+      "internationalPresence": "International Presence",
+      "internationalDescription": "We manage your projects at the local level<br />with a <strong>global strategic vision</strong>",
+      "ourLocations": "Our locations",
+      "comingSoon": "Coming soon",
+      "countries": [
+        { "name": "Morocco" },
+        { "name": "Senegal" },
+        { "name": "Madagascar" },
+        { "name": "Algeria" },
+        { "name": "Philippines", "status": "coming-soon" }
+      ]
+    },
+    "promise": {
+      "title": "Our<br /><span class='gradient-text'>promise</span>",
+      "intro": "EBHI is your strategic partner, not just a service provider. We centralize complexity to allow you to focus on what matters: your growth.",
+      "steps": [
+        "You define the priorities.",
+        "We structure everything.",
+        "You keep strategic control.",
+        "We ensure execution with rigor, confidentiality and performance."
+      ]
+    },
+    "values": {
+      "chip": "Our Values",
+      "title": "Our commitments & fundamental<br /><span class='gradient-text'>values</span>",
+      "values": [
+        {
+          "title": "Excellence",
+          "description": "we only recruit profiles capable of carrying your image"
+        },
+        {
+          "title": "Clarity",
+          "description": "you know who works on what, when and how"
+        },
+        {
+          "title": "Professionalism",
+          "description": "rigorous and structured support"
+        },
+        {
+          "title": "Discretion",
+          "description": "the confidentiality of your projects is a priority"
+        },
+        {
+          "title": "Agility",
+          "description": "your needs evolve? Our solutions too"
+        },
+        {
+          "title": "Ambition",
+          "description": "we aim high, with you"
+        },
+        {
+          "title": "Excellence",
+          "description": "a premium level of service, without compromise"
+        },
+        {
+          "title": "Security",
+          "description": "we master regulatory and contractual environments"
+        },
+        {
+          "title": "Sustainability",
+          "description": "we build solid, scalable and sustainable solutions"
+        }
+      ]
+    },
+    "why": {
+      "title": "Why<br /><span class='gradient-text-white'>EBHI?</span>",
+      "description1": "Because you're not looking for a subcontractor, but <strong>a trusted partner</strong>. Because you need <strong>reliable, available, supervised and scalable resources</strong>. Because you want to go faster, further, without losing control or quality.",
+      "description2": "You have a project? We have the structure to make it happen.",
+      "cta": "Contact us"
+    },
+    "whatWeDo": {
+      "title": "What we<br /><span class='gradient-text'>do</span>",
+      "services": [
+        {
+          "title": "Recruitment & placement of exclusive talents",
+          "items": [
+            "Selection of multilingual, qualified, trained and immediately available profiles.",
+            "Supervision of dedicated teams in customer service, customer relations, back-office, commerce, purchasing, quality and production."
+          ]
+        },
+        {
+          "title": "Digital & communication",
+          "items": [
+            "Design, redesign and maintenance of web platforms and digital tools.",
+            "Branding, UX/UI design, visual content production.",
+            "Digital marketing strategies, newsletters, community management."
+          ]
+        },
+        {
+          "title": "Outsourced technical solutions",
+          "items": [
+            "Creation of outsourced design offices.",
+            "Provision of specialized technical teams",
+            "Possibility of on-site interventions in France."
+          ]
+        },
+        {
+          "title": "Organization & infrastructure",
+          "items": [
+            "Access to equipped workspaces in our hubs.",
+            "Corporate concierge services, logistics and technical coordination.",
+            "Multi-zone project monitoring with dedicated interface."
+          ]
+        }
+      ]
+    }
+  },
+  "blog": {
+    "hero": {
+      "chip": "Blog",
+      "title": "News &<br /><span class='gradient-text-white'>Insights</span>",
+      "description": "Discover our articles on outsourcing, international recruitment, and growth strategies for your business.",
+      "features": {
+        "articles": "Expert articles",
+        "insights": "Strategic insights",
+        "strategies": "Growth strategies"
+      }
+    },
+    "cta": {
+      "title": "Stay informed of our<br /><span class='gradient-text-white'>latest news</span>",
+      "subtitle": "Subscribe to our newsletter to receive our articles on outsourcing, international recruitment and growth strategies.",
+      "emailPlaceholder": "Your email address",
+      "subscribe": "Subscribe",
+      "subscribeSuccess": "Thank you for your subscription!",
+      "discoverServices": "Discover our services",
+      "contactUs": "Contact us"
+    },
+    "articles": {
+      "readMore": "Read more",
+      "close": "Close",
+      "noComments": "No comments",
+      "categories": {
+        "outsourcing": "Outsourcing",
+        "recruitment": "Recruitment"
+      }
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "chip": "Our Services",
+      "title": "Outsourcing differently:<br /><span class='gradient-text-white'>rigor, performance and mastery</span>",
+      "subtitle": "At EBHI, we don't offer standardized outsourcing. We build with you a tailor-made, optimized and remotely managed organization, to lighten your operational load, improve your performance and save you time without compromising on quality.",
+      "highlight": {
+        "label": "Our strength :",
+        "text": " structured, human and strategic support, from A to Z."
+      }
+    },
+    "domains": {
+      "title": "Areas of<br /><span class='gradient-text'>intervention</span>",
+      "subtitle": "EBHI provides you with specialized and immediately operational resources, according to the specific needs of your business sector.",
+      "domains": [
+        "Technology",
+        "Customer relations",
+        "Design",
+        "Back-office",
+        "Technical support",
+        "Engineering",
+        "Purchasing",
+        "Finance",
+        "Industry"
+      ]
+    },
+    "expertises": {
+      "title": "Our operational<br /><span class='gradient-text'>expertise</span>",
+      "subtitle": "A 4-step process to transform your needs into concrete solutions",
+      "expertises": [
+        {
+          "title": "Analysis and needs framing",
+          "description": "Every collaboration begins with an in-depth study of your objectives, your internal processes and your specific challenges. This phase allows us to build an ultra-personalized response, in line with your field reality."
+        },
+        {
+          "title": "Recruitment of qualified talents",
+          "description": "We select profiles adapted to your business criteria and your company culture, thanks to rigorous, localized and validated sourcing. Our talents are quickly operational and integrated into a logic of sustainable performance."
+        },
+        {
+          "title": "Resource setup",
+          "description": "Once the profiles are validated, we ensure rapid and structured integration within your organization. Whether it's a dedicated team or a one-off need, our follow-up guarantees continuity, performance and fluidity."
+        },
+        {
+          "title": "Administrative management and compliance",
+          "description": "Contracts, salaries, legal compliance, HR supervision... EBHI handles all administrative procedures. You benefit from a mastered regulatory framework, smooth execution and a high level of reliability."
+        }
+      ]
+    },
+    "methodology": {
+      "chip": "Our Methodology",
+      "title": "A proven<br /><span class='gradient-text'>methodology</span>",
+      "subtitle": "Our approach is based on a structuring process in four phases",
+      "highlight": "Each step is designed to minimize your risks, optimize your costs and maximize your results",
+      "phases": [
+        {
+          "title": "Analysis and optimization",
+          "description": "In-depth evaluation of your processes and identification of improvement areas to maximize your efficiency."
+        },
+        {
+          "title": "Resource mobilization",
+          "description": "Strategic deployment of skills and tools necessary for the success of your project."
+        },
+        {
+          "title": "Integration and continuous monitoring",
+          "description": "Implementation followed by a permanent optimization process for sustainable results."
+        },
+        {
+          "title": "Project structuring",
+          "description": "Methodical organization of resources and detailed planning of deployment to ensure success."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Join our<br /><span class='gradient-text-white'>ecosystem</span>",
+      "subtitle": "Choosing EBHI means joining a structured, demanding and expanding ecosystem.<br />We address companies that want to grow differently, with method, rigor and operational intelligence.",
+      "highlight": "Contact our team to define together the solution that will advance your organization, with complete confidence.",
+      "button": "Start today"
+    },
+    "whatWeDo": {
+      "chip": "What we do",
+      "title": "What we do<br /><span class='gradient-text'>for you</span>",
+      "projectTitle": "Turnkey project management",
+      "projectDescription": "From need definition to execution, EBHI handles the entire project. We coordinate human, technical, administrative and legal aspects to deliver a <strong>100% operational</strong> solution, without friction.<br /><strong>You save time, we take over.</strong>",
+      "button": "Let's discuss your project"
+    },
+    "whyChoose": {
+      "title": "Why choose<br /><span class='gradient-text'>EBHI?</span>",
+      "reasons": [
+        {
+          "title": "Tailor-made management",
+          "description": "Not impersonal subcontracting, but personalized support adapted to your specific needs."
+        },
+        {
+          "title": "Superior recruitment quality",
+          "description": "Rigorous selection of qualified profiles that integrate perfectly into your company culture."
+        },
+        {
+          "title": "Structured and mastered onboarding",
+          "description": "Rapid and effective integration of your teams with continuous monitoring to guarantee performance."
+        },
+        {
+          "title": "Demanding and reliable support",
+          "description": "Regular and transparent monitoring of your projects with constant communication and detailed reports."
+        },
+        {
+          "title": "Optimal quality-price ratio",
+          "description": "High-performing solutions in high-potential markets, maximizing your ROI while reducing your costs."
+        }
+      ]
+    }
+  },
+  "whyOutsourcePage": {
+    "hero": {
+      "chip": "Outsourcing",
+      "title": "Why outsource<br /><span class='gradient-text-white'>with EBHI?</span>",
+      "subtitle": "Unlock your potential, refocus on your growth",
+      "description1": "In a demanding economic context, the ability to focus on your core business while controlling costs and accelerating development has become essential. Outsourcing is no longer about simply delegating a task, but about <strong>making the strategic choice of performance, flexibility and resource optimization</strong>.",
+      "description2": "At <strong>EBHI</strong>, we have redefined outsourcing as a <strong>structuring growth lever</strong>. Thanks to our tailor-made approach, we give you access to high-level skills, rigorous management and tangible results, while reducing risks and costs."
+    },
+    "advantages": {
+      "chip": "Advantages",
+      "title": "Strategic advantages<br /><span class='gradient-text'>of EBHI outsourcing</span>",
+      "advantages": [
+        {
+          "title": "Cost reduction, without compromising quality",
+          "description": "Salaries, social charges, premises, equipment, supervision: fixed costs are exploding. Outsourcing allows you to transform these expenses into variable costs, perfectly controlled, while maintaining high performance standards."
+        },
+        {
+          "title": "Quick access to qualified expertise",
+          "description": "We mobilize competent, immediately operational talents, selected according to your business and cultural criteria. No need to invest in a long recruitment process: you have, from the start, adapted and high-performing profiles."
+        },
+        {
+          "title": "Operational time savings",
+          "description": "We handle administrative, legal and HR procedures. You benefit from complete support, which frees up your internal teams and allows you to refocus on high value-added missions."
+        },
+        {
+          "title": "Instant agility and adaptability",
+          "description": "Create, resize or adjust a team according to your activity. Our solutions are designed to evolve with your needs, allowing you to quickly respond to activity peaks, project emergencies or strategic changes."
+        },
+        {
+          "title": "Quality and continuity guarantee",
+          "description": "We ensure rigorous monitoring of each project. Thanks to our internal processes and a results culture, you benefit from stable, high-performing and monitored services, with a single point of contact."
+        },
+        {
+          "title": "Reduction of operational risks",
+          "description": "Outsourcing with EBHI means benefiting from a secure legal, contractual and regulatory framework. We operate in full compliance with local and international laws. You gain peace of mind, while maintaining control."
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Outsourcing or internal management?<br /><span class='gradient-text'>Make the right choice</span>",
+      "headers": {
+        "criterion": "Criterion",
+        "internal": "Internal management",
+        "external": "Outsourcing"
+      },
+      "rows": [
+        {
+          "criterion": "Total cost",
+          "internal": "High (salaries, premises, HR management)",
+          "external": "Reduced, predictable and optimized"
+        },
+        {
+          "criterion": "Implementation time",
+          "internal": "Long (sourcing, training, integration)",
+          "external": "Fast, turnkey"
+        },
+        {
+          "criterion": "Access to skills",
+          "internal": "Limited to available internal resources",
+          "external": "Experienced specialists selected according to your needs"
+        },
+        {
+          "criterion": "Management burden",
+          "internal": "Heavy and time-consuming",
+          "external": "Lightened thanks to structured EBHI management"
+        },
+        {
+          "criterion": "Flexibility and scalability",
+          "internal": "Low flexibility (contracts, internal organization)",
+          "external": "High adaptability, modular resources"
+        },
+        {
+          "criterion": "Risk control",
+          "internal": "Internal responsibility on all aspects",
+          "external": "Legal, HR and quality framework ensured by EBHI"
+        }
+      ]
+    },
+    "solutionComparison": {
+      "title": "Which solution<br /><span class='gradient-text'>to choose?</span>",
+      "internal": {
+        "title": "Internal management",
+        "features": [
+          {
+            "label": "Cost",
+            "value": "High (salaries, premises)"
+          },
+          {
+            "label": "Implementation time",
+            "value": "Long (recruitment, training)"
+          },
+          {
+            "label": "Available skills",
+            "value": "Variable"
+          },
+          {
+            "label": "Management burden",
+            "value": "Significant"
+          },
+          {
+            "label": "Scalability",
+            "value": "Limited"
+          }
+        ]
+      },
+      "external": {
+        "badge": "Recommended",
+        "title": "Outsourcing",
+        "features": [
+          {
+            "label": "Cost",
+            "value": "Reduced and controlled"
+          },
+          {
+            "label": "Implementation time",
+            "value": "Fast and ready to use"
+          },
+          {
+            "label": "Available skills",
+            "value": "Specialized and experienced"
+          },
+          {
+            "label": "Management burden",
+            "value": "Lightened thanks to our support"
+          },
+          {
+            "label": "Scalability",
+            "value": "Total resource flexibility"
+          }
+        ]
+      }
+    },
+    "whatYouGain": {
+      "chip": "Your Gains",
+      "title": "What you gain<br /><span class='gradient-text'>with EBHI</span>",
+      "gains": [
+        {
+          "title": "A committed partner",
+          "description": "who understands your strategic challenges"
+        },
+        {
+          "title": "A complete management structure",
+          "description": "not just a service provider"
+        },
+        {
+          "title": "Solutions designed to last",
+          "description": "adapt and evolve"
+        },
+        {
+          "title": "A network of qualified talents",
+          "description": "quickly mobilizable"
+        }
+      ]
+    },
+    "cta": {
+      "title": "EBHI: Outsourcing<br /><span class='gradient-text-white'>reinvented</span>",
+      "subtitle": "We don't offer standardized services. We build for you a tailor-made, agile, discreet and remarkably effective framework. Our clients choose EBHI for our rigor, our responsiveness, and our ability to deliver <strong>more than results: true peace of mind</strong>.",
+      "question": "Want to know more?",
+      "description": "Tell us about your needs, we will help you design the most suitable solution.",
+      "buttons": {
+        "discoverServices": "Discover our services",
+        "contactUs": "Contact us"
+      }
+    }
+  },
+  "joinUsPage": {
+    "hero": {
+      "chip": "Careers",
+      "title": "Join<br /><span class='gradient-text-white'>EBHI</span>",
+      "subtitle": "<strong>You have talent? We have opportunities.</strong>",
+      "description": "EBHI is an international hub that supports the growth of ambitious companies through qualified, committed and passionate local teams. To meet the strong demand from our clients in France and internationally, we regularly recruit profiles in the following areas:"
+    },
+    "whyJoinUs": {
+      "title": "Why join<br /><span class='gradient-text'>us?</span>",
+      "benefits": [
+        {
+          "title": "High value-added missions",
+          "description": "for demanding and recognized brands"
+        },
+        {
+          "title": "Professional work environments",
+          "description": "supervised, equipped, designed for performance"
+        },
+        {
+          "title": "Human and close support",
+          "description": "with real professional follow-up"
+        },
+        {
+          "title": "Concrete development prospects",
+          "description": "and continuous skills development"
+        },
+        {
+          "title": "A structured, demanding and caring framework",
+          "description": ""
+        }
+      ],
+      "talentDescription": {
+        "text": "We are looking for autonomous, rigorous, curious, creative and solution-oriented talents.",
+        "cta": "Do you recognize yourself? We want to know you."
+      }
+    },
+    "jobCategories": {
+      "chip": "Available Positions",
+      "title": "Our commitments & fundamental<br /><span class='gradient-text'>values</span>",
+      "button": "Apply",
+      "dialog": {
+        "title": "Application - {category}",
+        "jobsTitle": "Available positions in this category:",
+        "form": {
+          "firstName": "First name *",
+          "lastName": "Last name *",
+          "email": "Email *",
+          "phone": "Phone *",
+          "position": "Desired position *",
+          "message": "Message (optional)",
+          "messagePlaceholder": "Tell us about your experience and motivations...",
+          "cv": "CV (PDF, DOC, DOCX)",
+          "validation": {
+            "firstNameRequired": "First name is required",
+            "lastNameRequired": "Last name is required",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Invalid email",
+            "phoneRequired": "Phone is required",
+            "positionRequired": "Please select a position"
+          }
+        },
+        "buttons": {
+          "cancel": "Cancel",
+          "submit": "Send my application"
+        },
+        "success": {
+          "title": "Application sent!",
+          "message": "Your application has been sent successfully!",
+          "ok": "OK"
+        },
+        "error": {
+          "title": "Error",
+          "message": "An error occurred while sending your application. Please try again."
+        }
+      },
+      "categories": [
+        {
+          "title": "Customer support & management",
+          "jobs": ["Customer relationship managers", "Back-office agents", "Quality managers"]
+        },
+        {
+          "title": "Design & creation",
+          "jobs": ["Graphic designers", "Motion designers", "Art directors"]
+        },
+        {
+          "title": "Web development & tech",
+          "jobs": [
+            "Front-end developers",
+            "Back-end developers",
+            "Full stack developers",
+            "IT project managers"
+          ]
+        },
+        {
+          "title": "Business & purchasing",
+          "jobs": ["Salespeople", "Buyers", "ADV assistants"]
+        },
+        {
+          "title": "Digital marketing & communication",
+          "jobs": ["Community managers", "Writers", "SEO/SEA specialists", "Media buyers"]
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to<br /><span class='gradient-text-white'>join us?</span>",
+      "subtitle": "Discover our job offers and apply to join a dynamic team that supports the growth of ambitious companies.",
+      "button": "View our offers"
+    }
+  },
+  "locationsPage": {
+    "hero": {
+      "chip": "Locations",
+      "title": "Our strategic<br /><span class='gradient-text-white'>locations</span>",
+      "description1": "Tailor-made operational bases. Wherever your projects require.",
+      "description2": "At <strong>Entrepreneur Business Hub International (EBHI)</strong>, we don't just offer you countries to set up in.",
+      "description3": "We offer you <strong>concrete growth levers</strong>, immediately activatable, designed to outsource efficiently, coordinate internationally, and boost your overall performance."
+    },
+    "hubs": {
+      "title": "Our operational<br /><span class='gradient-text'>hubs</span>",
+      "subtitle": "Each hub is a complete ecosystem of talents, infrastructure and services",
+      "status": {
+        "active": "Active",
+        "comingSoon": "Coming soon"
+      },
+      "hubs": [
+        {
+          "city": "Casablanca",
+          "country": "Morocco",
+          "features": ["Main operational hub", "Multilingual teams", "Complete infrastructure"]
+        },
+        {
+          "city": "Marrakech",
+          "country": "Morocco",
+          "features": ["Service center", "Dedicated customer support", "Engineering office"]
+        },
+        {
+          "city": "Dakar",
+          "country": "Senegal",
+          "features": ["West Africa hub", "French-speaking talents", "Administrative services"]
+        },
+        {
+          "city": "Antananarivo",
+          "country": "Madagascar",
+          "features": ["Indian Ocean hub", "Technical expertise", "Multilingual support"]
+        },
+        {
+          "city": "Paris",
+          "country": "France",
+          "features": ["Operational headquarters", "Strategic coordination", "Client interface"]
+        },
+        {
+          "city": "Cergy",
+          "country": "France",
+          "features": ["Île-de-France hub", "Client proximity", "Local services"]
+        },
+        {
+          "city": "Algiers",
+          "country": "Algeria",
+          "status": "coming-soon",
+          "features": ["Opening soon", "Maghreb hub", "Development expertise"]
+        },
+        {
+          "city": "Abidjan",
+          "country": "Ivory Coast",
+          "status": "coming-soon",
+          "features": ["Opening soon", "Central Africa hub", "Commercial services"]
+        },
+        {
+          "city": "Manila",
+          "country": "Philippines",
+          "status": "coming-soon",
+          "features": ["Opening soon", "Asia-Pacific hub", "24/7 support"]
+        }
+      ]
+    },
+    "network": {
+      "chip": "Our Network",
+      "title": "An expanding<br /><span class='gradient-text'>international network</span>",
+      "intro": "Our network covers <strong class='highlight-text'>Morocco, Senegal, Madagascar and France</strong>,<br />and will soon extend to <strong class='highlight-text'>Algeria, Ivory Coast and the Philippines</strong>.",
+      "description1": "Each of our hubs is designed as<br /><strong class='highlight-text'>an ecosystem of talents, infrastructure and services</strong>,<br />capable of operating your projects seamlessly.",
+      "description2": "Do you need to structure a multilingual customer service,<br />an engineering office, a marketing team<br />or administrative support?<br />We know where, how, and with which profiles to do it.<br /><strong class='highlight-text'>Without delay, without extra cost, without compromise.</strong>",
+      "stats": {
+        "strategicHubs": "Strategic hubs",
+        "countriesCovered": "Countries covered",
+        "continents": "Continents",
+        "supportAvailable": "Support available"
+      },
+      "map": {
+        "title": "Global Presence",
+        "subtitle": "Strategic hubs distributed across several continents<br />for optimal coverage",
+        "legend": {
+          "active": "Active hubs",
+          "comingSoon": "Coming soon"
+        }
+      },
+      "dialog": {
+        "title": "Our Locations by Continent",
+        "close": "Close",
+        "status": {
+          "active": "Active hub",
+          "comingSoon": "Coming soon"
+        },
+        "continents": [
+          {
+            "name": "Africa",
+            "description": "Our presence in Africa opens the doors to a growing market with strategic hubs in Morocco, Senegal and Madagascar.",
+            "locations": [
+              {
+                "name": "Casablanca & Marrakech",
+                "country": "Morocco",
+                "description": "Gateway to Africa, Morocco is a key country for companies wishing to grow in a stable, modern and connected environment. Casablanca, the country's economic capital, offers a dynamic ecosystem, advantageous taxation and optimal international connectivity. Marrakech, a city that is both tourist and economically booming, represents an ideal platform for service-oriented, event or innovation projects. Thanks to our local locations, EBHI supports project leaders in all their procedures: domiciliation, company creation, tax advice and business development."
+              },
+              {
+                "name": "Dakar",
+                "country": "Senegal",
+                "description": "Capital of French-speaking West Africa, Dakar is a regional business hub. Our Senegalese hub allows entrepreneurs to access the UEMOA/ECOWAS zone, with support adapted to local realities: legal, administrative, tax and strategic."
+              },
+              {
+                "name": "Antananarivo",
+                "country": "Madagascar",
+                "description": "Antananarivo, the capital of Madagascar, is a hub of innovation and growth where more and more companies are setting up in search of qualified talents, controlled costs and a developing business environment. EBHI helps you set up there effectively, in full compliance."
+              },
+              {
+                "name": "Algiers",
+                "country": "Algeria",
+                "status": "coming-soon",
+                "description": "Our next location in Algeria will give you access to the Maghreb market with a hub dedicated to development and innovation."
+              },
+              {
+                "name": "Abidjan",
+                "country": "Ivory Coast",
+                "status": "coming-soon",
+                "description": "Coming soon, our hub in Abidjan will open the doors to Central Africa with adapted commercial and development services."
+              }
+            ]
+          },
+          {
+            "name": "Europe",
+            "description": "Our presence in France opens the doors to the European market with strategic offices in Paris and Cergy.",
+            "locations": [
+              {
+                "name": "Paris, Cergy and national coverage",
+                "country": "France",
+                "description": "Our presence in France opens the doors to the European market. Thanks to our offices in Paris and Cergy, we support our clients in their location strategy across the entire French territory, whether for domiciliation, commercial representation or administrative procedures. Our services in France are designed for international entrepreneurs, freelancers, start-ups and SMEs wishing to set up or develop in one of the most structured markets in the world."
+              }
+            ]
+          },
+          {
+            "name": "Asia",
+            "description": "Our expansion in Asia will give you access to a dynamic market with our future hub in the Philippines.",
+            "locations": [
+              {
+                "name": "Manila",
+                "country": "Philippines",
+                "status": "coming-soon",
+                "description": "Our next location in Manila, the capital of the Philippines, will offer you an Asia-Pacific hub with 24/7 support and privileged access to local talents for your development and outsourcing projects."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "services": {
+      "chip": "Available Services",
+      "title": "What we can<br /><span class='gradient-text'>structure for you</span>",
+      "subtitle": "We know where, how, and with which profiles to do it. Without delay, without extra cost, without compromise.",
+      "services": [
+        {
+          "title": "Multilingual customer service",
+          "description": "Customer support available in multiple languages, 24/7"
+        },
+        {
+          "title": "Engineering office",
+          "description": "Specialized technical teams for your engineering projects"
+        },
+        {
+          "title": "Marketing team",
+          "description": "Marketing and communication strategies to develop your presence"
+        },
+        {
+          "title": "Administrative support",
+          "description": "Complete management of administrative and HR procedures"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to expand your<br /><span class='gradient-text-white'>international presence?</span>",
+      "subtitle": "Discover how our strategic hubs can boost your growth and optimize your international operations.",
+      "buttons": {
+        "discoverServices": "Discover our services",
+        "contactUs": "Contact us"
+      }
+    }
+  }
+}

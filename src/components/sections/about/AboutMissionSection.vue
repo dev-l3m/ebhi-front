@@ -4,19 +4,15 @@
       <div class="section-header text-center mb-16">
         <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-target</v-icon>
-          Notre Mission
+          {{ $t('aboutPage.mission.chip') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Une mission<br />
-          <span class="gradient-text">claire</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('aboutPage.mission.title')"></h2>
         <div class="mission-statement">
           <p class="text-h4 font-weight-bold text-primary mb-8">
-            Ouvrir le monde aux entreprises ambitieuses.
+            {{ $t('aboutPage.mission.statement') }}
           </p>
           <p class="text-h6 text-grey-darken-1 mx-auto" style="max-width: 800px; line-height: 1.8">
-            Nous pensons qu'il est temps de libérer les entreprises des freins géographiques,
-            opérationnels ou administratifs.
+            {{ $t('aboutPage.mission.description') }}
           </p>
         </div>
       </div>
@@ -56,18 +52,23 @@
               <div class="locations-icon-wrapper mb-4">
                 <v-icon color="primary" size="64">mdi-earth</v-icon>
               </div>
-              <h3 class="text-h5 font-weight-bold mb-3 text-primary">Présence Internationale</h3>
-              <p class="text-body-1 text-grey-darken-1 mb-6" style="line-height: 1.8">
-                Nous pilotons vos projets à l'échelle locale<br />
-                avec une <strong>vision stratégique globale</strong>
-              </p>
+              <h3 class="text-h5 font-weight-bold mb-3 text-primary">
+                {{ $t('aboutPage.mission.internationalPresence') }}
+              </h3>
+              <p
+                class="text-body-1 text-grey-darken-1 mb-6"
+                style="line-height: 1.8"
+                v-html="$t('aboutPage.mission.internationalDescription')"
+              ></p>
             </div>
 
             <v-divider class="my-6"></v-divider>
 
             <div class="locations-countries">
               <div class="text-center mb-4">
-                <span class="text-body-2 text-grey-darken-1">Nos implantations</span>
+                <span class="text-body-2 text-grey-darken-1">{{
+                  $t('aboutPage.mission.ourLocations')
+                }}</span>
               </div>
               <div class="countries-grid">
                 <div
@@ -86,7 +87,7 @@
                       size="x-small"
                       class="ml-2"
                     >
-                      Bientôt
+                      {{ $t('aboutPage.mission.comingSoon') }}
                     </v-chip>
                   </div>
                 </div>
@@ -100,40 +101,34 @@
 </template>
 
 <script setup>
-const solutions = [
-  {
-    title: 'Réduire vos coûts',
-    description: 'sans perdre en qualité',
-    color: 'primary',
-    icon: 'mdi-cash-multiple'
-  },
-  {
-    title: 'Accélérer la mise en œuvre',
-    description: 'de vos projets',
-    color: 'secondary',
-    icon: 'mdi-rocket-launch'
-  },
-  {
-    title: 'Offrir un accès direct',
-    description: 'à des compétences spécifiques',
-    color: 'success',
-    icon: 'mdi-account-star'
-  },
-  {
-    title: 'Renforcer vos capacités',
-    description: 'sans alourdir votre structure',
-    color: 'info',
-    icon: 'mdi-chart-line'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const countries = [
-  { name: 'Maroc', status: 'active', color: 'primary', flagCode: 'ma' },
-  { name: 'Sénégal', status: 'active', color: 'secondary', flagCode: 'sn' },
-  { name: 'Madagascar', status: 'active', color: 'success', flagCode: 'mg' },
-  { name: 'Algérie', status: 'active', color: 'info', flagCode: 'dz' },
-  { name: 'Philippines', status: 'coming-soon', color: 'warning', flagCode: 'ph' }
-]
+const { tm } = useI18n()
+
+const solutions = computed(() => {
+  const sols = tm('aboutPage.mission.solutions') || []
+  const icons = ['mdi-cash-multiple', 'mdi-rocket-launch', 'mdi-account-star', 'mdi-chart-line']
+  const colors = ['primary', 'secondary', 'success', 'info']
+  return sols.map((sol, index) => ({
+    title: sol.title,
+    description: sol.description,
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
+
+const countries = computed(() => {
+  const countriesData = tm('aboutPage.mission.countries') || []
+  const flagCodes = ['ma', 'sn', 'mg', 'dz', 'ph']
+  const colors = ['primary', 'secondary', 'success', 'info', 'warning']
+  return countriesData.map((country, index) => ({
+    name: country.name,
+    status: country.status || 'active',
+    color: colors[index] || 'primary',
+    flagCode: flagCodes[index] || 'ma'
+  }))
+})
 </script>
 
 <style scoped>

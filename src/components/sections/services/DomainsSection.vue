@@ -1,14 +1,18 @@
 <template>
-  <section class="domains-section section-padding bg-grey-lighten-5">
-    <v-container>
+  <section class="domains-section section-padding">
+    <div class="domains-bg" aria-hidden="true">
+      <div class="domains-shapes">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+        <span class="shape shape-4"></span>
+      </div>
+    </div>
+    <v-container class="domains-content">
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Domaines<br />
-          <span class="gradient-text">d'intervention</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('servicesPage.domains.title')"></h2>
         <p class="section-subtitle mx-auto">
-          EBHI met à votre disposition des ressources spécialisées et immédiatement opérationnelles,
-          selon les besoins spécifiques de votre secteur d'activité.
+          {{ $t('servicesPage.domains.subtitle') }}
         </p>
       </div>
 
@@ -43,17 +47,41 @@
 </template>
 
 <script setup>
-const domains = [
-  { name: 'Technologie', icon: 'mdi-laptop', color: 'primary' },
-  { name: 'Relation client', icon: 'mdi-account-heart', color: 'secondary' },
-  { name: 'Design', icon: 'mdi-palette', color: 'success' },
-  { name: 'Back-office', icon: 'mdi-office-building', color: 'info' },
-  { name: 'Support technique', icon: 'mdi-headset', color: 'warning' },
-  { name: 'Ingénierie', icon: 'mdi-cog', color: 'error' },
-  { name: 'Achats', icon: 'mdi-cart', color: 'primary' },
-  { name: 'Finance', icon: 'mdi-currency-eur', color: 'secondary' },
-  { name: 'Industrie', icon: 'mdi-factory', color: 'success' }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const domains = computed(() => {
+  const domainNames = tm('servicesPage.domains.domains') || []
+  const icons = [
+    'mdi-laptop',
+    'mdi-account-heart',
+    'mdi-palette',
+    'mdi-office-building',
+    'mdi-headset',
+    'mdi-cog',
+    'mdi-cart',
+    'mdi-currency-eur',
+    'mdi-factory'
+  ]
+  const colors = [
+    'primary',
+    'secondary',
+    'success',
+    'info',
+    'warning',
+    'error',
+    'primary',
+    'secondary',
+    'success'
+  ]
+  return domainNames.map((name, index) => ({
+    name,
+    icon: icons[index] || 'mdi-circle',
+    color: colors[index] || 'primary'
+  }))
+})
 
 const getDomainGradient = color => {
   const gradients = {
@@ -71,6 +99,102 @@ const getDomainGradient = color => {
 <style scoped>
 .domains-section {
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%);
+}
+
+.domains-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.domains-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 85% 35%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+  background-size: 140% 140%;
+  animation: domainsBgDrift 26s ease-in-out infinite alternate;
+}
+
+.domains-content {
+  position: relative;
+  z-index: 1;
+}
+
+.domains-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.shape-1 {
+  width: 240px;
+  height: 240px;
+  top: 6%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 22%;
+  right: -50px;
+  animation-delay: 4s;
+}
+
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  left: 8%;
+  animation-delay: 8s;
+}
+
+.shape-4 {
+  width: 140px;
+  height: 140px;
+  bottom: 6%;
+  right: 10%;
+  animation-delay: 12s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
+}
+
+@keyframes domainsBgDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 40% 60%;
+  }
+  100% {
+    background-position: 80% 20%;
+  }
 }
 
 .section-header {

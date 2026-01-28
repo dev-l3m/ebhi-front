@@ -1,15 +1,20 @@
 <template>
   <section class="advantages-section section-padding">
-    <v-container>
+    <div class="advantages-bg" aria-hidden="true">
+      <div class="advantages-shapes">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+        <span class="shape shape-4"></span>
+      </div>
+    </div>
+    <v-container class="advantages-content">
       <div class="section-header text-center mb-16">
         <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-star-circle</v-icon>
-          Avantages
+          {{ $t('whyOutsourcePage.advantages.chip') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Les avantages stratégiques<br />
-          <span class="gradient-text">de l'externalisation EBHI</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('whyOutsourcePage.advantages.title')"></h2>
       </div>
 
       <v-row>
@@ -51,55 +56,130 @@
 </template>
 
 <script setup>
-const advantages = [
-  {
-    title: 'Réduction des coûts, sans compromis sur la qualité',
-    description:
-      "Salaires, charges sociales, locaux, matériel, supervision : les coûts fixes explosent. L'externalisation vous permet de transformer ces dépenses en charges variables, parfaitement maîtrisées, tout en maintenant des standards élevés de performance.",
-    color: 'primary',
-    icon: 'mdi-cash-multiple'
-  },
-  {
-    title: 'Accès rapide à une expertise qualifiée',
-    description:
-      "Nous mobilisons des talents compétents, immédiatement opérationnels, sélectionnés selon vos critères métiers et culturels. Plus besoin d'investir dans un long processus de recrutement : vous disposez, dès le départ, de profils adaptés et performants.",
-    color: 'secondary',
-    icon: 'mdi-account-star'
-  },
-  {
-    title: 'Gain de temps opérationnel',
-    description:
-      "Nous prenons en charge les démarches administratives, juridiques et RH. Vous bénéficiez d'un accompagnement complet, qui libère vos équipes internes et vous permet de vous recentrer sur des missions à forte valeur ajoutée.",
-    color: 'success',
-    icon: 'mdi-clock-fast'
-  },
-  {
-    title: 'Agilité et adaptabilité instantanée',
-    description:
-      "Créez, redimensionnez ou ajustez une équipe en fonction de votre activité. Nos solutions sont conçues pour évoluer avec vos besoins, vous permettant de répondre rapidement aux pics d'activité, aux urgences projets ou aux changements stratégiques.",
-    color: 'info',
-    icon: 'mdi-sync'
-  },
-  {
-    title: 'Garantie de qualité et de continuité',
-    description:
-      'Nous assurons un suivi rigoureux de chaque projet. Grâce à nos process internes et à une culture du résultat, vous bénéficiez de prestations stables, performantes et suivies, avec un interlocuteur unique.',
-    color: 'warning',
-    icon: 'mdi-shield-check'
-  },
-  {
-    title: 'Réduction des risques opérationnels',
-    description:
-      "Externaliser avec EBHI, c'est bénéficier d'un cadre juridique, contractuel et réglementaire sécurisé. Nous opérons en totale conformité avec les lois locales et internationales. Vous gagnez en sérénité, tout en gardant le contrôle.",
-    color: 'error',
-    icon: 'mdi-shield-lock'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const advantages = computed(() => {
+  const advantagesData = tm('whyOutsourcePage.advantages.advantages') || []
+  const icons = [
+    'mdi-cash-multiple',
+    'mdi-account-star',
+    'mdi-clock-fast',
+    'mdi-sync',
+    'mdi-shield-check',
+    'mdi-shield-lock'
+  ]
+  const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'error']
+  return advantagesData.map((advantage, index) => ({
+    title: advantage.title,
+    description: advantage.description,
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
 </script>
 
 <style scoped>
 .advantages-section {
-  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%);
+}
+
+.advantages-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.advantages-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 85% 35%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+  background-size: 140% 140%;
+  animation: advantagesBgDrift 26s ease-in-out infinite alternate;
+}
+
+.advantages-content {
+  position: relative;
+  z-index: 1;
+}
+
+.advantages-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.shape-1 {
+  width: 240px;
+  height: 240px;
+  top: 6%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 22%;
+  right: -50px;
+  animation-delay: 4s;
+}
+
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  left: 8%;
+  animation-delay: 8s;
+}
+
+.shape-4 {
+  width: 140px;
+  height: 140px;
+  bottom: 6%;
+  right: 10%;
+  animation-delay: 12s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
+}
+
+@keyframes advantagesBgDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 40% 60%;
+  }
+  100% {
+    background-position: 80% 20%;
+  }
 }
 
 .section-header {

@@ -5,13 +5,9 @@
       <v-row align="center" justify="center" class="ma-0">
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-email-newsletter</v-icon>
-          <h2 class="blog-cta-title mb-6">
-            Restez informé de nos<br />
-            <span class="gradient-text-white">dernières actualités</span>
-          </h2>
+          <h2 class="blog-cta-title mb-6" v-html="$t('blog.cta.title')"></h2>
           <p class="blog-cta-subtitle mb-8">
-            Abonnez-vous à notre newsletter pour recevoir nos articles sur l'externalisation, le
-            recrutement international et les stratégies de croissance.
+            {{ $t('blog.cta.subtitle') }}
           </p>
           <v-form @submit.prevent="subscribe" class="newsletter-form">
             <v-row class="ma-0">
@@ -19,7 +15,7 @@
                 <v-text-field
                   v-model="email"
                   type="email"
-                  placeholder="Votre adresse email"
+                  :placeholder="$t('blog.cta.emailPlaceholder')"
                   variant="outlined"
                   rounded="xl"
                   hide-details
@@ -37,7 +33,7 @@
                   class="newsletter-btn w-100"
                   :loading="loading"
                 >
-                  S'abonner
+                  {{ $t('blog.cta.subscribe') }}
                 </v-btn>
               </v-col>
             </v-row>
@@ -52,7 +48,7 @@
               to="/nos-services"
             >
               <v-icon start>mdi-arrow-right-circle</v-icon>
-              Découvrez nos services
+              {{ $t('blog.cta.discoverServices') }}
             </v-btn>
             <v-btn
               color="white"
@@ -63,7 +59,7 @@
               @click="scrollToContact"
             >
               <v-icon start>mdi-email</v-icon>
-              Contactez-nous
+              {{ $t('blog.cta.contactUs') }}
             </v-btn>
           </div>
         </v-col>
@@ -74,6 +70,9 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const email = ref('')
 const loading = ref(false)
@@ -85,7 +84,7 @@ const subscribe = async () => {
   // TODO: Implement newsletter subscription
   setTimeout(() => {
     loading.value = false
-    alert('Merci pour votre abonnement !')
+    alert(t('blog.cta.subscribeSuccess'))
     email.value = ''
   }, 1000)
 }

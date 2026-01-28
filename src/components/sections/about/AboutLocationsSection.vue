@@ -2,19 +2,15 @@
   <section class="about-locations-section section-padding bg-grey-lighten-5">
     <v-container>
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Un ancrage local,<br />
-          <span class="gradient-text">une vision globale</span>
-        </h2>
-        <p class="section-description text-grey-darken-1 mx-auto">
-          Nos implantations à Casablanca, Marrakech, Dakar, Antananarivo, Paris et Cergy sont
-          pensées comme des <strong>hubs opérationnels</strong>, permettant de répondre aux enjeux
-          de proximité, de disponibilité et d'agilité.
-        </p>
-        <p class="section-highlight font-weight-bold text-primary mt-6">
-          Nous ne vous apportons pas seulement une main d'œuvre externalisée, mais
-          <strong>un véritable prolongement structuré de votre organisation.</strong>
-        </p>
+        <h2 class="section-title mb-6" v-html="$t('aboutPage.locations.title')"></h2>
+        <p
+          class="section-description text-grey-darken-1 mx-auto"
+          v-html="$t('aboutPage.locations.description')"
+        ></p>
+        <p
+          class="section-highlight font-weight-bold text-primary mt-6"
+          v-html="$t('aboutPage.locations.highlight')"
+        ></p>
       </div>
 
       <v-row>
@@ -46,14 +42,21 @@
 </template>
 
 <script setup>
-const locations = [
-  { name: 'Casablanca', country: 'Maroc', color: 'primary', icon: 'mdi-map-marker' },
-  { name: 'Marrakech', country: 'Maroc', color: 'primary', icon: 'mdi-map-marker' },
-  { name: 'Dakar', country: 'Sénégal', color: 'secondary', icon: 'mdi-map-marker' },
-  { name: 'Antananarivo', country: 'Madagascar', color: 'success', icon: 'mdi-map-marker' },
-  { name: 'Paris', country: 'France', color: 'info', icon: 'mdi-map-marker' },
-  { name: 'Cergy', country: 'France', color: 'info', icon: 'mdi-map-marker' }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const locations = computed(() => {
+  const locs = tm('aboutPage.locations.locations') || []
+  const colors = ['primary', 'primary', 'secondary', 'success', 'info', 'info']
+  return locs.map((loc, index) => ({
+    name: loc.name,
+    country: loc.country,
+    color: colors[index] || 'primary',
+    icon: 'mdi-map-marker'
+  }))
+})
 </script>
 
 <style scoped>

@@ -5,19 +5,10 @@
       <v-row align="center" justify="center" class="ma-0">
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-rocket-launch</v-icon>
-          <h2 class="services-cta-title mb-6">
-            Faites partie de notre<br />
-            <span class="gradient-text-white">écosystème</span>
-          </h2>
-          <p class="services-cta-subtitle mb-8">
-            Choisir EBHI, c'est rejoindre un écosystème structuré, exigeant et en pleine
-            expansion.<br />
-            Nous nous adressons aux entreprises qui souhaitent croître autrement, avec méthode,
-            exigence et intelligence opérationnelle.
-          </p>
+          <h2 class="services-cta-title mb-6" v-html="$t('servicesPage.cta.title')"></h2>
+          <p class="services-cta-subtitle mb-8" v-html="$t('servicesPage.cta.subtitle')"></p>
           <p class="text-h6 font-weight-bold mb-8">
-            Prenez contact avec notre équipe pour définir ensemble la solution qui fera progresser
-            votre organisation, en toute confiance.
+            {{ $t('servicesPage.cta.highlight') }}
           </p>
           <v-btn
             color="white"
@@ -28,7 +19,7 @@
             @click="scrollToContact"
           >
             <v-icon start class="cta-btn-icon">mdi-calendar-clock</v-icon>
-            <span class="cta-btn-text">Commencez dès aujourd'hui</span>
+            <span class="cta-btn-text">{{ $t('servicesPage.cta.button') }}</span>
           </v-btn>
         </v-col>
       </v-row>
@@ -64,7 +55,7 @@ const scrollToContact = () => {
   height: 100%;
   background: linear-gradient(135deg, #1a237e 0%, #283593 30%, #3f51b5 60%, #5c6bc0 100%);
   background-size: 200% 200%;
-  animation: gradientShift 15s ease infinite;
+  animation: gradientShift 18s ease-in-out infinite alternate;
   z-index: 0;
 }
 
@@ -75,7 +66,8 @@ const scrollToContact = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+  mix-blend-mode: soft-light;
 }
 
 .services-cta-background::after {
@@ -85,7 +77,8 @@ const scrollToContact = () => {
   right: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+  mix-blend-mode: soft-light;
 }
 
 @keyframes gradientShift {

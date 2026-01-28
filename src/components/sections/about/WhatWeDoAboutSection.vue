@@ -2,10 +2,7 @@
   <section class="what-we-do-about-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Ce que nous<br />
-          <span class="gradient-text">faisons</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('aboutPage.whatWeDo.title')"></h2>
       </div>
 
       <v-row>
@@ -51,47 +48,22 @@
 </template>
 
 <script setup>
-const services = [
-  {
-    title: 'Recrutement & mise en place de talents exclusifs',
-    items: [
-      'Sélection de profils multilingues, qualifiés, formés et immédiatement disponibles.',
-      "Encadrement d'équipes dédiées en SAV, relation client, back-office, commerce, achats, qualité et production."
-    ],
-    color: 'primary',
-    icon: 'mdi-account-group'
-  },
-  {
-    title: 'Digital & communication',
-    items: [
-      'Conception, refonte et maintenance de plateformes web et outils digitaux.',
-      'Branding, UX/UI design, production de contenus visuels.',
-      'Stratégies de marketing digital, newsletters, animation de communauté.'
-    ],
-    color: 'secondary',
-    icon: 'mdi-web'
-  },
-  {
-    title: 'Solutions techniques externalisées',
-    items: [
-      "Création de bureaux d'études externalisés.",
-      "Mise à disposition d'équipes techniques spécialisées",
-      "Possibilité d'interventions sur site en France."
-    ],
-    color: 'success',
-    icon: 'mdi-cog'
-  },
-  {
-    title: 'Organisation & infrastructure',
-    items: [
-      'Accès à des espaces de travail équipés dans nos hubs.',
-      "Services de conciergerie d'entreprise, logistique et coordination technique.",
-      'Suivi de projet multi-zone avec interface dédiée.'
-    ],
-    color: 'info',
-    icon: 'mdi-office-building'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const services = computed(() => {
+  const servicesData = tm('aboutPage.whatWeDo.services') || []
+  const icons = ['mdi-account-group', 'mdi-web', 'mdi-cog', 'mdi-office-building']
+  const colors = ['primary', 'secondary', 'success', 'info']
+  return servicesData.map((service, index) => ({
+    title: service.title,
+    items: service.items,
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
 </script>
 
 <style scoped>

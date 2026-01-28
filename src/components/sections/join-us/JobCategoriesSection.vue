@@ -4,12 +4,9 @@
       <div class="section-header text-center mb-16">
         <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-briefcase</v-icon>
-          Postes Disponibles
+          {{ $t('joinUsPage.jobCategories.chip') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Nos engagements & valeurs<br />
-          <span class="gradient-text">fondamentales</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('joinUsPage.jobCategories.title')"></h2>
       </div>
 
       <v-row>
@@ -54,7 +51,9 @@
                     @click="openApplicationDialog(category)"
                   >
                     <v-icon start class="category-btn-icon">mdi-send</v-icon>
-                    <span class="category-btn-text">Postuler</span>
+                    <span class="category-btn-text">{{
+                      $t('joinUsPage.jobCategories.button')
+                    }}</span>
                   </v-btn>
                 </div>
               </div>
@@ -74,9 +73,14 @@
                     selectedCategory.icon
                   }}</v-icon>
                 </div>
-                <span class="dialog-title-text font-weight-bold"
-                  >Candidature - {{ selectedCategory.title }}</span
-                >
+                <span class="dialog-title-text font-weight-bold">
+                  {{
+                    $t('joinUsPage.jobCategories.dialog.title').replace(
+                      '{category}',
+                      selectedCategory.title
+                    )
+                  }}
+                </span>
               </div>
               <v-btn
                 icon
@@ -95,7 +99,7 @@
           <v-card-text class="pa-6">
             <div class="dialog-jobs-section mb-6">
               <h3 class="dialog-jobs-title mb-4 font-weight-bold">
-                Postes disponibles dans cette catégorie :
+                {{ $t('joinUsPage.jobCategories.dialog.jobsTitle') }}
               </h3>
               <ul class="dialog-jobs-list">
                 <li
@@ -113,72 +117,90 @@
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="applicationFormData.firstName"
-                    label="Prénom *"
+                    :label="$t('joinUsPage.jobCategories.dialog.form.firstName')"
                     variant="outlined"
                     rounded="lg"
                     required
-                    :rules="[v => !!v || 'Le prénom est requis']"
+                    :rules="[
+                      v =>
+                        !!v ||
+                        $t('joinUsPage.jobCategories.dialog.form.validation.firstNameRequired')
+                    ]"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="applicationFormData.lastName"
-                    label="Nom *"
+                    :label="$t('joinUsPage.jobCategories.dialog.form.lastName')"
                     variant="outlined"
                     rounded="lg"
                     required
-                    :rules="[v => !!v || 'Le nom est requis']"
+                    :rules="[
+                      v =>
+                        !!v ||
+                        $t('joinUsPage.jobCategories.dialog.form.validation.lastNameRequired')
+                    ]"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="applicationFormData.email"
-                    label="Email *"
+                    :label="$t('joinUsPage.jobCategories.dialog.form.email')"
                     type="email"
                     variant="outlined"
                     rounded="lg"
                     required
                     :rules="[
-                      v => !!v || 'L\'email est requis',
-                      v => /.+@.+\..+/.test(v) || 'Email invalide'
+                      v =>
+                        !!v || $t('joinUsPage.jobCategories.dialog.form.validation.emailRequired'),
+                      v =>
+                        /.+@.+\..+/.test(v) ||
+                        $t('joinUsPage.jobCategories.dialog.form.validation.emailInvalid')
                     ]"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-text-field
                     v-model="applicationFormData.phone"
-                    label="Téléphone *"
+                    :label="$t('joinUsPage.jobCategories.dialog.form.phone')"
                     variant="outlined"
                     rounded="lg"
                     required
-                    :rules="[v => !!v || 'Le téléphone est requis']"
+                    :rules="[
+                      v =>
+                        !!v || $t('joinUsPage.jobCategories.dialog.form.validation.phoneRequired')
+                    ]"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-select
                     v-model="applicationFormData.position"
                     :items="selectedCategory.jobs"
-                    label="Poste souhaité *"
+                    :label="$t('joinUsPage.jobCategories.dialog.form.position')"
                     variant="outlined"
                     rounded="lg"
                     required
-                    :rules="[v => !!v || 'Veuillez sélectionner un poste']"
+                    :rules="[
+                      v =>
+                        !!v ||
+                        $t('joinUsPage.jobCategories.dialog.form.validation.positionRequired')
+                    ]"
                   ></v-select>
                 </v-col>
                 <v-col cols="12">
                   <v-textarea
                     v-model="applicationFormData.message"
-                    label="Message (optionnel)"
+                    :label="$t('joinUsPage.jobCategories.dialog.form.message')"
                     variant="outlined"
                     rounded="lg"
                     rows="4"
-                    placeholder="Parlez-nous de votre expérience et de vos motivations..."
+                    :placeholder="$t('joinUsPage.jobCategories.dialog.form.messagePlaceholder')"
                   ></v-textarea>
                 </v-col>
                 <v-col cols="12">
                   <v-file-input
                     v-model="applicationFormData.cv"
-                    label="CV (PDF, DOC, DOCX)"
+                    :label="$t('joinUsPage.jobCategories.dialog.form.cv')"
                     variant="outlined"
                     rounded="lg"
                     accept=".pdf,.doc,.docx"
@@ -200,7 +222,9 @@
               class="dialog-cancel-btn"
               @click="applicationDialog = false"
             >
-              <span class="btn-text">Annuler</span>
+              <span class="btn-text">{{
+                $t('joinUsPage.jobCategories.dialog.buttons.cancel')
+              }}</span>
             </v-btn>
             <v-btn
               :color="selectedCategory.color"
@@ -211,7 +235,9 @@
               :loading="submitting"
             >
               <v-icon start class="btn-icon">mdi-send</v-icon>
-              <span class="btn-text">Envoyer ma candidature</span>
+              <span class="btn-text">{{
+                $t('joinUsPage.jobCategories.dialog.buttons.submit')
+              }}</span>
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -223,15 +249,17 @@
           <v-card-item class="pa-6">
             <div class="d-flex align-center mb-4">
               <v-icon color="success" size="48" class="mr-4">mdi-check-circle</v-icon>
-              <v-card-title class="pa-0">Candidature envoyée !</v-card-title>
+              <v-card-title class="pa-0">{{
+                $t('joinUsPage.jobCategories.dialog.success.title')
+              }}</v-card-title>
             </div>
             <v-card-text class="pa-0 pb-4">
-              Votre candidature a été envoyée avec succès !
+              {{ $t('joinUsPage.jobCategories.dialog.success.message') }}
             </v-card-text>
             <v-card-actions class="pa-0">
               <v-spacer></v-spacer>
               <v-btn color="primary" variant="elevated" rounded="lg" @click="successDialog = false">
-                OK
+                {{ $t('joinUsPage.jobCategories.dialog.success.ok') }}
               </v-btn>
             </v-card-actions>
           </v-card-item>
@@ -244,18 +272,17 @@
           <v-card-item class="pa-6">
             <div class="d-flex align-center mb-4">
               <v-icon color="error" size="48" class="mr-4">mdi-alert-circle</v-icon>
-              <v-card-title class="pa-0">Erreur</v-card-title>
+              <v-card-title class="pa-0">{{
+                $t('joinUsPage.jobCategories.dialog.error.title')
+              }}</v-card-title>
             </div>
             <v-card-text class="pa-0 pb-4">
-              {{
-                errorMessage ||
-                "Une erreur est survenue lors de l'envoi de votre candidature. Veuillez réessayer."
-              }}
+              {{ errorMessage || $t('joinUsPage.jobCategories.dialog.error.message') }}
             </v-card-text>
             <v-card-actions class="pa-0">
               <v-spacer></v-spacer>
               <v-btn color="primary" variant="elevated" rounded="lg" @click="errorDialog = false">
-                OK
+                {{ $t('joinUsPage.jobCategories.dialog.success.ok') }}
               </v-btn>
             </v-card-actions>
           </v-card-item>
@@ -266,8 +293,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import api from '../../../services/api.js'
+
+const { tm, t } = useI18n()
 
 const applicationDialog = ref(false)
 const selectedCategory = ref(null)
@@ -286,43 +316,17 @@ const applicationFormData = ref({
   cv: null
 })
 
-const jobCategories = [
-  {
-    title: 'Support client & gestion',
-    jobs: ['Chargés de relation client', 'Agents back-office', 'Responsables qualité'],
-    color: 'primary',
-    icon: 'mdi-headset'
-  },
-  {
-    title: 'Design & création',
-    jobs: ['Graphistes', 'Motion designers', 'Directeurs artistiques'],
-    color: 'secondary',
-    icon: 'mdi-palette'
-  },
-  {
-    title: 'Développement web & tech',
-    jobs: [
-      'Développeurs front-end',
-      'Développeurs back-end',
-      'Développeurs full stack',
-      'Chefs de projet IT'
-    ],
-    color: 'success',
-    icon: 'mdi-code-tags'
-  },
-  {
-    title: 'Business & achats',
-    jobs: ['Commerciaux', 'Acheteurs', 'Assistants ADV'],
-    color: 'info',
-    icon: 'mdi-cart'
-  },
-  {
-    title: 'Marketing digital & communication',
-    jobs: ['Community managers', 'Rédacteurs', 'Spécialistes SEO/SEA', 'Media buyers'],
-    color: 'warning',
-    icon: 'mdi-bullhorn'
-  }
-]
+const jobCategories = computed(() => {
+  const categoriesData = tm('joinUsPage.jobCategories.categories') || []
+  const icons = ['mdi-headset', 'mdi-palette', 'mdi-code-tags', 'mdi-cart', 'mdi-bullhorn']
+  const colors = ['primary', 'secondary', 'success', 'info', 'warning']
+  return categoriesData.map((category, index) => ({
+    title: category.title,
+    jobs: category.jobs || [],
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
 
 const openApplicationDialog = category => {
   selectedCategory.value = category
@@ -382,9 +386,7 @@ const submitApplication = async () => {
     successDialog.value = true
   } catch (error) {
     console.error('Error submitting application:', error)
-    errorMessage.value =
-      error.message ||
-      "Une erreur est survenue lors de l'envoi de votre candidature. Veuillez réessayer."
+    errorMessage.value = error.message || t('joinUsPage.jobCategories.dialog.error.message')
     errorDialog.value = true
   } finally {
     submitting.value = false

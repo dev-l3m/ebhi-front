@@ -1,17 +1,21 @@
 <template>
   <section class="testimonials-section section-padding">
+    <div class="testimonials-bg" aria-hidden="true">
+      <div class="testimonials-shapes">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+      </div>
+    </div>
     <v-container>
-      <div class="section-header text-center mb-16">
-        <v-chip color="primary" variant="flat" size="large" class="mb-6">
+      <div class="section-header text-center mb-16 fade-in-up">
+        <v-chip color="primary" variant="flat" size="large" class="mb-6 section-chip">
           <v-icon start>mdi-format-quote-open</v-icon>
-          Témoignages
+          {{ $t('testimonials.title') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Ils nous font confiance,<br />
-          <span class="gradient-text">et ils en parlent !</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('testimonials.sectionTitle')"></h2>
         <p class="section-subtitle mx-auto">
-          Découvrez ce que nos clients disent de leur expérience avec EBHI
+          {{ $t('testimonials.subtitle') }}
         </p>
       </div>
 
@@ -22,6 +26,7 @@
           cols="12"
           md="4"
           class="testimonial-col"
+          :style="{ '--card-index': index }"
         >
           <v-card :elevation="8" class="testimonial-card h-100">
             <div class="testimonial-quote-icon">
@@ -60,35 +65,108 @@
 </template>
 
 <script setup>
-const testimonials = [
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const testimonials = computed(() => [
   {
-    name: 'Sabrina B.',
-    role: 'CEO, RSE Conseil',
-    text: "Grâce à EBHI, nous bénéficions aujourd'hui d'un support web fiable et réactif. Leur équipe a parfaitement compris nos besoins et mis en place des solutions efficaces qui facilitent notre travail au quotidien.",
+    name: t('testimonials.testimonial1.name'),
+    role: t('testimonials.testimonial1.role'),
+    text: t('testimonials.testimonial1.text'),
     initials: 'SB',
     color: 'primary'
   },
   {
-    name: 'Ronan L.',
-    role: 'CEO, La Bonne Allure',
-    text: "Le processus de recrutement et de mise en place des ressources a été très fluide grâce à EBHI. Nous sommes extrêmement satisfaits de leurs services, tant sur la qualité que la rapidité d'exécution.",
+    name: t('testimonials.testimonial2.name'),
+    role: t('testimonials.testimonial2.role'),
+    text: t('testimonials.testimonial2.text'),
     initials: 'RL',
     color: 'secondary'
   },
   {
-    name: 'Isabelle D.',
-    role: 'BASF',
-    text: 'EBHI nous a grandement facilité la gestion de notre support client. Leur équipe est disponible, réactive et professionnelle, ce qui nous permet de nous concentrer pleinement sur notre cœur de métier.',
+    name: t('testimonials.testimonial3.name'),
+    role: t('testimonials.testimonial3.role'),
+    text: t('testimonials.testimonial3.text'),
     initials: 'ID',
     color: 'success'
   }
-]
+])
 </script>
 
 <style scoped>
 .testimonials-section {
   background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.testimonials-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testimonials-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 35, 126, 0.05) 0%, transparent 55%),
+    radial-gradient(circle at 85% 35%, rgba(63, 81, 181, 0.05) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+}
+
+.testimonials-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.shape-1 {
+  width: 220px;
+  height: 220px;
+  top: 4%;
+  left: -50px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 160px;
+  height: 160px;
+  top: 28%;
+  right: -40px;
+  animation-delay: 5s;
+}
+
+.shape-3 {
+  width: 140px;
+  height: 140px;
+  bottom: 8%;
+  left: 5%;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
 }
 
 .section-header {
@@ -116,6 +194,25 @@ const testimonials = [
   line-height: 1.6;
 }
 
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-chip {
+  box-shadow: 0 10px 28px rgba(26, 35, 126, 0.18);
+}
+
 .testimonials-grid {
   margin-top: 40px;
 }
@@ -128,9 +225,12 @@ const testimonials = [
   border-radius: 24px !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  animation: fadeInUp 0.8s ease-out both;
+  animation-delay: calc(var(--card-index, 0) * 90ms);
 }
 
 .testimonial-card::before {
@@ -146,6 +246,16 @@ const testimonials = [
   transition: transform 0.4s ease;
 }
 
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 0%, rgba(26, 35, 126, 0.06) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
 .testimonial-card:hover::before {
   transform: scaleX(1);
 }
@@ -153,6 +263,10 @@ const testimonials = [
 .testimonial-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.testimonial-card:hover::after {
+  opacity: 1;
 }
 
 .testimonial-quote-icon {
@@ -182,6 +296,12 @@ const testimonials = [
 @media (max-width: 960px) {
   .testimonial-card {
     margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .shape {
+    display: none;
   }
 }
 </style>

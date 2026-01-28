@@ -1,18 +1,22 @@
 <template>
   <section id="services" class="services-section section-padding">
+    <div class="services-bg">
+      <div class="services-shapes" aria-hidden="true">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+        <span class="shape shape-4"></span>
+      </div>
+    </div>
     <v-container>
-      <div class="section-header text-center mb-16">
-        <v-chip color="primary" variant="flat" size="large" class="mb-6">
+      <div class="section-header text-center mb-16 fade-in-up">
+        <v-chip color="primary" variant="flat" size="large" class="mb-6 section-chip">
           <v-icon start>mdi-star-circle</v-icon>
-          Nos Services
+          {{ $t('services.title') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Externalisation de fonctions<br />
-          <span class="gradient-text">support et opérationnelles</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('services.sectionTitle')"></h2>
         <p class="section-subtitle mx-auto">
-          Notre approche personnalisée garantit que chaque membre de notre équipe s'intègre
-          parfaitement à votre structure et contribue activement à vos objectifs.
+          {{ $t('services.subtitle') }}
         </p>
       </div>
 
@@ -24,6 +28,7 @@
           md="6"
           lg="4"
           class="service-col"
+          :style="{ '--card-index': index }"
         >
           <v-card
             :class="['service-card', { 'service-card-hovered': hovered === index }]"
@@ -53,7 +58,7 @@
                 class="service-btn"
                 @click="openServiceDialog(service)"
               >
-                En savoir plus
+                {{ $t('services.learnMore') }}
                 <v-icon end>mdi-arrow-right</v-icon>
               </v-btn>
             </v-card-actions>
@@ -96,7 +101,9 @@
               </p>
 
               <div class="service-features mb-6">
-                <h3 class="text-h6 mb-4 font-weight-bold dialog-section-title">Nos prestations</h3>
+                <h3 class="text-h6 mb-4 font-weight-bold dialog-section-title">
+                  {{ $t('services.ourServices') }}
+                </h3>
                 <v-row>
                   <v-col
                     v-for="(feature, index) in selectedService.features"
@@ -118,7 +125,9 @@
               <v-divider class="my-6"></v-divider>
 
               <div class="service-benefits">
-                <h3 class="text-h6 mb-4 font-weight-bold dialog-section-title">Avantages</h3>
+                <h3 class="text-h6 mb-4 font-weight-bold dialog-section-title">
+                  {{ $t('services.advantages') }}
+                </h3>
                 <v-row>
                   <v-col
                     v-for="(benefit, index) in selectedService.benefits"
@@ -161,7 +170,7 @@
               @click="scrollToContact"
             >
               <v-icon start>mdi-email</v-icon>
-              Nous contacter
+              {{ $t('services.contactUs') }}
             </v-btn>
             <v-btn
               variant="outlined"
@@ -170,7 +179,7 @@
               class="ml-3"
               @click="serviceDialog = false"
             >
-              Fermer
+              {{ $t('services.close') }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -180,178 +189,209 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const hovered = ref(null)
 const serviceDialog = ref(false)
 const selectedService = ref(null)
 
-const services = [
+const services = computed(() => [
   {
-    title: 'Ressources Humaines',
-    description:
-      'Gestion complète de vos ressources humaines avec des experts dédiés. Recrutement, formation, gestion des carrières et bien plus.',
-    detailedDescription:
-      'EBHI vous accompagne dans la gestion complète de vos ressources humaines avec une expertise dédiée. Nous mettons à votre disposition des professionnels qualifiés pour optimiser votre gestion RH et développer vos talents.',
+    title: t('services.serviceList.hr.title'),
+    description: t('services.serviceList.hr.description'),
+    detailedDescription: t('services.serviceList.hr.detailedDescription'),
     icon: 'mdi-account-group',
     color: 'primary',
     features: [
-      'Recrutement et sélection de profils',
-      'Gestion administrative du personnel',
-      'Formation et développement des compétences',
-      'Gestion des carrières et mobilité',
-      'Paie et gestion des contrats',
-      'Conseil en stratégie RH'
+      t('services.serviceList.hr.features.0'),
+      t('services.serviceList.hr.features.1'),
+      t('services.serviceList.hr.features.2'),
+      t('services.serviceList.hr.features.3'),
+      t('services.serviceList.hr.features.4'),
+      t('services.serviceList.hr.features.5')
     ],
     benefits: [
       {
         icon: 'mdi-account-multiple',
-        title: 'Équipes qualifiées',
-        description: 'Profils sélectionnés selon vos critères'
+        title: t('services.serviceList.hr.benefits.qualifiedTeams.title'),
+        description: t('services.serviceList.hr.benefits.qualifiedTeams.description')
       },
       {
         icon: 'mdi-chart-line',
-        title: 'Performance optimisée',
-        description: 'Amélioration continue de vos processus'
+        title: t('services.serviceList.hr.benefits.optimizedPerformance.title'),
+        description: t('services.serviceList.hr.benefits.optimizedPerformance.description')
       },
       {
         icon: 'mdi-shield-check',
-        title: 'Conformité garantie',
-        description: 'Respect des réglementations en vigueur'
+        title: t('services.serviceList.hr.benefits.guaranteedCompliance.title'),
+        description: t('services.serviceList.hr.benefits.guaranteedCompliance.description')
       }
     ]
   },
   {
-    title: 'Ingénierie en Conception',
-    description:
-      "Solutions d'ingénierie et de conception produits sur mesure. De la conception à la production, nous accompagnons vos projets.",
-    detailedDescription:
-      "Notre expertise en ingénierie et conception vous permet de développer des produits innovants et performants. De la phase de conception à la production, nos équipes d'ingénieurs vous accompagnent dans tous vos projets techniques.",
+    title: t('services.serviceList.engineering.title'),
+    description: t('services.serviceList.engineering.description'),
+    detailedDescription: t('services.serviceList.engineering.detailedDescription'),
     icon: 'mdi-cog',
     color: 'secondary',
     features: [
-      'Conception et développement de produits',
-      'Ingénierie mécanique et électrique',
-      'CAO/DAO et modélisation 3D',
-      'Prototypage et tests',
-      'Optimisation des processus de production',
-      'Support technique et maintenance'
+      t('services.serviceList.engineering.features.0'),
+      t('services.serviceList.engineering.features.1'),
+      t('services.serviceList.engineering.features.2'),
+      t('services.serviceList.engineering.features.3'),
+      t('services.serviceList.engineering.features.4'),
+      t('services.serviceList.engineering.features.5')
     ],
     benefits: [
       {
         icon: 'mdi-lightbulb-on',
-        title: 'Innovation',
-        description: 'Solutions techniques avancées'
+        title: t('services.serviceList.engineering.benefits.innovation.title'),
+        description: t('services.serviceList.engineering.benefits.innovation.description')
       },
       {
         icon: 'mdi-speedometer',
-        title: 'Rapidité',
-        description: 'Délais de développement optimisés'
+        title: t('services.serviceList.engineering.benefits.speed.title'),
+        description: t('services.serviceList.engineering.benefits.speed.description')
       },
-      { icon: 'mdi-cog', title: 'Expertise', description: 'Ingénieurs expérimentés' }
+      {
+        icon: 'mdi-cog',
+        title: t('services.serviceList.engineering.benefits.expertise.title'),
+        description: t('services.serviceList.engineering.benefits.expertise.description')
+      }
     ]
   },
   {
-    title: 'Produits Chimie et Conception',
-    description:
-      'Expertise en chimie et conception de produits innovants. Développement de solutions chimiques adaptées à vos besoins.',
-    detailedDescription:
-      'Notre expertise en chimie et conception de produits vous permet de développer des solutions innovantes et performantes. Nos équipes de chimistes et concepteurs travaillent sur des projets variés, de la recherche à la production.',
+    title: t('services.serviceList.chemistry.title'),
+    description: t('services.serviceList.chemistry.description'),
+    detailedDescription: t('services.serviceList.chemistry.detailedDescription'),
     icon: 'mdi-flask',
     color: 'success',
     features: [
-      'Développement de formulations',
-      'Analyse et contrôle qualité',
-      'Conception de produits chimiques',
-      'Recherche et développement',
-      'Optimisation des procédés',
-      'Conformité réglementaire'
+      t('services.serviceList.chemistry.features.0'),
+      t('services.serviceList.chemistry.features.1'),
+      t('services.serviceList.chemistry.features.2'),
+      t('services.serviceList.chemistry.features.3'),
+      t('services.serviceList.chemistry.features.4'),
+      t('services.serviceList.chemistry.features.5')
     ],
     benefits: [
       {
         icon: 'mdi-flask-outline',
-        title: 'Expertise scientifique',
-        description: 'Chimistes et chercheurs qualifiés'
+        title: t('services.serviceList.chemistry.benefits.scientificExpertise.title'),
+        description: t('services.serviceList.chemistry.benefits.scientificExpertise.description')
       },
       {
         icon: 'mdi-shield-check',
-        title: 'Sécurité',
-        description: 'Respect des normes de sécurité'
+        title: t('services.serviceList.chemistry.benefits.safety.title'),
+        description: t('services.serviceList.chemistry.benefits.safety.description')
       },
-      { icon: 'mdi-chart-bar', title: 'Qualité', description: 'Contrôles qualité rigoureux' }
+      {
+        icon: 'mdi-chart-bar',
+        title: t('services.serviceList.chemistry.benefits.quality.title'),
+        description: t('services.serviceList.chemistry.benefits.quality.description')
+      }
     ]
   },
   {
-    title: 'Marketing et Communication',
-    description:
-      'Stratégies marketing et communication pour développer votre présence. Création de contenu, gestion des réseaux sociaux et campagnes publicitaires.',
-    detailedDescription:
-      'Développez votre présence et votre notoriété avec nos solutions marketing et communication. Nos équipes créatives et stratégiques vous accompagnent dans tous vos projets de communication, du digital au print.',
+    title: t('services.serviceList.marketing.title'),
+    description: t('services.serviceList.marketing.description'),
+    detailedDescription: t('services.serviceList.marketing.detailedDescription'),
     icon: 'mdi-bullhorn',
     color: 'info',
     features: [
-      'Stratégie marketing et communication',
-      'Création de contenu et rédaction',
-      'Gestion des réseaux sociaux',
-      'Campagnes publicitaires digitales',
-      'Design graphique et branding',
-      'Analyse et reporting de performance'
+      t('services.serviceList.marketing.features.0'),
+      t('services.serviceList.marketing.features.1'),
+      t('services.serviceList.marketing.features.2'),
+      t('services.serviceList.marketing.features.3'),
+      t('services.serviceList.marketing.features.4'),
+      t('services.serviceList.marketing.features.5')
     ],
     benefits: [
       {
         icon: 'mdi-trending-up',
-        title: 'Croissance',
-        description: 'Augmentation de votre visibilité'
+        title: t('services.serviceList.marketing.benefits.growth.title'),
+        description: t('services.serviceList.marketing.benefits.growth.description')
       },
-      { icon: 'mdi-palette', title: 'Créativité', description: 'Contenus créatifs et engageants' },
-      { icon: 'mdi-chart-line', title: 'ROI mesurable', description: 'Suivi des performances' }
+      {
+        icon: 'mdi-palette',
+        title: t('services.serviceList.marketing.benefits.creativity.title'),
+        description: t('services.serviceList.marketing.benefits.creativity.description')
+      },
+      {
+        icon: 'mdi-chart-line',
+        title: t('services.serviceList.marketing.benefits.measurableROI.title'),
+        description: t('services.serviceList.marketing.benefits.measurableROI.description')
+      }
     ]
   },
   {
-    title: 'Support Techniques',
-    description:
-      'Support technique réactif et professionnel pour vos opérations. Assistance 24/7 et résolution rapide des problèmes.',
-    detailedDescription:
-      "Bénéficiez d'un support technique réactif et professionnel pour toutes vos opérations. Nos équipes techniques sont disponibles 24/7 pour vous assister et résoudre rapidement tous vos problèmes techniques.",
+    title: t('services.serviceList.technicalSupport.title'),
+    description: t('services.serviceList.technicalSupport.description'),
+    detailedDescription: t('services.serviceList.technicalSupport.detailedDescription'),
     icon: 'mdi-headset',
     color: 'warning',
     features: [
-      'Support technique multilingue',
-      'Assistance 24/7',
-      'Résolution de problèmes',
-      'Maintenance préventive',
-      'Formation utilisateurs',
-      'Documentation technique'
+      t('services.serviceList.technicalSupport.features.0'),
+      t('services.serviceList.technicalSupport.features.1'),
+      t('services.serviceList.technicalSupport.features.2'),
+      t('services.serviceList.technicalSupport.features.3'),
+      t('services.serviceList.technicalSupport.features.4'),
+      t('services.serviceList.technicalSupport.features.5')
     ],
     benefits: [
-      { icon: 'mdi-clock-outline', title: 'Disponibilité', description: 'Support 24/7' },
-      { icon: 'mdi-speedometer', title: 'Réactivité', description: 'Résolution rapide' },
-      { icon: 'mdi-account-group', title: 'Expertise', description: 'Équipes qualifiées' }
+      {
+        icon: 'mdi-clock-outline',
+        title: t('services.serviceList.technicalSupport.benefits.availability.title'),
+        description: t('services.serviceList.technicalSupport.benefits.availability.description')
+      },
+      {
+        icon: 'mdi-speedometer',
+        title: t('services.serviceList.technicalSupport.benefits.reactivity.title'),
+        description: t('services.serviceList.technicalSupport.benefits.reactivity.description')
+      },
+      {
+        icon: 'mdi-account-group',
+        title: t('services.serviceList.technicalSupport.benefits.expertise.title'),
+        description: t('services.serviceList.technicalSupport.benefits.expertise.description')
+      }
     ]
   },
   {
-    title: 'Service après vente',
-    description:
-      'Services après-vente complets pour satisfaire vos clients. Gestion des réclamations, suivi client et amélioration continue.',
-    detailedDescription:
-      'Offrez à vos clients une expérience exceptionnelle avec nos services après-vente complets. Nous gérons toutes les interactions post-vente pour garantir la satisfaction et la fidélisation de vos clients.',
+    title: t('services.serviceList.aftersales.title'),
+    description: t('services.serviceList.aftersales.description'),
+    detailedDescription: t('services.serviceList.aftersales.detailedDescription'),
     icon: 'mdi-handshake',
     color: 'error',
     features: [
-      'Gestion des réclamations',
-      'Suivi client et relation client',
-      'Support post-vente',
-      'Gestion des retours et échanges',
-      'Enquêtes de satisfaction',
-      'Amélioration continue'
+      t('services.serviceList.aftersales.features.0'),
+      t('services.serviceList.aftersales.features.1'),
+      t('services.serviceList.aftersales.features.2'),
+      t('services.serviceList.aftersales.features.3'),
+      t('services.serviceList.aftersales.features.4'),
+      t('services.serviceList.aftersales.features.5')
     ],
     benefits: [
-      { icon: 'mdi-heart', title: 'Satisfaction', description: 'Clients satisfaits et fidèles' },
-      { icon: 'mdi-chart-line', title: 'Performance', description: 'Amélioration continue' },
-      { icon: 'mdi-account-group', title: 'Relation', description: 'Relation client optimisée' }
+      {
+        icon: 'mdi-heart',
+        title: t('services.serviceList.aftersales.benefits.satisfaction.title'),
+        description: t('services.serviceList.aftersales.benefits.satisfaction.description')
+      },
+      {
+        icon: 'mdi-chart-line',
+        title: t('services.serviceList.aftersales.benefits.performance.title'),
+        description: t('services.serviceList.aftersales.benefits.performance.description')
+      },
+      {
+        icon: 'mdi-account-group',
+        title: t('services.serviceList.aftersales.benefits.relationship.title'),
+        description: t('services.serviceList.aftersales.benefits.relationship.description')
+      }
     ]
   }
-]
+])
 
 const getColorGradient = color => {
   const gradients = {
@@ -387,6 +427,82 @@ const scrollToContact = () => {
 .services-section {
   background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.services-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.services-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 85% 35%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+}
+
+.services-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.shape-1 {
+  width: 240px;
+  height: 240px;
+  top: 6%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 22%;
+  right: -50px;
+  animation-delay: 4s;
+}
+
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  left: 8%;
+  animation-delay: 8s;
+}
+
+.shape-4 {
+  width: 140px;
+  height: 140px;
+  bottom: 6%;
+  right: 10%;
+  animation-delay: 12s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
 }
 
 .section-header {
@@ -414,6 +530,25 @@ const scrollToContact = () => {
   line-height: 1.6;
 }
 
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-chip {
+  box-shadow: 0 10px 28px rgba(26, 35, 126, 0.18);
+}
+
 .services-grid {
   margin-top: 40px;
 }
@@ -429,6 +564,9 @@ const scrollToContact = () => {
   position: relative;
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  transform: translateY(0);
+  animation: fadeInUp 0.8s ease-out both;
+  animation-delay: calc(var(--card-index, 0) * 70ms);
 }
 
 .service-card::before {
@@ -444,6 +582,16 @@ const scrollToContact = () => {
   transition: transform 0.4s ease;
 }
 
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 10%, rgba(26, 35, 126, 0.06) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
 .service-card-hovered::before {
   transform: scaleX(1);
 }
@@ -451,6 +599,10 @@ const scrollToContact = () => {
 .service-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+.service-card:hover::after {
+  opacity: 1;
 }
 
 .service-icon-wrapper {
@@ -609,6 +761,10 @@ const scrollToContact = () => {
 }
 
 @media (max-width: 600px) {
+  .shape {
+    display: none;
+  }
+
   .service-card-title {
     font-size: 1.125rem !important;
     line-height: 1.3 !important;

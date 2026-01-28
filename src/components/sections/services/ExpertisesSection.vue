@@ -1,13 +1,18 @@
 <template>
-  <section class="expertises-section section-padding bg-grey-lighten-5">
-    <v-container>
+  <section class="expertises-section section-padding">
+    <div class="expertises-bg" aria-hidden="true">
+      <div class="expertises-shapes">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+        <span class="shape shape-4"></span>
+      </div>
+    </div>
+    <v-container class="expertises-content">
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Nos expertises<br />
-          <span class="gradient-text">opérationnelles</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('servicesPage.expertises.title')"></h2>
         <p class="section-subtitle mx-auto">
-          Un processus en 4 étapes pour transformer vos besoins en solutions concrètes
+          {{ $t('servicesPage.expertises.subtitle') }}
         </p>
       </div>
 
@@ -50,41 +55,128 @@
 </template>
 
 <script setup>
-const expertises = [
-  {
-    title: 'Analyse et cadrage des besoins',
-    description:
-      'Chaque collaboration commence par une étude approfondie de vos objectifs, vos processus internes et vos enjeux spécifiques. Cette phase nous permet de bâtir une réponse ultra personnalisée, conforme à votre réalité terrain.',
-    color: 'primary',
-    icon: 'mdi-magnify'
-  },
-  {
-    title: 'Recrutement de talents qualifiés',
-    description:
-      "Nous sélectionnons des profils adaptés à vos critères métiers et à votre culture d'entreprise, grâce à un sourcing rigoureux, localisé et validé. Nos talents sont rapidement opérationnels et intégrés dans une logique de performance durable.",
-    color: 'secondary',
-    icon: 'mdi-account-search'
-  },
-  {
-    title: 'Mise en place des ressources',
-    description:
-      "Une fois les profils validés, nous assurons une intégration rapide et structurée au sein de votre organisation. Qu'il s'agisse d'une équipe dédiée ou d'un besoin ponctuel, notre suivi garantit continuité, performance et fluidité.",
-    color: 'success',
-    icon: 'mdi-office-building'
-  },
-  {
-    title: 'Gestion administrative et conformité',
-    description:
-      "Contrats, salaires, conformité légale, encadrement RH… EBHI prend en charge l'ensemble des démarches administratives. Vous bénéficiez d'un cadre réglementaire maîtrisé, d'une exécution fluide et d'un haut niveau de fiabilité.",
-    color: 'info',
-    icon: 'mdi-file-document-check'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const expertises = computed(() => {
+  const expertisesData = tm('servicesPage.expertises.expertises') || []
+  const icons = [
+    'mdi-magnify',
+    'mdi-account-search',
+    'mdi-office-building',
+    'mdi-file-document-check'
+  ]
+  const colors = ['primary', 'secondary', 'success', 'info']
+  return expertisesData.map((expertise, index) => ({
+    title: expertise.title,
+    description: expertise.description,
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
 </script>
 
 <style scoped>
 .expertises-section {
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%);
+}
+
+.expertises-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.expertises-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 85% 35%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+  background-size: 140% 140%;
+  animation: expertisesBgDrift 26s ease-in-out infinite alternate;
+}
+
+.expertises-content {
+  position: relative;
+  z-index: 1;
+}
+
+.expertises-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.shape-1 {
+  width: 240px;
+  height: 240px;
+  top: 6%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 22%;
+  right: -50px;
+  animation-delay: 4s;
+}
+
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  left: 8%;
+  animation-delay: 8s;
+}
+
+.shape-4 {
+  width: 140px;
+  height: 140px;
+  bottom: 6%;
+  right: 10%;
+  animation-delay: 12s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
+}
+
+@keyframes expertisesBgDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 40% 60%;
+  }
+  100% {
+    background-position: 80% 20%;
+  }
 }
 
 .section-header {

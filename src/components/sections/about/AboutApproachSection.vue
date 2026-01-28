@@ -2,20 +2,13 @@
   <section class="about-approach-section section-padding">
     <v-container>
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Notre<br />
-          <span class="gradient-text">approche</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('aboutPage.approach.title')"></h2>
       </div>
 
       <v-row align="center">
         <v-col cols="12" md="6" class="mb-8 mb-md-0">
-          <p class="approach-intro-text mb-6">
-            Chez EBHI, chaque projet est une collaboration étroite et stratégique. Nous ne livrons
-            pas des prestations génériques, mais des
-            <strong>solutions intelligemment conçues</strong>, prêtes à être activées.
-          </p>
-          <p class="approach-combine-text mb-4">Nous combinons :</p>
+          <p class="approach-intro-text mb-6" v-html="$t('aboutPage.approach.intro')"></p>
+          <p class="approach-combine-text mb-4">{{ $t('aboutPage.approach.combine') }}</p>
           <v-list class="bg-transparent approach-list">
             <v-list-item
               v-for="(item, index) in approachItems"
@@ -32,16 +25,8 @@
               </v-list-item-title>
             </v-list-item>
           </v-list>
-          <p class="approach-text mt-6">
-            Et <strong>un encadrement localisé dans nos hubs internationaux.</strong>
-          </p>
-          <p class="approach-text mt-4">
-            Nous opérons sur des zones à fort potentiel économique tout en respectant
-            <strong
-              >les exigences de qualité, de sécurité et de confidentialité des standards
-              européens.</strong
-            >
-          </p>
+          <p class="approach-text mt-6" v-html="$t('aboutPage.approach.text1')"></p>
+          <p class="approach-text mt-4" v-html="$t('aboutPage.approach.text2')"></p>
         </v-col>
         <v-col cols="12" md="6">
           <v-card :elevation="12" class="approach-visual-card" rounded="xl">
@@ -51,13 +36,11 @@
                   <v-icon color="primary" size="64" class="approach-main-icon">mdi-earth</v-icon>
                 </div>
                 <div class="approach-card-title font-weight-bold mb-2 text-primary">
-                  Approche Internationale
+                  {{ $t('aboutPage.approach.cardTitle') }}
                 </div>
                 <p class="approach-card-subtitle text-grey-darken-1 mb-6">
-                  <span class="subtitle-line"
-                    >Des hubs stratégiques pour une présence mondiale</span
-                  >
-                  <span class="subtitle-line">avec des standards européens</span>
+                  <span class="subtitle-line">{{ $t('aboutPage.approach.cardSubtitle1') }}</span>
+                  <span class="subtitle-line">{{ $t('aboutPage.approach.cardSubtitle2') }}</span>
                 </p>
               </div>
 
@@ -93,32 +76,31 @@
 </template>
 
 <script setup>
-const approachItems = [
-  { title: 'Des ressources humaines qualifiées et dédiées', color: 'primary' },
-  { title: 'Des outils techniques performants', color: 'secondary' },
-  { title: 'Une structure digitale agile', color: 'success' }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const internationalFeatures = [
-  {
-    title: 'Hubs stratégiques',
-    description: 'Présence mondiale avec des implantations sur plusieurs continents',
-    icon: 'mdi-map-marker-multiple',
-    color: 'primary'
-  },
-  {
-    title: 'Standards européens',
-    description: 'Qualité, sécurité et confidentialité conformes aux exigences européennes',
-    icon: 'mdi-shield-check',
-    color: 'secondary'
-  },
-  {
-    title: 'Potentiel économique',
-    description: 'Zones à fort potentiel pour optimiser vos coûts et votre croissance',
-    icon: 'mdi-chart-line',
-    color: 'success'
-  }
-]
+const { tm } = useI18n()
+
+const approachItems = computed(() => {
+  const items = tm('aboutPage.approach.items') || []
+  const colors = ['primary', 'secondary', 'success']
+  return items.map((item, index) => ({
+    title: item,
+    color: colors[index] || 'primary'
+  }))
+})
+
+const internationalFeatures = computed(() => {
+  const features = tm('aboutPage.approach.features') || []
+  const icons = ['mdi-map-marker-multiple', 'mdi-shield-check', 'mdi-chart-line']
+  const colors = ['primary', 'secondary', 'success']
+  return features.map((feature, index) => ({
+    title: feature.title,
+    description: feature.description,
+    icon: icons[index] || 'mdi-circle',
+    color: colors[index] || 'primary'
+  }))
+})
 </script>
 
 <style scoped>
@@ -344,7 +326,7 @@ const internationalFeatures = [
 }
 
 .feature-description {
-  font-size: 0.9375rem;
+  font-size: 0.8rem;
   line-height: 1.5;
   word-wrap: break-word;
 }

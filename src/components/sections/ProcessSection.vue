@@ -1,18 +1,22 @@
 <template>
   <section class="process-section section-padding">
-    <v-container>
-      <div class="section-header text-center mb-16">
-        <v-chip color="primary" variant="flat" size="large" class="mb-6">
+    <div class="process-bg" aria-hidden="true">
+      <div class="process-shapes">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+        <span class="shape shape-4"></span>
+      </div>
+    </div>
+    <v-container class="process-container">
+      <div class="section-header text-center mb-16 fade-in-up">
+        <v-chip color="primary" variant="flat" size="large" class="mb-6 section-chip">
           <v-icon start>mdi-cog</v-icon>
-          Notre Processus
+          {{ $t('process.title') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Comment ça<br />
-          <span class="gradient-text">fonctionne ?</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('process.sectionTitle')"></h2>
         <p class="section-subtitle mx-auto">
-          Un processus en 4 étapes simples et efficaces pour transformer vos besoins en solutions
-          concrètes
+          {{ $t('process.subtitle') }}
         </p>
       </div>
 
@@ -24,24 +28,25 @@
           md="6"
           lg="3"
           class="process-col"
+          :style="{ '--card-index': index }"
         >
+          <div class="process-number-wrapper">
+            <div class="process-number" :class="`process-number-${process.color}`">
+              {{ index + 1 }}
+            </div>
+            <div class="process-number-bg" :class="`process-number-bg-${process.color}`"></div>
+          </div>
           <v-card
             :elevation="8"
             class="process-card h-100"
             :class="`process-card-${process.color}`"
             @click="openDialog(process)"
           >
-            <div class="process-number-wrapper">
-              <div class="process-number" :class="`process-number-${process.color}`">
-                {{ index + 1 }}
-              </div>
-              <div class="process-number-bg" :class="`process-number-bg-${process.color}`"></div>
-            </div>
             <v-card-item class="pa-6 text-center">
               <v-icon :color="process.color" size="56" class="mb-4 process-icon">
                 {{ process.icon }}
               </v-icon>
-              <v-card-title class="text-h6 mb-3 process-title process-card-title">
+              <v-card-title class="text-body-2 mb-2 process-title process-card-title">
                 {{ process.title }}
               </v-card-title>
               <v-card-text class="text-body-2 text-grey-darken-1 pa-0 process-description">
@@ -50,7 +55,7 @@
             </v-card-item>
             <v-card-actions class="pa-6 pt-0 justify-center">
               <v-btn :color="process.color" variant="text" class="process-btn">
-                Voir détails
+                {{ $t('process.viewDetails') }}
                 <v-icon end>mdi-arrow-right</v-icon>
               </v-btn>
             </v-card-actions>
@@ -92,7 +97,7 @@
               size="large"
               @click="dialog = false"
             >
-              Compris
+              {{ $t('process.understood') }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -102,49 +107,48 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const dialog = ref(false)
 const selectedProcess = ref(null)
 
-const processes = [
+const processes = computed(() => [
   {
-    title: 'Analyse des besoins',
-    shortDescription: "Compréhension de vos objectifs et élaboration d'une stratégie adaptée",
-    description: 'Construire une stratégie qui vous ressemble',
-    details:
-      "Chaque projet démarre par une phase d'écoute attentive. Nous prenons le temps de comprendre vos objectifs, vos défis et vos priorités. Cette étape fondamentale nous permet d'identifier les leviers clés pour bâtir une stratégie personnalisée et efficace. Grâce à cette analyse approfondie, nous concevons un plan d'action clair, réaliste et en parfaite adéquation avec votre vision.",
+    title: t('process.steps.step1.title'),
+    shortDescription: t('process.steps.step1.shortDescription'),
+    description: t('process.steps.step1.description'),
+    details: t('process.steps.step1.details'),
     color: 'primary',
     icon: 'mdi-magnify'
   },
   {
-    title: 'Recrutement',
-    shortDescription: 'Sélection rigoureuse des talents répondant à vos critères.',
-    description: 'Sélection rigoureuse des talents répondant à vos critères.',
-    details:
-      "Nous mettons en place un processus de sélection exigeant et méthodique, visant à identifier les profils les plus pertinents. Notre objectif est de vous proposer des candidats qui non seulement répondent à vos critères techniques, mais qui s'intègrent également parfaitement à votre environnement et contribuent activement à la réussite de vos projets.",
+    title: t('process.steps.step2.title'),
+    shortDescription: t('process.steps.step2.shortDescription'),
+    description: t('process.steps.step2.description'),
+    details: t('process.steps.step2.details'),
     color: 'secondary',
     icon: 'mdi-account-search'
   },
   {
-    title: 'Mise en place des ressources',
-    shortDescription: 'Fourniture de tout le matériel et les locaux nécessaires.',
-    description: 'Fourniture de tout le matériel et les locaux nécessaires.',
-    details:
-      "Nous assurons la mise à disposition de l'ensemble du matériel et des infrastructures indispensables. Cette prise en charge complète vous permet de vous concentrer pleinement sur vos objectifs sans vous soucier des aspects logistiques et techniques.",
+    title: t('process.steps.step3.title'),
+    shortDescription: t('process.steps.step3.shortDescription'),
+    description: t('process.steps.step3.description'),
+    details: t('process.steps.step3.details'),
     color: 'success',
     icon: 'mdi-office-building'
   },
   {
-    title: 'Gestion administrative',
-    shortDescription: 'Prise en charge complète des démarches administratives et disciplinaires.',
-    description: 'Prise en charge complète des démarches administratives et disciplinaires.',
-    details:
-      "Nous assurons une gestion intégrale de l'ensemble des démarches administratives et disciplinaires. Notre approche rigoureuse garantit la conformité avec le cadre juridique en vigueur et vous libère de ces contraintes pour vous concentrer sur votre cœur de métier.",
+    title: t('process.steps.step4.title'),
+    shortDescription: t('process.steps.step4.shortDescription'),
+    description: t('process.steps.step4.description'),
+    details: t('process.steps.step4.details'),
     color: 'info',
     icon: 'mdi-file-document-edit'
   }
-]
+])
 
 const openDialog = process => {
   selectedProcess.value = process
@@ -156,10 +160,105 @@ const openDialog = process => {
 .process-section {
   background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.process-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.process-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 85% 35%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+}
+
+.process-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.shape-1 {
+  width: 240px;
+  height: 240px;
+  top: 6%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 22%;
+  right: -50px;
+  animation-delay: 4s;
+}
+
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  left: 8%;
+  animation-delay: 8s;
+}
+
+.shape-4 {
+  width: 140px;
+  height: 140px;
+  bottom: 6%;
+  right: 10%;
+  animation-delay: 12s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
 }
 
 .section-header {
   margin-bottom: 80px;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-chip {
+  box-shadow: 0 10px 28px rgba(26, 35, 126, 0.18);
 }
 
 .section-title {
@@ -196,14 +295,31 @@ const openDialog = process => {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: visible;
-  background: white;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border: 2px solid transparent;
+  animation: fadeInUp 0.8s ease-out both;
+  animation-delay: calc(var(--card-index, 0) * 80ms);
+}
+
+.process-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(26, 35, 126, 0.06) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .process-card:hover {
   transform: translateY(-16px) scale(1.02);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15) !important;
+}
+
+.process-card:hover::after {
+  opacity: 1;
 }
 
 .process-card-primary:hover {
@@ -226,8 +342,8 @@ const openDialog = process => {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: -40px;
-  margin-bottom: 24px;
+  margin-top: 0;
+  margin-bottom: -40px;
 }
 
 .process-number {
@@ -264,7 +380,7 @@ const openDialog = process => {
   background: linear-gradient(135deg, #2196f3 0%, #42a5f5 100%);
 }
 
-.process-card:hover .process-number {
+.process-col:hover .process-number {
   transform: scale(1.1) rotate(360deg);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
@@ -312,6 +428,7 @@ const openDialog = process => {
 
 .process-icon {
   transition: all 0.4s ease;
+  margin-top: 30px;
 }
 
 .process-card:hover .process-icon {
@@ -364,7 +481,8 @@ const openDialog = process => {
   }
 
   .process-number-wrapper {
-    margin-top: -32px;
+    margin-top: 0;
+    margin-bottom: -32px;
   }
 
   .process-number {
@@ -375,6 +493,10 @@ const openDialog = process => {
 }
 
 @media (max-width: 600px) {
+  .shape {
+    display: none;
+  }
+
   .process-card-title {
     font-size: 1rem !important;
     line-height: 1.3 !important;

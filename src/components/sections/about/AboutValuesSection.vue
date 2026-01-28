@@ -4,12 +4,9 @@
       <div class="section-header text-center mb-16">
         <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-heart</v-icon>
-          Nos Valeurs
+          {{ $t('aboutPage.values.chip') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Nos engagements & valeurs<br />
-          <span class="gradient-text">fondamentales</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('aboutPage.values.title')"></h2>
       </div>
 
       <v-row>
@@ -45,62 +42,42 @@
 </template>
 
 <script setup>
-const values = [
-  {
-    title: 'Exigence',
-    description: 'nous ne recrutons que des profils capables de porter votre image',
-    color: 'primary',
-    icon: 'mdi-star'
-  },
-  {
-    title: 'Clarté',
-    description: 'vous savez qui travaille sur quoi, quand et comment',
-    color: 'secondary',
-    icon: 'mdi-eye'
-  },
-  {
-    title: 'Professionnalisme',
-    description: 'un accompagnement rigoureux et structuré',
-    color: 'success',
-    icon: 'mdi-briefcase'
-  },
-  {
-    title: 'Discrétion',
-    description: 'la confidentialité de vos projets est une priorité',
-    color: 'info',
-    icon: 'mdi-lock'
-  },
-  {
-    title: 'Agilité',
-    description: 'vos besoins évoluent ? Nos solutions aussi',
-    color: 'warning',
-    icon: 'mdi-lightning-bolt'
-  },
-  {
-    title: 'Ambition',
-    description: 'nous visons haut, avec vous',
-    color: 'error',
-    icon: 'mdi-trending-up'
-  },
-  {
-    title: 'Excellence',
-    description: 'un niveau de service premium, sans compromis',
-    color: 'primary',
-    icon: 'mdi-trophy'
-  },
-  {
-    title: 'Sécurité',
-    description: 'nous maîtrisons les environnements réglementaires et contractuels',
-    color: 'secondary',
-    icon: 'mdi-shield-check'
-  },
-  {
-    title: 'Durabilité',
-    description: 'nous bâtissons des solutions solides, évolutives et durables',
-    color: 'success',
-    icon: 'mdi-leaf'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const values = computed(() => {
+  const valuesData = tm('aboutPage.values.values') || []
+  const icons = [
+    'mdi-star',
+    'mdi-eye',
+    'mdi-briefcase',
+    'mdi-lock',
+    'mdi-lightning-bolt',
+    'mdi-trending-up',
+    'mdi-trophy',
+    'mdi-shield-check',
+    'mdi-leaf'
+  ]
+  const colors = [
+    'primary',
+    'secondary',
+    'success',
+    'info',
+    'warning',
+    'error',
+    'primary',
+    'secondary',
+    'success'
+  ]
+  return valuesData.map((value, index) => ({
+    title: value.title,
+    description: value.description,
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
 </script>
 
 <style scoped>

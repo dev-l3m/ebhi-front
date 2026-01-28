@@ -8,35 +8,25 @@
           <div class="fade-in-up">
             <v-chip color="primary" variant="flat" size="large" class="mb-6 network-chip">
               <v-icon start>mdi-map-marker-multiple</v-icon>
-              Notre Réseau
+              {{ $t('locationsPage.network.chip') }}
             </v-chip>
-            <h2 class="section-title mb-8">
-              Un réseau international<br />
-              <span class="gradient-text">en expansion</span>
-            </h2>
+            <h2 class="section-title mb-8" v-html="$t('locationsPage.network.title')"></h2>
             <div class="network-text-content">
-              <p class="text-h6 mb-6 network-intro" style="line-height: 1.8">
-                Notre réseau couvre le
-                <strong class="highlight-text">Maroc, le Sénégal, Madagascar et la France</strong
-                >,<br />
-                et s'étend bientôt à l'<strong class="highlight-text"
-                  >Algérie, la Côte d'Ivoire et les Philippines</strong
-                >.
-              </p>
-              <p class="text-body-1 mb-4" style="line-height: 1.8">
-                Chacun de nos hubs est pensé comme un<br />
-                <strong class="highlight-text"
-                  >écosystème de talents, d'infrastructures et de services</strong
-                >,<br />
-                capable d'opérer vos projets en toute fluidité.
-              </p>
-              <p class="text-body-1" style="line-height: 1.8">
-                Vous avez besoin de structurer un SAV multilingue,<br />
-                un bureau d'études, une équipe marketing<br />
-                ou un support administratif ?<br />
-                Nous savons où, comment, et avec quels profils le faire.<br />
-                <strong class="highlight-text">Sans délai, sans surcoût, sans compromis.</strong>
-              </p>
+              <p
+                class="text-h6 mb-6 network-intro"
+                style="line-height: 1.8"
+                v-html="$t('locationsPage.network.intro')"
+              ></p>
+              <p
+                class="text-body-1 mb-4"
+                style="line-height: 1.8"
+                v-html="$t('locationsPage.network.description1')"
+              ></p>
+              <p
+                class="text-body-1"
+                style="line-height: 1.8"
+                v-html="$t('locationsPage.network.description2')"
+              ></p>
             </div>
           </div>
         </v-col>
@@ -71,22 +61,27 @@
             <div class="map-header">
               <div class="map-header-content">
                 <v-icon color="white" size="32" class="mb-2">mdi-earth</v-icon>
-                <div class="text-h5 font-weight-bold mb-1 text-white">Présence Mondiale</div>
-                <p class="text-body-2 text-white" style="opacity: 0.95">
-                  Des hubs stratégiques répartis sur plusieurs continents<br />
-                  pour une couverture optimale
-                </p>
+                <div class="text-h5 font-weight-bold mb-1 text-white">
+                  {{ $t('locationsPage.network.map.title') }}
+                </div>
+                <p
+                  class="text-body-2 text-white"
+                  style="opacity: 0.95"
+                  v-html="$t('locationsPage.network.map.subtitle')"
+                ></p>
               </div>
             </div>
             <div id="map" class="network-map"></div>
             <div class="map-legend">
               <div class="legend-item">
                 <div class="legend-marker active"></div>
-                <span class="legend-text">Hubs actifs</span>
+                <span class="legend-text">{{ $t('locationsPage.network.map.legend.active') }}</span>
               </div>
               <div class="legend-item">
                 <div class="legend-marker coming-soon"></div>
-                <span class="legend-text">Bientôt disponibles</span>
+                <span class="legend-text">{{
+                  $t('locationsPage.network.map.legend.comingSoon')
+                }}</span>
               </div>
             </div>
           </v-card>
@@ -141,7 +136,9 @@
           <v-card-title class="d-flex align-center justify-space-between pa-6 dialog-header">
             <div class="d-flex align-center">
               <v-icon color="success" size="32" class="mr-3">mdi-globe-model</v-icon>
-              <span class="text-h5 font-weight-bold">Nos Implantations par Continent</span>
+              <span class="text-h5 font-weight-bold">{{
+                $t('locationsPage.network.dialog.title')
+              }}</span>
             </div>
             <v-btn
               icon
@@ -209,7 +206,9 @@
                                 class="mb-3"
                               >
                                 {{
-                                  location.status === 'active' ? 'Hub actif' : 'Bientôt disponible'
+                                  location.status === 'active'
+                                    ? $t('locationsPage.network.dialog.status.active')
+                                    : $t('locationsPage.network.dialog.status.comingSoon')
                                 }}
                               </v-chip>
                             </div>
@@ -236,7 +235,7 @@
               rounded="lg"
               @click="continentsDialog = false"
             >
-              Fermer
+              {{ $t('locationsPage.network.dialog.close') }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -247,120 +246,72 @@
 
 <script setup>
 /* global L */
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t, tm } = useI18n()
 
 let map = null
 const continentsDialog = ref(false)
 const activeTab = ref(0)
 
-const stats = [
+const stats = computed(() => [
   {
     value: '9',
-    label: 'Hubs stratégiques',
+    label: t('locationsPage.network.stats.strategicHubs'),
     icon: 'mdi-map-marker',
     color: 'primary',
     clickable: false
   },
-  { value: '6', label: 'Pays couverts', icon: 'mdi-earth', color: 'secondary', clickable: false },
-  { value: '4', label: 'Continents', icon: 'mdi-globe-model', color: 'success', clickable: true },
+  {
+    value: '6',
+    label: t('locationsPage.network.stats.countriesCovered'),
+    icon: 'mdi-earth',
+    color: 'secondary',
+    clickable: false
+  },
+  {
+    value: '4',
+    label: t('locationsPage.network.stats.continents'),
+    icon: 'mdi-globe-model',
+    color: 'success',
+    clickable: true
+  },
   {
     value: '24/7',
-    label: 'Support disponible',
+    label: t('locationsPage.network.stats.supportAvailable'),
     icon: 'mdi-clock-outline',
     color: 'info',
     clickable: false
   }
-]
+])
 
-const continentsData = [
-  {
-    name: 'Afrique',
-    icon: 'mdi-earth',
-    description:
-      "Notre présence en Afrique vous ouvre les portes d'un marché en pleine croissance avec des hubs stratégiques au Maroc, au Sénégal et à Madagascar.",
-    locations: [
-      {
-        name: 'Casablanca & Marrakech',
-        country: 'Maroc',
-        status: 'active',
-        color: 'primary',
-        icon: 'mdi-map-marker',
-        description:
-          "Porte d'entrée vers l'Afrique, le Maroc est un pays clé pour les entreprises souhaitant croître dans un environnement stable, moderne et connecté. Casablanca, capitale économique du pays, offre un écosystème dynamique, une fiscalité avantageuse et une connexion internationale optimale. Marrakech, ville à la fois touristique et en plein essor économique, représente une plateforme idéale pour les projets orientés services, événementiel ou innovation. Grâce à nos implantations locales, EBHI accompagne les porteurs de projets dans toutes leurs démarches : domiciliation, création d'entreprise, conseil fiscal et développement commercial."
-      },
-      {
-        name: 'Dakar',
-        country: 'Sénégal',
-        status: 'active',
-        color: 'secondary',
-        icon: 'mdi-map-marker',
-        description:
-          "Capitale de l'Afrique de l'Ouest francophone, Dakar est un carrefour régional pour les affaires. Notre hub sénégalais permet aux entrepreneurs d'accéder à la zone UEMOA/CEDEAO, avec un accompagnement adapté aux réalités du terrain : juridique, administratif, fiscal et stratégique."
-      },
-      {
-        name: 'Antananarivo',
-        country: 'Madagascar',
-        status: 'active',
-        color: 'success',
-        icon: 'mdi-map-marker',
-        description:
-          "Antananarivo, capitale de Madagascar, est un pôle d'innovation et de croissance où s'installent de plus en plus d'entreprises à la recherche de talents qualifiés, de coûts maîtrisés et d'un environnement d'affaires en développement. EBHI vous aide à vous y implanter efficacement, en toute conformité."
-      },
-      {
-        name: 'Alger',
-        country: 'Algérie',
-        status: 'coming-soon',
-        color: 'warning',
-        icon: 'mdi-map-marker',
-        description:
-          "Notre prochaine implantation en Algérie vous permettra d'accéder au marché maghrébin avec un hub dédié au développement et à l'innovation."
-      },
-      {
-        name: 'Abidjan',
-        country: "Côte d'Ivoire",
-        status: 'coming-soon',
-        color: 'warning',
-        icon: 'mdi-map-marker',
-        description:
-          "Bientôt disponible, notre hub à Abidjan vous ouvrira les portes de l'Afrique centrale avec des services commerciaux et de développement adaptés."
-      }
-    ]
-  },
-  {
-    name: 'Europe',
-    icon: 'mdi-earth',
-    description:
-      'Notre présence en France vous ouvre les portes du marché européen avec des bureaux stratégiques à Paris et Cergy.',
-    locations: [
-      {
-        name: 'Paris, Cergy et rayonnement national',
-        country: 'France',
-        status: 'active',
-        color: 'info',
-        icon: 'mdi-map-marker',
-        description:
-          "Notre présence en France vous ouvre les portes du marché européen. Grâce à nos bureaux implantés à Paris et Cergy, nous accompagnons nos clients dans leur stratégie d'implantation sur l'ensemble du territoire français, que ce soit pour de la domiciliation, de la représentation commerciale ou des démarches administratives. Nos services en France sont pensés pour les entrepreneurs internationaux, freelances, start-ups et PME désireux de s'installer ou de se développer dans l'un des marchés les plus structurés au monde."
-      }
-    ]
-  },
-  {
-    name: 'Asie',
-    icon: 'mdi-earth',
-    description:
-      "Notre expansion en Asie vous permettra d'accéder à un marché dynamique avec notre futur hub aux Philippines.",
-    locations: [
-      {
-        name: 'Manille',
-        country: 'Philippines',
-        status: 'coming-soon',
-        color: 'warning',
-        icon: 'mdi-map-marker',
-        description:
-          "Notre prochaine implantation à Manille, capitale des Philippines, vous offrira un hub Asie-Pacifique avec un support 24/7 et un accès privilégié aux talents locaux pour vos projets de développement et d'externalisation."
-      }
-    ]
-  }
-]
+const continentsData = computed(() => {
+  const data = tm('locationsPage.network.dialog.continents') || []
+  const icons = ['mdi-earth', 'mdi-earth', 'mdi-earth']
+  return data.map((continent, index) => ({
+    name: continent.name,
+    icon: icons[index] || 'mdi-earth',
+    description: continent.description,
+    locations: continent.locations.map(location => ({
+      name: location.name,
+      country: location.country,
+      status: location.status || 'active',
+      color:
+        location.status === 'coming-soon'
+          ? 'warning'
+          : index === 0
+            ? location.country === 'Maroc'
+              ? 'primary'
+              : location.country === 'Sénégal'
+                ? 'secondary'
+                : 'success'
+            : 'info',
+      icon: 'mdi-map-marker',
+      description: location.description
+    }))
+  }))
+})
 
 const openContinentsDialog = () => {
   continentsDialog.value = true

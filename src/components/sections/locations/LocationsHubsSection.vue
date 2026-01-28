@@ -2,12 +2,9 @@
   <section class="locations-hubs-section section-padding bg-grey-lighten-5">
     <v-container>
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Nos hubs<br />
-          <span class="gradient-text">opérationnels</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('locationsPage.hubs.title')"></h2>
         <p class="section-subtitle mx-auto">
-          Chaque hub est un écosystème complet de talents, d'infrastructures et de services
+          {{ $t('locationsPage.hubs.subtitle') }}
         </p>
       </div>
 
@@ -33,9 +30,11 @@
                   variant="flat"
                   size="small"
                 >
-                  Bientôt
+                  {{ $t('locationsPage.hubs.status.comingSoon') }}
                 </v-chip>
-                <v-chip v-else color="success" variant="flat" size="small"> Actif </v-chip>
+                <v-chip v-else color="success" variant="flat" size="small">
+                  {{ $t('locationsPage.hubs.status.active') }}
+                </v-chip>
               </div>
               <v-divider class="my-4"></v-divider>
               <v-card-text class="pa-0">
@@ -59,80 +58,33 @@
 </template>
 
 <script setup>
-const hubs = [
-  {
-    city: 'Casablanca',
-    country: 'Maroc',
-    color: 'primary',
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const hubs = computed(() => {
+  const hubsData = tm('locationsPage.hubs.hubs') || []
+  const colors = [
+    'primary',
+    'primary',
+    'secondary',
+    'success',
+    'info',
+    'info',
+    'warning',
+    'warning',
+    'warning'
+  ]
+  return hubsData.map((hub, index) => ({
+    city: hub.city,
+    country: hub.country,
+    color: colors[index] || 'primary',
     icon: 'mdi-map-marker',
-    status: 'active',
-    features: ['Hub opérationnel principal', 'Équipes multilingues', 'Infrastructure complète']
-  },
-  {
-    city: 'Marrakech',
-    country: 'Maroc',
-    color: 'primary',
-    icon: 'mdi-map-marker',
-    status: 'active',
-    features: ['Centre de services', 'Support client dédié', "Bureau d'études"]
-  },
-  {
-    city: 'Dakar',
-    country: 'Sénégal',
-    color: 'secondary',
-    icon: 'mdi-map-marker',
-    status: 'active',
-    features: ["Hub Afrique de l'Ouest", 'Talents francophones', 'Services administratifs']
-  },
-  {
-    city: 'Antananarivo',
-    country: 'Madagascar',
-    color: 'success',
-    icon: 'mdi-map-marker',
-    status: 'active',
-    features: ['Hub Océan Indien', 'Expertise technique', 'Support multilingue']
-  },
-  {
-    city: 'Paris',
-    country: 'France',
-    color: 'info',
-    icon: 'mdi-map-marker',
-    status: 'active',
-    features: ['Siège opérationnel', 'Coordination stratégique', 'Interface clients']
-  },
-  {
-    city: 'Cergy',
-    country: 'France',
-    color: 'info',
-    icon: 'mdi-map-marker',
-    status: 'active',
-    features: ['Hub Île-de-France', 'Proximité clients', 'Services de proximité']
-  },
-  {
-    city: 'Alger',
-    country: 'Algérie',
-    color: 'warning',
-    icon: 'mdi-map-marker',
-    status: 'coming-soon',
-    features: ['Ouverture prochaine', 'Hub Maghreb', 'Expertise en développement']
-  },
-  {
-    city: 'Abidjan',
-    country: "Côte d'Ivoire",
-    color: 'warning',
-    icon: 'mdi-map-marker',
-    status: 'coming-soon',
-    features: ['Ouverture prochaine', 'Hub Afrique centrale', 'Services commerciaux']
-  },
-  {
-    city: 'Manille',
-    country: 'Philippines',
-    color: 'warning',
-    icon: 'mdi-map-marker',
-    status: 'coming-soon',
-    features: ['Ouverture prochaine', 'Hub Asie-Pacifique', 'Support 24/7']
-  }
-]
+    status: hub.status || 'active',
+    features: hub.features || []
+  }))
+})
 </script>
 
 <style scoped>

@@ -2,16 +2,12 @@
   <section class="about-promise-section section-padding bg-grey-lighten-5">
     <v-container>
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Notre<br />
-          <span class="gradient-text">promesse</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('aboutPage.promise.title')"></h2>
         <p
           class="text-h5 font-weight-bold text-primary mb-12"
           style="max-width: 800px; margin: 0 auto"
         >
-          EBHI est votre partenaire stratégique, pas un simple prestataire. Nous centralisons la
-          complexité pour vous permettre de vous concentrer sur l'essentiel : votre croissance.
+          {{ $t('aboutPage.promise.intro') }}
         </p>
       </div>
 
@@ -37,12 +33,15 @@
 </template>
 
 <script setup>
-const steps = [
-  { title: 'Vous définissez les priorités.' },
-  { title: "Nous structurons l'ensemble." },
-  { title: 'Vous gardez le contrôle stratégique.' },
-  { title: "Nous assurons l'exécution avec rigueur, confidentialité et performance." }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const steps = computed(() => {
+  const stepsData = tm('aboutPage.promise.steps') || []
+  return stepsData.map(step => ({ title: step }))
+})
 </script>
 
 <style scoped>

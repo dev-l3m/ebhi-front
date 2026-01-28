@@ -5,13 +5,9 @@
       <v-row align="center" justify="center" class="ma-0">
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-briefcase-search</v-icon>
-          <h2 class="join-us-cta-title mb-6">
-            Prêt à nous<br />
-            <span class="gradient-text-white">rejoindre ?</span>
-          </h2>
+          <h2 class="join-us-cta-title mb-6" v-html="$t('joinUsPage.cta.title')"></h2>
           <p class="join-us-cta-subtitle mb-8">
-            Découvrez nos offres d'emploi et postulez pour rejoindre une équipe dynamique qui
-            accompagne la croissance des entreprises ambitieuses.
+            {{ $t('joinUsPage.cta.subtitle') }}
           </p>
           <v-btn
             color="white"
@@ -24,7 +20,7 @@
             rel="noopener noreferrer"
           >
             <v-icon start>mdi-briefcase</v-icon>
-            Consultez nos offres
+            {{ $t('joinUsPage.cta.button') }}
           </v-btn>
         </v-col>
       </v-row>

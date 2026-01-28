@@ -1,34 +1,40 @@
 <template>
   <section id="about" class="about-section section-padding">
-    <v-container>
+    <div class="about-bg" aria-hidden="true">
+      <div class="about-shapes">
+        <span class="about-shape shape-1"></span>
+        <span class="about-shape shape-2"></span>
+        <span class="about-shape shape-3"></span>
+        <span class="about-shape shape-4"></span>
+      </div>
+    </div>
+    <v-container class="about-container">
       <v-row align="center" class="about-row">
         <v-col cols="12" md="6" class="about-content-col">
           <v-chip color="primary" variant="flat" size="large" class="mb-6">
             <v-icon start>mdi-information</v-icon>
-            À propos
+            {{ $t('about.title') }}
           </v-chip>
-          <h2 class="about-title mb-4">Qui sommes-nous ?</h2>
+          <h2 class="about-title mb-4">{{ $t('about.whoAreWe') }}</h2>
           <div class="about-subtitle text-primary mb-6">
-            Votre entreprise d'externalisation off shore
+            {{ $t('about.subtitle') }}
           </div>
           <div class="about-text">
-            <p class="text-body-1 mb-4" style="line-height: 1.8">
-              Chez <strong>Entrepreneur Business Hub International (EBHI)</strong>, nous sommes plus
-              qu'un simple prestataire de services d'externalisation. Nous sommes votre
-              <strong>partenaire stratégique</strong>, dédié à transformer vos défis opérationnels
-              en opportunités de croissance.
-            </p>
-            <p class="text-body-1 mb-4" style="line-height: 1.8">
-              Fondée sur des valeurs d'<strong>excellence</strong>, de
-              <strong>transparence</strong>, et de <strong>collaboration</strong>, notre entreprise
-              se distingue par une approche personnalisée qui s'adapte aux besoins spécifiques de
-              chaque client.
-            </p>
-            <p class="text-body-1 mb-8" style="line-height: 1.8">
-              Notre mission est de <strong>simplifier vos opérations</strong>,
-              <strong>réduire vos coûts</strong> et <strong>accélérer votre croissance</strong> en
-              mettant à votre disposition des talents spécialisés et des solutions innovantes.
-            </p>
+            <p
+              class="text-body-1 mb-4"
+              style="line-height: 1.8"
+              v-html="$t('about.description1')"
+            ></p>
+            <p
+              class="text-body-1 mb-4"
+              style="line-height: 1.8"
+              v-html="$t('about.description2')"
+            ></p>
+            <p
+              class="text-body-1 mb-8"
+              style="line-height: 1.8"
+              v-html="$t('about.description3')"
+            ></p>
             <v-btn
               color="primary"
               size="x-large"
@@ -38,7 +44,7 @@
               @click="scrollToContact"
             >
               <v-icon start class="cta-btn-icon">mdi-calendar-clock</v-icon>
-              <span class="cta-btn-text">Prenez rendez-vous</span>
+              <span class="cta-btn-text">{{ $t('about.cta') }}</span>
             </v-btn>
           </div>
         </v-col>
@@ -49,8 +55,12 @@
                 <v-icon color="primary" size="48" class="sectors-header-icon mb-4"
                   >mdi-domain</v-icon
                 >
-                <div class="sectors-title font-weight-bold mb-2">Nos secteurs d'interventions</div>
-                <p class="sectors-subtitle text-grey-darken-1">Expertise dans tous les domaines</p>
+                <div class="sectors-title font-weight-bold mb-2">
+                  {{ $t('about.sectors.title') }}
+                </div>
+                <p class="sectors-subtitle text-grey-darken-1">
+                  {{ $t('about.sectors.subtitle') }}
+                </p>
               </div>
               <v-row class="sectors-grid">
                 <v-col v-for="(sector, index) in sectors" :key="index" cols="6" class="sector-item">
@@ -71,8 +81,7 @@
               </v-row>
               <v-divider class="my-6"></v-divider>
               <p class="sectors-footer text-center text-grey-darken-1">
-                Que vous soyez dans la technologie, le design, le commerce, l'ingénierie ou la
-                chimie, EBHI a les compétences pour répondre à vos besoins.
+                {{ $t('about.sectors.footer') }}
               </p>
             </v-card-item>
           </v-card>
@@ -83,14 +92,19 @@
 </template>
 
 <script setup>
-const sectors = [
-  { name: 'Technologie', icon: 'mdi-laptop', color: 'primary' },
-  { name: 'Design', icon: 'mdi-palette', color: 'secondary' },
-  { name: 'Commerce', icon: 'mdi-store', color: 'success' },
-  { name: 'Ingénierie', icon: 'mdi-cog', color: 'info' },
-  { name: 'Chimie', icon: 'mdi-flask', color: 'warning' },
-  { name: 'Marketing', icon: 'mdi-bullhorn', color: 'error' }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const sectors = computed(() => [
+  { name: t('about.sectors.technology'), icon: 'mdi-laptop', color: 'primary' },
+  { name: t('about.sectors.design'), icon: 'mdi-palette', color: 'secondary' },
+  { name: t('about.sectors.commerce'), icon: 'mdi-store', color: 'success' },
+  { name: t('about.sectors.engineering'), icon: 'mdi-cog', color: 'info' },
+  { name: t('about.sectors.chemistry'), icon: 'mdi-flask', color: 'warning' },
+  { name: t('about.sectors.marketing'), icon: 'mdi-bullhorn', color: 'error' }
+])
 
 const getSectorGradient = color => {
   const gradients = {
@@ -114,8 +128,79 @@ const scrollToContact = () => {
 
 <style scoped>
 .about-section {
-  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #f5f7fb 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.about-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(26, 35, 126, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 90% 30%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(76, 175, 80, 0.05) 0%, transparent 55%);
+}
+
+.about-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.about-shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: about-float 18s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.about-shape.shape-1 {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -40px;
+}
+
+.about-shape.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 30%;
+  right: -80px;
+}
+
+.about-shape.shape-3 {
+  width: 160px;
+  height: 160px;
+  bottom: -70px;
+  left: 25%;
+}
+
+.about-shape.shape-4 {
+  width: 120px;
+  height: 120px;
+  bottom: 10%;
+  right: 20%;
+}
+
+.about-container {
+  position: relative;
+  z-index: 1;
+}
+
+.about-row {
+  min-height: 600px;
 }
 
 .about-row {
@@ -237,11 +322,25 @@ const scrollToContact = () => {
   overflow-wrap: break-word;
 }
 
+@keyframes about-float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-12px) translateX(8px);
+  }
+}
+
 @media (max-width: 960px) {
   .about-content-col,
   .about-sectors-col {
     padding: 0;
     margin-bottom: 48px;
+  }
+
+  .about-shape {
+    opacity: 0.5;
   }
 
   .about-row {
@@ -321,6 +420,10 @@ const scrollToContact = () => {
   .about-content-col,
   .about-sectors-col {
     margin-bottom: 32px;
+  }
+
+  .about-shape {
+    display: none;
   }
 
   .about-title {

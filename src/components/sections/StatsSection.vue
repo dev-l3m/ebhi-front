@@ -3,12 +3,9 @@
     <div class="stats-background"></div>
     <v-container class="stats-container">
       <div class="section-header text-center mb-12">
-        <h2 class="section-title mb-4 text-white">
-          Prêt à prendre un bond<br />
-          <span class="gradient-text-white">dans votre business</span>
-        </h2>
+        <h2 class="section-title mb-4 text-white" v-html="$t('stats.sectionTitle')"></h2>
         <p class="section-subtitle text-white mx-auto" style="opacity: 0.95">
-          Accélérez votre croissance avec des solutions sur mesure
+          {{ $t('stats.subtitle') }}
         </p>
       </div>
 
@@ -32,32 +29,37 @@
 </template>
 
 <script setup>
-const stats = [
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const stats = computed(() => [
   {
     value: '+250',
-    label: 'Projets complétés',
+    label: t('stats.completedProjects'),
     icon: 'mdi-check-circle',
     iconColor: 'success'
   },
   {
     value: '+12',
-    label: "Pôles d'expertise",
+    label: t('stats.expertisePoles'),
     icon: 'mdi-domain',
     iconColor: 'info'
   },
   {
     value: '+20',
-    label: 'Partenariats',
+    label: t('stats.partnerships'),
     icon: 'mdi-handshake',
     iconColor: 'warning'
   },
   {
     value: '+100',
-    label: 'Collaborateurs',
+    label: t('stats.collaborators'),
     icon: 'mdi-account-group',
     iconColor: 'error'
   }
-]
+])
 </script>
 
 <style scoped>

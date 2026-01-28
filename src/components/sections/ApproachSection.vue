@@ -1,18 +1,21 @@
 <template>
   <section class="approach-section section-padding">
+    <div class="approach-bg" aria-hidden="true">
+      <div class="approach-shapes">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+      </div>
+    </div>
     <v-container>
-      <div class="section-header text-center mb-16">
-        <v-chip color="primary" variant="flat" size="large" class="mb-6">
+      <div class="section-header text-center mb-16 fade-in-up">
+        <v-chip color="primary" variant="flat" size="large" class="mb-6 section-chip">
           <v-icon start>mdi-lightbulb-on</v-icon>
-          Notre Méthodologie
+          {{ $t('approach.title') }}
         </v-chip>
-        <h2 class="section-title mb-6">
-          Découvrez l'approche<br />
-          <span class="gradient-text">d'excellence d'EBHI</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('approach.sectionTitle')"></h2>
         <p class="section-subtitle mx-auto">
-          Notre méthodologie repose sur quatre piliers fondamentaux qui guident chacune de nos
-          actions.
+          {{ $t('approach.subtitle') }}
         </p>
       </div>
 
@@ -23,6 +26,7 @@
           :key="index"
           class="timeline-item"
           :class="{ 'timeline-item-reverse': index % 2 === 1 }"
+          :style="{ '--step-index': index }"
         >
           <div class="timeline-content">
             <div class="timeline-number">{{ index + 1 }}</div>
@@ -50,13 +54,20 @@
       <!-- Piliers EBHI -->
       <div class="pillars-section">
         <div class="text-center mb-12">
-          <h3 class="text-h4 font-weight-bold mb-4">Les 4 piliers d'EBHI</h3>
+          <h3 class="text-h4 font-weight-bold mb-4">{{ $t('approach.pillars.title') }}</h3>
           <p class="text-body-1 text-grey-darken-1">
-            Chaque lettre représente un aspect clé de notre philosophie
+            {{ $t('approach.pillars.subtitle') }}
           </p>
         </div>
         <v-row>
-          <v-col v-for="(pillar, index) in pillars" :key="index" cols="12" md="6" lg="3">
+          <v-col
+            v-for="(pillar, index) in pillars"
+            :key="index"
+            cols="12"
+            md="6"
+            lg="3"
+            :style="{ '--pillar-index': index }"
+          >
             <v-card :elevation="8" class="pillar-card h-100" :class="`pillar-${pillar.color}`">
               <v-card-item class="pa-6 text-center">
                 <div class="pillar-letter mb-4">{{ pillar.letter }}</div>
@@ -74,73 +85,138 @@
 </template>
 
 <script setup>
-const steps = [
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const steps = computed(() => [
   {
-    title: 'Analyse & Optimisation',
-    description:
-      "Évaluation approfondie des processus existants et identification des axes d'amélioration pour maximiser votre efficacité.",
+    title: t('approach.steps.step1.title'),
+    description: t('approach.steps.step1.description'),
     color: 'primary',
     icon: 'mdi-chart-line'
   },
   {
-    title: 'Structuration du Projet',
-    description:
-      'Organisation méthodique des ressources et planification détaillée du déploiement pour garantir le succès.',
+    title: t('approach.steps.step2.title'),
+    description: t('approach.steps.step2.description'),
     color: 'secondary',
     icon: 'mdi-file-tree'
   },
   {
-    title: 'Mobilisation des Ressources',
-    description:
-      'Déploiement stratégique des compétences et outils nécessaires à la réussite de votre projet.',
+    title: t('approach.steps.step3.title'),
+    description: t('approach.steps.step3.description'),
     color: 'success',
     icon: 'mdi-account-multiple'
   },
   {
-    title: 'Intégration & Amélioration continue',
-    description:
-      "Mise en œuvre suivie d'un processus d'optimisation permanente pour des résultats durables.",
+    title: t('approach.steps.step4.title'),
+    description: t('approach.steps.step4.description'),
     color: 'info',
     icon: 'mdi-sync'
   }
-]
+])
 
-const pillars = [
+const pillars = computed(() => [
   {
     letter: 'E',
-    title: 'Efficacité',
-    description:
-      "Grâce à notre modèle d'externalisation, nous aidons nos clients à améliorer leur productivité et à réduire leurs coûts.",
+    title: t('approach.pillars.e.title'),
+    description: t('approach.pillars.e.description'),
     color: 'primary'
   },
   {
     letter: 'B',
-    title: 'Business structuré',
-    description:
-      'Nous mettons en place une organisation claire et des processus définis pour assurer une externalisation fluide.',
+    title: t('approach.pillars.b.title'),
+    description: t('approach.pillars.b.description'),
     color: 'secondary'
   },
   {
     letter: 'H',
-    title: 'Hub de talents',
-    description:
-      'Nous réunissons des professionnels hautement qualifiés et spécialisés pour répondre aux besoins variés de nos clients.',
+    title: t('approach.pillars.h.title'),
+    description: t('approach.pillars.h.description'),
     color: 'success'
   },
   {
     letter: 'I',
-    title: 'Innovation',
-    description:
-      'Nous intégrons des solutions technologiques de pointe pour optimiser les processus et offrir des services toujours plus performants.',
+    title: t('approach.pillars.i.title'),
+    description: t('approach.pillars.i.description'),
     color: 'info'
   }
-]
+])
 </script>
 
 <style scoped>
 .approach-section {
   background: white;
   position: relative;
+  overflow: hidden;
+}
+
+.approach-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.approach-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 86% 30%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 88%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+}
+
+.approach-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.75;
+}
+
+.shape-1 {
+  width: 240px;
+  height: 240px;
+  top: 6%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 28%;
+  right: -50px;
+  animation-delay: 6s;
+}
+
+.shape-3 {
+  width: 140px;
+  height: 140px;
+  bottom: 10%;
+  left: 10%;
+  animation-delay: 12s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
 }
 
 .section-header {
@@ -168,30 +244,50 @@ const pillars = [
   line-height: 1.6;
 }
 
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.section-chip {
+  box-shadow: 0 10px 28px rgba(26, 35, 126, 0.18);
+}
+
 /* Timeline moderne */
 .timeline-container {
   position: relative;
   padding: 40px 0;
 }
 
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 32px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(26, 35, 126, 0.25), rgba(63, 81, 181, 0.15));
+  border-radius: 2px;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 24px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid rgba(26, 35, 126, 0.35);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
 .timeline-item {
   display: flex;
   margin-bottom: 60px;
   position: relative;
-  animation: fadeInUp 0.6s ease-out both;
-}
-
-.timeline-item:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.timeline-item:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.timeline-item:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.timeline-item:nth-child(4) {
-  animation-delay: 0.4s;
+  animation: fadeInUp 0.7s ease-out both;
+  animation-delay: calc(var(--step-index, 0) * 90ms);
 }
 
 .timeline-content {
@@ -221,6 +317,7 @@ const pillars = [
   font-weight: 800;
   box-shadow: 0 8px 16px rgba(26, 35, 126, 0.3);
   z-index: 2;
+  border: 4px solid rgba(255, 255, 255, 0.9);
 }
 
 .timeline-item-reverse .timeline-number {
@@ -231,12 +328,29 @@ const pillars = [
 .timeline-card {
   border-radius: 16px !important;
   transition: all 0.3s ease;
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .timeline-card:hover {
   transform: translateX(8px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.timeline-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 0%, rgba(26, 35, 126, 0.06) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.timeline-card:hover::after {
+  opacity: 1;
 }
 
 .timeline-item-reverse .timeline-card:hover {
@@ -256,6 +370,8 @@ const pillars = [
   overflow: hidden;
   position: relative;
   border-top: 4px solid white;
+  animation: fadeInUp 0.7s ease-out both;
+  animation-delay: calc(var(--pillar-index, 0) * 90ms);
 }
 
 .pillar-primary {
@@ -309,6 +425,11 @@ const pillars = [
 }
 
 @media (max-width: 960px) {
+  .timeline-container::before,
+  .timeline-container::after {
+    left: 24px;
+  }
+
   .timeline-content {
     padding-left: 60px;
   }
@@ -367,6 +488,10 @@ const pillars = [
 }
 
 @media (max-width: 600px) {
+  .shape {
+    display: none;
+  }
+
   .timeline-content {
     padding-left: 50px;
   }

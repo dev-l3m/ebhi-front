@@ -12,9 +12,7 @@
             />
           </div>
           <p class="text-body-2 mb-4">
-            Entrepreneur Business Hub International accompagne les entrepreneurs et entreprises dans
-            leur développement grâce à des services d'externalisation, des solutions digitales sur
-            mesure et un réseau d'experts à l'international.
+            {{ $t('footer.description') }}
           </p>
           <div class="d-flex gap-2">
             <v-btn
@@ -43,7 +41,7 @@
         </v-col>
 
         <v-col cols="12" md="3">
-          <div class="text-h6 mb-4">Liens rapides</div>
+          <div class="text-h6 mb-4">{{ $t('footer.quickLinks') }}</div>
           <v-list density="compact" class="bg-transparent">
             <v-list-item
               v-for="link in quickLinks"
@@ -56,7 +54,7 @@
         </v-col>
 
         <v-col cols="12" md="3">
-          <div class="text-h6 mb-4">Services</div>
+          <div class="text-h6 mb-4">{{ $t('footer.services') }}</div>
           <v-list density="compact" class="bg-transparent">
             <v-list-item
               v-for="service in services"
@@ -68,11 +66,10 @@
         </v-col>
 
         <v-col cols="12" md="3">
-          <div class="text-h6 mb-4">Contactez-nous</div>
+          <div class="text-h6 mb-4">{{ $t('footer.contactUs') }}</div>
           <div class="text-body-2 mb-2">
             <v-icon size="small" class="mr-2">mdi-map-marker</v-icon>
-            Bureau 7, CENTRE D'AFFAIRE JIHANE<br />
-            AVENUE DU 11 JANVIER MARRAKECH
+            {{ $t('footer.address') }}
           </div>
           <div class="text-body-2 mb-2">
             <v-icon size="small" class="mr-2">mdi-phone</v-icon>
@@ -88,24 +85,33 @@
       <v-divider class="my-4"></v-divider>
 
       <div class="text-center text-body-2">
-        © EBHI {{ new Date().getFullYear() }}, Tous droits réservés. Présentation professionnelle et
-        solutions adaptées à vos besoins.
+        {{ $t('footer.copyright', { year: new Date().getFullYear() }) }}
       </div>
     </v-container>
   </v-footer>
 </template>
 
 <script setup>
-const quickLinks = [
-  { title: 'À propos de nous', to: '/a-propos' },
-  { title: 'Blog', to: '/blog' },
-  { title: 'Politique de cookies', to: '/cookie-policy' },
-  { title: 'CGU', to: '/cgu' },
-  { title: 'Politique de confidentialité', to: '/politique-de-confidentialite' },
-  { title: 'Mentions légales', to: '/legal-notice' }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-const services = ['Efficacité', 'Business structuré', 'Hub de talents', 'Innovation']
+const { t } = useI18n()
+
+const quickLinks = computed(() => [
+  { title: t('footer.links.aboutUs'), to: '/a-propos' },
+  { title: t('footer.links.blog'), to: '/blog' },
+  { title: t('footer.links.cookiePolicy'), to: '/cookie-policy' },
+  { title: t('footer.links.terms'), to: '/cgu' },
+  { title: t('footer.links.privacyPolicy'), to: '/politique-de-confidentialite' },
+  { title: t('footer.links.legalNotice'), to: '/legal-notice' }
+])
+
+const services = computed(() => [
+  t('footer.footerServices.efficiency'),
+  t('footer.footerServices.structuredBusiness'),
+  t('footer.footerServices.talentHub'),
+  t('footer.footerServices.innovation')
+])
 </script>
 
 <style scoped>

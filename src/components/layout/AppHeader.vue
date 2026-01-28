@@ -37,14 +37,14 @@
         color="primary"
         @click="item.to.startsWith('#') ? scrollToSection(item.to.substring(1)) : null"
       >
-        {{ item.title }}
+        {{ $t(item.titleKey || `common.${item.title.toLowerCase()}`) }}
       </v-btn>
 
       <!-- Menu déroulant Ressources - Desktop uniquement -->
       <v-menu location="bottom" class="d-none d-md-block">
         <template v-slot:activator="{ props }">
           <v-btn text class="mx-2 d-none d-md-flex" color="primary" v-bind="props">
-            Ressources
+            {{ $t('common.resources') }}
             <v-icon end>mdi-chevron-down</v-icon>
           </v-btn>
         </template>
@@ -60,13 +60,16 @@
         </v-list>
       </v-menu>
 
+      <!-- Language Switcher -->
+      <LanguageSwitcher class="mx-2 d-none d-md-flex" />
+
       <v-btn
         color="primary"
         variant="elevated"
         class="ml-4 d-none d-md-flex"
         @click="scrollToContact"
       >
-        LANCEZ-VOUS
+        {{ $t('header.cta') }}
       </v-btn>
 
       <v-btn
@@ -107,7 +110,9 @@
         <template v-slot:prepend>
           <v-icon class="menu-item-icon">{{ item.icon }}</v-icon>
         </template>
-        <v-list-item-title class="menu-item-title">{{ item.title }}</v-list-item-title>
+        <v-list-item-title class="menu-item-title">{{
+          $t(item.titleKey || `common.${item.title.toLowerCase()}`)
+        }}</v-list-item-title>
       </v-list-item>
 
       <!-- Ressources avec sous-menu dans le drawer -->
@@ -117,7 +122,9 @@
             <template v-slot:prepend>
               <v-icon class="menu-item-icon">mdi-folder-multiple</v-icon>
             </template>
-            <v-list-item-title class="menu-item-title">Ressources</v-list-item-title>
+            <v-list-item-title class="menu-item-title">{{
+              $t('common.resources')
+            }}</v-list-item-title>
           </v-list-item>
         </template>
         <v-list-item
@@ -145,7 +152,7 @@
         @click="scrollToContact"
       >
         <v-icon start>mdi-rocket-launch</v-icon>
-        LANCEZ-VOUS
+        {{ $t('header.cta') }}
       </v-btn>
     </div>
   </v-navigation-drawer>
@@ -153,23 +160,33 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const drawer = ref(false)
 const scrolled = ref(false)
 const resourcesExpanded = ref(false)
 let isToggling = false
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const simpleMenuItems = [
-  { title: 'Accueil', to: '/', icon: 'mdi-home' },
-  { title: 'Nos services', to: '/nos-services', icon: 'mdi-briefcase' }
+  { title: t('header.menu.home'), titleKey: 'header.menu.home', to: '/', icon: 'mdi-home' },
+  {
+    title: t('header.menu.ourServices'),
+    titleKey: 'header.menu.ourServices',
+    to: '/nos-services',
+    icon: 'mdi-briefcase'
+  }
 ]
 
 const resourcesItems = [
-  { title: 'POURQUOI EXTERNALISER ?', to: '/pourquoi-externaliser' },
-  { title: "À PROPOS D'EBHI", to: '/a-propos' },
-  { title: 'NOUS REJOINDRE', to: '/nous-rejoindre' },
-  { title: 'NOS IMPLANTATIONS STRATÉGIQUES', to: '/nos-implantations-strategiques' },
-  { title: 'BLOG', to: '/blog' }
+  { title: t('header.resources.whyOutsource'), to: '/pourquoi-externaliser' },
+  { title: t('header.resources.aboutEBHI'), to: '/a-propos' },
+  { title: t('header.resources.joinUs'), to: '/nous-rejoindre' },
+  { title: t('header.resources.strategicLocations'), to: '/nos-implantations-strategiques' },
+  { title: t('header.resources.blog'), to: '/blog' }
 ]
 
 const handleResourceClick = resource => {

@@ -5,19 +5,15 @@
       <v-row align="center" justify="center" class="ma-0">
         <v-col cols="12" md="10" lg="8" class="text-center text-white">
           <v-icon color="white" size="64" class="mb-6">mdi-lightbulb-on</v-icon>
-          <h2 class="about-why-title mb-6">
-            Pourquoi<br />
-            <span class="gradient-text-white">EBHI ?</span>
-          </h2>
+          <h2 class="about-why-title mb-6" v-html="$t('aboutPage.why.title')"></h2>
           <div class="about-why-description text-left">
-            <p class="text-h6 mb-4" style="opacity: 0.95; line-height: 1.8">
-              Parce que vous ne cherchez pas un sous-traitant, mais
-              <strong>un partenaire de confiance</strong>. Parce que vous avez besoin de
-              <strong>ressources fiables, disponibles, encadrées et évolutives</strong>. Parce que
-              vous voulez aller plus vite, plus loin, sans perdre en maîtrise ni en qualité.
-            </p>
+            <p
+              class="text-h6 mb-4"
+              style="opacity: 0.95; line-height: 1.8"
+              v-html="$t('aboutPage.why.description1')"
+            ></p>
             <p class="text-h5 font-weight-bold" style="opacity: 0.95">
-              Vous avez un projet ? Nous avons la structure pour le concrétiser.
+              {{ $t('aboutPage.why.description2') }}
             </p>
           </div>
           <div class="mt-8">
@@ -30,7 +26,7 @@
               @click="scrollToContact"
             >
               <v-icon start>mdi-email</v-icon>
-              Contactez-nous
+              {{ $t('aboutPage.why.cta') }}
             </v-btn>
           </div>
         </v-col>

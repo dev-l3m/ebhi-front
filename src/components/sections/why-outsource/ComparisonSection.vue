@@ -1,11 +1,16 @@
 <template>
-  <section class="comparison-section section-padding bg-grey-lighten-5">
-    <v-container>
+  <section class="comparison-section section-padding">
+    <div class="comparison-bg" aria-hidden="true">
+      <div class="comparison-shapes">
+        <span class="shape shape-1"></span>
+        <span class="shape shape-2"></span>
+        <span class="shape shape-3"></span>
+        <span class="shape shape-4"></span>
+      </div>
+    </div>
+    <v-container class="comparison-content">
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Externalisation ou gestion interne ?<br />
-          <span class="gradient-text">Faites le bon choix</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('whyOutsourcePage.comparison.title')"></h2>
       </div>
 
       <v-card :elevation="8" rounded="xl" class="comparison-card">
@@ -13,10 +18,14 @@
           <v-table class="comparison-table">
             <thead>
               <tr>
-                <th class="text-left comparison-header">Critère</th>
-                <th class="text-center comparison-header">Gestion interne</th>
+                <th class="text-left comparison-header">
+                  {{ $t('whyOutsourcePage.comparison.headers.criterion') }}
+                </th>
+                <th class="text-center comparison-header">
+                  {{ $t('whyOutsourcePage.comparison.headers.internal') }}
+                </th>
                 <th class="text-center comparison-header comparison-header-highlight">
-                  Externalisation
+                  {{ $t('whyOutsourcePage.comparison.headers.external') }}
                 </th>
               </tr>
             </thead>
@@ -45,43 +54,115 @@
 </template>
 
 <script setup>
-const comparisonData = [
-  {
-    criterion: 'Coût global',
-    internal: 'Élevé (salaires, locaux, gestion RH)',
-    external: 'Réduit, prévisible et optimisé'
-  },
-  {
-    criterion: 'Temps de mise en œuvre',
-    internal: 'Long (sourcing, formation, intégration)',
-    external: 'Rapide, clé en main'
-  },
-  {
-    criterion: 'Accès aux compétences',
-    internal: 'Limité aux ressources internes disponibles',
-    external: 'Spécialistes expérimentés sélectionnés selon vos besoins'
-  },
-  {
-    criterion: 'Charge managériale',
-    internal: 'Lourde et chronophage',
-    external: 'Allégée grâce à un pilotage EBHI structuré'
-  },
-  {
-    criterion: 'Souplesse et évolutivité',
-    internal: 'Faible flexibilité (contrats, organisation interne)',
-    external: 'Haute adaptabilité, ressources modulables'
-  },
-  {
-    criterion: 'Maîtrise du risque',
-    internal: 'Responsabilité interne sur tous les volets',
-    external: 'Encadrement légal, RH et qualité assuré par EBHI'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const comparisonData = computed(() => {
+  return tm('whyOutsourcePage.comparison.rows') || []
+})
 </script>
 
 <style scoped>
 .comparison-section {
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%);
+}
+
+.comparison-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.comparison-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 85% 35%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 85%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+  background-size: 140% 140%;
+  animation: comparisonBgDrift 26s ease-in-out infinite alternate;
+}
+
+.comparison-content {
+  position: relative;
+  z-index: 1;
+}
+
+.comparison-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: float 18s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.shape-1 {
+  width: 240px;
+  height: 240px;
+  top: 6%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 22%;
+  right: -50px;
+  animation-delay: 4s;
+}
+
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 18%;
+  left: 8%;
+  animation-delay: 8s;
+}
+
+.shape-4 {
+  width: 140px;
+  height: 140px;
+  bottom: 6%;
+  right: 10%;
+  animation-delay: 12s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(14px, -18px) scale(1.03);
+  }
+}
+
+@keyframes comparisonBgDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 40% 60%;
+  }
+  100% {
+    background-position: 80% 20%;
+  }
 }
 
 .section-header {

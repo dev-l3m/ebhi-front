@@ -2,10 +2,7 @@
   <section class="why-join-us-section section-padding bg-grey-lighten-5">
     <v-container>
       <div class="section-header text-center mb-16">
-        <h2 class="section-title mb-6">
-          Pourquoi nous<br />
-          <span class="gradient-text">rejoindre ?</span>
-        </h2>
+        <h2 class="section-title mb-6" v-html="$t('joinUsPage.whyJoinUs.title')"></h2>
       </div>
 
       <v-row>
@@ -48,11 +45,10 @@
           <v-card-item class="pa-8">
             <v-icon color="primary" size="64" class="mb-4">mdi-account-star</v-icon>
             <p class="text-h5 font-weight-bold mb-4">
-              Nous cherchons des talents autonomes, rigoureux, curieux, créatifs et orientés
-              solution.
+              {{ $t('joinUsPage.whyJoinUs.talentDescription.text') }}
             </p>
             <p class="text-h6 text-primary font-weight-bold">
-              Vous vous reconnaissez ? Nous voulons vous connaître.
+              {{ $t('joinUsPage.whyJoinUs.talentDescription.cta') }}
             </p>
           </v-card-item>
         </v-card>
@@ -62,38 +58,28 @@
 </template>
 
 <script setup>
-const benefits = [
-  {
-    title: 'Des missions à forte valeur ajoutée',
-    description: 'pour des marques exigeantes et reconnues',
-    color: 'primary',
-    icon: 'mdi-star-circle'
-  },
-  {
-    title: 'Des environnements de travail professionnels',
-    description: 'encadrés, équipés, pensés pour la performance',
-    color: 'secondary',
-    icon: 'mdi-office-building'
-  },
-  {
-    title: 'Un accompagnement humain et de proximité',
-    description: 'avec un vrai suivi métier',
-    color: 'success',
-    icon: 'mdi-account-heart'
-  },
-  {
-    title: "Des perspectives concrètes d'évolution",
-    description: 'et une montée en compétences continue',
-    color: 'info',
-    icon: 'mdi-trending-up'
-  },
-  {
-    title: 'Un cadre structuré, exigeant et bienveillant',
-    description: '',
-    color: 'warning',
-    icon: 'mdi-shield-check'
-  }
-]
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { tm } = useI18n()
+
+const benefits = computed(() => {
+  const benefitsData = tm('joinUsPage.whyJoinUs.benefits') || []
+  const icons = [
+    'mdi-star-circle',
+    'mdi-office-building',
+    'mdi-account-heart',
+    'mdi-trending-up',
+    'mdi-shield-check'
+  ]
+  const colors = ['primary', 'secondary', 'success', 'info', 'warning']
+  return benefitsData.map((benefit, index) => ({
+    title: benefit.title,
+    description: benefit.description,
+    color: colors[index] || 'primary',
+    icon: icons[index] || 'mdi-circle'
+  }))
+})
 </script>
 
 <style scoped>

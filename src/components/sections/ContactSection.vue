@@ -1,14 +1,22 @@
 <template>
   <section id="contact" class="contact-section section-padding">
-    <v-container>
+    <div class="contact-bg" aria-hidden="true">
+      <div class="contact-shapes">
+        <span class="contact-shape shape-1"></span>
+        <span class="contact-shape shape-2"></span>
+        <span class="contact-shape shape-3"></span>
+        <span class="contact-shape shape-4"></span>
+      </div>
+    </div>
+    <v-container class="contact-container">
       <div class="section-header text-center mb-16">
         <v-chip color="primary" variant="flat" size="large" class="mb-6">
           <v-icon start>mdi-email</v-icon>
-          Contact
+          {{ $t('common.contact') }}
         </v-chip>
-        <h2 class="section-title mb-6">Contactez-nous</h2>
+        <h2 class="section-title mb-6">{{ $t('contact.title') }}</h2>
         <p class="section-subtitle mx-auto">
-          Une question ? Un projet ? N'hésitez pas à nous contacter, nous serons ravis de vous aider
+          {{ $t('contact.subtitle') }}
         </p>
       </div>
 
@@ -20,7 +28,7 @@
                 <v-icon color="primary" size="32" class="section-title-icon"
                   >mdi-information</v-icon
                 >
-                <span class="section-title-text">Informations</span>
+                <span class="section-title-text">{{ $t('contact.information') }}</span>
               </div>
 
               <div class="contact-item">
@@ -31,7 +39,7 @@
                     >
                   </div>
                   <div class="contact-item-text">
-                    <div class="contact-item-label">Notre adresse</div>
+                    <div class="contact-item-label">{{ $t('contact.ourAddress') }}</div>
                     <div class="contact-item-value text-grey-darken-1">
                       Bureau 7, CENTRE D'AFFAIRE JIHANE<br />
                       AVENUE DU 11 JANVIER MARRAKECH
@@ -76,16 +84,13 @@
 
               <v-divider class="contact-divider"></v-divider>
 
-              <div class="social-section-title mb-4">Suivez-nous</div>
+              <div class="social-section-title mb-4">{{ $t('contact.followUs') }}</div>
               <div class="social-buttons-wrapper">
                 <v-btn icon variant="elevated" color="primary" size="large" class="social-btn">
                   <v-icon>mdi-facebook</v-icon>
                 </v-btn>
                 <v-btn icon variant="elevated" color="primary" size="large" class="social-btn">
                   <v-icon>mdi-linkedin</v-icon>
-                </v-btn>
-                <v-btn icon variant="elevated" color="primary" size="large" class="social-btn">
-                  <v-icon>mdi-twitter</v-icon>
                 </v-btn>
               </div>
             </v-card-item>
@@ -105,7 +110,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="formData.nom"
-                      label="Votre nom *"
+                      :label="$t('contact.name') + ' *'"
                       :rules="[rules.required]"
                       variant="outlined"
                       prepend-inner-icon="mdi-account"
@@ -115,7 +120,7 @@
                   <v-col cols="12" md="6">
                     <v-text-field
                       v-model="formData.prenom"
-                      label="Votre prénom *"
+                      :label="$t('contact.firstName') + ' *'"
                       :rules="[rules.required]"
                       variant="outlined"
                       prepend-inner-icon="mdi-account"
@@ -126,7 +131,7 @@
 
                 <v-text-field
                   v-model="formData.email"
-                  label="Votre email *"
+                  :label="$t('contact.email') + ' *'"
                   type="email"
                   :rules="[rules.required, rules.email]"
                   variant="outlined"
@@ -136,7 +141,7 @@
 
                 <v-text-field
                   v-model="formData.telephone"
-                  label="Numéro de téléphone"
+                  :label="$t('contact.phone')"
                   variant="outlined"
                   prepend-inner-icon="mdi-phone"
                   class="mb-4"
@@ -144,7 +149,7 @@
 
                 <v-textarea
                   v-model="formData.message"
-                  label="Message *"
+                  :label="$t('contact.message') + ' *'"
                   :rules="[rules.required]"
                   variant="outlined"
                   prepend-inner-icon="mdi-message-text"
@@ -165,7 +170,7 @@
                 >
                   <v-icon start v-if="!loading" class="submit-btn-icon">mdi-send</v-icon>
                   <span class="submit-btn-text">{{
-                    loading ? 'Envoi en cours...' : 'Envoyer le message'
+                    loading ? $t('contact.sending') : $t('contact.send')
                   }}</span>
                 </v-btn>
               </v-form>
@@ -181,10 +186,10 @@
         <v-card-item class="pa-6">
           <div class="d-flex align-center mb-4">
             <v-icon color="success" size="48" class="mr-4">mdi-check-circle</v-icon>
-            <v-card-title class="pa-0">Message envoyé !</v-card-title>
+            <v-card-title class="pa-0">{{ $t('contact.success') }}</v-card-title>
           </div>
           <v-card-text class="pa-0 pb-4">
-            Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+            {{ $t('contact.success') }}
           </v-card-text>
           <v-card-actions class="pa-0">
             <v-spacer></v-spacer>
@@ -202,13 +207,10 @@
         <v-card-item class="pa-6">
           <div class="d-flex align-center mb-4">
             <v-icon color="error" size="48" class="mr-4">mdi-alert-circle</v-icon>
-            <v-card-title class="pa-0">Erreur</v-card-title>
+            <v-card-title class="pa-0">{{ $t('common.error') }}</v-card-title>
           </div>
           <v-card-text class="pa-0 pb-4">
-            {{
-              errorMessage ||
-              "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer."
-            }}
+            {{ errorMessage || $t('contact.error') }}
           </v-card-text>
           <v-card-actions class="pa-0">
             <v-spacer></v-spacer>
@@ -224,7 +226,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import api from '../../services/api.js'
+
+const { t } = useI18n()
 
 const form = ref(null)
 const valid = ref(false)
@@ -242,10 +247,10 @@ const formData = ref({
 })
 
 const rules = {
-  required: value => !!value || 'Ce champ est requis',
+  required: value => !!value || t('contact.required'),
   email: value => {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return pattern.test(value) || 'Email invalide'
+    return pattern.test(value) || t('contact.invalidEmail')
   }
 }
 
@@ -280,8 +285,75 @@ const submitForm = async () => {
 
 <style scoped>
 .contact-section {
-  background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #f5f7fb 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(26, 35, 126, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 90% 25%, rgba(33, 150, 243, 0.07) 0%, transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(76, 175, 80, 0.05) 0%, transparent 55%);
+}
+
+.contact-shapes {
+  position: absolute;
+  inset: 0;
+}
+
+.contact-shape {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+  animation: contact-float 20s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+.contact-shape.shape-1 {
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  left: -60px;
+}
+
+.contact-shape.shape-2 {
+  width: 200px;
+  height: 200px;
+  top: 25%;
+  right: -90px;
+}
+
+.contact-shape.shape-3 {
+  width: 180px;
+  height: 180px;
+  bottom: -90px;
+  left: 20%;
+}
+
+.contact-shape.shape-4 {
+  width: 140px;
+  height: 140px;
+  bottom: 8%;
+  right: 18%;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-header {
@@ -441,11 +513,25 @@ const submitForm = async () => {
   line-height: 1.3;
 }
 
+@keyframes contact-float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-14px) translateX(10px);
+  }
+}
+
 @media (max-width: 960px) {
   .contact-info-col,
   .contact-form-col {
     padding: 0;
     margin-bottom: 32px;
+  }
+
+  .contact-shape {
+    opacity: 0.5;
   }
 
   .contact-info-card .v-card-item,
@@ -522,6 +608,10 @@ const submitForm = async () => {
 @media (max-width: 600px) {
   .section-header {
     margin-bottom: 48px;
+  }
+
+  .contact-shape {
+    display: none;
   }
 
   .contact-info-card .v-card-item,
