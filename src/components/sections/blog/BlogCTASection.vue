@@ -198,15 +198,20 @@ const scrollToContact = () => {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 50px !important;
 }
 
 .newsletter-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .cta-btn {
   font-weight: 600;
+  margin-right: 10px;
   letter-spacing: 0.5px;
   padding: 16px 32px !important;
   border: 2px solid white !important;

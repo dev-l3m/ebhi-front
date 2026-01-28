@@ -63,7 +63,7 @@ const scrollToContact = () => {
   height: 100%;
   background: linear-gradient(135deg, #1a237e 0%, #283593 30%, #3f51b5 60%, #5c6bc0 100%);
   background-size: 200% 200%;
-  animation: gradientShift 15s ease infinite;
+  animation: gradientShift 18s ease-in-out infinite alternate;
   z-index: 0;
 }
 
@@ -74,7 +74,8 @@ const scrollToContact = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+  mix-blend-mode: soft-light;
 }
 
 .about-why-background::after {
@@ -84,7 +85,8 @@ const scrollToContact = () => {
   right: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
+  mix-blend-mode: soft-light;
 }
 
 @keyframes gradientShift {

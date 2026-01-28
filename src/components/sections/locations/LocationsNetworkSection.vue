@@ -457,8 +457,8 @@ onUnmounted(() => {
 <style scoped>
 .locations-network-section {
   position: relative;
-  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
   overflow: hidden;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%);
 }
 
 .section-background {
@@ -468,8 +468,11 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 20% 30%, rgba(26, 35, 126, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(63, 81, 181, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(26, 35, 126, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(63, 81, 181, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(76, 175, 80, 0.04) 0%, transparent 55%);
+  background-size: 140% 140%;
+  animation: locationsNetworkBgDrift 26s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
 }
@@ -685,6 +688,18 @@ onUnmounted(() => {
   50% {
     transform: scale(1.05);
     opacity: 0.9;
+  }
+}
+
+@keyframes locationsNetworkBgDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 40% 60%;
+  }
+  100% {
+    background-position: 80% 20%;
   }
 }
 
