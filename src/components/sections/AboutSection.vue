@@ -339,6 +339,17 @@ const scrollToContact = () => {
     margin-bottom: 48px;
   }
 
+  .about-content-col {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: left;
+  }
+
   .about-shape {
     opacity: 0.5;
   }

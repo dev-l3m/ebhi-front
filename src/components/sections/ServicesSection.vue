@@ -765,6 +765,38 @@ const scrollToContact = () => {
     display: none;
   }
 
+  .services-grid {
+    justify-content: center;
+  }
+
+  .service-col {
+    display: flex;
+    justify-content: center;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .service-card-title {
+    text-align: center;
+  }
+
+  .service-description {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .service-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .service-card-title {
     font-size: 1.125rem !important;
     line-height: 1.3 !important;

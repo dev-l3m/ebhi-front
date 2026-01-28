@@ -7,6 +7,7 @@
         v-bind="props"
         class="language-switcher-btn"
         :title="$t('common.language')"
+        @click="handleActivatorClick"
       >
         <span class="fi" :class="currentFlag"></span>
       </v-btn>
@@ -46,6 +47,17 @@ const currentLocale = computed(() => locale.value)
 const currentFlag = computed(() => {
   return currentLocale.value === 'fr' ? 'fi fi-fr' : 'fi fi-gb'
 })
+
+const toggleLanguage = () => {
+  const next = currentLocale.value === 'fr' ? 'en' : 'fr'
+  changeLanguage(next)
+}
+
+const handleActivatorClick = () => {
+  if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+    toggleLanguage()
+  }
+}
 
 const changeLanguage = langCode => {
   locale.value = langCode
