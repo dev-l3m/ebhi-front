@@ -28,6 +28,7 @@
             variant="flat"
             size="large"
             class="text-primary font-weight-bold hero-chip"
+            style="margin-top: 50px"
           >
             <v-icon start class="hero-chip-icon">mdi-rocket-launch</v-icon>
             <span class="hero-chip-text">{{ $t('hero.badge') }}</span>
